@@ -108,7 +108,7 @@ END;
         // For mobile app
         echo "<script nonce=\"$SECURE_NONCE\">var navbar_breakpoint = \"$navbar_breakpoint\";</script>"
         ?>
-        <nav class="navbar navbar-expand-<?php echo $navbar_breakpoint; ?> navbar-dark bg-blue fixed-top">
+        <nav class="navbar navbar-expand-<?php echo $navbar_breakpoint; ?> navbar-light bg-light-blue fixed-top">
             <button class="navbar-toggler my-0 py-0" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                 <!--<i class="fas fa-bars"></i>-->
                 <span class="navbar-toggler-icon"></span>

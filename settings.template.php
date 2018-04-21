@@ -11,14 +11,14 @@ define("DEBUG", false);
 // Database connection settings
 // See http://medoo.in/api/new for info
 define("DB_TYPE", "mysql");
-define("DB_NAME", "app");
+define("DB_NAME", "sitewriter");
 define("DB_SERVER", "localhost");
-define("DB_USER", "app");
+define("DB_USER", "sitewriter");
 define("DB_PASS", "");
 define("DB_CHARSET", "utf8");
 
 // Name of the app.
-define("SITE_TITLE", "Web App Template");
+define("SITE_TITLE", "SiteWriter");
 
 
 // URL of the AccountHub API endpoint
