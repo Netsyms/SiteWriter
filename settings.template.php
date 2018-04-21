@@ -32,7 +32,10 @@ define("PORTAL_KEY", "123");
 define("TIMEZONE", "America/Denver");
 
 // Base URL for site links.
-define('URL', '.');
+define('URL', '/sitewriter');
+
+// Folder for public files
+define('FILE_UPLOAD_PATH', __DIR__ . '/public/files');
 
 // Use Captcheck on login screen
 // https://captcheck.netsyms.com

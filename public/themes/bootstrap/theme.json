@@ -1,0 +1,107 @@
+{
+    "name": "Bootstrap",
+    "templates": {
+        "default": {
+            "title": "Default",
+            "description": "A regular page."
+        },
+        "home": {
+            "title": "Home",
+            "description": "A homepage."
+        },
+        "contact": {
+            "title": "Contact",
+            "description": "A page with a contact form."
+        }
+    },
+    "colors": {
+        "default": {
+            "title": "Default",
+            "description": "Standard Bootstrap theme"
+        },
+        "cerulean": {
+            "title": "Cerulean",
+            "description": "A calm blue sky"
+        },
+        "cosmo": {
+            "title": "Cosmo",
+            "description": "An ode to Metro"
+        },
+        "cyborg": {
+            "title": "Cyborg",
+            "description": "Jet black and electric blue"
+        },
+        "darkly": {
+            "title": "Darkly",
+            "description": "Flatly in night mode"
+        },
+        "flatly": {
+            "title": "Flatly",
+            "description": "Flat and modern"
+        },
+        "journal": {
+            "title": "Journal",
+            "description": "Crisp like a new sheet of paper"
+        },
+        "litera": {
+            "title": "Litera",
+            "description": "The medium is the message"
+        },
+        "lumen": {
+            "title": "Lumen",
+            "description": "Light and shadow"
+        },
+        "lux": {
+            "title": "Lux",
+            "description": "A touch of class"
+        },
+        "materia": {
+            "title": "Materia",
+            "description": "Material is the metaphor"
+        },
+        "minty": {
+            "title": "Minty",
+            "description": "A fresh feel"
+        },
+        "pulse": {
+            "title": "Pulse",
+            "description": "A trace of purple"
+        },
+        "sandstone": {
+            "title": "Sandstone",
+            "description": "A touch of warmth"
+        },
+        "simplex": {
+            "title": "Simplex",
+            "description": "Mini and minimalist"
+        },
+        "sketchy": {
+            "title": "Sketchy",
+            "description": "A hand-drawn look for mockups and mirth"
+        },
+        "slate": {
+            "title": "Slate",
+            "description": "Shades of gunmetal gray"
+        },
+        "solar": {
+            "title": "Solar",
+            "description": "A spin on Solarized"
+        },
+        "spacelab": {
+            "title": "Spacelab",
+            "description": "Silvery and sleek"
+        },
+        "superhero": {
+            "title": "Superhero",
+            "description": "The brave and the blue"
+        },
+        "united": {
+            "title": "United",
+            "description": "Ubuntu orange and unique font"
+        },
+        "yeti": {
+            "title": "Yeti",
+            "description": "A friendly foundation"
+        }
+    }
+}

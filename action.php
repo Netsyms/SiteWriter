@@ -31,6 +31,9 @@ function returnToSender($msg, $arg = "") {
 }
 
 switch ($VARS['action']) {
+    case "saveedits":
+        $page = $VARS['page'];
+        $content = $VARS['content'];
     case "signout":
         session_destroy();
         header('Location: index.php');
