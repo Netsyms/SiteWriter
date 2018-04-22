@@ -84,6 +84,23 @@ function get_component($name, $context = null, $echo = true) {
     }
 }
 
+function get_icon($name, $context = null, $echo = true) {
+    $db = getdatabase();
+    if ($context == null) {
+        $context = get_page_slug(false);
+    }
+    $pageid = $db->get("pages", "pageid", ["AND" => ["slug" => $context, "siteid" => getsiteid()]]);
+    $content = "";
+    if ($db->has("icons", ["AND" => ["pageid" => $pageid, "name" => $name]])) {
+        $content = $db->get("icons", "content", ["AND" => ["pageid" => $pageid, "name" => $name]]);
+    }
+    if ($echo) {
+        echo $content;
+    } else {
+        return $content;
+    }
+}
+
 function get_page_content($slug = null) {
     get_component("content", $slug);
 }
