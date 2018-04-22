@@ -12,7 +12,7 @@ include __DIR__ . "/inc/header.inc.php";
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-4"><?php get_page_title(); ?></h1>
-            <p class="ml-2 lead sw-editable" data-component="lead"><?php get_component("lead"); ?></p>
+            <p class="ml-2 lead sw-text" data-component="lead"><?php get_component("lead"); ?></p>
         </div>
     </div>
     <div class="container">

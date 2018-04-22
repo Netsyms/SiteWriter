@@ -13,7 +13,7 @@ include __DIR__ . "/inc/header.inc.php";
         <div class="container">
             <h1 class="display-4"><?php get_page_title(); ?></h1>
             <div class="ml-2 lead">
-                <div class="sw-editable" data-component="lead">
+                <div class="sw-text" data-component="lead">
                     <?php get_component("lead"); ?>
                 </div>
             </div>

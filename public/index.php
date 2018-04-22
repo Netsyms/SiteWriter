@@ -21,11 +21,12 @@ if (isset($_GET['edit'])) {
     ?>
     <link href="<?php echo URL; ?>/static/css/summernote-lite.css" rel="stylesheet" />
     <script src="<?php echo URL; ?>/static/js/summernote-lite.js"></script>
-    <script src="<?php echo URL; ?>/static/js/editor.js"></script>
     <script>
         var save_url = "<?php echo URL; ?>/action.php";
+        var static_dir = "<?php echo URL; ?>/static";
         var page_slug = "<?php getpageslug(); ?>";
     </script>
+    <script src="<?php echo URL; ?>/static/js/editor.js"></script>
     <?php
 }
 ?>
