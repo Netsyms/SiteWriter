@@ -15,7 +15,11 @@ if (!getsiteid()) {
 $theme = $database->get("sites", "theme", ["siteid" => getsiteid()]);
 
 $template = getpagetemplate();
-include __DIR__ . "/themes/$theme/$template.php";
+if (file_exists(__DIR__ . "/themes/$theme/$template.php")) {
+    include __DIR__ . "/themes/$theme/$template.php";
+} else {
+    include __DIR__ . "/themes/$theme/default.php";
+}
 
 if (isset($_GET['edit'])) {
     ?>
