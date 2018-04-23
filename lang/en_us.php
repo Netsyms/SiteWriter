@@ -28,7 +28,18 @@ define("STRINGS", [
     "login server error" => "The login server returned an error: {arg}",
     "login server user data error" => "The login server refused to provide account information.  Try again or contact technical support.",
     "captcha error" => "There was a problem with the CAPTCHA (robot test).  Try again.",
+    "actions" => "Actions",
     "home" => "Home",
     "more" => "More",
-    "test" => "Test"
+    "sites" => "Sites",
+    "theme" => "Theme",
+    "name" => "Name",
+    "site name" => "Site Name",
+    "url" => "URL",
+    "editing site" => "Editing {site}",
+    "theme type" => "Theme type",
+    "single page" => "Single page",
+    "multiple page" => "Multiple page",
+    "templates" => "Templates",
+    "color styles" => "Color styles"
 ]);

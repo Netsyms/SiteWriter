@@ -1,5 +1,6 @@
 {
     "name": "Bootstrap",
+    "singlepage": false,
     "templates": {
         "default": {
             "title": "Default",

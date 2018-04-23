@@ -59,7 +59,11 @@ function get_page_url($echo = true, $slug = null) {
     if ($slug == null) {
         $slug = get_page_slug(false);
     }
-    $url = get_site_url(false) . "index.php?id=$slug";
+    $edit = "";
+    if (isset($_GET['edit'])) {
+        $edit = "&edit";
+    }
+    $url = get_site_url(false) . "index.php?id=$slug$edit";
     if ($echo) {
         echo $url;
     } else {

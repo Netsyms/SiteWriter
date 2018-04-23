@@ -4,9 +4,28 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
+function saveEdits() {
+    var components = {};
+    $(".sw-editable").each(function (e) {
+        components[$(this).data("component")] = $(this).summernote('code');
+    });
+    $(".sw-text-input").each(function (e) {
+        components[$(this).data("component")] = $(this).val();
+    });
+    var output = {
+        slug: page_slug,
+        site: site_id,
+        content: components
+    };
+    //console.log(output);
+    var json = JSON.stringify(output);
+    console.log("editor: sent page content");
+    parent.postMessage('save ' + json, "*");
+}
+
 $(document).ready(function () {
     $("body").append("<link href=\"" + static_dir + "/css/editor.css\" rel=\"stylesheet\" />");
-    
+
     $(".sw-editable").each(function () {
         // Remove leading whitespace added by the template
         $(this).html($(this).html().trim());
@@ -20,7 +39,7 @@ $(document).ready(function () {
             ['fontsize', ['fontsize']],
             ['para', ['ul', 'ol']],
             ['insert', ['link', 'picture']],
-            ['misc', ['undo', 'redo', 'fullscreen', 'codeview']]
+            ['misc', ['undo', 'redo', 'codeview']]
         ],
         placeholder: 'Click to edit'
     });
@@ -30,21 +49,11 @@ $(document).ready(function () {
         var component = $(this).data("component");
         $(this).html("<input type=\"text\" data-component=\"" + component + "\" class=\"sw-text-input\" value=\"" + text + "\" placeholder=\"Click to edit\">");
     });
-});
 
-function saveEdits() {
-    var components = [];
-    $(".sw-editable").each(function (e) {
-        components[$(this).data("component")] = $(this).summernote('code');
+    window.addEventListener('message', function (event) {
+        console.log("editor: received message: " + event.data);
+        if (event.data == "save") {
+            saveEdits();
+        }
     });
-    $(".sw-text-input").each(function (e) {
-        components[$(this).data("component")] = $(this).val();
-    });
-    var content = JSON.stringify(components);
-    console.log(components);
-    $.post(save_url, {
-        action: "saveedits",
-        page: "",
-        content: content
-    });
-}
+});

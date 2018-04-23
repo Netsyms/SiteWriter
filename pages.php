@@ -11,6 +11,29 @@ define("PAGES", [
         "navbar" => true,
         "icon" => "fas fa-home"
     ],
+    "sites" => [
+        "title" => "sites",
+        "navbar" => true,
+        "icon" => "fas fa-sitemap"
+    ],
+    "sitesettings" => [
+        "title" => "settings",
+        "styles" => [
+            "static/css/themeselector.css"
+        ],
+        "scripts" => [
+            "static/js/sitesettings.js"
+        ]
+    ],
+    "editor" => [
+        "title" => "editor",
+        "styles" => [
+            "static/css/editorparent.css"
+        ],
+        "scripts" => [
+            "static/js/editorparent.js"
+        ]
+    ],
     "404" => [
         "title" => "404 error"
     ]

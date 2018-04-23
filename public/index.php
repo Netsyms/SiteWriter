@@ -19,12 +19,13 @@ include __DIR__ . "/themes/$theme/$template.php";
 
 if (isset($_GET['edit'])) {
     ?>
-    <link href="<?php echo URL; ?>/static/css/summernote-lite.css" rel="stylesheet" />
+    <style><?php echo str_replace("./font/summernote", "../static/fonts/summernote", file_get_contents(__DIR__ . "/../static/css/summernote-lite.css")); ?></style>
+    <script src="<?php echo URL; ?>/static/js/jquery-3.3.1.min.js"></script>
     <script src="<?php echo URL; ?>/static/js/summernote-lite.js"></script>
     <script>
-        var save_url = "<?php echo URL; ?>/action.php";
-        var static_dir = "<?php echo URL; ?>/static";
-        var page_slug = "<?php getpageslug(); ?>";
+        static_dir = "<?php echo URL; ?>/static";
+        page_slug = "<?php echo getpageslug(); ?>";
+        site_id = "<?php echo getsiteid(); ?>";
     </script>
     <script src="<?php echo URL; ?>/static/js/editor.js"></script>
     <?php

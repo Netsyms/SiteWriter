@@ -49,7 +49,7 @@ if ($_SESSION['mobile'] === TRUE) {
             . "object-src 'none'; "
             . "img-src * data:; "
             . "media-src 'self'; "
-            . "frame-src 'none'; "
+            . "frame-src 'self'; "
             . "font-src 'self'; "
             . "connect-src *; "
             . "style-src 'self' 'nonce-$SECURE_NONCE' $captcha_server; "

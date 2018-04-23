@@ -7,7 +7,6 @@
 /**
  * Make things happen when buttons are pressed and forms submitted.
  */
-
 require_once __DIR__ . "/required.php";
 
 if ($VARS['action'] !== "signout") {
@@ -32,8 +31,24 @@ function returnToSender($msg, $arg = "") {
 
 switch ($VARS['action']) {
     case "saveedits":
-        $page = $VARS['page'];
+        header("Content-Type: application/json");
+        $slug = $VARS['slug'];
+        $site = $VARS['site'];
         $content = $VARS['content'];
+        if ($database->has("pages", ["AND" => ["slug" => $slug, "siteid" => $site]])) {
+            $pageid = $database->get("pages", "pageid", ["AND" => ["slug" => $slug, "siteid" => $site]]);
+        } else {
+            die(json_encode(["status" => "ERROR", "msg" => "Invalid page or site"]));
+        }
+        foreach ($content as $name => $value) {
+            if ($database->has("components", ["AND" => ["pageid" => $pageid, "name" => $name]])) {
+                $database->update("components", ["content" => $value], ["AND" => ["pageid" => $pageid, "name" => $name]]);
+            } else {
+                $database->insert("components", ["name" => $name, "content" => $value, "pageid" => $pageid]);
+            }
+        }
+        exit(json_encode(["status" => "OK"]));
+        break;
     case "signout":
         session_destroy();
         header('Location: index.php');
