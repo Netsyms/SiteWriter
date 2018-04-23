@@ -77,7 +77,7 @@ function get_component($name, $context = null, $echo = true) {
         $context = get_page_slug(false);
     }
     $pageid = $db->get("pages", "pageid", ["AND" => ["slug" => $context, "siteid" => getsiteid()]]);
-    $content = "";
+    $content = "Edit me";
     if ($db->has("components", ["AND" => ["pageid" => $pageid, "name" => $name]])) {
         $content = $db->get("components", "content", ["AND" => ["pageid" => $pageid, "name" => $name]]);
     }
@@ -103,6 +103,19 @@ function get_icon($name, $context = null, $echo = true) {
     } else {
         return $content;
     }
+}
+
+function get_complex_component($name, $context = null) {
+    $db = getdatabase();
+    if ($context == null) {
+        $context = get_page_slug(false);
+    }
+    $pageid = $db->get("pages", "pageid", ["AND" => ["slug" => $context, "siteid" => getsiteid()]]);
+    $content = null;
+    if ($db->has("complex_components", ["AND" => ["pageid" => $pageid, "name" => $name]])) {
+        $content = json_decode($db->get("complex_components", "content", ["AND" => ["pageid" => $pageid, "name" => $name]]), true);
+    }
+    return $content;
 }
 
 function get_page_content($slug = null) {
