@@ -12,6 +12,13 @@ function saveEdits() {
     $(".sw-text-input").each(function (e) {
         components[$(this).data("component")] = $(this).val();
     });
+    $(".sw-complex").each(function (e) {
+        if (typeof $(this).data("json") === "string") {
+            components[$(this).data("component")] = JSON.parse($(this).data("json"));
+        } else {
+            components[$(this).data("component")] = $(this).data("json");
+        }
+    });
     var output = {
         slug: page_slug,
         site: site_id,
@@ -19,6 +26,7 @@ function saveEdits() {
     };
     //console.log(output);
     var json = JSON.stringify(output);
+    console.log(output);
     console.log("editor: sent page content");
     parent.postMessage('save ' + json, "*");
 }
@@ -50,10 +58,27 @@ $(document).ready(function () {
         $(this).html("<input type=\"text\" data-component=\"" + component + "\" class=\"sw-text-input\" value=\"" + text + "\" placeholder=\"Click to edit\">");
     });
 
+    $(".sw-complex").each(function () {
+        $(this).append("<div class=\"sw-editbtn\">Click to edit</div>");
+    });
+
+    $(".sw-editbtn").on("click", function () {
+        var data = $(this).parent().data("json");
+        var send = {"component": $(this).parent().data("component"), "content": data};
+        //console.log(send);
+        parent.postMessage('editcomplex ' + JSON.stringify(send), "*");
+        return false;
+    });
+
     window.addEventListener('message', function (event) {
         console.log("editor: received message: " + event.data);
         if (event.data == "save") {
             saveEdits();
+        } else if (event.data.startsWith("complex ")) {
+            var json = JSON.parse(event.data.slice(8));
+            var comp = json["component"];
+            var data = json["content"];
+            $(".sw-complex[data-component='" + comp + "']").data("json", JSON.stringify(data));
         }
     });
 });

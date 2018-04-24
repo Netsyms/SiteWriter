@@ -33,3 +33,10 @@ button.note-btn, .note-modal button {
     -webkit-appearance: checkbox;
     -ms-appearance: checkbox;
 }
+
+.sw-editbtn {
+    border: 2px dashed red !important;
+    color: black !important;
+    background: white !important;
+    border-radius: 0px;
+}

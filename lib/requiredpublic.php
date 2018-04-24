@@ -85,6 +85,12 @@ function getdatabase() {
 
 function getsiteid() {
     global $database;
+    if (isset($_GET['siteid'])) {
+        $id = preg_replace("/[^0-9]/", '', $_GET['siteid']);
+        if ($database->has('sites', ["siteid" => $id])) {
+            return $id;
+        }
+    }
     return $database->get("sites", "siteid");
 }
 
@@ -104,6 +110,9 @@ function getpageslug() {
 function getpagetemplate() {
     global $database;
     $slug = getpageslug();
+    if (isset($_GET['template'])) {
+        return preg_replace("/[^A-Za-z0-9]/", '', $_GET['template']);
+    }
     if (!is_null($slug)) {
         return $database->get("pages", "template", ["AND" => ["slug" => $slug, "siteid" => getsiteid()]]);
     }

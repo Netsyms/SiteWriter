@@ -41,10 +41,19 @@ switch ($VARS['action']) {
             die(json_encode(["status" => "ERROR", "msg" => "Invalid page or site"]));
         }
         foreach ($content as $name => $value) {
-            if ($database->has("components", ["AND" => ["pageid" => $pageid, "name" => $name]])) {
-                $database->update("components", ["content" => $value], ["AND" => ["pageid" => $pageid, "name" => $name]]);
+            if (is_array($value)) {
+                $json = json_encode($value);
+                if ($database->has("complex_components", ["AND" => ["pageid" => $pageid, "name" => $name]])) {
+                    $database->update("complex_components", ["content" => $json], ["AND" => ["pageid" => $pageid, "name" => $name]]);
+                } else {
+                    $database->insert("complex_components", ["name" => $name, "content" => $json, "pageid" => $pageid]);
+                }
             } else {
-                $database->insert("components", ["name" => $name, "content" => $value, "pageid" => $pageid]);
+                if ($database->has("components", ["AND" => ["pageid" => $pageid, "name" => $name]])) {
+                    $database->update("components", ["content" => $value], ["AND" => ["pageid" => $pageid, "name" => $name]]);
+                } else {
+                    $database->insert("components", ["name" => $name, "content" => $value, "pageid" => $pageid]);
+                }
             }
         }
         exit(json_encode(["status" => "OK"]));

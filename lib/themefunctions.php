@@ -63,7 +63,19 @@ function get_page_url($echo = true, $slug = null) {
     if (isset($_GET['edit'])) {
         $edit = "&edit";
     }
-    $url = get_site_url(false) . "index.php?id=$slug$edit";
+    $theme = "";
+    if (isset($_GET['theme'])) {
+        $theme = "&theme=" . preg_replace("/[^A-Za-z0-9]/", '', $_GET['theme']);
+    }
+    $template = "";
+    if (isset($_GET['template'])) {
+        $template = "&template=" . preg_replace("/[^A-Za-z0-9]/", '', $_GET['template']);
+    }
+    $siteid = "";
+    if (isset($_GET['siteid'])) {
+        $siteid = "&siteid=" . preg_replace("/[^0-9]/", '', $_GET['siteid']);
+    }
+    $url = get_site_url(false) . "index.php?id=$slug$edit$theme$template$siteid";
     if ($echo) {
         echo $url;
     } else {
@@ -77,7 +89,10 @@ function get_component($name, $context = null, $echo = true) {
         $context = get_page_slug(false);
     }
     $pageid = $db->get("pages", "pageid", ["AND" => ["slug" => $context, "siteid" => getsiteid()]]);
-    $content = "Edit me";
+    $content = "";
+    if (isset($_GET['edit'])) {
+        $content = "Click here to edit me";
+    }
     if ($db->has("components", ["AND" => ["pageid" => $pageid, "name" => $name]])) {
         $content = $db->get("components", "content", ["AND" => ["pageid" => $pageid, "name" => $name]]);
     }
@@ -111,11 +126,40 @@ function get_complex_component($name, $context = null) {
         $context = get_page_slug(false);
     }
     $pageid = $db->get("pages", "pageid", ["AND" => ["slug" => $context, "siteid" => getsiteid()]]);
-    $content = null;
+    $content = ["icon" => "", "link" => "", "text" => ""];
     if ($db->has("complex_components", ["AND" => ["pageid" => $pageid, "name" => $name]])) {
         $content = json_decode($db->get("complex_components", "content", ["AND" => ["pageid" => $pageid, "name" => $name]]), true);
     }
     return $content;
+}
+
+function get_escaped_json($json, $echo = true) {
+    $text = htmlspecialchars(json_encode($json), ENT_QUOTES, 'UTF-8');
+    if ($echo) {
+        echo $text;
+    } else {
+        return $text;
+    }
+}
+
+/**
+ * Detects if a string is a URL or a page slug, and returns something usable for href
+ * @param string $str
+ * @param boolean $echo
+ * @return string
+ */
+function get_url_or_slug($str, $echo = true) {
+    $url = $str;
+    if ($str == "") {
+        $url = "#";
+    } else if (strpos($str, "http") !== 0) {
+        $url = get_page_url(false, $str);
+    }
+    if ($echo) {
+        echo $url;
+    } else {
+        return $url;
+    }
 }
 
 function get_page_content($slug = null) {
@@ -143,10 +187,10 @@ function get_theme_color_url($echo = true) {
     if ($site["color"] == null) {
         $site["color"] = "default";
     }
-    if (!file_exists(__DIR__ . "/../public/themes/" . $site["theme"] . "/colors/" . $site['color'])) {
+    if (!file_exists(__DIR__ . "/../public/themes/" . SITE_THEME . "/colors/" . $site['color'])) {
         $site['color'] = "default";
     }
-    $url = $site["url"] . "themes/" . $site["theme"] . "/colors/" . $site["color"];
+    $url = $site["url"] . "themes/" . SITE_THEME . "/colors/" . $site["color"];
     if ($echo) {
         echo $url;
     } else {

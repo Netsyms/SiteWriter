@@ -12,7 +12,13 @@ if (!getsiteid()) {
     sendError("No website has been created yet.  Please open " . SITE_TITLE . " and make one.");
 }
 
-$theme = $database->get("sites", "theme", ["siteid" => getsiteid()]);
+if (isset($_GET['theme']) && file_exists(__DIR__ . "/themes/" . preg_replace("/[^A-Za-z0-9]/", '', $_GET['theme']) . "/theme.json")) {
+    $theme = preg_replace("/[^A-Za-z0-9]/", '', $_GET['theme']);
+} else {
+    $theme = $database->get("sites", "theme", ["siteid" => getsiteid()]);
+}
+
+define("SITE_THEME", $theme);
 
 $template = getpagetemplate();
 if (file_exists(__DIR__ . "/themes/$theme/$template.php")) {
