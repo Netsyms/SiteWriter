@@ -71,11 +71,15 @@ function get_page_url($echo = true, $slug = null) {
     if (isset($_GET['template'])) {
         $template = "&template=" . preg_replace("/[^A-Za-z0-9]/", '', $_GET['template']);
     }
+    $color = "";
+    if (isset($_GET['color'])) {
+        $color = "&color=" . preg_replace("/[^A-Za-z0-9]/", '', $_GET['color']);
+    }
     $siteid = "";
     if (isset($_GET['siteid'])) {
         $siteid = "&siteid=" . preg_replace("/[^0-9]/", '', $_GET['siteid']);
     }
-    $url = get_site_url(false) . "index.php?id=$slug$edit$theme$template$siteid";
+    $url = get_site_url(false) . "index.php?id=$slug$edit$theme$template$color$siteid";
     if ($echo) {
         echo $url;
     } else {
@@ -186,6 +190,9 @@ function get_theme_color_url($echo = true) {
     $site = $db->get('sites', ["sitename", "url", "theme", "color"], ["siteid" => getsiteid()]);
     if ($site["color"] == null) {
         $site["color"] = "default";
+    }
+    if (isset($_GET['color'])) {
+        $site['color'] = preg_replace("/[^A-Za-z0-9]/", '', $_GET['color']);
     }
     if (!file_exists(__DIR__ . "/../public/themes/" . SITE_THEME . "/colors/" . $site['color'])) {
         $site['color'] = "default";
