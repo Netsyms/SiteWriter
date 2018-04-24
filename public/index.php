@@ -16,6 +16,9 @@ if (isset($_GET['theme']) && file_exists(__DIR__ . "/themes/" . preg_replace("/[
     $theme = preg_replace("/[^A-Za-z0-9]/", '', $_GET['theme']);
 } else {
     $theme = $database->get("sites", "theme", ["siteid" => getsiteid()]);
+    if (!file_exists(__DIR__ . "/themes/$theme/theme.json")) {
+        $theme = "bootstrap";
+    }
 }
 
 define("SITE_THEME", $theme);
