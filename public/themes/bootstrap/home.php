@@ -11,7 +11,7 @@ include __DIR__ . "/inc/header.inc.php";
 <main role="main" class="mt-5">
     <div class="jumbotron">
         <div class="container">
-            <h1 class="display-4"><?php get_page_title(); ?></h1>
+            <h1 class="display-4 sw-text" data-component="banner-title"><?php get_component("banner-title"); ?></h1>
             <div class="ml-2 lead">
                 <div class="sw-text" data-component="lead">
                     <?php get_component("lead"); ?>
@@ -20,22 +20,28 @@ include __DIR__ . "/inc/header.inc.php";
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
+        <div class="row justify-content-center">
+            <?php if (!is_component_empty("cardrow-1")) { ?>
+            <div class="col-md">
                 <div class="sw-editable" data-component="cardrow-1">
                     <?php get_component("cardrow-1"); ?>
                 </div>
             </div>
-            <div class="col-md-4">
+            <?php } ?>
+            <?php if (!is_component_empty("cardrow-2")) { ?>
+            <div class="col-md">
                 <div class="sw-editable" data-component="cardrow-2">
                     <?php get_component("cardrow-2"); ?>
                 </div>
             </div>
-            <div class="col-md-4">
+            <?php } ?>
+            <?php if (!is_component_empty("cardrow-3")) { ?>
+            <div class="col-md">
                 <div class="sw-editable" data-component="cardrow-3">
                     <?php get_component("cardrow-3"); ?>
                 </div>
             </div>
+            <?php } ?>
         </div>
     </div>
 </main>

@@ -16,7 +16,7 @@ include __DIR__ . "/inc/header.inc.php";
         </div>
     </div>
     <div class="container">
-        <form action="<?php get_site_url(); ?>/contact.php" method="POST">
+        <form action="<?php get_site_url(); ?>contact.php" method="POST">
             <div class="row">
                 <div class="col-12 col-md-6 mb-3">
                     <label for="name">Name</label>
@@ -31,6 +31,14 @@ include __DIR__ . "/inc/header.inc.php";
                     <textarea class="form-control" name="message" id="message" placeholder="" required ></textarea>
                 </div>
             </div>
+            <br />
+            <?php
+            $btn = get_complex_component("submit-btn", null, ["icon", "link"]);
+            $text = $btn['text'];
+            ?>
+            <button type="submit" class="btn btn-primary sw-complex" data-json="<?php echo get_escaped_json($btn); ?>" data-component="submit-btn">
+                <?php echo $text; ?>
+            </button>
         </form>
     </div>
 </main>
