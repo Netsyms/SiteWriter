@@ -1,0 +1,28 @@
+{
+    "name": "Verti",
+    "singlepage": false,
+    "templates": {
+        "default": {
+            "title": "Default",
+            "description": "A regular page."
+        },
+        "home": {
+            "title": "Home",
+            "description": "A homepage."
+        },
+        "leftsidebar": {
+            "title": "Left Sidebar",
+            "description": "A page with a sidebar on the left."
+        },
+        "rightsidebar": {
+            "title": "Right Sidebar",
+            "description": "A page with a sidebar on the right."
+        },
+        "contact": {
+            "title": "Contact",
+            "description": "A page with a contact form."
+        }
+    },
+    "colors": {
+    }
+}
