@@ -95,7 +95,7 @@ function get_component($name, $context = null, $echo = true) {
     $pageid = $db->get("pages", "pageid", ["AND" => ["slug" => $context, "siteid" => getsiteid()]]);
     $content = "";
     if (isset($_GET['edit'])) {
-        $content = "Click here to edit me";
+        $content = "<br>";
     }
     if ($db->has("components", ["AND" => ["pageid" => $pageid, "name" => $name]])) {
         $content = $db->get("components", "content", ["AND" => ["pageid" => $pageid, "name" => $name]]);
@@ -107,24 +107,16 @@ function get_component($name, $context = null, $echo = true) {
     }
 }
 
-function get_icon($name, $context = null, $echo = true) {
-    $db = getdatabase();
-    if ($context == null) {
-        $context = get_page_slug(false);
+function is_component_empty($name, $context = null) {
+    $comp = get_component($name, $context, false);
+    $comp = strip_tags($comp, "<img><object><video><a>");
+    if ($comp == "" && !isset($_GET['edit'])) {
+        return true;
     }
-    $pageid = $db->get("pages", "pageid", ["AND" => ["slug" => $context, "siteid" => getsiteid()]]);
-    $content = "";
-    if ($db->has("icons", ["AND" => ["pageid" => $pageid, "name" => $name]])) {
-        $content = $db->get("icons", "content", ["AND" => ["pageid" => $pageid, "name" => $name]]);
-    }
-    if ($echo) {
-        echo $content;
-    } else {
-        return $content;
-    }
+    return false;
 }
 
-function get_complex_component($name, $context = null) {
+function get_complex_component($name, $context = null, $omit = []) {
     $db = getdatabase();
     if ($context == null) {
         $context = get_page_slug(false);
@@ -134,7 +126,24 @@ function get_complex_component($name, $context = null) {
     if ($db->has("complex_components", ["AND" => ["pageid" => $pageid, "name" => $name]])) {
         $content = json_decode($db->get("complex_components", "content", ["AND" => ["pageid" => $pageid, "name" => $name]]), true);
     }
+
+    foreach ($omit as $o) {
+        unset($content[$o]);
+    }
     return $content;
+}
+
+function is_complex_empty($name, $context = null) {
+    if (isset($_GET['edit'])) {
+        return false;
+    }
+    $comp = get_complex_component($name, $context, false);
+    foreach ($comp as $c => $v) {
+        if (isset($v) && !empty($v)) {
+            return false;
+        }
+    }
+    return true;
 }
 
 function get_escaped_json($json, $echo = true) {
@@ -177,7 +186,7 @@ function get_header() {
 function get_theme_url($echo = true) {
     $db = getdatabase();
     $site = $db->get('sites', ["sitename", "url", "theme"], ["siteid" => getsiteid()]);
-    $url = $site["url"] . "themes/" . $site["theme"];
+    $url = $site["url"] . "themes/" . SITE_THEME;
     if ($echo) {
         echo $url;
     } else {
