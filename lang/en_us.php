@@ -46,6 +46,7 @@ define("STRINGS", [
     "save" => "Save",
     "edit" => "Edit",
     "view" => "View",
+    "preview" => "Preview",
     "cancel" => "Cancel",
     "save needed" => "Press Save to see recent changes.",
     "saved" => "Saved",
@@ -53,5 +54,6 @@ define("STRINGS", [
     "link" => "Link",
     "text" => "Text",
     "select page or enter url" => "Select a page or enter URL",
-    "edit component" => "Edit component"
+    "edit component" => "Edit component",
+    "default" => "Default"
 ]);

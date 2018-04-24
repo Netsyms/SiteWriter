@@ -30,6 +30,35 @@ function returnToSender($msg, $arg = "") {
 }
 
 switch ($VARS['action']) {
+    case "sitesettings":
+        if (!$database->has("sites", ["siteid" => $VARS['siteid']])) {
+            returnToSender("invalid_parameters");
+        }
+        if (is_empty($VARS['name'])) {
+            returnToSender("invalid_parameters");
+        }
+        if (is_empty($VARS['url'])) {
+            returnToSender("invalid_parameters");
+        }
+        if (is_empty($VARS['theme'])) {
+            returnToSender("invalid_parameters");
+        }
+        if (is_empty($VARS['color'])) {
+            returnToSender("invalid_parameters");
+        }
+        $theme = preg_replace("/[^A-Za-z0-9]/", '', $VARS['theme']);
+        $color = preg_replace("/[^A-Za-z0-9]/", '', $VARS['color']);
+        if (!file_exists(__DIR__ . "/public/themes/$theme/theme.json")) {
+            returnToSender("invalid_parameters");
+        }
+        if ($color != "default" && !file_exists(__DIR__ . "/public/themes/$theme/colors/$color")) {
+            returnToSender("invalid_parameters");
+        }
+        $database->update('sites',
+                ["sitename" => $VARS['name'], "url" => $VARS['url'], "theme" => $theme, "color" => $color],
+                ["siteid" => $VARS['siteid']]);
+        returnToSender("settings_saved");
+        break;
     case "saveedits":
         header("Content-Type: application/json");
         $slug = $VARS['slug'];

@@ -44,7 +44,7 @@ if (!is_empty($VARS['siteid'])) {
             <div class="row">
                 <div class="col-12">
                     <div class="form-group">
-                        <label for="style"><i class="fas fa-paint-brush"></i> <?php lang('theme'); ?></label>
+                        <label for="theme"><i class="fas fa-paint-brush"></i> <?php lang('theme'); ?></label>
                         <div class="theme_bin">
                             <?php
                             $themedir = __DIR__ . "/../public/themes/";
@@ -57,25 +57,64 @@ if (!is_empty($VARS['siteid'])) {
                                 $ts = $sitedata["theme"] == $t ? " checked" : "";
                                 ?>
                                 <label>
-                                    <input type="radio" name="style" value="<?php echo $t; ?>" <?php echo $ts; ?> />
+                                    <input type="radio" name="theme" value="<?php echo $t; ?>" <?php echo $ts; ?> />
                                     <div class="card theme">
                                         <div class="card-body m-0 p-1">
-                                            <b><?php echo $info['name']; ?></b><br />
+                                            <span class="d-flex">
+                                                <h4 class="mr-auto"><?php echo $info['name']; ?></h4>
+                                                <a href="public/index.php?page=index&siteid=<?php echo $VARS['siteid']; ?>&theme=<?php echo $t; ?>" target="_BLANK">
+                                                    <i class="fas fa-eye"></i> <?php lang("preview"); ?>
+                                                </a>
+                                            </span>
+                                            <b><?php lang("theme type"); ?></b>:
                                             <?php
-                                            lang("theme type");
-                                            echo ": ";
                                             if ($info['singlepage'] == true) {
                                                 lang("single page");
                                             } else {
                                                 lang("multiple page");
                                             }
                                             ?><br />
-                                            <?php lang("templates");
-                                            echo ": " . count($info['templates']);
+                                            <b><?php lang("templates"); ?></b>:
+                                            <?php
+                                            $temtitles = [];
+                                            foreach ($info['templates'] as $tem) {
+                                                $temtitles[] = $tem['title'];
+                                            }
+                                            echo implode(", ", $temtitles);
                                             ?><br />
-                                            <?php lang("color styles");
-                                            echo ": " . count($info['colors']);
-                                            ?>
+                                            <b><?php lang("color styles"); ?></b>:
+                                            <div class="list-group colorSelector">
+                                                <?php
+                                                if (count($info['colors']) == 0) {
+                                                    $info['colors'] = ["default" => ["title" => lang("default", false), "description" => ""]];
+                                                }
+                                                foreach ($info['colors'] as $c => $color) {
+                                                    $checked = "";
+                                                    if ($sitedata["theme"] == $t && $sitedata["color"] == $c) {
+                                                        $checked = "checked";
+                                                    }
+                                                    ?>
+                                                    <div class="list-group-item">
+                                                        <div class="d-flex justify-content-between">
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio" name="color" id="color_<?php echo $t; ?>_<?php echo $c; ?>" value="<?php echo $c; ?>" <?php echo $checked; ?>>
+                                                                <label class="form-check-label" for="color_<?php echo $t; ?>_<?php echo $c; ?>">
+                                                                    <b><?php echo $color["title"]; ?></b>
+                                                                </label>
+                                                            </div>
+                                                            <div>
+                                                                <a href="public/index.php?page=index&siteid=<?php echo $VARS['siteid']; ?>&theme=<?php echo $t; ?>&color=<?php echo $c; ?>" target="_BLANK">
+                                                                    <i class="fas fa-eye"></i>
+                                                                    <?php lang("preview"); ?>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <?php echo $color["description"]; ?>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </label>
@@ -86,7 +125,7 @@ if (!is_empty($VARS['siteid'])) {
             </div>
         </div>
 
-        <input type="hidden" name="siteid" value="<?php echo htmlspecialchars($VARS['siteid']); ?>" />
+        <input type="hidden" name="siteid" value="<?php echo $VARS['siteid']; ?>" />
         <input type="hidden" name="action" value="sitesettings" />
         <input type="hidden" name="source" value="sites" />
 

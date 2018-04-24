@@ -4,7 +4,7 @@ License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at http://mozilla.org/MPL/2.0/.
 */
 .theme_bin {
-    max-height: 300px;
+    max-height: 75vh;
     overflow-y: scroll;
     padding: 5px;
 }
@@ -12,6 +12,11 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 .theme_bin label input[type=radio] {
     visibility: hidden;
     position: absolute;
+}
+
+.theme_bin label input[type=radio].form-check-input {
+    visibility: visible;
+    position: inherit;
 }
 
 .theme_bin label input[type=radio] + .theme {
@@ -22,4 +27,13 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 .theme_bin label input[type=radio]:checked + .theme {
     border: 3px solid rgba(0,0,0,.8);
+}
+
+.theme_bin label {
+    max-width: 250px;
+}
+
+.colorSelector {
+    max-height: 50vh;
+    overflow-y: scroll;
 }
