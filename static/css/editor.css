@@ -39,4 +39,5 @@ button.note-btn, .note-modal button {
     color: black !important;
     background: white !important;
     border-radius: 0px;
+    z-index: 99999;
 }

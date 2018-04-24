@@ -59,7 +59,24 @@ $(document).ready(function () {
     });
 
     $(".sw-complex").each(function () {
-        $(this).append("<div class=\"sw-editbtn\">Click to edit</div>");
+        var eid = $(this).attr("id");
+        var eclass = $(this).attr("class");
+        var estyle = $(this).attr("style");
+        var ecomp = $(this).data("component");
+        var ejson = $(this).data("json");
+        if (typeof ejson !== "string") {
+            ejson = JSON.stringify(ejson);
+        }
+        $(this).replaceWith(
+                $('<div>', {
+                    id: eid,
+                    class: eclass,
+                    style: estyle,
+                    html: $(this).html(),
+                    "data-component": ecomp,
+                    "data-json": ejson
+                }));
+        $("[data-component=\"" + ecomp + "\"]").append("<div class=\"sw-editbtn\">Click to edit</div>");
     });
 
     $(".sw-editbtn").on("click", function () {
