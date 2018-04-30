@@ -8,7 +8,7 @@ require_once __DIR__ . '/../required.php';
 redirectifnotloggedin();
 ?>
 <div class="btn-group">
-    <a href="app.php?page=addsite" class="btn btn-success"><i class="fas fa-plus"></i> <?php lang("new site"); ?></a>
+    <a href="app.php?page=sitesettings" class="btn btn-success"><i class="fas fa-plus"></i> <?php lang("new site"); ?></a>
 </div>
 <table id="cattable" class="table table-bordered table-hover table-sm">
     <thead>

@@ -37,6 +37,7 @@ define("STRINGS", [
     "new site" => "New Site",
     "site name" => "Site Name",
     "url" => "URL",
+    "adding site" => "Creating site {site}",
     "editing site" => "Editing {site}",
     "theme type" => "Theme type",
     "single page" => "Single page",

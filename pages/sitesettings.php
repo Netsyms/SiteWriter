@@ -7,8 +7,15 @@ require_once __DIR__ . '/../required.php';
 
 redirectifnotloggedin();
 
+$editing = true;
+
+$siteid = "";
+$sitedata = [];
+
+
 if (!is_empty($VARS['siteid'])) {
     if ($database->has('sites', ['siteid' => $VARS['siteid']])) {
+        $siteid = $VARS['siteid'];
         $sitedata = $database->select(
                         'sites', [
                     'siteid',
@@ -17,20 +24,31 @@ if (!is_empty($VARS['siteid'])) {
                     'theme',
                     'color'
                         ], [
-                    'siteid' => $VARS['siteid']
+                    'siteid' => $siteid
                 ])[0];
     } else {
         header('Location: app.php?page=sites');
+        die();
     }
 } else {
-    header('Location: app.php?page=sites');
+    $editing = false;
 }
 ?>
 
 <form role="form" action="action.php" method="POST">
     <div class="card border-light-blue">
         <h3 class="card-header text-light-blue">
-            <i class="fas fa-edit"></i> <?php lang2("editing site", ['site' => "<span id=\"name_title\">" . htmlspecialchars($sitedata['sitename']) . "</span>"]); ?>
+            <?php
+            if ($editing) {
+                ?>
+                <i class="fas fa-edit"></i> <?php lang2("editing site", ['site' => "<span id=\"name_title\">" . htmlspecialchars($sitedata['sitename']) . "</span>"]); ?>
+                <?php
+            } else {
+                ?>
+                <i class="fas fa-plus"></i> <?php lang2("adding site", ['site' => "<span id=\"name_title\">" . htmlspecialchars($sitedata['sitename']) . "</span>"]); ?>
+                <?php
+            }
+            ?>
         </h3>
         <div class="card-body">
             <div class="form-group">
@@ -62,7 +80,7 @@ if (!is_empty($VARS['siteid'])) {
                                         <div class="card-body m-0 p-1">
                                             <span class="d-flex">
                                                 <h4 class="mr-auto"><?php echo $info['name']; ?></h4>
-                                                <a href="public/index.php?page=index&siteid=<?php echo $VARS['siteid']; ?>&theme=<?php echo $t; ?>" target="_BLANK">
+                                                <a href="public/index.php?page=index&siteid=<?php echo $siteid; ?>&theme=<?php echo $t; ?>" target="_BLANK">
                                                     <i class="fas fa-eye"></i> <?php lang("preview"); ?>
                                                 </a>
                                             </span>
@@ -103,7 +121,7 @@ if (!is_empty($VARS['siteid'])) {
                                                                 </label>
                                                             </div>
                                                             <div>
-                                                                <a href="public/index.php?page=index&siteid=<?php echo $VARS['siteid']; ?>&theme=<?php echo $t; ?>&color=<?php echo $c; ?>" target="_BLANK">
+                                                                <a href="public/index.php?page=index&siteid=<?php echo $siteid; ?>&theme=<?php echo $t; ?>&color=<?php echo $c; ?>" target="_BLANK">
                                                                     <i class="fas fa-eye"></i>
                                                                     <?php lang("preview"); ?>
                                                                 </a>
@@ -125,7 +143,7 @@ if (!is_empty($VARS['siteid'])) {
             </div>
         </div>
 
-        <input type="hidden" name="siteid" value="<?php echo $VARS['siteid']; ?>" />
+        <input type="hidden" name="siteid" value="<?php echo $siteid; ?>" />
         <input type="hidden" name="action" value="sitesettings" />
         <input type="hidden" name="source" value="sites" />
 

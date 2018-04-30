@@ -31,8 +31,10 @@ function returnToSender($msg, $arg = "") {
 
 switch ($VARS['action']) {
     case "sitesettings":
-        if (!$database->has("sites", ["siteid" => $VARS['siteid']])) {
-            returnToSender("invalid_parameters");
+        if (!is_empty($VARS['siteid'])) {
+            if (!$database->has("sites", ["siteid" => $VARS['siteid']])) {
+                returnToSender("invalid_parameters");
+            }
         }
         if (is_empty($VARS['name'])) {
             returnToSender("invalid_parameters");
@@ -54,9 +56,14 @@ switch ($VARS['action']) {
         if ($color != "default" && !file_exists(__DIR__ . "/public/themes/$theme/colors/$color")) {
             returnToSender("invalid_parameters");
         }
-        $database->update('sites',
-                ["sitename" => $VARS['name'], "url" => $VARS['url'], "theme" => $theme, "color" => $color],
-                ["siteid" => $VARS['siteid']]);
+        if (is_empty($VARS['siteid'])) {
+            $database->insert('sites', ["sitename" => $VARS['name'], "url" => $VARS['url'], "theme" => $theme, "color" => $color]);
+            $siteid = $database->id();
+            $template = (file_exists(__DIR__ . "/public/themes/$theme/home.php") ? "home" : "default");
+            $database->insert('pages', ["slug" => "index", "siteid" => $siteid, "title" => "Home", "nav" => "Home", "navorder" => 1, "template" => "template"]);
+        } else {
+            $database->update('sites', ["sitename" => $VARS['name'], "url" => $VARS['url'], "theme" => $theme, "color" => $color], ["siteid" => $VARS['siteid']]);
+        }
         returnToSender("settings_saved");
         break;
     case "saveedits":
