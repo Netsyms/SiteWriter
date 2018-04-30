@@ -20,7 +20,7 @@ function get_site_name($echo = true) {
 
 function get_site_url($echo = true) {
     $db = getdatabase();
-    $url = $db->get('sites', "url", ["siteid" => getsiteid()]);
+    $url = formatsiteurl($db->get('sites', "url", ["siteid" => getsiteid()]));
     if ($echo) {
         echo $url;
     } else {
@@ -79,7 +79,7 @@ function get_page_url($echo = true, $slug = null) {
     if (isset($_GET['siteid'])) {
         $siteid = "&siteid=" . preg_replace("/[^0-9]/", '', $_GET['siteid']);
     }
-    $url = get_site_url(false) . "index.php?id=$slug$edit$theme$template$color$siteid";
+    $url = formatsiteurl(get_site_url(false)) . "index.php?id=$slug$edit$theme$template$color$siteid";
     if ($echo) {
         echo $url;
     } else {
@@ -186,7 +186,7 @@ function get_header() {
 function get_theme_url($echo = true) {
     $db = getdatabase();
     $site = $db->get('sites', ["sitename", "url", "theme"], ["siteid" => getsiteid()]);
-    $url = $site["url"] . "themes/" . SITE_THEME;
+    $url = formatsiteurl($site["url"]) . "themes/" . SITE_THEME;
     if ($echo) {
         echo $url;
     } else {
@@ -206,7 +206,7 @@ function get_theme_color_url($echo = true) {
     if (!file_exists(__DIR__ . "/../public/themes/" . SITE_THEME . "/colors/" . $site['color'])) {
         $site['color'] = "default";
     }
-    $url = $site["url"] . "themes/" . SITE_THEME . "/colors/" . $site["color"];
+    $url = formatsiteurl($site["url"]) . "themes/" . SITE_THEME . "/colors/" . $site["color"];
     if ($echo) {
         echo $url;
     } else {

@@ -8,6 +8,7 @@
  * Make things happen when buttons are pressed and forms submitted.
  */
 require_once __DIR__ . "/required.php";
+require_once __DIR__ . "/lib/util.php";
 
 if ($VARS['action'] !== "signout") {
     dieifnotloggedin();
@@ -48,6 +49,7 @@ switch ($VARS['action']) {
         if (is_empty($VARS['color'])) {
             returnToSender("invalid_parameters");
         }
+        $url = formatsiteurl($VARS['url']);
         $theme = preg_replace("/[^A-Za-z0-9]/", '', $VARS['theme']);
         $color = preg_replace("/[^A-Za-z0-9]/", '', $VARS['color']);
         if (!file_exists(__DIR__ . "/public/themes/$theme/theme.json")) {
@@ -57,12 +59,12 @@ switch ($VARS['action']) {
             returnToSender("invalid_parameters");
         }
         if (is_empty($VARS['siteid'])) {
-            $database->insert('sites', ["sitename" => $VARS['name'], "url" => $VARS['url'], "theme" => $theme, "color" => $color]);
+            $database->insert('sites', ["sitename" => $VARS['name'], "url" => $url, "theme" => $theme, "color" => $color]);
             $siteid = $database->id();
             $template = (file_exists(__DIR__ . "/public/themes/$theme/home.php") ? "home" : "default");
             $database->insert('pages', ["slug" => "index", "siteid" => $siteid, "title" => "Home", "nav" => "Home", "navorder" => 1, "template" => "template"]);
         } else {
-            $database->update('sites', ["sitename" => $VARS['name'], "url" => $VARS['url'], "theme" => $theme, "color" => $color], ["siteid" => $VARS['siteid']]);
+            $database->update('sites', ["sitename" => $VARS['name'], "url" => $url, "theme" => $theme, "color" => $color], ["siteid" => $VARS['siteid']]);
         }
         returnToSender("settings_saved");
         break;

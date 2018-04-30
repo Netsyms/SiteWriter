@@ -91,6 +91,19 @@ function getsiteid() {
             return $id;
         }
     }
+    $host = $_SERVER['HTTP_HOST'];
+    $args = $_SERVER['QUERY_STRING'];
+    $path = str_replace("?$args", "", $_SERVER['REQUEST_URI']);
+    $dir = str_replace("index.php", "", $path);
+    $sites = $database->select("sites", ["siteid", "url"], ["OR" => ["url[~]" => $host, "url" => $dir]]);
+    //var_dump($sites);
+    if (count($sites) == 1) {
+        return $sites[0]["siteid"];
+    }
+    if (count($sites) > 1) {
+        var_dump($sites);
+        die();
+    }
     return $database->get("sites", "siteid");
 }
 
@@ -117,4 +130,20 @@ function getpagetemplate() {
         return $database->get("pages", "template", ["AND" => ["slug" => $slug, "siteid" => getsiteid()]]);
     }
     return "404";
+}
+
+function formatsiteurl($url) {
+    if (substr($url, 0) != "/") {
+        if (strpos($url, "http://") !== 0 && strpos($url, "https://") !== 0) {
+            if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "off") {
+                $url = "http://$url";
+            } else {
+                $url = "https://$url";
+            }
+        }
+    }
+    if (substr($url, -1) != "/") {
+        $url = $url . "/";
+    }
+    return $url;
 }
