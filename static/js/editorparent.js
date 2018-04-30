@@ -97,3 +97,7 @@ $("#savebtn").click(function () {
 function triggerSave() {
     document.getElementById("editorframe").contentWindow.postMessage("save", "*");
 }
+
+$("#newpagebtn").click(function () {
+    $("#newPageModal").modal();
+});

@@ -16,5 +16,17 @@ define("MESSAGES", [
     "404_error" => [
         "string" => "page not found",
         "type" => "info"
-    ]
+    ],
+    "page_added" => [
+        "string" => "page added",
+        "type" => "success"
+    ],
+    "slug_taken" => [
+        "string" => "chosen page id slug already taken",
+        "type" => "danger"
+    ],
+    "template_missing" => [
+        "string" => "template missing",
+        "type" => "danger"
+    ],
 ]);

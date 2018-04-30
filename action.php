@@ -31,6 +31,44 @@ function returnToSender($msg, $arg = "") {
 }
 
 switch ($VARS['action']) {
+    case "newpage":
+        if (is_empty($VARS['siteid']) || !$database->has("sites", ["siteid" => $VARS['siteid']])) {
+            returnToSender("invalid_parameters");
+        }
+        if (is_empty($VARS['title'])) {
+            returnToSender("invalid_parameters", $VARS['siteid']);
+        }
+        if (!is_empty($VARS['slug'])) {
+            $slug = strtolower($VARS['slug']);
+            $slug = preg_replace("/[^[:alnum:][:space:]]/u", '', $slug);
+            $slug = preg_replace("/[[:space:]]/u", '-', $slug);
+            if ($database->has("pages", ["AND" => ["siteid" => $VARS['siteid'], "slug" => $VARS['slug']]])) {
+                returnToSender("slug_taken", $VARS['siteid']);
+            }
+        } else {
+            // Auto-generate a slug
+            $slug = strtolower($VARS['title']);
+            $slug = preg_replace("/[^[:alnum:][:space:]]/u", '', $slug);
+            $slug = preg_replace("/[[:space:]]/u", '-', $slug);
+            if ($database->has("pages", ["AND" => ["siteid" => $VARS['siteid'], "slug" => $slug]])) {
+                $num = 2;
+                while ($database->has("pages", ["AND" => ["siteid" => $VARS['siteid'], "slug" => $slug . $num]])) {
+                    $num++;
+                }
+                $slug = $slug . $num;
+            }
+        }
+        $template = "default";
+        if (!is_empty($VARS['template'])) {
+            $template = preg_replace("/[^A-Za-z0-9]/", '', $VARS['template']);
+        }
+        $theme = $database->get("sites", "theme", ["siteid" => $VARS['siteid']]);
+        if (!file_exists(__DIR__ . "/public/themes/$theme/$template.php")) {
+            returnToSender("template_missing", $VARS['siteid']);
+        }
+        $database->insert("pages", ["slug" => $slug, "siteid" => $VARS['siteid'], "title" => $VARS['title'], "template" => $VARS['template']]);
+        returnToSender("page_added", $VARS['siteid']);
+        break;
     case "sitesettings":
         if (!is_empty($VARS['siteid'])) {
             if (!$database->has("sites", ["siteid" => $VARS['siteid']])) {
@@ -62,7 +100,7 @@ switch ($VARS['action']) {
             $database->insert('sites', ["sitename" => $VARS['name'], "url" => $url, "theme" => $theme, "color" => $color]);
             $siteid = $database->id();
             $template = (file_exists(__DIR__ . "/public/themes/$theme/home.php") ? "home" : "default");
-            $database->insert('pages', ["slug" => "index", "siteid" => $siteid, "title" => "Home", "nav" => "Home", "navorder" => 1, "template" => "template"]);
+            $database->insert('pages', ["slug" => "index", "siteid" => $siteid, "title" => "Home", "nav" => "Home", "navorder" => 1, "template" => $template]);
         } else {
             $database->update('sites', ["sitename" => $VARS['name'], "url" => $url, "theme" => $theme, "color" => $color], ["siteid" => $VARS['siteid']]);
         }

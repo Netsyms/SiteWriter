@@ -7,6 +7,11 @@ require_once __DIR__ . '/../required.php';
 
 redirectifnotloggedin();
 
+if (!is_empty($VARS['arg'])) {
+    // Allow action.php to do a better redirect
+    $VARS['siteid'] = $VARS['arg'];
+}
+
 if (!is_empty($VARS['siteid'])) {
     if ($database->has('sites', ['siteid' => $VARS['siteid']])) {
         $sitedata = $database->get(
@@ -40,6 +45,48 @@ if (!is_empty($VARS['siteid'])) {
     die();
 }
 ?>
+
+<div class="modal fade" id="newPageModal" tabindex="-1" role="dialog" aria-labelledby="newPageLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content" action="action.php" method="POST">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newPageLabel"><?php lang("new page"); ?></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="newPageModalBody">
+                <div class="form-group">
+                    <label><i class="fas fa-font"></i> <?php lang("title"); ?></label>
+                    <input type="text" id="newPageTitle" name="title" class="form-control" required="required" minlength="1" maxlength="200" />
+                </div>
+                <!--<div class="form-group">
+                    <label><i class="fas fa-link"></i> <?php lang("page id"); ?></label>
+                    <input type="text" id="newPageSlug" name="slug" class="form-control" placeholder="" minlength="1" maxlength="200" />
+                </div>-->
+                <div class="form-group">
+                    <label><i class="fas fa-paint-brush"></i> <?php lang("template"); ?></label>
+                    <select id="newPageTemplate" name="template" class="form-control" required="required">
+                        <?php
+                        $json = file_get_contents(__DIR__ . "/../public/themes/" . $sitedata['theme'] . "/theme.json");
+                        $templates = json_decode($json, true)["templates"];
+                        foreach ($templates as $name => $value) {
+                            echo "<option value=\"" . $name . "\">" . $value['title'] . "</option>\n";
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" name="siteid" value="<?php echo $sitedata['siteid']; ?>" />
+                <input type="hidden" name="action" value="newpage" />
+                <input type="hidden" name="source" value="editor" />
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php lang("cancel"); ?></button>
+                <button type="submit" class="btn btn-success" id="newPageModalSave"><i class="fas fa-plus"></i> <?php lang("add page"); ?></button>
+            </div>
+        </form>
+    </div>
+</div>
 
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -89,6 +136,9 @@ if (!is_empty($VARS['siteid'])) {
             <a class="btn btn-info" id="viewbtn" target="_BLANK" href="public/index.php?id=<?php echo $slug; ?>&siteid=<?php echo $VARS['siteid']; ?>">
                 <i class="fas fa-eye"></i> <?php lang("view"); ?>
             </a>
+            <div class="btn btn-primary" id="newpagebtn">
+                <i class="fas fa-plus"></i> <?php lang("new page"); ?>
+            </div>
         </div>
         <span class="badge badge-success d-none" id="savedBadge"><i class="fas fa-check"></i> <?php lang("saved"); ?></span>
         <div id="reloadprompt" class="badge badge-info d-none">

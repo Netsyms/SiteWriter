@@ -43,6 +43,7 @@ define("STRINGS", [
     "single page" => "Single page",
     "multiple page" => "Multiple page",
     "templates" => "Templates",
+    "template" => "Template",
     "color styles" => "Color styles",
     "save" => "Save",
     "edit" => "Edit",
@@ -56,5 +57,12 @@ define("STRINGS", [
     "text" => "Text",
     "select page or enter url" => "Select a page or enter URL",
     "edit component" => "Edit component",
-    "default" => "Default"
+    "default" => "Default",
+    "page added" => "Page added.",
+    "chosen page id slug already taken" => "Chosen page ID (slug) already taken.  Choose another.",
+    "template missing" => "Template missing from theme.",
+    "new page" => "New Page",
+    "title" => "Title",
+    "page id" => "Page ID (slug)",
+    "add page" => "Add page",
 ]);
