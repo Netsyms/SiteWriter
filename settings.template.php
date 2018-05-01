@@ -37,6 +37,13 @@ define('URL', '/sitewriter');
 // Folder for public files
 define('FILE_UPLOAD_PATH', __DIR__ . '/public/files');
 
+// Location of MaxMind GeoIP database
+//
+// I'll just leave this here:
+// This product includes GeoLite2 data created by MaxMind, available from
+// http://www.maxmind.com
+define('GEOIP_DB', __DIR__ . "/GeoLite2-City.mmdb");
+
 // Use Captcheck on login screen
 // https://captcheck.netsyms.com
 define("CAPTCHA_ENABLED", FALSE);

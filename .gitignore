@@ -3,3 +3,4 @@ settings.php
 nbproject/private
 *.sync-conflict*
 *.bak
+GeoLite2-City.mmdb

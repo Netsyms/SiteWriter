@@ -120,6 +120,20 @@ function getpageslug() {
     return null;
 }
 
+function getpageid() {
+    global $database;
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+    } else {
+        $id = "index";
+    }
+    $siteid = getsiteid();
+    if ($database->has("pages", ["AND" => ["slug" => $id, "siteid" => $siteid]])) {
+        return $database->get("pages", "pageid", ["AND" => ["slug" => $id, "siteid" => $siteid]]);
+    }
+    return null;
+}
+
 function getpagetemplate() {
     global $database;
     $slug = getpageslug();

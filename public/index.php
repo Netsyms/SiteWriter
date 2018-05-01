@@ -8,6 +8,8 @@
 require_once __DIR__ . "/../lib/requiredpublic.php";
 require_once __DIR__ . "/../lib/themefunctions.php";
 
+include __DIR__ . "/../lib/gatheranalytics.php";
+
 if (!getsiteid()) {
     sendError("No website has been created yet.  Please open " . SITE_TITLE . " and make one.");
 }
