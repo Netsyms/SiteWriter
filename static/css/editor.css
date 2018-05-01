@@ -12,7 +12,7 @@ input[type="text"].sw-text-input {
     border-radius: 0px;
 }
 
-.note-editor {
+.sw-editable {
     border: 2px dashed red !important;
 }
 

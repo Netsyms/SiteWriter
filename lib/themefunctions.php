@@ -55,6 +55,18 @@ function get_page_slug($echo = true) {
     }
 }
 
+function get_page_clean_url($echo = true, $slug = null) {
+    if ($slug == null) {
+        $slug = get_page_slug(false);
+    }
+    $url = formatsiteurl(get_site_url(false)) . "index.php?id=$slug";
+    if ($echo) {
+        echo $url;
+    } else {
+        return $url;
+    }
+}
+
 function get_page_url($echo = true, $slug = null) {
     if ($slug == null) {
         $slug = get_page_slug(false);

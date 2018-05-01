@@ -7,7 +7,7 @@
 function saveEdits() {
     var components = {};
     $(".sw-editable").each(function (e) {
-        components[$(this).data("component")] = $(this).summernote('code');
+        components[$(this).data("component")] = tinymce.get($(this).attr("id")).getContent();
     });
     $(".sw-text-input").each(function (e) {
         components[$(this).data("component")] = $(this).val();
@@ -43,17 +43,31 @@ $(document).ready(function () {
         $(this).html($(this).html().trim());
     });
 
-    $(".sw-editable").summernote({
-        airMode: false,
-        toolbar: [
-            ['style', ['bold', 'italic', 'underline', 'clear']],
-            ['font', ['strikethrough', 'superscript', 'subscript']],
-            ['fontsize', ['fontsize']],
-            ['para', ['ul', 'ol']],
-            ['insert', ['link', 'picture']],
-            ['misc', ['undo', 'redo', 'codeview']]
+    tinymce.init({
+        selector: '.sw-editable',
+        inline: true,
+        paste_data_images: true,
+        plugins: [
+            'autolink lists link image imagetools charmap',
+            'searchreplace visualblocks code fullscreen',
+            'media table contextmenu paste code'
         ],
-        placeholder: 'Click to edit'
+        branding: false,
+        /*menu: {
+            edit: {title: 'Edit', items: 'undo redo | cut copy paste pastetext | selectall | findreplace'},
+            view: {title: 'View', items: 'sourcecode | visualaid showblocks'},
+            insert: {title: 'Insert', items: 'image link media table | charmap'},
+            format: {title: 'Format', items: 'bold italic underline strikethrough superscript subscript | blocks align formats | removeformat'},
+            table: {title: 'Table', items: 'inserttable tableprops deletetable | cell row column'}
+        },*/
+        menubar: 'edit insert view format table tools',
+        toolbar: 'insert | undo redo | formatselect | bold italic | bullist numlist outdent indent | removeformat | fullscreen',
+        link_list: function (success) {
+            success(pages_list);
+        },
+        mobile: {
+            theme: 'mobile'
+        }
     });
 
     $(".sw-text").each(function () {
