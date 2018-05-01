@@ -65,4 +65,5 @@ define("STRINGS", [
     "title" => "Title",
     "page id" => "Page ID (slug)",
     "add page" => "Add page",
+    "page settings" => "Page Settings"
 ]);

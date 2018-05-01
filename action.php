@@ -67,7 +67,37 @@ switch ($VARS['action']) {
             returnToSender("template_missing", $VARS['siteid']);
         }
         $database->insert("pages", ["slug" => $slug, "siteid" => $VARS['siteid'], "title" => $VARS['title'], "template" => $VARS['template']]);
-        returnToSender("page_added", $VARS['siteid']);
+        returnToSender("page_added", $VARS['siteid'] . "|" . $database->id());
+        break;
+    case "pagesettings":
+        if (is_empty($VARS['siteid']) || !$database->has("sites", ["siteid" => $VARS['siteid']])) {
+            returnToSender("invalid_parameters");
+        }
+        if (is_empty($VARS['pageid']) || !$database->has("pages", ["AND" => ["pageid" => $VARS['pageid'], "siteid" => $VARS['siteid']]])) {
+            returnToSender("invalid_parameters");
+        }
+        if (is_empty($VARS['title'])) {
+            returnToSender("invalid_parameters", $VARS['siteid']);
+        }
+        if (is_empty($VARS['template'])) {
+            returnToSender("invalid_parameters", $VARS['siteid']);
+        }
+        $template = preg_replace("/[^A-Za-z0-9]/", '', $VARS['template']);
+        $theme = $database->get("sites", "theme", ["siteid" => $VARS['siteid']]);
+        if (!file_exists(__DIR__ . "/public/themes/$theme/$template.php")) {
+            returnToSender("template_missing", $VARS['siteid']);
+        }
+        $database->update(
+                "pages", [
+            "title" => $VARS['title'],
+            "template" => $VARS['template']
+                ], [
+            "AND" => [
+                "siteid" => $VARS['siteid'],
+                "pageid" => $VARS['pageid']
+            ]
+        ]);
+        returnToSender("settings_saved", $VARS['siteid'] . "|" . $VARS['pageid']);
         break;
     case "sitesettings":
         if (!is_empty($VARS['siteid'])) {

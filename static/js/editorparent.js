@@ -101,3 +101,7 @@ function triggerSave() {
 $("#newpagebtn").click(function () {
     $("#newPageModal").modal();
 });
+
+$("#pagesettingsbtn").click(function () {
+    $("#pageSettingsModal").modal();
+});
