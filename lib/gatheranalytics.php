@@ -8,7 +8,7 @@
 
 use GeoIp2\Database\Reader;
 
-$_SERVER['REMOTE_ADDR'] = "206.127.96.82";
+//$_SERVER['REMOTE_ADDR'] = "206.127.96.82";
 
 try {
 

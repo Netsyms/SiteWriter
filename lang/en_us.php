@@ -65,5 +65,11 @@ define("STRINGS", [
     "title" => "Title",
     "page id" => "Page ID (slug)",
     "add page" => "Add page",
-    "page settings" => "Page Settings"
+    "page settings" => "Page Settings",
+    "today" => "Today",
+    "this week" => "This Week",
+    "visit" => "visit",
+    "visits" => "visits",
+    "page view" => "page view",
+    "page views" => "page views",
 ]);
