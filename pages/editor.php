@@ -186,7 +186,7 @@ if (!is_empty($VARS['siteid'])) {
 </div>
 
 <div class="row mb-2 justify-content-between">
-    <div class="col-12 col-sm-6 col-md-4">
+    <div class="col-12 col-sm-6">
         <div class="btn-group">
             <div class="btn btn-success" id="savebtn">
                 <i class="fas fa-save"></i> <?php lang("save"); ?>
