@@ -40,7 +40,9 @@ define("PAGES", [
         "icon" => "fas fa-chart-bar",
         "styles" => [
             "static/css/tempusdominus-bootstrap-4.min.css",
-            "static/css/vertline.css"
+            "static/css/vertline.css",
+            "static/css/sane_columns.css",
+            "static/css/analy_reports.css"
         ],
         "scripts" => [
             "static/js/moment.min.js",
