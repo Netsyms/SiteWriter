@@ -8,6 +8,7 @@
 
 use GeoIp2\Database\Reader;
 
+// Override with a valid public IP when testing on localhost
 //$_SERVER['REMOTE_ADDR'] = "206.127.96.82";
 
 try {
@@ -71,6 +72,8 @@ try {
     $country = $record->country->name;
     $region = $record->mostSpecificSubdivision->name;
     $city = $record->city->name;
+    $countrycode = $record->country->isoCode;
+    $regioncode = $record->mostSpecificSubdivision->isoCode;
     $lat = $record->location->latitude;
     $lon = $record->location->longitude;
 
@@ -85,6 +88,8 @@ try {
         "country" => $country,
         "region" => $region,
         "city" => $city,
+        "countrycode" => $countrycode,
+        "regioncode" => $regioncode,
         "lat" => $lat,
         "lon" => $lon,
         "time" => $time

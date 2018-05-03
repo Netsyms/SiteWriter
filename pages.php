@@ -34,6 +34,24 @@ define("PAGES", [
             "static/js/editorparent.js"
         ]
     ],
+    "analytics" => [
+        "title" => "analytics",
+        "navbar" => true,
+        "icon" => "fas fa-chart-bar",
+        "styles" => [
+            "static/css/tempusdominus-bootstrap-4.min.css",
+            "static/css/vertline.css"
+        ],
+        "scripts" => [
+            "static/js/moment.min.js",
+            "static/js/Chart.min.js",
+            "static/js/topojson.min.js",
+            "static/js/d3.min.js",
+            "static/js/datamaps.all.min.js",
+            "static/js/tempusdominus-bootstrap-4.min.js",
+            "static/js/analy_reports.js"
+        ]
+    ],
     "404" => [
         "title" => "404 error"
     ]
