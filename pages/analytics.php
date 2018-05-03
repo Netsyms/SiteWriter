@@ -171,10 +171,17 @@ if (count($records) > 0) {
             <div class="card-body">
                 <h4 class="card-title"><?php lang("visitor map"); ?></h4>
                 <?php
+                $visitors = [];
+                foreach ($records as $r) {
+                    if (!array_key_exists($r["uuid"], $visitors)) {
+                        $visitors[$r["uuid"]] = $r;
+                    }
+                }
+
                 require_once __DIR__ . "/../lib/countries_2_3.php";
                 $countries = [];
                 $states = [];
-                foreach ($records as $r) {
+                foreach ($visitors as $r) {
                     if (array_key_exists($COUNTRY_CODES[$r['countrycode']], $countries)) {
                         $countries[$COUNTRY_CODES[$r['countrycode']]] ++;
                     } else {
