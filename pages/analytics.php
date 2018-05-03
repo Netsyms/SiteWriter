@@ -11,7 +11,7 @@ $select_filter = [];
 
 if (!is_empty($VARS['siteid'])) {
     if ($database->has('sites', ['siteid' => $VARS['siteid']])) {
-        $select_filter["siteid"] = $VARS['siteid'];
+        $select_filter["analytics.siteid"] = $VARS['siteid'];
     }
 }
 
@@ -62,7 +62,7 @@ $records = $database->select("analytics", [
                 $sites = $database->select("sites", ["siteid", "sitename"]);
                 foreach ($sites as $s) {
                     $selected = "";
-                    if (!empty($select_filter["siteid"]) && $select_filter["siteid"] == $s['siteid']) {
+                    if (!empty($select_filter["analytics.siteid"]) && $select_filter["analytics.siteid"] == $s['siteid']) {
                         $selected = "selected";
                     }
                     ?>
