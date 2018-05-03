@@ -48,7 +48,7 @@ try {
         $uuid = gen_uuid();
     }
 
-    setcookie("sw-uuid", $uuid, time() + 60 * 60 * 24 * 30, "/", $_SERVER['HTTP_HOST'], false, true);
+    setcookie("sw-uuid", $uuid, time() + 60 * 60 * 1, "/", $_SERVER['HTTP_HOST'], false, true);
 
 //
 // Get the user's IP address
