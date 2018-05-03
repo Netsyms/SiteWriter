@@ -116,44 +116,47 @@ function getVisitorMapData(source) {
     return visitorMapDataset;
 }
 
-var visitorMap;
+var visitorMaps = [];
 
 function showVisitorMap(data, scope, containerid) {
-    $("visitorMap").html("");
-    visitorMap = new Datamap({
-        element: document.getElementById(containerid),
-        scope: scope,
-        responsive: true,
-        fills: {defaultFill: '#F5F5F5'},
-        data: data,
-        geographyConfig: {
-            borderColor: '#DEDEDE',
-            highlightBorderWidth: 2,
-            // don't change color on mouse hover
-            highlightFillColor: function (geo) {
-                return geo['fillColor'] || '#E8F5E9';
-            },
-            // only change border
-            highlightBorderColor: '#00C853',
-            // show desired information in tooltip
-            popupTemplate: function (geo, data) {
-                // don't show tooltip if country don't present in dataset
-                if (!data) {
-                    //return;
+    visitorMaps.push(
+            new Datamap({
+                element: document.getElementById(containerid),
+                scope: scope,
+                responsive: true,
+                fills: {defaultFill: '#F5F5F5'},
+                data: data,
+                geographyConfig: {
+                    borderColor: '#DEDEDE',
+                    highlightBorderWidth: 2,
+                    // don't change color on mouse hover
+                    highlightFillColor: function (geo) {
+                        return geo['fillColor'] || '#E8F5E9';
+                    },
+                    // only change border
+                    highlightBorderColor: '#00C853',
+                    // show desired information in tooltip
+                    popupTemplate: function (geo, data) {
+                        // don't show tooltip if country don't present in dataset
+                        if (!data) {
+                            //return;
+                        }
+                        // tooltip content
+                        return ['<div class="hoverinfo">',
+                            '<strong>', geo.properties.name, '</strong>',
+                            '<br>Visits: <strong>', data.numberOfThings, '</strong>',
+                            '</div>'].join('');
+                    }
                 }
-                // tooltip content
-                return ['<div class="hoverinfo">',
-                    '<strong>', geo.properties.name, '</strong>',
-                    '<br>Visits: <strong>', data.numberOfThings, '</strong>',
-                    '</div>'].join('');
-            }
-        }
-    });
+            })
+            );
 }
 
 showVisitorMap(getVisitorMapData(visitorMap_Countries), 'world', 'visitorMapWorld');
 showVisitorMap(getVisitorMapData(visitorMap_States), 'usa', 'visitorMapUSA');
 
 $(window).on('resize', function () {
-    visitorMap.resize();
+    visitorMaps.forEach(function (map) {
+        map.resize();
+    });
 });
