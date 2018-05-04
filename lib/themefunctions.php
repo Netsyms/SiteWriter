@@ -199,6 +199,24 @@ function get_header() {
     }
 }
 
+function get_footer() {
+    // placeholder stub
+}
+
+function get_setting($key, $echo = false) {
+    $db = getdatabase();
+    $siteid = getsiteid();
+    $value = "";
+    if ($db->has('settings', ["AND" => ['siteid' => $siteid, 'key' => $key]])) {
+        $value = $db->get('settings', "value", ["AND" => ['siteid' => $siteid, 'key' => $key]]);
+    }
+    if ($echo) {
+        echo $value;
+    } else {
+        return $value;
+    }
+}
+
 function get_theme_url($echo = true) {
     $db = getdatabase();
     $site = $db->get('sites', ["sitename", "url", "theme"], ["siteid" => getsiteid()]);
