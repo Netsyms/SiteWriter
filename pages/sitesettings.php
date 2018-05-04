@@ -237,15 +237,21 @@ if (!is_empty($VARS['siteid'])) {
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><label for="instagram"><i class="fab fa-instagram"></i> Instagram</label></span>
-                                </div>
-                                <input type="text" class="form-control" name="settings[instagram]" id="instagram" value="<?php echo htmlspecialchars($settings["instagram"]); ?>" />
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="twitter"><i class="fab fa-twitter"></i> Twitter</label></span>
                                 </div>
                                 <input type="text" class="form-control" name="settings[twitter]" id="twitter" value="<?php echo htmlspecialchars($settings["twitter"]); ?>" />
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="youtube"><i class="fab fa-youtube"></i> Youtube</label></span>
+                                </div>
+                                <input type="text" class="form-control" name="settings[youtube]" id="youtube" value="<?php echo htmlspecialchars($settings["youtube"]); ?>" />
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="instagram"><i class="fab fa-instagram"></i> Instagram</label></span>
+                                </div>
+                                <input type="text" class="form-control" name="settings[instagram]" id="instagram" value="<?php echo htmlspecialchars($settings["instagram"]); ?>" />
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -258,12 +264,6 @@ if (!is_empty($VARS['siteid'])) {
                                     <span class="input-group-text"><label for="google-plus"><i class="fab fa-google-plus"></i> Google+</label></span>
                                 </div>
                                 <input type="text" class="form-control" name="settings[google-plus]" id="google-plus" value="<?php echo htmlspecialchars($settings["google-plus"]); ?>" />
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><label for="youtube"><i class="fab fa-youtube"></i> Youtube</label></span>
-                                </div>
-                                <input type="text" class="form-control" name="settings[youtube]" id="youtube" value="<?php echo htmlspecialchars($settings["youtube"]); ?>" />
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
