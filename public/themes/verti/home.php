@@ -64,40 +64,25 @@
                     if ($count > 0) {
                         $width = 12 / $count;
                     }
+
+
+                    for ($i = 1; $i <= 3; $i++) {
+                        $w = $width . "u";
+                        $content = <<<END
+                        <div class="$w 12u(medium)">
+                            <section class="box feature">
+                                <div class="inner">
+                                    <div class="sw-editable" data-component="cardrow-$i">
+                                        [[VAR]]
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+END;
+                        output_conditional($content, get_component("cardrow-$i", null, false));
+                    }
                     ?>
-                    <?php if (!is_component_empty("cardrow-1")) { ?>
-                        <div class="<?php echo $width; ?>u 12u(medium)">
-                            <section class="box feature">
-                                <div class="inner">
-                                    <div class="sw-editable" data-component="cardrow-1">
-                                        <?php get_component("cardrow-1"); ?>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                    <?php } ?>
-                    <?php if (!is_component_empty("cardrow-2")) { ?>
-                        <div class="<?php echo $width; ?>u 12u(medium)">
-                            <section class="box feature">
-                                <div class="inner">
-                                    <div class="sw-editable" data-component="cardrow-2">
-                                        <?php get_component("cardrow-2"); ?>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                    <?php } ?>
-                    <?php if (!is_component_empty("cardrow-3")) { ?>
-                        <div class="<?php echo $width; ?>u 12u(medium)">
-                            <section class="box feature">
-                                <div class="inner">
-                                    <div class="sw-editable" data-component="cardrow-3">
-                                        <?php get_component("cardrow-3"); ?>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                    <?php } ?>
+
                 </div>
             </div>
         </div>

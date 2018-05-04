@@ -21,27 +21,18 @@ include __DIR__ . "/inc/header.inc.php";
     </div>
     <div class="container">
         <div class="row justify-content-center">
-            <?php if (!is_component_empty("cardrow-1")) { ?>
+            <?php
+            for ($i = 1; $i <= 3; $i++) {
+                $content = <<<END
             <div class="col-md">
-                <div class="sw-editable" data-component="cardrow-1">
-                    <?php get_component("cardrow-1"); ?>
+                <div class="sw-editable" data-component="cardrow-$i">
+                    [[VAR]]
                 </div>
             </div>
-            <?php } ?>
-            <?php if (!is_component_empty("cardrow-2")) { ?>
-            <div class="col-md">
-                <div class="sw-editable" data-component="cardrow-2">
-                    <?php get_component("cardrow-2"); ?>
-                </div>
-            </div>
-            <?php } ?>
-            <?php if (!is_component_empty("cardrow-3")) { ?>
-            <div class="col-md">
-                <div class="sw-editable" data-component="cardrow-3">
-                    <?php get_component("cardrow-3"); ?>
-                </div>
-            </div>
-            <?php } ?>
+END;
+                output_conditional($content, get_component("cardrow-$i", null, false));
+            }
+            ?>
         </div>
     </div>
 </main>
