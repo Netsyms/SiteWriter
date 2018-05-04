@@ -271,6 +271,19 @@ function get_navigation($currentpage = null, $classPrefix = "", $liclass = "", $
     }
 }
 
+/**
+ * Replace "[[VAR]]" with the contents of $var and echo $content,
+ * but only if $var isn't empty.
+ * @param string $content
+ * @param string $var
+ */
+function output_conditional($content, $var) {
+    if ($var == "") {
+        return;
+    }
+    echo str_replace("[[VAR]]", $var, $content);
+}
+
 function return_site_ver() {
     // Stub for GetSimple
     return "SiteWriter";
