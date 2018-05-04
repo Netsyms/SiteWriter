@@ -28,11 +28,11 @@ if (!is_empty($VARS['siteid'])) {
                 ])[0];
         $dbsett = $database->select(
                 'settings', [
-                    'key',
-                    'value'
+            'key',
+            'value'
                 ], [
-                    'siteid' => $siteid
-                ]);
+            'siteid' => $siteid
+        ]);
         // Format as ["key"=>"value","key"=>"value"], not [["key", "value"],["key", "value"]]
         foreach ($dbsett as $s) {
             $settings[$s['key']] = $s['value'];
@@ -62,18 +62,27 @@ if (!is_empty($VARS['siteid'])) {
             ?>
         </h3>
         <div class="card-body">
-            <div class="form-group">
-                <label for="name"><i class="fas fa-font"></i> <?php lang("name"); ?></label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Foo Bar" required="required" value="<?php echo htmlspecialchars($sitedata['sitename']); ?>" />
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-info-circle"></i> <?php lang("site info"); ?></h5>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><label for="name"><i class="fas fa-font"></i> <?php lang("title"); ?></label></span>
+                        </div>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Foo Bar" required="required" value="<?php echo htmlspecialchars($sitedata['sitename']); ?>" />
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><label for="url"><i class="fas fa-globe"></i> <?php lang("url"); ?></label></span>
+                        </div>
+                        <input type="text" class="form-control" id="url" name="url" placeholder="https://example.com" required="required" value="<?php echo htmlspecialchars($sitedata['url']); ?>" />
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="url"><i class="fas fa-globe"></i> <?php lang("url"); ?></label>
-                <input type="text" class="form-control" id="url" name="url" placeholder="https://example.com" required="required" value="<?php echo htmlspecialchars($sitedata['url']); ?>" />
-            </div>
-            <div class="row">
-                <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-body">
                     <div class="form-group">
-                        <label for="theme"><i class="fas fa-paint-brush"></i> <?php lang('theme'); ?></label>
+                        <h5 class="card-title"><label for="theme"><i class="fas fa-paint-brush"></i> <?php lang('theme'); ?></label></h5>
                         <div class="theme_bin">
                             <?php
                             $themedir = __DIR__ . "/../public/themes/";
@@ -153,26 +162,140 @@ if (!is_empty($VARS['siteid'])) {
                 </div>
             </div>
 
-            <div>
-                <div class="row">
-                    <div class="col-12 col-md-6">
-                        <i class="fas fa-chart-bar"></i> <?php lang("analytics"); ?>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="settings[analytics]" value="" id="analytics_on" <?php echo ($settings["analytics"] === "off" ? "" : "checked") ?>>
-                            <label class="form-check-label" for="analytics_on">
-                                <?php lang("enable built-in analytics"); ?>
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="settings[analytics]" value="off" id="analytics_off" <?php echo ($settings["analytics"] === "off" ? "checked" : "") ?>>
-                            <label class="form-check-label" for="analytics_off">
-                                <?php lang("disable built-in analytics"); ?>
-                            </label>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-briefcase"></i> <?php lang("company info"); ?></h5>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="businessname"><i class="fas fa-font"></i> <?php lang("name"); ?></label></span>
+                                </div>
+                                <input type="text" class="form-control" name="settings[businessname]" id="businessname" value="<?php echo htmlspecialchars($settings["businessname"]); ?>" />
+                            </div>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="phone"><i class="fas fa-phone"></i> <?php lang("phone"); ?></label></span>
+                                </div>
+                                <input type="text" class="form-control" name="settings[phone]" id="phone" value="<?php echo htmlspecialchars($settings["phone"]); ?>" />
+                            </div>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="address"><i class="fas fa-map-marker"></i> <?php lang("address"); ?></label></span>
+                                </div>
+                                <input type="text" class="form-control" name="settings[address]" id="address" value="<?php echo htmlspecialchars($settings["address"]); ?>" />
+                            </div>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="email"><i class="fas fa-envelope"></i> <?php lang("email"); ?></label></span>
+                                </div>
+                                <input type="email" class="form-control" name="settings[email]" id="email" value="<?php echo htmlspecialchars($settings["email"]); ?>" />
+                            </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6">
-                        <label for="extracode"><i class="fas fa-code"></i> <?php lang("extra code"); ?></label>
-                        <textarea class="form-control" name="settings[extracode]" id="extracode" placeholder="<script></script>"><?php echo $settings["extracode"]; ?></textarea>
+
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-chart-bar"></i> <?php lang("analytics"); ?></h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="settings[analytics]" value="" id="analytics_on" <?php echo ($settings["analytics"] === "off" ? "" : "checked") ?>>
+                                <label class="form-check-label" for="analytics_on">
+                                    <?php lang("enable built-in analytics"); ?>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="settings[analytics]" value="off" id="analytics_off" <?php echo ($settings["analytics"] === "off" ? "checked" : "") ?>>
+                                <label class="form-check-label" for="analytics_off">
+                                    <?php lang("disable built-in analytics"); ?>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h5 class="card-title"><label for="extracode"><i class="fas fa-code"></i> <?php lang("extra code"); ?></label></h5>
+                            <textarea class="form-control" name="settings[extracode]" id="extracode" placeholder="<script></script>" rows="5"><?php echo $settings["extracode"]; ?></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-share-square"></i> <?php lang("social links"); ?></h5>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="facebook"><i class="fab fa-facebook"></i> Facebook</label></span>
+                                </div>
+                                <input type="text" class="form-control" name="settings[facebook]" id="facebook" value="<?php echo htmlspecialchars($settings["facebook"]); ?>" />
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="instagram"><i class="fab fa-instagram"></i> Instagram</label></span>
+                                </div>
+                                <input type="text" class="form-control" name="settings[instagram]" id="instagram" value="<?php echo htmlspecialchars($settings["instagram"]); ?>" />
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="twitter"><i class="fab fa-twitter"></i> Twitter</label></span>
+                                </div>
+                                <input type="text" class="form-control" name="settings[twitter]" id="twitter" value="<?php echo htmlspecialchars($settings["twitter"]); ?>" />
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="snapchat"><i class="fab fa-snapchat"></i> Snapchat</label></span>
+                                </div>
+                                <input type="text" class="form-control" name="settings[snapchat]" id="snapchat" value="<?php echo htmlspecialchars($settings["snapchat"]); ?>" />
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="google-plus"><i class="fab fa-google-plus"></i> Google+</label></span>
+                                </div>
+                                <input type="text" class="form-control" name="settings[google-plus]" id="google-plus" value="<?php echo htmlspecialchars($settings["google-plus"]); ?>" />
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="youtube"><i class="fab fa-youtube"></i> Youtube</label></span>
+                                </div>
+                                <input type="text" class="form-control" name="settings[youtube]" id="youtube" value="<?php echo htmlspecialchars($settings["youtube"]); ?>" />
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="skype"><i class="fab fa-skype"></i> Skype</label></span>
+                                </div>
+                                <input type="text" class="form-control" name="settings[skype]" id="skype" value="<?php echo htmlspecialchars($settings["skype"]); ?>" />
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="telegram"><i class="fab fa-telegram"></i> Telegram</label></span>
+                                </div>
+                                <input type="text" class="form-control" name="settings[telegram]" id="telegram" value="<?php echo htmlspecialchars($settings["telegram"]); ?>" />
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="vimeo"><i class="fab fa-vimeo"></i> Vimeo</label></span>
+                                </div>
+                                <input type="text" class="form-control" name="settings[vimeo]" id="vimeo" value="<?php echo htmlspecialchars($settings["vimeo"]); ?>" />
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp</label></span>
+                                </div>
+                                <input type="text" class="form-control" name="settings[whatsapp]" id="whatsapp" value="<?php echo htmlspecialchars($settings["whatsapp"]); ?>" />
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="linkedin"><i class="fab fa-linkedin"></i> LinkedIn</label></span>
+                                </div>
+                                <input type="text" class="form-control" name="settings[linkedin]" id="linkedin" value="<?php echo htmlspecialchars($settings["linkedin"]); ?>" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

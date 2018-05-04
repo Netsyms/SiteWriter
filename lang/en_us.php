@@ -87,5 +87,11 @@ define("STRINGS", [
     "visitor map" => "Visitor Map",
     "enable built-in analytics" => "Enable built-in analytics",
     "disable built-in analytics" => "Disable built-in analytics",
-    "extra code" => "Extra code (inserted in site head)"
+    "extra code" => "Extra code (inserted in site head)",
+    "company info" => "Company Info",
+    "phone" => "Phone",
+    "address" => "Address",
+    "email" => "Email",
+    "social links" => "Social Links",
+    "site info" => "Site Info",
 ]);
