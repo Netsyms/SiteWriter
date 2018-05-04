@@ -216,7 +216,7 @@ if (!is_empty($VARS['siteid'])) {
                         </div>
                     </div>
 
-                    <div class="card mt-4">
+                    <div class="card mt-4 mb-4">
                         <div class="card-body">
                             <h5 class="card-title"><label for="extracode"><i class="fas fa-code"></i> <?php lang("extra code"); ?></label></h5>
                             <textarea class="form-control" name="settings[extracode]" id="extracode" placeholder="<script></script>" rows="5"><?php echo $settings["extracode"]; ?></textarea>
