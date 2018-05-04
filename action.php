@@ -133,7 +133,23 @@ switch ($VARS['action']) {
             $database->insert('pages', ["slug" => "index", "siteid" => $siteid, "title" => "Home", "nav" => "Home", "navorder" => 1, "template" => $template]);
         } else {
             $database->update('sites', ["sitename" => $VARS['name'], "url" => $url, "theme" => $theme, "color" => $color], ["siteid" => $VARS['siteid']]);
+            $siteid = $VARS['siteid'];
         }
+
+        foreach ($VARS['settings'] as $key => $value) {
+            if ($database->has('settings', ["AND" => ["siteid" => $siteid, "key" => $key]])) {
+                if ($value == "") {
+                    //echo "deleting $key => $value\n";
+                    $database->delete('settings', ["AND" => ["siteid" => $siteid, "key" => $key]]);
+                } else {
+                    //echo "updating $key => $value\n";
+                    $database->update('settings', ["value" => $value], ["AND" => ["siteid" => $siteid, "key" => $key]]);
+                }
+            } else if ($value != "") {
+                $database->insert('settings', ["siteid" => $siteid, "key" => $key, "value" => $value]);
+            }
+        }
+
         returnToSender("settings_saved");
         break;
     case "saveedits":

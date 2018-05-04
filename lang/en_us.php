@@ -84,5 +84,8 @@ define("STRINGS", [
     "views per visit" => "views per visit",
     "visits over time" => "Visits Over Time",
     "no data" => "No data.",
-    "visitor map" => "Visitor Map"
+    "visitor map" => "Visitor Map",
+    "enable built-in analytics" => "Enable built-in analytics",
+    "disable built-in analytics" => "Disable built-in analytics",
+    "extra code" => "Extra code (inserted in site head)"
 ]);

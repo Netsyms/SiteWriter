@@ -11,7 +11,7 @@ $editing = true;
 
 $siteid = "";
 $sitedata = [];
-
+$settings = [];
 
 if (!is_empty($VARS['siteid'])) {
     if ($database->has('sites', ['siteid' => $VARS['siteid']])) {
@@ -26,6 +26,17 @@ if (!is_empty($VARS['siteid'])) {
                         ], [
                     'siteid' => $siteid
                 ])[0];
+        $dbsett = $database->select(
+                'settings', [
+                    'key',
+                    'value'
+                ], [
+                    'siteid' => $siteid
+                ]);
+        // Format as ["key"=>"value","key"=>"value"], not [["key", "value"],["key", "value"]]
+        foreach ($dbsett as $s) {
+            $settings[$s['key']] = $s['value'];
+        }
     } else {
         header('Location: app.php?page=sites');
         die();
@@ -138,6 +149,30 @@ if (!is_empty($VARS['siteid'])) {
                                 </label>
                             <?php } ?>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <i class="fas fa-chart-bar"></i> <?php lang("analytics"); ?>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="settings[analytics]" value="" id="analytics_on" <?php echo ($settings["analytics"] === "off" ? "" : "checked") ?>>
+                            <label class="form-check-label" for="analytics_on">
+                                <?php lang("enable built-in analytics"); ?>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="settings[analytics]" value="off" id="analytics_off" <?php echo ($settings["analytics"] === "off" ? "checked" : "") ?>>
+                            <label class="form-check-label" for="analytics_off">
+                                <?php lang("disable built-in analytics"); ?>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="extracode"><i class="fas fa-code"></i> <?php lang("extra code"); ?></label>
+                        <textarea class="form-control" name="settings[extracode]" id="extracode" placeholder="<script></script>"><?php echo $settings["extracode"]; ?></textarea>
                     </div>
                 </div>
             </div>

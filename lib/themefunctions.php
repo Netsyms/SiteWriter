@@ -192,7 +192,11 @@ function get_page_content($slug = null) {
 }
 
 function get_header() {
-
+    $db = getdatabase();
+    $siteid = getsiteid();
+    if ($db->has('settings', ["AND" => ['siteid' => $siteid, 'key' => "extracode"]])) {
+        echo $db->get('settings', "value", ["AND" => ['siteid' => $siteid, 'key' => "extracode"]]);
+    }
 }
 
 function get_theme_url($echo = true) {
