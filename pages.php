@@ -56,6 +56,19 @@ define("PAGES", [
             "static/js/analy_reports.js"
         ]
     ],
+    "messages" => [
+        "title" => "messages",
+        "navbar" => true,
+        "icon" => "fas fa-envelope",
+        "styles" => [
+            "static/css/datatables.min.css",
+            "static/css/tables.css",
+        ],
+        "scripts" => [
+            "static/js/datatables.min.js",
+            "static/js/messages.js"
+        ]
+    ],
     "404" => [
         "title" => "404 error"
     ]

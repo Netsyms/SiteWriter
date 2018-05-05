@@ -180,6 +180,13 @@ switch ($VARS['action']) {
         }
         exit(json_encode(["status" => "OK"]));
         break;
+    case "deletemessage":
+        if ($database->count('messages', ["mid" => $VARS['id']]) !== 1) {
+            returnToSender("invalid_parameters");
+        }
+        $database->delete('messages', ["mid" => $VARS['id']]);
+        returnToSender("message_deleted");
+        break;
     case "signout":
         session_destroy();
         header('Location: index.php');

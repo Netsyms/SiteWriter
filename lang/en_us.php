@@ -96,4 +96,8 @@ define("STRINGS", [
     "site info" => "Site Info",
     "loading" => "Loading...",
     "current" => "Current",
+    "messages" => "Messages",
+    "message" => "Message",
+    "date" => "Date",
+    "message deleted" => "Message deleted.",
 ]);

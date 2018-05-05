@@ -29,4 +29,8 @@ define("MESSAGES", [
         "string" => "template missing",
         "type" => "danger"
     ],
+    "message_deleted" => [
+        "string" => "message deleted",
+        "type" => "success"
+    ],
 ]);
