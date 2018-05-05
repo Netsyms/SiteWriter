@@ -1,0 +1,12 @@
+{
+    "name": "Identity",
+    "singlepage": true,
+    "templates": {
+        "default": {
+            "title": "Page",
+            "description": ""
+        }
+    },
+    "colors": {
+    }
+}
