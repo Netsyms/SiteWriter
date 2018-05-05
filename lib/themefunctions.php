@@ -220,7 +220,11 @@ function get_setting($key, $echo = false) {
 function get_theme_url($echo = true) {
     $db = getdatabase();
     $site = $db->get('sites', ["sitename", "url", "theme"], ["siteid" => getsiteid()]);
-    $url = formatsiteurl($site["url"]) . "themes/" . SITE_THEME;
+    if (isset($_GET['edit']) || isset($_GET['in_sw'])) {
+        $url = URL . "/public/themes/" . SITE_THEME;
+    } else {
+        $url = formatsiteurl($site["url"]) . "themes/" . SITE_THEME;
+    }
     if ($echo) {
         echo $url;
     } else {
@@ -240,7 +244,7 @@ function get_theme_color_url($echo = true) {
     if (!file_exists(__DIR__ . "/../public/themes/" . SITE_THEME . "/colors/" . $site['color'])) {
         $site['color'] = "default";
     }
-    $url = formatsiteurl($site["url"]) . "themes/" . SITE_THEME . "/colors/" . $site["color"];
+    $url = get_theme_url(false) . "/colors/" . $site["color"];
     if ($echo) {
         echo $url;
     } else {
