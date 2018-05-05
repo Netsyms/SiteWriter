@@ -186,7 +186,7 @@ if (!is_empty($VARS['siteid'])) {
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="address"><i class="fas fa-map-marker"></i> <?php lang("address"); ?></label></span>
                                 </div>
-                                <input type="text" class="form-control" name="settings[address]" id="address" value="<?php echo htmlspecialchars($settings["address"]); ?>" />
+                                <textarea class="form-control" name="settings[address]" id="address" rows="2"><?php echo htmlspecialchars($settings["address"]); ?></textarea>
                             </div>
 
                             <div class="input-group">
@@ -294,6 +294,18 @@ if (!is_empty($VARS['siteid'])) {
                                     <span class="input-group-text"><label for="linkedin"><i class="fab fa-linkedin"></i> LinkedIn</label></span>
                                 </div>
                                 <input type="text" class="form-control" name="settings[linkedin]" id="linkedin" value="<?php echo htmlspecialchars($settings["linkedin"]); ?>" />
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="diaspora"><i class="fas fa-asterisk"></i> diaspora*</label></span>
+                                </div>
+                                <input type="text" class="form-control" name="settings[diaspora]" id="diaspora" value="<?php echo htmlspecialchars($settings["diaspora"]); ?>" />
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="mastodon"><i class="fab fa-mastodon"></i> Mastodon</label></span>
+                                </div>
+                                <input type="text" class="form-control" name="settings[mastodon]" id="mastodon" value="<?php echo htmlspecialchars($settings["mastodon"]); ?>" />
                             </div>
                         </div>
                     </div>
