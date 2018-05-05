@@ -33,11 +33,12 @@ include __DIR__ . "/inc/header.inc.php";
             </div>
             <br />
             <?php
-            $btn = get_complex_component("submit-btn", null, ["icon", "link"]);
+            $btn = get_complex_component("submit-btn", null, ["link"]);
+            $icon = $btn['icon'];
             $text = $btn['text'];
             ?>
             <button type="submit" class="btn btn-primary sw-complex" data-json="<?php echo get_escaped_json($btn); ?>" data-component="submit-btn">
-                <?php echo $text; ?>
+                <i class="<?php echo $icon; ?>"></i> <?php echo $text; ?>
             </button>
         </form>
     </div>
