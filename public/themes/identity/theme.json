@@ -3,8 +3,12 @@
     "singlepage": true,
     "templates": {
         "default": {
-            "title": "Page",
+            "title": "Default Page",
             "description": ""
+        },
+        "contact": {
+            "title": "Contact Form",
+            "description": "The default page with a contact form."
         }
     },
     "colors": {
