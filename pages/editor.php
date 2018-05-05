@@ -51,6 +51,13 @@ if (!is_empty($VARS['siteid'])) {
             "template"
                 ], ["AND" => ["siteid" => $VARS['siteid'], "slug" => $slug]]
         );
+
+        $singlepage = false;
+        $themedata = json_decode(file_get_contents(__DIR__ . "/../public/themes/" . $sitedata["theme"] . "/theme.json"), true);
+
+        if ($themedata["singlepage"] === true) {
+            $singlepage = true;
+        }
     } else {
         header('Location: app.php?page=sites');
         die();
@@ -202,9 +209,11 @@ if (!is_empty($VARS['siteid'])) {
             <a class="btn btn-info" id="viewbtn" target="_BLANK" href="public/index.php?id=<?php echo $slug; ?>&siteid=<?php echo $VARS['siteid']; ?>">
                 <i class="fas fa-eye"></i> <?php lang("view"); ?>
             </a>
+            <?php if (!$singlepage) { ?>
             <div class="btn btn-primary" id="newpagebtn">
                 <i class="fas fa-plus"></i> <?php lang("new"); ?>
             </div>
+            <?php } ?>
         </div>
         <span class="badge badge-success d-none" id="savedBadge"><i class="fas fa-check"></i> <?php lang("saved"); ?></span>
         <div id="reloadprompt" class="badge badge-info d-none">
@@ -212,6 +221,7 @@ if (!is_empty($VARS['siteid'])) {
             <?php lang("save needed"); ?>
         </div>
     </div>
+    <?php if (!$singlepage) { ?>
     <form method="GET" action="app.php" class="col-12 col-sm-6 col-md-4">
         <input type="hidden" name="page" value="editor" />
         <input type="hidden" name="siteid" value="<?php echo $VARS['siteid']; ?>" />
@@ -232,6 +242,7 @@ if (!is_empty($VARS['siteid'])) {
             </div>
         </div>
     </form>
+    <?php } ?>
 </div>
 
 <iframe id="editorframe" src="public/index.php?id=<?php echo $slug; ?>&edit&siteid=<?php echo $VARS['siteid']; ?>"></iframe>
