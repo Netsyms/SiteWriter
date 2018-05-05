@@ -44,6 +44,21 @@ function editComplex(json) {
     $("#textBox").val("");
     if (typeof content.icon === 'undefined') {
         $("#iconEdit").addClass("d-none");
+    } else {
+        $("#selectedicon").html("<i class=\"" + content.icon + " fa-fw\"></i>");
+        function setSelectedIcon() {
+            $('.iconselector_radio[value="' + content.icon + '"]').prop("checked", true);
+        }
+        if ($("#iconpicker").data("loaded") != "true") {
+            $.get("lib/iconpicker.php", [], function (content) {
+                $("#iconpicker").html(content);
+                initIconSearch();
+                $("#iconpicker").data("loaded", "true");
+                setSelectedIcon();
+            });
+        } else {
+            setSelectedIcon();
+        }
     }
     if (typeof content.link === 'undefined') {
         $("#linkEdit").addClass("d-none");
@@ -67,7 +82,7 @@ $("#editModalSave").on("click", function () {
     var data = {};
     data["component"] = $("#editModal").data("component");
     var content = {};
-    content["icon"] = "";
+    content["icon"] = $('input[name="selectedicon"]:checked').val();
     if ($("#linkBox").val() != "") {
         content["link"] = $("#linkBox").val();
     } else {
