@@ -59,7 +59,11 @@ function get_page_clean_url($echo = true, $slug = null) {
     if ($slug == null) {
         $slug = get_page_slug(false);
     }
-    $url = formatsiteurl(get_site_url(false)) . "index.php?id=$slug";
+    if (PRETTY_URLS) {
+        $url = formatsiteurl(get_site_url(false)) . "$slug";
+    } else {
+        $url = formatsiteurl(get_site_url(false)) . "index.php?id=$slug";
+    }
     if ($echo) {
         echo $url;
     } else {
@@ -91,7 +95,15 @@ function get_page_url($echo = true, $slug = null) {
     if (isset($_GET['siteid'])) {
         $siteid = "&siteid=" . preg_replace("/[^0-9]/", '', $_GET['siteid']);
     }
-    $url = formatsiteurl(get_site_url(false)) . "index.php?id=$slug$edit$theme$template$color$siteid";
+    $args = "$edit$theme$template$color$siteid";
+    if (PRETTY_URLS) {
+        if ($args != "") {
+            $args = "?$args";
+        }
+        $url = formatsiteurl(get_site_url(false)) . "$slug$args";
+    } else {
+        $url = formatsiteurl(get_site_url(false)) . "index.php?id=$slug$args";
+    }
     if ($echo) {
         echo $url;
     } else {

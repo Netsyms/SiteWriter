@@ -1,9 +1,21 @@
 RewriteEngine On
 RewriteBase /
 
-RewriteCond %{REQUEST_FILENAME} !-d [OR]
-RewriteCond %{REQUEST_URI} ^/$
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-l
 
-RewriteRule (.*) /sitewriter/public/$1 [L]
+# Everything else
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.+) - [PT,L]
+
+# Webroot
+RewriteRule ^/$ /sitewriter/public [L]
+
+# Other URLs (assets, etc)
+RewriteCond %{DOCUMENT_ROOT}/sitewriter/public%{REQUEST_URI} -d [OR]
+RewriteCond %{DOCUMENT_ROOT}/sitewriter/public%{REQUEST_URI} -f
+RewriteRule ^(.*)$ /sitewriter/public/$1 [L]
+
+# Pretty URLs
+RewriteCond %{DOCUMENT_ROOT}/sitewriter/public%{REQUEST_URI} !-d [OR]
+RewriteCond %{DOCUMENT_ROOT}/sitewriter/public%{REQUEST_URI} !-f
+RewriteRule ^(.*)$ /sitewriter/public/index.php?id=$1 [L,QSA]

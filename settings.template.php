@@ -37,6 +37,9 @@ define('URL', '/sitewriter');
 // Folder for public files
 define('FILE_UPLOAD_PATH', __DIR__ . '/public/files');
 
+// Use pretty URLs (requires correct web server configuration)
+define('PRETTY_URLS', false);
+
 // Location of MaxMind GeoIP database
 //
 // I'll just leave this here:
