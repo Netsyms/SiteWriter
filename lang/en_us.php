@@ -94,4 +94,6 @@ define("STRINGS", [
     "email" => "Email",
     "social links" => "Social Links",
     "site info" => "Site Info",
+    "loading" => "Loading...",
+    "current" => "Current",
 ]);

@@ -147,7 +147,7 @@ if (!is_empty($VARS['siteid'])) {
 </div>
 
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="editLabel"><?php lang("edit component"); ?></h5>
@@ -158,7 +158,12 @@ if (!is_empty($VARS['siteid'])) {
             <div class="modal-body" id="editModalBody">
                 <div class="form-group d-none" id="iconEdit">
                     <label><i class="fas fa-paint-brush"></i> <?php lang("icon"); ?></label>
-
+                    <br /> <div class="card d-inline-block mb-2">
+                        <div class="card-body p-1">
+                            <?php lang("current"); ?>: <span id="selectedicon"><i class="fa-fw"></i></span>
+                        </div>
+                    </div>
+                    <div id="iconpicker"><i class="fas fa-spin fa-circle-notch ml-2"></i> <?php lang("loading"); ?></div>
                 </div>
                 <div class="form-group" id="linkEdit">
                     <label><i class="fas fa-link"></i> <?php lang("link"); ?></label>

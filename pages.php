@@ -28,10 +28,12 @@ define("PAGES", [
     "editor" => [
         "title" => "editor",
         "styles" => [
-            "static/css/editorparent.css"
+            "static/css/editorparent.css",
+            "static/css/iconselector.css"
         ],
         "scripts" => [
-            "static/js/editorparent.js"
+            "static/js/editorparent.js",
+            "static/js/iconselector.js"
         ]
     ],
     "analytics" => [
