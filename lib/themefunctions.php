@@ -294,7 +294,7 @@ function get_navigation($currentpage = null, $classPrefix = "", $liclass = "", $
  * @param string $var
  */
 function output_conditional($content, $var) {
-    if ($var == "" && !isset($_GET['edit'])) {
+    if ($var == "") {
         return;
     }
     echo str_replace("[[VAR]]", $var, $content);
