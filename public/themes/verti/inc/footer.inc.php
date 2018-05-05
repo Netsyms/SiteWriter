@@ -67,7 +67,7 @@
             <div class="12u">
                 <div id="copyright">
                     <ul class="menu">
-                        <?php output_conditional("<li>&copy; [[VAR]].  All rights reserved.</li>", get_setting("businessname")); ?>
+                        <?php output_conditional("<li>&copy; " . date('Y') . " [[VAR]].  All rights reserved.</li>", get_setting("businessname")); ?>
                         <li>Design: <a href="http://html5up.net">HTML5 UP</a> and <a href="https://netsyms.com">Netsyms Technologies</a></li>
                     </ul>
                 </div>
