@@ -7,9 +7,10 @@
 ?>
 <!DOCTYPE html>
 <meta charset="utf-8">
+<title><?php get_site_name(); ?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="<?php get_theme_color_url(); ?>/bootstrap.min.css" />
-<title><?php get_site_name(); ?></title>
+<script defer src="<?php get_theme_url(); ?>/assets/fontawesome-all.min.js"></script>
 <?php get_header(); ?>
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
