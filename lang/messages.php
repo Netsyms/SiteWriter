@@ -17,6 +17,10 @@ define("MESSAGES", [
         "string" => "page not found",
         "type" => "info"
     ],
+    "settings_saved" => [
+        "string" => "settings saved",
+        "type" => "success"
+    ],
     "page_added" => [
         "string" => "page added",
         "type" => "success"
