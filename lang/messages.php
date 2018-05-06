@@ -33,4 +33,28 @@ define("MESSAGES", [
         "string" => "message deleted",
         "type" => "success"
     ],
+    "file_security_error" => [
+        "string" => "operation cancelled for security reasons",
+        "type" => "danger"
+    ],
+    "upload_success" => [
+        "string" => "upload successful",
+        "type" => "success"
+    ],
+    "upload_warning" => [
+        "string" => "upload warning",
+        "type" => "warning"
+    ],
+    "missing_folder" => [
+        "string" => "destination folder does not exist",
+        "type" => "danger"
+    ],
+    "unwritable_folder" => [
+        "string" => "destination folder does not allow uploads",
+        "type" => "danger"
+    ],
+    "upload_too_big" => [
+        "string" => "uploaded data too large",
+        "type" => "danger"
+    ],
 ]);

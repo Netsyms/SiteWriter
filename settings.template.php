@@ -35,6 +35,7 @@ define("TIMEZONE", "America/Denver");
 define('URL', '/sitewriter');
 
 // Folder for public files
+// This should not be inside the web root for security reasons.
 define('FILE_UPLOAD_PATH', __DIR__ . '/public/files');
 
 // Use pretty URLs (requires correct web server configuration)

@@ -20,7 +20,7 @@ function getniceurl() {
     return url;
 }
 try {
-    window.history.replaceState("", "", getniceurl());
+    //window.history.replaceState("", "", getniceurl());
 } catch (ex) {
 
 }

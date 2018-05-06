@@ -4,3 +4,5 @@ nbproject/private
 *.sync-conflict*
 *.bak
 GeoLite2-City.mmdb
+public/files/*
+!public/files/.htaccess

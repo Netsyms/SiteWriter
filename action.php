@@ -30,6 +30,12 @@ function returnToSender($msg, $arg = "") {
     die();
 }
 
+// https://andrewcurioso.com/blog/archive/2010/detecting-file-size-overflow-in-php.html
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST) &&
+        empty($_FILES) && $_SERVER['CONTENT_LENGTH'] > 0) {
+    returnToSender("upload_too_big");
+}
+
 switch ($VARS['action']) {
     case "newpage":
         if (is_empty($VARS['siteid']) || !$database->has("sites", ["siteid" => $VARS['siteid']])) {
@@ -186,6 +192,75 @@ switch ($VARS['action']) {
         }
         $database->delete('messages', ["mid" => $VARS['id']]);
         returnToSender("message_deleted");
+        break;
+    case "fileupload":
+        $destpath = FILE_UPLOAD_PATH . $VARS['path'];
+        if (strpos(realpath($destpath), FILE_UPLOAD_PATH) !== 0) {
+            returnToSender("file_security_error");
+        }
+        if (!file_exists($destpath) || !is_dir($destpath)) {
+            returnToSender("missing_folder");
+        }
+        if (!is_writable($destpath)) {
+            returnToSender("unwritable_folder");
+        }
+
+        $files = [];
+        foreach ($_FILES['files'] as $key => $all) {
+            foreach ($all as $i => $val) {
+                $files[$i][$key] = $val;
+            }
+        }
+
+        $errors = [];
+        foreach ($files as $f) {
+            if ($f['error'] !== UPLOAD_ERR_OK) {
+                $err = "could not be uploaded.";
+                switch ($f['error']) {
+                    case UPLOAD_ERR_INI_SIZE:
+                    case UPLOAD_ERR_FORM_SIZE:
+                        $err = "is too big.";
+                        break;
+                    case UPLOAD_ERR_CANT_WRITE:
+                        $err = "could not be saved to disk.";
+                        break;
+                    case UPLOAD_ERR_NO_FILE:
+                        $err = "was not actually sent.";
+                        break;
+                    case UPLOAD_ERR_PARTIAL:
+                        $err = "was only partially sent.";
+                        break;
+                    default:
+                        $err = "could not be uploaded.";
+                }
+                $errors[] = htmlspecialchars($f['name']) . " $err";
+                continue;
+            }
+            
+            $filename = basename($f['name']);
+            $filename = preg_replace("/[^a-z0-9\._\-]/", "_", strtolower($filename));
+            $n = 1;
+            if (file_exists($destpath . "/" . $filename)) {
+                while (file_exists($destpath . '/' . $n . '_' . $filename)) {
+                    $n++;
+                }
+                $filename = $n . '_' . $filename;
+            }
+
+            $finalpath = $destpath . "/" . $filename;
+
+            if (move_uploaded_file($f['tmp_name'], $finalpath)) {
+
+            } else {
+                $errors[] = htmlspecialchars($f['name']) . " could not be uploaded.";
+            }
+        }
+
+        if (count($errors) > 0) {
+            returnToSender("upload_warning", implode("<br>", $errors) . "&path=" . $VARS['path']);
+        }
+
+        returnToSender("upload_success", "&path=" . $VARS['path']);
         break;
     case "signout":
         session_destroy();

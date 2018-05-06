@@ -69,6 +69,17 @@ define("PAGES", [
             "static/js/messages.js"
         ]
     ],
+    "files" => [
+        "title" => "files",
+        "navbar" => true,
+        "icon" => "fas fa-folder",
+        "styles" => [
+            "static/css/files.css"
+        ],
+        "scripts" => [
+            "static/js/files.js"
+        ]
+    ],
     "404" => [
         "title" => "404 error"
     ]

@@ -100,4 +100,13 @@ define("STRINGS", [
     "message" => "Message",
     "date" => "Date",
     "message deleted" => "Message deleted.",
+    "files" => "Files",
+    "browse" => "Browse",
+    "upload" => "Upload",
+    "operation cancelled for security reasons" => "Operation cancelled for security reasons.",
+    "upload successful" => "Upload successful.",
+    "upload warning" => "Upload finished with some problems:<br>{arg}",
+    "destination folder does not exist" => "Destination folder does not exist.",
+    "destination folder does not allow uploads" => "Destination folder does not allow uploads.",
+    "uploaded data too large" => "Uploaded data too large.",
 ]);
