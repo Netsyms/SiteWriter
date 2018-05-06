@@ -262,6 +262,15 @@ switch ($VARS['action']) {
 
         returnToSender("upload_success", "&path=" . $VARS['path']);
         break;
+    case "newfolder":
+        $foldername = preg_replace("/[^a-z0-9_\-]/", "_", strtolower($VARS['folder']));
+        $newfolder = FILE_UPLOAD_PATH . $VARS['path'] . '/' . $foldername;
+
+        if (mkdir($newfolder, 0755)) {
+            returnToSender("folder_created", "&path=" . $VARS['path']);
+        }
+        returnToSender("folder_not_created", "&path=" . $VARS['path']);
+        break;
     case "filedelete":
         $file = FILE_UPLOAD_PATH . $VARS['file'];
         if (strpos(realpath($file), FILE_UPLOAD_PATH) !== 0) {

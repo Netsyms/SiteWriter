@@ -81,4 +81,12 @@ define("MESSAGES", [
         "string" => "folder deleted",
         "type" => "success"
     ],
+    "folder_created" => [
+        "string" => "folder created",
+        "type" => "success"
+    ],
+    "folder_not_created" => [
+        "string" => "folder not created",
+        "type" => "danger"
+    ],
 ]);

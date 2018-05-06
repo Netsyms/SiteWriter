@@ -25,7 +25,7 @@ $fullpath = $base . $folder;
 
 <div class="card">
     <div class="card-header d-flex justify-content-between">
-        <nav aria-label="breadcrumb">
+        <nav aria-label="breadcrumb" class="my-auto">
             <ol class="breadcrumb m-0">
                 <?php
                 $pathparts = explode("/", "$folder");
@@ -48,20 +48,29 @@ $fullpath = $base . $folder;
             </ol>
         </nav>
 
-        <div class="ml-auto">
+        <div class="ml-auto my-auto">
             <form action="action.php" method="POST" enctype="multipart/form-data">
-                <div class="input-group">
-                    <div class="input-group-prepend">
+                <div class="input-group input-group-sm">
+                    <input type="text" id="uploadstatus" class="form-control" readonly />
+                    <div class="input-group-append">
                         <span class="btn btn-primary btn-file">
                             <i class="fas fa-folder-open"></i> <?php lang("browse"); ?> <input id="fileupload" type="file" name="files[]" multiple required />
                         </span>
-                    </div>
-                    <input type="text" id="uploadstatus" class="form-control" readonly />
-                    <div class="input-group-append">
                         <button class="btn btn-success" type="submit"><i class="fas fa-cloud-upload-alt"></i> <?php lang("upload"); ?></button>
                     </div>
                 </div>
                 <input type="hidden" name="action" value="fileupload" />
+                <input type="hidden" name="source" value="files" />
+                <input type="hidden" name="path" value="<?php echo $folder; ?>" />
+            </form>
+            <form action="action.php" method="POST" class="mt-1">
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" name="folder" required />
+                    <div class="input-group-append">
+                        <button class="btn btn-success" type="submit"><i class="fas fa-folder"></i> <?php lang("new folder"); ?></button>
+                    </div>
+                </div>
+                <input type="hidden" name="action" value="newfolder" />
                 <input type="hidden" name="source" value="files" />
                 <input type="hidden" name="path" value="<?php echo $folder; ?>" />
             </form>
