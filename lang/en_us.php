@@ -115,4 +115,5 @@ define("STRINGS", [
     "file not deleted" => "The file could not be deleted.",
     "file deleted" => "File deleted.",
     "folder deleted" => "Folder deleted.",
+    "nothing here" => "There doesn't seem to be anything here..."
 ]);

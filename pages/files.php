@@ -71,8 +71,10 @@ $fullpath = $base . $folder;
         <div class="list-group">
             <?php
             $files = scandir($fullpath);
+            $count = 0;
             foreach ($files as $f) {
                 if (strpos($f, '.') !== 0) {
+                    $count++;
                     $link = "$folder/$f";
                     $target = "_BLANK";
                     $isdir = false;
@@ -118,6 +120,18 @@ $fullpath = $base . $folder;
                     </div>
                     <?php
                 }
+            }
+            if ($count == 0) {
+                ?>
+                <div class="list-group-item text-center">
+                    <p class="text-muted">
+                        <i class="far fa-folder-open fa-10x fa-fw"></i>
+                    </p>
+                    <p class="h4 text-muted">
+                        <?php lang("nothing here"); ?>
+                    </p>
+                </div>
+                <?php
             }
             ?>
         </div>
