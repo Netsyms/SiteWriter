@@ -57,4 +57,24 @@ define("MESSAGES", [
         "string" => "uploaded data too large",
         "type" => "danger"
     ],
+    "undeletable_file" => [
+        "string" => "undeletable file",
+        "type" => "danger"
+    ],
+    "folder_not_empty" => [
+        "string" => "folder not empty",
+        "type" => "danger"
+    ],
+    "file_not_deleted" => [
+        "string" => "file not deleted",
+        "type" => "danger"
+    ],
+    "file_deleted" => [
+        "string" => "file deleted",
+        "type" => "success"
+    ],
+    "folder_deleted" => [
+        "string" => "folder deleted",
+        "type" => "success"
+    ],
 ]);

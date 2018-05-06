@@ -109,4 +109,9 @@ define("STRINGS", [
     "destination folder does not exist" => "Destination folder does not exist.",
     "destination folder does not allow uploads" => "Destination folder does not allow uploads.",
     "uploaded data too large" => "Uploaded data too large.",
+    "undeletable file" => "The file could not be deleted.",
+    "folder not empty" => "Folder must be empty to be deleted.",
+    "file not deleted" => "The file could not be deleted.",
+    "file deleted" => "File deleted.",
+    "folder deleted" => "Folder deleted.",
 ]);

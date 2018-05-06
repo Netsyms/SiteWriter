@@ -236,7 +236,7 @@ switch ($VARS['action']) {
                 $errors[] = htmlspecialchars($f['name']) . " $err";
                 continue;
             }
-            
+
             $filename = basename($f['name']);
             $filename = preg_replace("/[^a-z0-9\._\-]/", "_", strtolower($filename));
             $n = 1;
@@ -261,6 +261,29 @@ switch ($VARS['action']) {
         }
 
         returnToSender("upload_success", "&path=" . $VARS['path']);
+        break;
+    case "filedelete":
+        $file = FILE_UPLOAD_PATH . $VARS['file'];
+        if (strpos(realpath($file), FILE_UPLOAD_PATH) !== 0) {
+            returnToSender("file_security_error");
+        }
+        if (!file_exists($file)) {
+            // Either way the file is gone
+            returnToSender("file_deleted");
+        }
+        if (!is_writable($file) || realpath($file) == realpath(FILE_UPLOAD_PATH)) {
+            returnToSender("undeletable_file");
+        }
+        if (is_dir($file)) {
+            if (!rmdir($file)) {
+                returnToSender("folder_not_empty");
+            }
+        } else {
+            if (!unlink($file)) {
+                returnToSender("file_not_deleted");
+            }
+        }
+        returnToSender("file_deleted");
         break;
     case "signout":
         session_destroy();

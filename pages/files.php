@@ -73,7 +73,6 @@ $fullpath = $base . $folder;
             $files = scandir($fullpath);
             foreach ($files as $f) {
                 if (strpos($f, '.') !== 0) {
-                    echo "<div class=\"list-group-item d-flex\">\n";
                     $link = "$folder/$f";
                     $target = "_BLANK";
                     $isdir = false;
@@ -105,9 +104,19 @@ $fullpath = $base . $folder;
                             }
                         }
                     }
-                    echo "\t<a href=\"$link\" target=\"$target\">";
-                    echo "<span class=\"$icon fa-fw\"></span> ";
-                    echo $f . "</a>\n</div>\n";
+                    ?>
+                    <div class="list-group-item d-flex justify-content-between">
+                        <a href="<?php echo $link; ?>" target="<?php echo $target; ?>">
+                            <span class="<?php echo $icon; ?> fa-fw"></span> <?php echo $f; ?>
+                        </a>
+                        <form action="action.php" method="POST">
+                            <input type="hidden" name="action" value="filedelete" />
+                            <input type="hidden" name="source" value="files" />
+                            <input type="hidden" name="file" value="<?php echo "$folder/$f"; ?>" />
+                            <button type="submit" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i> <?php lang("delete"); ?></button>
+                        </form>
+                    </div>
+                    <?php
                 }
             }
             ?>
