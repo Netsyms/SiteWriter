@@ -8,7 +8,7 @@ require_once __DIR__ . '/../lib/util.php';
 
 redirectifnotloggedin();
 ?>
-<div class="btn-group">
+<div class="btn-group mb-2">
     <a href="app.php?page=sitesettings" class="btn btn-success"><i class="fas fa-plus"></i> <?php lang("new site"); ?></a>
 </div>
 <table id="cattable" class="table table-bordered table-hover table-sm">
