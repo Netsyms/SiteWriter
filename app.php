@@ -103,7 +103,7 @@ END;
 
         <?php
         // Adjust as needed
-        $navbar_breakpoint = "sm";
+        $navbar_breakpoint = "md";
 
         // For mobile app
         echo "<script nonce=\"$SECURE_NONCE\">var navbar_breakpoint = \"$navbar_breakpoint\";</script>"

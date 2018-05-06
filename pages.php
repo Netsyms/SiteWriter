@@ -16,6 +16,17 @@ define("PAGES", [
         "navbar" => true,
         "icon" => "fas fa-sitemap"
     ],
+    "files" => [
+        "title" => "files",
+        "navbar" => true,
+        "icon" => "fas fa-folder",
+        "styles" => [
+            "static/css/files.css"
+        ],
+        "scripts" => [
+            "static/js/files.js"
+        ]
+    ],
     "sitesettings" => [
         "title" => "settings",
         "styles" => [
@@ -67,17 +78,6 @@ define("PAGES", [
         "scripts" => [
             "static/js/datatables.min.js",
             "static/js/messages.js"
-        ]
-    ],
-    "files" => [
-        "title" => "files",
-        "navbar" => true,
-        "icon" => "fas fa-folder",
-        "styles" => [
-            "static/css/files.css"
-        ],
-        "scripts" => [
-            "static/js/files.js"
         ]
     ],
     "404" => [
