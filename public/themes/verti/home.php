@@ -16,7 +16,7 @@
                             <li>
                                 <?php
                                 if (!is_complex_empty("banner-btn-1")) {
-                                    $btn = get_complex_component("banner-btn-1");
+                                    $btn = get_complex_component("banner-btn-1", null, ['icon', 'link', 'text']);
                                     $icon = $btn['icon'];
                                     $link = $btn['link'];
                                     $text = $btn['text'];
@@ -29,7 +29,7 @@
                             <li>
                                 <?php
                                 if (!is_complex_empty("banner-btn-2")) {
-                                    $btn = get_complex_component("banner-btn-2");
+                                    $btn = get_complex_component("banner-btn-2", null, ['icon', 'link', 'text']);
                                     $icon = $btn['icon'];
                                     $link = $btn['link'];
                                     $text = $btn['text'];
@@ -103,7 +103,7 @@ END;
                                 </div>
                                 <?php
                                 if (!is_complex_empty("sidebar-btn")) {
-                                    $btn = get_complex_component("sidebar-btn");
+                                    $btn = get_complex_component("sidebar-btn", null, ['icon', 'link', 'text']);
                                     $icon = $btn['icon'];
                                     $link = $btn['link'];
                                     $text = $btn['text'];
@@ -127,7 +127,7 @@ END;
 
                                 <?php
                                 if (!is_complex_empty("two-btn")) {
-                                    $btn = get_complex_component("two-btn");
+                                    $btn = get_complex_component("two-btn", null, ['icon', 'link', 'text']);
                                     $icon = $btn['icon'];
                                     $link = $btn['link'];
                                     $text = $btn['text'];

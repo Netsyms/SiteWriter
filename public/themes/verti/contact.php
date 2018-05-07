@@ -35,7 +35,7 @@
                             </div>
                             <br />
                             <?php
-                            $btn = get_complex_component("submit-btn", null, ["link"]);
+                            $btn = get_complex_component("submit-btn", null, ["icon", "text"]);
                             $icon = $btn['icon'];
                             $text = $btn['text'];
                             ?>
