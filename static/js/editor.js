@@ -31,6 +31,8 @@ function saveEdits() {
     parent.postMessage('save ' + json, "*");
 }
 
+var filePickerCallback = null;
+
 $(document).ready(function () {
     $('a').click(function (e) {
         e.preventDefault();
@@ -46,24 +48,21 @@ $(document).ready(function () {
     tinymce.init({
         selector: '.sw-editable',
         inline: true,
-        paste_data_images: true,
         plugins: [
             'autolink lists link image imagetools charmap',
             'searchreplace visualblocks code fullscreen',
             'media table contextmenu paste code'
         ],
         branding: false,
-        /*menu: {
-            edit: {title: 'Edit', items: 'undo redo | cut copy paste pastetext | selectall | findreplace'},
-            view: {title: 'View', items: 'sourcecode | visualaid showblocks'},
-            insert: {title: 'Insert', items: 'image link media table | charmap'},
-            format: {title: 'Format', items: 'bold italic underline strikethrough superscript subscript | blocks align formats | removeformat'},
-            table: {title: 'Table', items: 'inserttable tableprops deletetable | cell row column'}
-        },*/
+        elementpath: false,
         menubar: 'edit insert view format table tools',
         toolbar: 'insert | undo redo | formatselect | bold italic | bullist numlist outdent indent | removeformat | fullscreen',
         link_list: function (success) {
             success(pages_list);
+        },
+        file_picker_callback: function (callback, value, meta) {
+            filePickerCallback = callback;
+            parent.postMessage('browse ' + meta.filetype, "*");
         },
         mobile: {
             theme: 'mobile'
@@ -114,6 +113,10 @@ $(document).ready(function () {
             var comp = json["component"];
             var data = json["content"];
             $(".sw-complex[data-component='" + comp + "']").data("json", JSON.stringify(data));
+        } else if (event.data.startsWith("picked ")) {
+            var json = JSON.parse(event.data.slice(7));
+            console.log(json);
+            filePickerCallback(json.path, json.meta);
         }
     });
 });

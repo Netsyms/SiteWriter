@@ -40,7 +40,8 @@ define("PAGES", [
         "title" => "editor",
         "styles" => [
             "static/css/editorparent.css",
-            "static/css/iconselector.css"
+            "static/css/iconselector.css",
+            "static/css/filepicker.css",
         ],
         "scripts" => [
             "static/js/editorparent.js",

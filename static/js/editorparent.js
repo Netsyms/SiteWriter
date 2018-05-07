@@ -78,6 +78,34 @@ function editComplex(json) {
     $("#editModal").modal();
 }
 
+function loadFilePickerFolder(path) {
+    $.get("lib/filepicker.php", {
+        path: path
+    }, function (data) {
+        $("#fileBrowseModalBody").html(data);
+        $(".filepicker-item").click(function () {
+            if ($(this).data("type") == "dir") {
+                loadFilePickerFolder($(this).data("path"));
+            } else {
+                var path = "file.php?file=" + $(this).data("path");
+                var data = {
+                    path: path,
+                    meta: {}
+                };
+                json = JSON.stringify(data);
+                document.getElementById("editorframe").contentWindow.postMessage("picked " + json, "*");
+                $("#fileBrowseModal").modal('hide');
+            }
+        })
+    });
+}
+
+function openFilePicker(type) {
+    loadFilePickerFolder("/");
+    $("#fileBrowseModal").modal();
+}
+
+
 $("#editModalSave").on("click", function () {
     var data = {};
     data["component"] = $("#editModal").data("component");
@@ -102,6 +130,8 @@ window.addEventListener('message', function (event) {
         save(event.data.slice(5));
     } else if (event.data.startsWith("editcomplex ")) {
         editComplex(event.data.slice(12));
+    } else if (event.data.startsWith("browse ")) {
+        openFilePicker(event.data.slice(7));
     }
 });
 
