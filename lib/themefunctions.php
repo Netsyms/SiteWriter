@@ -140,7 +140,7 @@ function is_component_empty($name, $context = null) {
     return false;
 }
 
-function get_complex_component($name, $context = null, $omit = []) {
+function get_complex_component($name, $context = null, $include = []) {
     $db = getdatabase();
     if ($context == null) {
         $context = get_page_slug(false);
@@ -151,10 +151,19 @@ function get_complex_component($name, $context = null, $omit = []) {
         $content = json_decode($db->get("complex_components", "content", ["AND" => ["pageid" => $pageid, "name" => $name]]), true);
     }
 
-    foreach ($omit as $o) {
-        unset($content[$o]);
+    if (count($include) == 0) {
+        return $content;
     }
-    return $content;
+    
+    $filtered = [];
+    foreach ($include as $i) {
+        if (array_key_exists($i, $content)) {
+            $filtered[$i] = $content[$i];
+        } else {
+            $filtered[$i] = "";
+        }
+    }
+    return $filtered;
 }
 
 function is_complex_empty($name, $context = null) {
