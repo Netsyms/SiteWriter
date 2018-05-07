@@ -268,7 +268,7 @@ if (!is_empty($VARS['siteid'])) {
                     ?>
                 </select>
                 <div class="input-group-append">
-                    <button type="submit" class="btn btn-primary"><?php lang("edit"); ?></button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i> <?php lang("edit"); ?></button>
                 </div>
             </div>
         </form>
