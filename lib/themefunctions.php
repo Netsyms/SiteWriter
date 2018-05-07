@@ -154,7 +154,7 @@ function get_complex_component($name, $context = null, $include = []) {
     if (count($include) == 0) {
         return $content;
     }
-    
+
     $filtered = [];
     foreach ($include as $i) {
         if (array_key_exists($i, $content)) {
@@ -170,7 +170,7 @@ function is_complex_empty($name, $context = null) {
     if (isset($_GET['edit'])) {
         return false;
     }
-    $comp = get_complex_component($name, $context, false);
+    $comp = get_complex_component($name, $context);
     foreach ($comp as $c => $v) {
         if (isset($v) && !empty($v)) {
             return false;
