@@ -78,14 +78,24 @@ function editComplex(json) {
     $("#editModal").modal();
 }
 
-function loadFilePickerFolder(path) {
+function loadFilePickerFolder(path, type) {
+    var ty = "";
+    switch (type) {
+        case "image":
+            ty = "image";
+            break;
+        case "media":
+            ty = "audio|video";
+            break;
+    }
     $.get("lib/filepicker.php", {
-        path: path
+        path: path,
+        type: ty
     }, function (data) {
         $("#fileBrowseModalBody").html(data);
         $(".filepicker-item").click(function () {
             if ($(this).data("type") == "dir") {
-                loadFilePickerFolder($(this).data("path"));
+                loadFilePickerFolder($(this).data("path"), type);
             } else {
                 var path = "file.php?file=" + $(this).data("path");
                 var data = {
@@ -101,7 +111,7 @@ function loadFilePickerFolder(path) {
 }
 
 function openFilePicker(type) {
-    loadFilePickerFolder("/");
+    loadFilePickerFolder("/", type);
     $("#fileBrowseModal").modal();
 }
 

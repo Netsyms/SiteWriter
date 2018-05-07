@@ -16,6 +16,13 @@ if (isset($VARS['path']) && file_exists($base . $VARS['path']) && strpos(realpat
     $folder = $VARS['path'];
 }
 
+// Compared to the start of the file mimetype, if it doesn't match the file is
+// skipped.  A type of "image" will match "image/png", "image/jpeg", etc.
+$type = [];
+if (isset($VARS['type']) && $VARS['type'] != "") {
+    $type = explode("|", $VARS['type']);
+}
+
 if ($folder == "/") {
     $folder = "";
 }
@@ -75,6 +82,21 @@ $fullpath = $base . $folder;
                 if (array_key_exists($extension, $EXT2MIME)) {
                     $mimetype = $EXT2MIME[$extension];
                 }
+
+                $found = true;
+                if (count($type) > 0) {
+                    $found = false;
+                    foreach ($type as $t) {
+                        if (strpos($mimetype, $t) === 0) {
+                            $found = true;
+                            break;
+                        }
+                    }
+                }
+                if (!$found) {
+                    continue;
+                }
+
                 // Lookup icon from mimetype
                 if (array_key_exists($mimetype, $MIMEICONS)) {
                     $icon = $MIMEICONS[$mimetype];
@@ -103,7 +125,7 @@ $fullpath = $base . $folder;
                 <i class="far fa-folder-open fa-5x fa-fw"></i>
             </p>
             <p class="h5 text-muted">
-                <?php lang("nothing here"); ?>
+    <?php lang("nothing here"); ?>
             </p>
         </div>
         <?php
