@@ -23,7 +23,13 @@
         <!-- Main -->
         <section id="main">
             <header>
-                <span class="avatar"><img src="<?php get_theme_url(); ?>/images/avatar.jpg" alt="" /></span>
+                <?php
+                $img = get_complex_component("header-img", "index", ["image"]);
+                $url = "file.php?file=" . $img['image'];
+                ?>
+                <span class="avatar sw-complex" data-json="<?php echo get_escaped_json($img); ?>" data-component="header-img">
+                    <img src="<?php echo $url; ?>" alt="" />
+                </span>
                 <h1><?php get_page_clean_title(); ?></h1>
                 <p><div class="sw-text" data-component="lead">
                     <?php get_component("lead"); ?>

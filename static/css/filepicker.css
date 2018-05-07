@@ -8,3 +8,8 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
     cursor: pointer;
     color: #2196F3;
 }
+
+#selectedimage {
+    max-height: 200px;
+    max-width: 200px;
+}

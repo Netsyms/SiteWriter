@@ -37,6 +37,7 @@ function editComplex(json) {
         var content = data.content;
     }
     $("#iconEdit").removeClass("d-none");
+    $("#imageEdit").removeClass("d-none");
     $("#linkEdit").removeClass("d-none");
     $("#textEdit").removeClass("d-none");
     $("#linkPage").val("");
@@ -59,6 +60,32 @@ function editComplex(json) {
         } else {
             setSelectedIcon();
         }
+    }
+    if (typeof content.image === 'undefined') {
+        $("#imageEdit").addClass("d-none");
+    } else {
+        $("#imageEdit").data("image", content.image);
+        if (content.image != "") {
+            $("#imageEdit #selectedimage").attr("src", "public/file.php?file=" + content.image);
+        }
+        function loadComplexImageBrowser(path) {
+            $.get("lib/filepicker.php", {
+                path: path,
+                type: "image"
+            }, function (data) {
+                $("#imagepicker").html(data);
+                $("#imagepicker .filepicker-item").click(function () {
+                    if ($(this).data("type") == "dir") {
+                        loadComplexImageBrowser($(this).data("path"));
+                    } else {
+                        var path = $(this).data("path");
+                        $("#imageEdit").data("image", path);
+                        $("#imageEdit #selectedimage").attr("src", "public/file.php?file=" + path);
+                    }
+                })
+            });
+        }
+        loadComplexImageBrowser();
     }
     if (typeof content.link === 'undefined') {
         $("#linkEdit").addClass("d-none");
@@ -93,7 +120,7 @@ function loadFilePickerFolder(path, type) {
         type: ty
     }, function (data) {
         $("#fileBrowseModalBody").html(data);
-        $(".filepicker-item").click(function () {
+        $("#fileBrowseModalBody .filepicker-item").click(function () {
             if ($(this).data("type") == "dir") {
                 loadFilePickerFolder($(this).data("path"), type);
             } else {
@@ -121,6 +148,7 @@ $("#editModalSave").on("click", function () {
     data["component"] = $("#editModal").data("component");
     var content = {};
     content["icon"] = $('input[name="selectedicon"]:checked').val();
+    content["image"] = $("#imageEdit").data("image");
     if ($("#linkBox").val() != "") {
         content["link"] = $("#linkBox").val();
     } else {

@@ -54,6 +54,7 @@ define("STRINGS", [
     "save needed" => "Press Save to see recent changes.",
     "saved" => "Saved",
     "icon" => "Icon",
+    "image" => "Image",
     "link" => "Link",
     "text" => "Text",
     "select page or enter url" => "Select a page or enter URL",

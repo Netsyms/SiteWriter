@@ -191,6 +191,17 @@ if (!is_empty($VARS['siteid'])) {
                     </div>
                     <div id="iconpicker"><i class="fas fa-spin fa-circle-notch ml-2"></i> <?php lang("loading"); ?></div>
                 </div>
+                <div class="form-group d-none" id="imageEdit" data-image="">
+                    <label><i class="fas fa-image"></i> <?php lang("image"); ?></label>
+                    <br /> <div class="card d-inline-block mb-2">
+                        <div class="card-body p-1">
+                            <img id="selectedimage" class="img-responsive" />
+                        </div>
+                    </div>
+                    <div id="imagepicker">
+                        <i class="fas fa-spin fa-circle-notch ml-2"></i> <?php lang("loading"); ?>
+                    </div>
+                </div>
                 <div class="form-group" id="linkEdit">
                     <label><i class="fas fa-link"></i> <?php lang("link"); ?></label>
                     <select id="linkPage" class="form-control">
@@ -229,9 +240,9 @@ if (!is_empty($VARS['siteid'])) {
                 <i class="fas fa-eye"></i> <?php lang("view"); ?>
             </a>
             <?php if (!$singlepage) { ?>
-            <div class="btn btn-primary" id="newpagebtn">
-                <i class="fas fa-plus"></i> <?php lang("new"); ?>
-            </div>
+                <div class="btn btn-primary" id="newpagebtn">
+                    <i class="fas fa-plus"></i> <?php lang("new"); ?>
+                </div>
             <?php } ?>
         </div>
         <span class="badge badge-success d-none" id="savedBadge"><i class="fas fa-check"></i> <?php lang("saved"); ?></span>
@@ -241,26 +252,26 @@ if (!is_empty($VARS['siteid'])) {
         </div>
     </div>
     <?php if (!$singlepage) { ?>
-    <form method="GET" action="app.php" class="col-12 col-sm-6 col-md-4">
-        <input type="hidden" name="page" value="editor" />
-        <input type="hidden" name="siteid" value="<?php echo $VARS['siteid']; ?>" />
-        <div class="input-group">
-            <select name="slug" class="form-control">
-                <?php
-                foreach ($pagedata as $p) {
-                    $selected = "";
-                    if ($slug == $p['slug']) {
-                        $selected = " selected";
+        <form method="GET" action="app.php" class="col-12 col-sm-6 col-md-4">
+            <input type="hidden" name="page" value="editor" />
+            <input type="hidden" name="siteid" value="<?php echo $VARS['siteid']; ?>" />
+            <div class="input-group">
+                <select name="slug" class="form-control">
+                    <?php
+                    foreach ($pagedata as $p) {
+                        $selected = "";
+                        if ($slug == $p['slug']) {
+                            $selected = " selected";
+                        }
+                        echo "<option value=\"" . $p['slug'] . "\"$selected>" . $p['title'] . ' (' . $p['slug'] . ')' . "</option>\n";
                     }
-                    echo "<option value=\"" . $p['slug'] . "\"$selected>" . $p['title'] . ' (' . $p['slug'] . ')' . "</option>\n";
-                }
-                ?>
-            </select>
-            <div class="input-group-append">
-                <button type="submit" class="btn btn-primary"><?php lang("edit"); ?></button>
+                    ?>
+                </select>
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary"><?php lang("edit"); ?></button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
     <?php } ?>
 </div>
 
