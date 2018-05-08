@@ -44,8 +44,9 @@ define("PAGES", [
             "static/css/filepicker.css",
         ],
         "scripts" => [
+            "static/js/html5sortable.min.js",
+            "static/js/iconselector.js",
             "static/js/editorparent.js",
-            "static/js/iconselector.js"
         ]
     ],
     "analytics" => [

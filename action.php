@@ -88,21 +88,46 @@ switch ($VARS['action']) {
         if (is_empty($VARS['template'])) {
             returnToSender("invalid_parameters", $VARS['siteid']);
         }
+        $nav = null;
+        if ($VARS['innavbar'] == 1) {
+            if (is_empty($VARS['navbartitle'])) {
+                returnToSender("invalid_parameters", $VARS['siteid']);
+            }
+            $nav = $VARS['navbartitle'];
+        }
         $template = preg_replace("/[^A-Za-z0-9]/", '', $VARS['template']);
         $theme = $database->get("sites", "theme", ["siteid" => $VARS['siteid']]);
         if (!file_exists(__DIR__ . "/public/themes/$theme/$template.php")) {
             returnToSender("template_missing", $VARS['siteid']);
         }
-        $database->update(
-                "pages", [
+        $settings = [
             "title" => $VARS['title'],
-            "template" => $VARS['template']
-                ], [
+            "template" => $VARS['template'],
+            'nav' => $nav
+        ];
+        if (is_null($nav)) {
+            $settings["navorder"] = null;
+        }
+        $database->update(
+                "pages", $settings, [
             "AND" => [
                 "siteid" => $VARS['siteid'],
                 "pageid" => $VARS['pageid']
             ]
         ]);
+        if (!is_empty($VARS['navorder']) && preg_match("/^[0-9]+([0-9|]*([0-9])|[0-9])$/", $VARS['navorder'])) {
+            $pages = explode("|", preg_replace("/[|]{2,}/", "", $VARS['navorder']));
+            for ($i = 0; $i < count($pages); $i++) {
+                $database->update("pages", [
+                    "navorder" => $i + 1
+                        ], [
+                    "AND" => [
+                        "siteid" => $VARS['siteid'],
+                        "pageid" => $pages[$i]
+                    ]
+                ]);
+            }
+        }
         returnToSender("settings_saved", $VARS['siteid'] . "|" . $VARS['pageid']);
         break;
     case "sitesettings":

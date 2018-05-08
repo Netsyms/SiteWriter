@@ -188,3 +188,55 @@ $("#newpagebtn").click(function () {
 $("#pagesettingsbtn").click(function () {
     $("#pageSettingsModal").modal();
 });
+
+function updateNavbarSettings() {
+    if ($("#innavbarCheckbox").prop("checked")) {
+        $("#navbarSettings").removeClass("d-none");
+        var title = $("#navbarTitle").val();
+        if (title == "") {
+            title = pagetitle;
+            $("#navbarTitle").val(title);
+        }
+        $("#navbar-order-list").prepend('<div class="list-group-item" data-pageid="' + pageid + '"><i class="fas fa-sort"></i> ' + title + '</div>');
+    } else {
+        $("#navbarSettings").addClass("d-none");
+        $("#navbar-order-list .list-group-item[data-pageid=" + pageid + "]").remove();
+    }
+    sortable('#navbar-order-list');
+}
+
+$("#navbarTitle").on("keyup", function () {
+    $("#navbar-order-list .list-group-item[data-pageid=" + pageid + "]").text($("#navbarTitle").val());
+});
+
+if ($("#innavbarCheckbox").prop("checked")) {
+    $("#navbarSettings").removeClass("d-none");
+}
+
+$("#innavbarCheckbox").change(function () {
+    updateNavbarSettings();
+});
+
+navbarSortList = sortable('#navbar-order-list', {
+    items: ".list-group-item",
+    placeholder: '<div class="list-group-item bg-grey">&nbsp;</div>',
+    itemSerializer: function (serializedItem, sortableContainer) {
+        return {
+            position: serializedItem.index + 1,
+            pageid: $(serializedItem.html).data("pageid")
+        };
+    },
+    containerSerializer: function () {
+        return {};
+    }
+});
+
+sortable('#navbar-order-list')[0].addEventListener('sortupdate', function(e) {
+    var items = e.detail.origin.items;
+    var pageids = [];
+    for (var i = 0; i < items.length; i++) {
+        pageids[i] = $(items[i]).data("pageid");
+    }
+    var stringy = pageids.join("|");
+    $("input[name=navorder").val(stringy);
+});

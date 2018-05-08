@@ -36,8 +36,11 @@ if (!is_empty($VARS['siteid'])) {
             "pageid",
             "slug",
             "title",
-            "template"
-                ], ["siteid" => $VARS['siteid']]
+            "parentid",
+            "nav",
+            "template",
+            "navorder"
+                ], ["siteid" => $VARS['siteid'], "ORDER" => ["navorder"]]
         );
         $slug = "index";
         if (isset($VARS['slug']) && $database->has('pages', ["AND" => ['slug' => $VARS['slug'], 'siteid' => $VARS['siteid']]])) {
@@ -48,7 +51,10 @@ if (!is_empty($VARS['siteid'])) {
             "pageid",
             "slug",
             "title",
-            "template"
+            "parentid",
+            "nav",
+            "template",
+            "navorder"
                 ], ["AND" => ["siteid" => $VARS['siteid'], "slug" => $slug]]
         );
 
@@ -98,7 +104,7 @@ if (!is_empty($VARS['siteid'])) {
             </div>
             <div class="modal-body" id="pageSettingsModalBody">
                 <div class="form-group">
-                    <label><i class="fas fa-font"></i> <?php lang("title"); ?></label>
+                    <label for="pageSettingsTitle"><i class="fas fa-font"></i> <?php lang("title"); ?></label>
                     <input type="text" id="pageSettingsTitle" name="title" class="form-control" required="required" minlength="1" maxlength="200" value="<?php echo $thispage['title']; ?>" />
                 </div>
                 <div class="form-group">
@@ -117,6 +123,52 @@ if (!is_empty($VARS['siteid'])) {
                         ?>
                     </select>
                 </div>
+                <?php
+                if ($singlepage !== true) {
+                    ?>
+                    <div class="form-group">
+                        <label><i class="fas fa-bars"></i> <?php lang("navbar options"); ?></label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="innavbar" id="innavbarCheckbox" value="1" <?php echo (is_empty($thispage['nav']) ? "" : "checked") ?> />
+                            <label class="form-check-label" for="innavbarCheckbox">
+                                <?php lang("in navbar"); ?>
+                            </label>
+                        </div>
+                        <div id="navbarSettings" class="card p-2 mt-3 d-none">
+                            <script nonce="<?php echo $SECURE_NONCE; ?>">
+                                var pageid = <?php echo $thispage['pageid'] ?>;
+                                var pagetitle = "<?php echo $thispage['title'] ?>";
+                            </script>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="navbarTitle"><?php lang("navbar title"); ?></label>
+                                </div>
+                                <input type="text" id="navbarTitle" name="navbartitle" class="form-control" required="required" minlength="1" maxlength="200" value="<?php echo (is_empty($thispage['nav']) ? $thispage['title'] : $thispage['nav']); ?>" />
+                            </div>
+
+                            <label class="mb-0 pb-0"><?php lang("navbar position"); ?></label>
+                            <div class="list-group py-3" id="navbar-order-list">
+                                <?php
+                                foreach ($pagedata as $page) {
+                                    if (is_empty($page['nav'])) {
+                                        continue;
+                                    }
+                                    ?>
+                                    <div
+                                        class="list-group-item"
+                                        data-pageid="<?php echo $page['pageid']; ?>">
+                                            <i class="fas fa-sort"></i> <?php echo $page['title']; ?>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                            <input type="hidden" name="navorder" value="" />
+                        </div>
+                    </div>
+                    <?php
+                }
+                ?>
             </div>
             <div class="modal-footer">
                 <input type="hidden" name="siteid" value="<?php echo $sitedata['siteid']; ?>" />

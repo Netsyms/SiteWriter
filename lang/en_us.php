@@ -118,5 +118,9 @@ define("STRINGS", [
     "folder deleted" => "Folder deleted.",
     "folder created" => "Folder created.",
     "folder not created" => "Folder not created.",
-    "nothing here" => "There doesn't seem to be anything here..."
+    "nothing here" => "There doesn't seem to be anything here...",
+    "navbar options" => "Site Menu Options",
+    "in navbar" => "Add page to menu",
+    "navbar title" => "Page title for menu",
+    "navbar position" => "Menu position (drag to change position):"
 ]);
