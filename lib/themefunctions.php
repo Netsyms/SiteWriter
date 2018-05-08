@@ -8,6 +8,11 @@
 
 require_once __DIR__ . "/requiredpublic.php";
 
+/**
+ * Get the name of the website.
+ * @param boolean $echo default true
+ * @return string
+ */
 function get_site_name($echo = true) {
     $db = getdatabase();
     $title = $db->get('sites', "sitename", ["siteid" => getsiteid()]);
@@ -18,6 +23,11 @@ function get_site_name($echo = true) {
     }
 }
 
+/**
+ * Get the URL of the website.
+ * @param boolean $echo default true
+ * @return string
+ */
 function get_site_url($echo = true) {
     $db = getdatabase();
     $url = formatsiteurl($db->get('sites', "url", ["siteid" => getsiteid()]));
@@ -28,6 +38,11 @@ function get_site_url($echo = true) {
     }
 }
 
+/**
+ * Get the page title.
+ * @param boolean $echo default true
+ * @return string
+ */
 function get_page_title($echo = true) {
     $db = getdatabase();
     $title = $db->get("pages", "title", ["AND" => ["slug" => getpageslug(), "siteid" => getsiteid()]]);
@@ -38,6 +53,11 @@ function get_page_title($echo = true) {
     }
 }
 
+/**
+ * Get the page title stripped of any HTML.
+ * @param boolean $echo default true
+ * @return string
+ */
 function get_page_clean_title($echo = true) {
     $title = strip_tags(get_page_title(false));
     if ($echo) {
@@ -47,6 +67,11 @@ function get_page_clean_title($echo = true) {
     }
 }
 
+/**
+ * Get the page slug for the current page.
+ * @param boolean $echo default true
+ * @return string
+ */
 function get_page_slug($echo = true) {
     if ($echo) {
         echo getpageslug();
@@ -55,6 +80,12 @@ function get_page_slug($echo = true) {
     }
 }
 
+/**
+ * Get a valid minimal URL for a page.
+ * @param boolean $echo default true
+ * @param string $slug page slug, or null for current
+ * @return string
+ */
 function get_page_clean_url($echo = true, $slug = null) {
     if ($slug == null) {
         $slug = get_page_slug(false);
@@ -71,6 +102,12 @@ function get_page_clean_url($echo = true, $slug = null) {
     }
 }
 
+/**
+ * Get a valid URL for a page.
+ * @param boolean $echo default true
+ * @param string $slug page slug, or null for current
+ * @return string
+ */
 function get_page_url($echo = true, $slug = null) {
     if ($slug == null) {
         $slug = get_page_slug(false);
@@ -111,6 +148,13 @@ function get_page_url($echo = true, $slug = null) {
     }
 }
 
+/**
+ * Echoes or returns the content of a component.
+ * @param string $name component name
+ * @param string $context page slug, or null for current
+ * @param boolean $echo default true
+ * @return string
+ */
 function get_component($name, $context = null, $echo = true) {
     $db = getdatabase();
     if ($context == null) {
@@ -131,6 +175,12 @@ function get_component($name, $context = null, $echo = true) {
     }
 }
 
+/**
+ * Check if a component is empty of content.
+ * @param string $name component name
+ * @param string $context page slug, or null for current
+ * @return boolean
+ */
 function is_component_empty($name, $context = null) {
     $comp = get_component($name, $context, false);
     $comp = strip_tags($comp, "<img><object><video><a>");
@@ -140,6 +190,13 @@ function is_component_empty($name, $context = null) {
     return false;
 }
 
+/**
+ * Return the data for a complex component (icon, link, text, image, etc)
+ * @param string $name component name
+ * @param string $context page slug, or null for current
+ * @param array $include list of properties to include in the output
+ * @return array
+ */
 function get_complex_component($name, $context = null, $include = []) {
     $db = getdatabase();
     if ($context == null) {
@@ -166,6 +223,12 @@ function get_complex_component($name, $context = null, $include = []) {
     return $filtered;
 }
 
+/**
+ * Check if the specified complex component is empty.
+ * @param string $name
+ * @param string $context page slug
+ * @return boolean
+ */
 function is_complex_empty($name, $context = null) {
     if (isset($_GET['edit'])) {
         return false;
@@ -179,6 +242,12 @@ function is_complex_empty($name, $context = null) {
     return true;
 }
 
+/**
+ * Convert a variable into encoded JSON for safe inclusion in an element property.
+ * @param $json Object or array to convert to JSON
+ * @param boolean $echo default true
+ * @return string
+ */
 function get_escaped_json($json, $echo = true) {
     $text = htmlspecialchars(json_encode($json), ENT_QUOTES, 'UTF-8');
     if ($echo) {
@@ -208,10 +277,17 @@ function get_url_or_slug($str, $echo = true) {
     }
 }
 
+/**
+ * Shortcut for get_component("content").
+ * @param string $slug Get the content for the passed page instead of the current.
+ */
 function get_page_content($slug = null) {
     get_component("content", $slug);
 }
 
+/**
+ * Echoes invisible page header content.
+ */
 function get_header() {
     $db = getdatabase();
     $siteid = getsiteid();
@@ -220,10 +296,19 @@ function get_header() {
     }
 }
 
+/**
+ * Echoes invisible page footer content.
+ */
 function get_footer() {
     // placeholder stub
 }
 
+/**
+ * Return or echo the value of the given site setting key, or an empty string if unset.
+ * @param string $key
+ * @param boolean $echo default false
+ * @return string
+ */
 function get_setting($key, $echo = false) {
     $db = getdatabase();
     $siteid = getsiteid();
@@ -238,6 +323,11 @@ function get_setting($key, $echo = false) {
     }
 }
 
+/**
+ * Get the URL path for the theme folder, without trailing slash.
+ * @param boolean $echo default true
+ * @return string
+ */
 function get_theme_url($echo = true) {
     $db = getdatabase();
     $site = $db->get('sites', ["sitename", "url", "theme"], ["siteid" => getsiteid()]);
@@ -253,6 +343,11 @@ function get_theme_url($echo = true) {
     }
 }
 
+/**
+ * Get the URL base for the selected theme color asset folder, without trailing slash.
+ * @param boolean $echo default true
+ * @return string
+ */
 function get_theme_color_url($echo = true) {
     $db = getdatabase();
     $site = $db->get('sites', ["sitename", "url", "theme", "color"], ["siteid" => getsiteid()]);
@@ -273,6 +368,29 @@ function get_theme_color_url($echo = true) {
     }
 }
 
+/**
+ * Get the page navigation as a string containing a series of <li><a></a></li> elements.
+ *
+ * Format:
+ *   Current page:
+ *     <li class="$classPrefix$slug $liclass $currentclass">
+ *       <a class="$linkclass $currentlinkclass" href="url">
+ *         Link Text
+ *       </a>
+ *     </li>
+ *   Other pages:
+ *     <li class="$classPrefix$slug $liclass">
+ *       <a class="$linkclass" href="url">
+ *         Link Text
+ *       </a>
+ *     </li>
+ * @param string $currentpage The page slug to use for context, or null for current.
+ * @param string $classPrefix
+ * @param string $liclass
+ * @param string $currentclass default "current"
+ * @param string $linkclass
+ * @param string $currentlinkclass default "active"
+ */
 function get_navigation($currentpage = null, $classPrefix = "", $liclass = "", $currentclass = "current", $linkclass = "", $currentlinkclass = "active") {
     $db = getdatabase();
     $pages = $db->select('pages', ['pageid', 'parentid', 'slug', 'nav'], ["AND" => ["siteid" => getsiteid(), "nav[!]" => null], "ORDER" => ["navorder" => "ASC"]]);
@@ -308,8 +426,102 @@ function output_conditional($content, $var) {
     }
     echo str_replace("[[VAR]]", $var, $content);
 }
+/**
+ * Echos or returns a URL for the FontAwesome 5 JavaScript.
+ * @param boolean $echo default true
+ * @return string
+ */
+function get_fontawesome_js($echo = true) {
+    $url = "assets/fontawesome-all.min.js";
+    if ($echo) {
+        echo $url;
+    } else {
+        return $url;
+    }
+}
 
-function return_site_ver() {
-    // Stub for GetSimple
-    return "SiteWriter";
+/**
+ * Returns an array of social media URLs, with FontAwesome icon classes and labels.
+ * @return array [["icon", "name", "url"]]
+ */
+function get_socialmedia_urls() {
+    $socials = [
+        [
+            "icon" => "fab fa-facebook-f",
+            "name" => "Facebook",
+            "setting" => "facebook"
+        ],
+        [
+            "icon" => "fab fa-twitter",
+            "name" => "Twitter",
+            "setting" => "twitter"
+        ],
+        [
+            "icon" => "fab fa-youtube",
+            "name" => "YouTube",
+            "setting" => "youtube"
+        ],
+        [
+            "icon" => "fab fa-instagram",
+            "name" => "Instagram",
+            "setting" => "instagram"
+        ],
+        [
+            "icon" => "fab fa-snapchat",
+            "name" => "Snapchat",
+            "setting" => "snapchat"
+        ],
+        [
+            "icon" => "fab fa-google-plus-g",
+            "name" => "Google+",
+            "setting" => "google-plus"
+        ],
+        [
+            "icon" => "fab fa-skype",
+            "name" => "Skype",
+            "setting" => "skype"
+        ],
+        [
+            "icon" => "fab fa-telegram",
+            "name" => "Twitter",
+            "setting" => "telegram"
+        ],
+        [
+            "icon" => "fab fa-vimeo",
+            "name" => "Vimeo",
+            "setting" => "vimeo"
+        ],
+        [
+            "icon" => "fab fa-whatsapp",
+            "name" => "Whatsapp",
+            "setting" => "whatsapp"
+        ],
+        [
+            "icon" => "fab fa-linkedin",
+            "name" => "LinkedIn",
+            "setting" => "linkedin"
+        ],
+        [
+            "icon" => "fas fa-asterisk",
+            "name" => "diaspora*",
+            "setting" => "diaspora"
+        ],
+        [
+            "icon" => "fab fa-mastodon",
+            "name" => "Mastodon",
+            "setting" => "mastodon"
+        ],
+    ];
+    $urls = [];
+    foreach ($socials as $s) {
+        $url = get_setting($s["setting"]);
+        if ($url != "") {
+            $urls[] = [
+                "name" => $s["name"],
+                "icon" => $s["icon"],
+                "url" => $url
+            ];
+        }
+    }
+    return $urls;
 }

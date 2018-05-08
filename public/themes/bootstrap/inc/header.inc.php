@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="<?php get_theme_color_url(); ?>/bootstrap.min.css" />
 <link rel="stylesheet" href="<?php get_theme_url(); ?>/assets/main.css" />
-<script defer src="<?php get_theme_url(); ?>/assets/fontawesome-all.min.js"></script>
+<script defer src="<?php get_fontawesome_js(); ?>"></script>
 <?php get_header(); ?>
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">

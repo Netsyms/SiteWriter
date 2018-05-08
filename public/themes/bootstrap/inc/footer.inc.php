@@ -22,19 +22,15 @@
 
     <div class="text-center my-4">
         <?php
-        output_conditional('<a class="btn btn-outline-primary m-1" href="[[VAR]]"><i class="fab fa-facebook-f fa-fw"></i><span class="sr-only">Facebook</span></a>', get_setting("facebook"));
-        output_conditional('<a class="btn btn-outline-primary m-1" href="[[VAR]]"><i class="fab fa-twitter fa-fw"></i><span class="sr-only">Twitter</span></a>', get_setting("twitter"));
-        output_conditional('<a class="btn btn-outline-primary m-1" href="[[VAR]]"><i class="fab fa-youtube fa-fw"></i><span class="sr-only">YouTube</span></a>', get_setting("youtube"));
-        output_conditional('<a class="btn btn-outline-primary m-1" href="[[VAR]]"><i class="fab fa-instagram fa-fw"></i><span class="sr-only">Instagram</span></a>', get_setting("instagram"));
-        output_conditional('<a class="btn btn-outline-primary m-1" href="[[VAR]]"><i class="fab fa-snapchat fa-fw"></i><span class="sr-only">Snapchat</span></a>', get_setting("snapchat"));
-        output_conditional('<a class="btn btn-outline-primary m-1" href="[[VAR]]"><i class="fab fa-google-plus-g fa-fw"></i><span class="sr-only">Google+</span></a>', get_setting("google-plus"));
-        output_conditional('<a class="btn btn-outline-primary m-1" href="[[VAR]]"><i class="fab fa-skype fa-fw"></i><span class="sr-only">Skype</span></a>', get_setting("skype"));
-        output_conditional('<a class="btn btn-outline-primary m-1" href="[[VAR]]"><i class="fab fa-telegram fa-fw"></i><span class="sr-only">Twitter</span></a>', get_setting("telegram"));
-        output_conditional('<a class="btn btn-outline-primary m-1" href="[[VAR]]"><i class="fab fa-vimeo fa-fw"></i><span class="sr-only">Vimeo</span></a>', get_setting("vimeo"));
-        output_conditional('<a class="btn btn-outline-primary m-1" href="[[VAR]]"><i class="fab fa-whatsapp fa-fw"></i><span class="sr-only">Whatsapp</span></a>', get_setting("whatsapp"));
-        output_conditional('<a class="btn btn-outline-primary m-1" href="[[VAR]]"><i class="fab fa-linkedin fa-fw"></i><span class="sr-only">LinkedIn</span></a>', get_setting("linkedin"));
-        output_conditional('<a class="btn btn-outline-primary m-1" href="[[VAR]]"><i class="fas fa-asterisk fa-fw"></i><span class="sr-only">diaspora*</span></a>', get_setting("diaspora"));
-        output_conditional('<a class="btn btn-outline-primary m-1" href="[[VAR]]"><i class="fab fa-mastodon fa-fw"></i><span class="sr-only">Mastodon</span></a>', get_setting("mastodon"));
+        $social = get_socialmedia_urls();
+        foreach ($social as $s) {
+            ?>
+            <a class="btn btn-outline-primary m-1" href="<?php echo $s['url']; ?>">
+                <i class="<?php echo $s['icon']; ?> fa-fw"></i>
+                <span class="sr-only"><?php echo $s['name']; ?></span>
+            </a>
+            <?php
+        }
         ?>
     </div>
     <div class="text-center text-muted font-weight-light mt-4">
