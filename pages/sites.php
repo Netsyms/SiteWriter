@@ -11,14 +11,14 @@ redirectifnotloggedin();
 <div class="btn-group mb-2">
     <a href="app.php?page=sitesettings" class="btn btn-success"><i class="fas fa-plus"></i> <?php lang("new site"); ?></a>
 </div>
-<table id="cattable" class="table table-bordered table-hover table-sm">
+<table class="table table-bordered table-hover table-sm table-responsive-sm">
     <thead>
         <tr>
             <th data-priority="0"></th>
             <th data-priority="1"><?php lang('actions'); ?></th>
             <th data-priority="1"><i class="fas fa-font d-none d-md-inline"></i> <?php lang('site name'); ?></th>
             <th data-priority="2"><i class="fas fa-globe d-none d-md-inline"></i> <?php lang('url'); ?></th>
-            <th data-priority="3"><i class="fas fa-paint-brush d-none d-md-inline"></i> <?php lang('theme'); ?></th>
+            <th data-priority="3" class="d-none d-sm-table-cell"><i class="fas fa-paint-brush d-none d-md-inline"></i> <?php lang('theme'); ?></th>
         </tr>
     </thead>
     <tbody>
@@ -43,7 +43,7 @@ redirectifnotloggedin();
                 </td>
                 <td><?php echo $site['sitename']; ?></td>
                 <td><?php echo $site['url']; ?></td>
-                <td><?php echo $themename; ?></td>
+                <td class="d-none d-sm-table-cell"><?php echo $themename; ?></td>
             </tr>
             <?php
         }
@@ -55,7 +55,7 @@ redirectifnotloggedin();
             <th data-priority="1"><?php lang('actions'); ?></th>
             <th data-priority="1"><i class="fas fa-font d-none d-md-inline"></i> <?php lang('site name'); ?></th>
             <th data-priority="2"><i class="fas fa-globe d-none d-md-inline"></i> <?php lang('url'); ?></th>
-            <th data-priority="3"><i class="fas fa-paint-brush d-none d-md-inline"></i> <?php lang('theme'); ?></th>
+            <th data-priority="3" class="d-none d-sm-table-cell"><i class="fas fa-paint-brush d-none d-md-inline"></i> <?php lang('theme'); ?></th>
         </tr>
     </tfoot>
 </table>
