@@ -157,7 +157,7 @@ if (!is_empty($VARS['siteid'])) {
                                     <div
                                         class="list-group-item"
                                         data-pageid="<?php echo $page['pageid']; ?>">
-                                            <i class="fas fa-sort"></i> <?php echo $page['title']; ?>
+                                        <i class="fas fa-sort"></i> <?php echo $page['title']; ?>
                                     </div>
                                     <?php
                                 }
@@ -248,6 +248,10 @@ if (!is_empty($VARS['siteid'])) {
                     <br /> <div class="card d-inline-block mb-2">
                         <div class="card-body p-1">
                             <img id="selectedimage" class="img-responsive" />
+                            <br />
+                            <span class="btn btn-sm btn-outline-danger mt-1" id="removeimagebtn">
+                                <span class="fas fa-times fa-fw"></span> <?php lang("remove image"); ?>
+                            </span>
                         </div>
                     </div>
                     <div id="imagepicker">

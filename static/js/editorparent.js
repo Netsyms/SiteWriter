@@ -86,6 +86,10 @@ function editComplex(json) {
             });
         }
         loadComplexImageBrowser();
+        $("#removeimagebtn").click(function () {
+            $("#imageEdit").data("image", "");
+            $("#imageEdit #selectedimage").attr("src", "");
+        });
     }
     if (typeof content.link === 'undefined') {
         $("#linkEdit").addClass("d-none");
@@ -231,7 +235,7 @@ navbarSortList = sortable('#navbar-order-list', {
     }
 });
 
-sortable('#navbar-order-list')[0].addEventListener('sortupdate', function(e) {
+sortable('#navbar-order-list')[0].addEventListener('sortupdate', function (e) {
     var items = e.detail.origin.items;
     var pageids = [];
     for (var i = 0; i < items.length; i++) {

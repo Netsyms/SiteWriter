@@ -15,6 +15,14 @@ include_once __DIR__ . "/fontawesome5_iconlist.php";
         <input type="text" id="icon_search" class="form-control" />
     </div>
     <div class="icon_bin">
+        <label title="No Icon" data-search="no icon blank empty none" data-icon="">
+            <input type="radio" class="iconselector_radio" name="selectedicon" value="" />
+            <div class="card icon">
+                <div class="card-body m-0 p-1 text-red">
+                    <span class="fas fa-times fa-fw"></span>
+                </div>
+            </div>
+        </label>
         <?php
         foreach ($FONTAWESOME as $fa => $info) {
             ?>
