@@ -45,6 +45,83 @@ $records = $database->select("analytics", [
     "lat", "lon", "time", "pages.title (pagetitle)", "pages.slug (pageslug)",
     "sites.sitename"
         ], $where);
+
+$format = "Y-m-00 00:00:00";
+$max = $records[0];
+$min = $records[count($records) - 1];
+$diff = strtotime($max['time']) - strtotime($min['time']);
+if ($diff < 60 * 60) { // 1 hour
+    $format = "Y-m-d H:i:00";
+} else if ($diff < 60 * 60 * 24 * 3) { // 3 days
+    $format = "Y-m-d H:00:00";
+} else if ($diff < 60 * 60 * 24 * 60) { // 30 days
+    $format = "Y-m-d 00:00:00";
+}
+
+$visitors = [];
+$viewsovertime = [];
+$pages = [];
+foreach ($records as $r) {
+    if (!array_key_exists($r["uuid"], $visitors)) {
+        $visitors[$r["uuid"]] = $r;
+    }
+
+    $rf = date($format, strtotime($r['time']));
+    if (array_key_exists($rf, $viewsovertime)) {
+        $viewsovertime[$rf] ++;
+    } else {
+        $viewsovertime[$rf] = 1;
+    }
+
+    if (array_key_exists($r['pageid'], $pages)) {
+        $pages[$r['pageid']]["views"] ++;
+    } else {
+        $pages[$r['pageid']] = [
+            "pagetitle" => $r['pagetitle'],
+            "sitename" => $r['sitename'],
+            "views" => 1
+        ];
+    }
+}
+$pageviews = count($records);
+usort($pages, function($a, $b) {
+    return $b['views'] <=> $a['views'];
+});
+
+require_once __DIR__ . "/../lib/countries_2_3.php";
+$countries = [];
+$states = [];
+$visitsovertime = [];
+foreach ($visitors as $r) {
+    $rf = date($format, strtotime($r['time']));
+    if (array_key_exists($rf, $visitsovertime)) {
+        $visitsovertime[$rf] ++;
+    } else {
+        $visitsovertime[$rf] = 1;
+    }
+    if (array_key_exists($COUNTRY_CODES[$r['countrycode']], $countries)) {
+        $countries[$COUNTRY_CODES[$r['countrycode']]] ++;
+    } else {
+        $countries[$COUNTRY_CODES[$r['countrycode']]] = 1;
+    }
+    if ($r['countrycode'] === "US") {
+        if (array_key_exists($r['regioncode'], $states)) {
+            $states[$r['regioncode']] ++;
+        } else {
+            $states[$r['regioncode']] = 1;
+        }
+    }
+}
+$visits = count($visitors);
+
+$countrymapdata = [];
+foreach ($countries as $id => $count) {
+    $countrymapdata[] = [$id, $count];
+}
+$statemapdata = [];
+foreach ($states as $id => $count) {
+    $statemapdata[] = [$id, $count];
+}
 ?>
 
 <!-- Filter bar -->
@@ -104,19 +181,11 @@ if (count($records) > 0) {
             <div class="card-body">
                 <h4 class="card-title"><?php lang("overview"); ?></h4>
                 <?php
-                $uuids = [];
-                foreach ($records as $r) {
-                    if (!in_array($r["uuid"], $uuids)) {
-                        $uuids[] = $r["uuid"];
-                    }
-                }
-                $visits = count($uuids);
-                $views = count($records);
-                $ratio = round($views / $visits, 1);
+                $ratio = round($pageviews / $visits, 1);
                 ?>
                 <h5>
                     <i class="fas fa-users fa-fw"></i> <?php echo $visits; ?> <?php lang("visits") ?> <br />
-                    <i class="fas fa-eye fa-fw"></i> <?php echo $views; ?> <?php lang("page views") ?> <br />
+                    <i class="fas fa-eye fa-fw"></i> <?php echo $pageviews; ?> <?php lang("page views") ?> <br />
                     <i class="fas fa-percent fa-fw"></i> <?php echo $ratio; ?> <?php lang("views per visit") ?>
                 </h5>
             </div>
@@ -126,37 +195,13 @@ if (count($records) > 0) {
         <div class="card mb-4">
             <div class="card-body">
                 <h4 class="card-title"><?php lang("visits over time"); ?></h4>
-                <?php
-                $format = "Y-m-00 00:00:00";
-                $max = $records[0];
-                $min = $records[count($records) - 1];
-                $diff = strtotime($max['time']) - strtotime($min['time']);
-                if ($diff < 60 * 60) { // 1 hour
-                    $format = "Y-m-d H:i:00";
-                } else if ($diff < 60 * 60 * 24 * 3) { // 3 days
-                    $format = "Y-m-d H:00:00";
-                } else if ($diff < 60 * 60 * 24 * 60) { // 30 days
-                    $format = "Y-m-d 00:00:00";
-                }
-
-                $counted = [];
-                foreach ($records as $r) {
-                    $rf = date($format, strtotime($r['time']));
-                    if (array_key_exists($rf, $counted)) {
-                        $counted[$rf] ++;
-                    } else {
-                        $counted[$rf] = 1;
-                    }
-                }
-                ?>
-
                 <script nonce="<?php echo $SECURE_NONCE; ?>">
                     var visitsOverTimeData = [
-    <?php foreach ($counted as $d => $c) { ?>
-                            {
-                                x: "<?php echo $d; ?>",
+    <?php foreach ($visitsovertime as $d => $c) { ?>
+                        {
+                        x: "<?php echo $d; ?>",
                                 y: <?php echo $c; ?>
-                            },
+                        },
     <?php } ?>
                     ];
                 </script>
@@ -166,50 +211,62 @@ if (count($records) > 0) {
             </div>
         </div>
 
+        <!-- Views Over Time -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4 class="card-title"><?php lang("page views over time"); ?></h4>
+                <script nonce="<?php echo $SECURE_NONCE; ?>">
+                    var viewsOverTimeData = [
+    <?php foreach ($viewsovertime as $d => $c) { ?>
+                        {
+                        x: "<?php echo $d; ?>",
+                                y: <?php echo $c; ?>
+                        },
+    <?php } ?>
+                    ];
+                </script>
+                <div class="w-100 position-relative">
+                    <canvas id="viewsOverTime"></canvas>
+                </div>
+            </div>
+        </div>
+
         <!-- Visitor Map -->
         <div class="card mb-4">
             <div class="card-body">
                 <h4 class="card-title"><?php lang("visitor map"); ?></h4>
-                <?php
-                $visitors = [];
-                foreach ($records as $r) {
-                    if (!array_key_exists($r["uuid"], $visitors)) {
-                        $visitors[$r["uuid"]] = $r;
-                    }
-                }
-
-                require_once __DIR__ . "/../lib/countries_2_3.php";
-                $countries = [];
-                $states = [];
-                foreach ($visitors as $r) {
-                    if (array_key_exists($COUNTRY_CODES[$r['countrycode']], $countries)) {
-                        $countries[$COUNTRY_CODES[$r['countrycode']]] ++;
-                    } else {
-                        $countries[$COUNTRY_CODES[$r['countrycode']]] = 1;
-                    }
-                    if ($r['countrycode'] === "US") {
-                        if (array_key_exists($r['regioncode'], $states)) {
-                            $states[$r['regioncode']] ++;
-                        } else {
-                            $states[$r['regioncode']] = 1;
-                        }
-                    }
-                }
-                $countrymapdata = [];
-                foreach ($countries as $id => $count) {
-                    $countrymapdata[] = [$id, $count];
-                }
-                $statemapdata = [];
-                foreach ($states as $id => $count) {
-                    $statemapdata[] = [$id, $count];
-                }
-                ?>
                 <script nonce="<?php echo $SECURE_NONCE; ?>">
                     visitorMap_Countries = <?php echo json_encode($countrymapdata); ?>;
                     visitorMap_States = <?php echo json_encode($statemapdata); ?>;
                 </script>
                 <div class="w-100" id="visitorMapWorld"></div>
                 <div class="w-100" id="visitorMapUSA"></div>
+            </div>
+        </div>
+
+        <!-- Page Ranking -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4 class="card-title"><?php lang("page ranking"); ?></h4>
+            </div>
+            <div class="list-group">
+                <?php
+                foreach ($pages as $p) {
+                    ?>
+                    <div class="list-group-item">
+                        <div class="row justify-content-between">
+                            <div class="col-6 d-flex flex-column">
+                                <span><i class="fas fa-file fa-fw"></i> <?php echo $p["pagetitle"]; ?></span>
+                                <span><i class="fas fa-sitemap fa-fw"></i> <?php echo $p["sitename"]; ?></span>
+                            </div>
+                            <div class="col-6">
+                                <span><i class="fas fa-eye fa-fw"></i> <?php lang2("x views", ["views" => $p['views']]); ?></span>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+                ?>
             </div>
         </div>
 

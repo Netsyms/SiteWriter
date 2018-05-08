@@ -32,6 +32,57 @@ $(function () {
     });
 });
 
+var chartOptions = {
+    legend: {
+        display: false
+    },
+    scales: {
+        xAxes: [{
+                type: 'time',
+            }],
+        yAxes: [{
+                type: 'linear',
+                ticks: {
+                    beginAtZero: true,
+                    callback: function (value) {
+                        if (Number.isInteger(value)) {
+                            return value;
+                        }
+                    },
+                }
+            }]
+    },
+    tooltips: {
+        displayColors: false,
+        callbacks: {
+            title: function (item) {
+                var lbl = item[0].xLabel;
+                if (lbl.endsWith("-00 00:00:00")) {
+                    return moment(lbl).format("MMM YYYY");
+                } else if (lbl.endsWith(" 00:00:00")) {
+                    return moment(lbl).format("MMM D YYYY");
+                } else if (lbl.endsWith(":00:00")) {
+                    return moment(lbl).format("MMM D YYYY ha");
+                } else if (lbl.endsWith(":00")) {
+                    return moment(lbl).format("MMM D YYYY h:mma");
+                }
+                return item[0].xLabel;
+            },
+            label: function (item) {
+                return item.yLabel + " visits";
+            }
+        }
+    },
+    elements: {
+        line: {
+            borderWidth: 2,
+            borderColor: "#ff0000",
+            backgroundColor: "#ffffff00",
+            tension: 0
+        }
+    }
+};
+
 var visitsOverTime = new Chart($("#visitsOverTime"), {
     type: 'line',
     data: {
@@ -39,56 +90,17 @@ var visitsOverTime = new Chart($("#visitsOverTime"), {
                 data: visitsOverTimeData
             }],
     },
-    options: {
-        legend: {
-            display: false
-        },
-        scales: {
-            xAxes: [{
-                    type: 'time',
-                }],
-            yAxes: [{
-                    type: 'linear',
-                    ticks: {
-                        beginAtZero: true,
-                        callback: function (value) {
-                            if (Number.isInteger(value)) {
-                                return value;
-                            }
-                        },
-                    }
-                }]
-        },
-        tooltips: {
-            displayColors: false,
-            callbacks: {
-                title: function (item) {
-                    var lbl = item[0].xLabel;
-                    if (lbl.endsWith("-00 00:00:00")) {
-                        return moment(lbl).format("MMM YYYY");
-                    } else if (lbl.endsWith(" 00:00:00")) {
-                        return moment(lbl).format("MMM D YYYY");
-                    } else if (lbl.endsWith(":00:00")) {
-                        return moment(lbl).format("MMM D YYYY ha");
-                    } else if (lbl.endsWith(":00")) {
-                        return moment(lbl).format("MMM D YYYY h:mma");
-                    }
-                    return item[0].xLabel;
-                },
-                label: function (item) {
-                    return item.yLabel + " visits";
-                }
-            }
-        },
-        elements: {
-            line: {
-                borderWidth: 2,
-                borderColor: "#ff0000",
-                backgroundColor: "#ffffff00",
-                tension: 0
-            }
-        }
-    }
+    options: chartOptions
+});
+
+var viewsOverTime = new Chart($("#viewsOverTime"), {
+    type: 'line',
+    data: {
+        datasets: [{
+                data: viewsOverTimeData
+            }],
+    },
+    options: chartOptions
 });
 
 
