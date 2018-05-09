@@ -426,6 +426,7 @@ function output_conditional($content, $var) {
     }
     echo str_replace("[[VAR]]", $var, $content);
 }
+
 /**
  * Echos or returns a URL for the FontAwesome 5 JavaScript.
  * @param boolean $echo default true
@@ -433,6 +434,20 @@ function output_conditional($content, $var) {
  */
 function get_fontawesome_js($echo = true) {
     $url = "assets/fontawesome-all.min.js";
+    if ($echo) {
+        echo $url;
+    } else {
+        return $url;
+    }
+}
+
+/**
+ * Echos or returns a URL for the FontAwesome 5 CSS WebFont.
+ * @param boolean $echo default true
+ * @return string
+ */
+function get_fontawesome_css($echo = true) {
+    $url = "assets/css/fontawesome-all.min.css";
     if ($echo) {
         echo $url;
     } else {
