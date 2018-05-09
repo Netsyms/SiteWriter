@@ -63,6 +63,8 @@ function editComplex(json) {
     }
     if (typeof content.image === 'undefined') {
         $("#imageEdit").addClass("d-none");
+        $("#imageEdit").data("image", "[[NOVALUE]]");
+        $("#imageEdit #selectedimage").attr("src", "");
     } else {
         $("#imageEdit").data("image", content.image);
         if (content.image != "") {
@@ -102,6 +104,7 @@ function editComplex(json) {
     }
     if (typeof content.text === 'undefined') {
         $("#textEdit").addClass("d-none");
+        $("#textBox").val("[[NOVALUE]]");
     } else {
         $("#textBox").val(content.text);
     }
@@ -152,13 +155,17 @@ $("#editModalSave").on("click", function () {
     data["component"] = $("#editModal").data("component");
     var content = {};
     content["icon"] = $('input[name="selectedicon"]:checked').val();
-    content["image"] = $("#imageEdit").data("image");
+    if ($("#imageEdit").data("image") != "[[NOVALUE]]") {
+        content["image"] = $("#imageEdit").data("image");
+    }
     if ($("#linkBox").val() != "") {
         content["link"] = $("#linkBox").val();
     } else {
         content["link"] = $("#linkPage").val();
     }
-    content["text"] = $("#textBox").val();
+    if ($("#textBox").val() != "[[NOVALUE]]") {
+        content["text"] = $("#textBox").val();
+    }
     data["content"] = content;
     var json = JSON.stringify(data);
     document.getElementById("editorframe").contentWindow.postMessage("complex " + json, "*");
