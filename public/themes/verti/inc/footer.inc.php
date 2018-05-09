@@ -8,7 +8,7 @@
                 <section class="widget contact">
                     <?php output_conditional("<h3>[[VAR]]</h3>", get_setting("businessname")); ?>
                     <p>
-                        <?php output_conditional('<div style="display: flex;"><div style="margin-right: 10px;"><i class="fas fa-phone fa-fw"></i></div> <div style="font-size: 130%;">[[VAR]]</div></div>', get_setting("phone")); ?>
+                        <?php output_conditional('<div style="display: flex;"><div style="margin-right: 10px;"><i class="fas fa-phone fa-fw"></i></div> <div style="font-size: 130%;"><a href="tel:[[VAR]]">' .get_setting("phone"). '</a></div></div>', preg_replace("/[^0-9+]/", "", get_setting("phone"))); ?>
                         <?php output_conditional('<div style="display: flex;"><div style="margin-right: 10px;"><i class="fas fa-map fa-fw"></i></div> <div>[[VAR]]</div></div>', str_replace("\n", "<br />\n", get_setting("address"))); ?>
                         <?php output_conditional('<div style="display: flex;"><div style="margin-right: 10px;"><i class="fas fa-envelope fa-fw"></i></div> <div>[[VAR]]</div></div>', get_setting("email")); ?>
                     </p>
