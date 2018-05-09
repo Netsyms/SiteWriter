@@ -282,6 +282,32 @@ function get_url_or_slug($str, $echo = true) {
 }
 
 /**
+ * Get a valid URL for a given file path.
+ * Detects if the file is uploaded via SiteWriter and acts accordingly.
+ * @param string $file
+ * @param boolean $echo
+ * @return string
+ */
+function get_file_url($file, $echo = true) {
+    $url = "file.php?file=$file";
+    $base = FILE_UPLOAD_PATH;
+    $filepath = $base . $file;
+    if (!file_exists($filepath) || is_dir($filepath)) {
+        $url = $file;
+    } else {
+        if (strpos(realpath($filepath), FILE_UPLOAD_PATH) !== 0) {
+            $url = $file;
+        }
+    }
+
+    if ($echo) {
+        echo $url;
+    } else {
+        return $url;
+    }
+}
+
+/**
  * Shortcut for get_component("content").
  * @param string $slug Get the content for the passed page instead of the current.
  */
@@ -304,7 +330,7 @@ function get_header() {
  * Echoes invisible page footer content.
  */
 function get_footer() {
-    // placeholder stub
+// placeholder stub
 }
 
 /**

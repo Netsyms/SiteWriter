@@ -6,7 +6,3 @@ nbproject/private
 GeoLite2-City.mmdb
 public/files/*
 !public/files/.htaccess
-public/themes/*
-!public/themes/bootstrap/*
-!public/themes/identity/*
-!public/themes/verti/*
