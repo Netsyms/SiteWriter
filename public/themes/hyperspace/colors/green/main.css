@@ -2459,9 +2459,7 @@ input[type="checkbox"] + label:before,
 input[type="radio"] + label:before {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-family: FontAwesome;
     font-style: normal;
-    font-weight: normal;
     text-transform: none !important;
 }
 
@@ -2539,9 +2537,7 @@ input[type="radio"] + label:before {
 .icon:before {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-family: FontAwesome;
     font-style: normal;
-    font-weight: normal;
     text-transform: none !important;
 }
 
@@ -2703,9 +2699,7 @@ ul.icons li > a, ul.icons li > span {
 ul.icons li > a:before, ul.icons li > span:before {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-family: FontAwesome;
     font-style: normal;
-    font-weight: normal;
     text-transform: none !important;
 }
 
