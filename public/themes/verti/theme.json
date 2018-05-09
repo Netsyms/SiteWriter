@@ -24,5 +24,17 @@
         }
     },
     "colors": {
+        "default": {
+            "title": "Blue",
+            "description": ""
+        },
+        "green": {
+            "title": "Green",
+            "description": ""
+        },
+        "red": {
+            "title": "Red",
+            "description": ""
+        }
     }
 }
