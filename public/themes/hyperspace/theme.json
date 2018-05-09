@@ -1,0 +1,28 @@
+{
+    "name": "Hyperspace",
+    "singlepage": false,
+    "templates": {
+        "default": {
+            "title": "Default",
+            "description": "A regular page."
+        },
+        "home": {
+            "title": "Home",
+            "description": "A homepage."
+        }
+    },
+    "colors": {
+        "default": {
+            "title": "Purple",
+            "description": ""
+        },
+        "green": {
+            "title": "Green",
+            "description": ""
+        },
+        "blue": {
+            "title": "Blue",
+            "description": ""
+        }
+    }
+}
