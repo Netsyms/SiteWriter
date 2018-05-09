@@ -153,20 +153,24 @@ function get_page_url($echo = true, $slug = null) {
  * @param string $name component name
  * @param string $context page slug, or null for current
  * @param boolean $echo default true
+ * @param string $default The content to return if the component is empty
  * @return string
  */
-function get_component($name, $context = null, $echo = true) {
+function get_component($name, $context = null, $echo = true, $default = "") {
     $db = getdatabase();
     if ($context == null) {
         $context = get_page_slug(false);
     }
     $pageid = $db->get("pages", "pageid", ["AND" => ["slug" => $context, "siteid" => getsiteid()]]);
     $content = "";
-    if (isset($_GET['edit'])) {
-        $content = "<br>";
-    }
     if ($db->has("components", ["AND" => ["pageid" => $pageid, "name" => $name]])) {
         $content = $db->get("components", "content", ["AND" => ["pageid" => $pageid, "name" => $name]]);
+    }
+    if ($content == "") {
+        $content = $default;
+    }
+    if ($content == "" && isset($_GET['edit'])) {
+        $content = "<br>";
     }
     if ($echo) {
         echo $content;
