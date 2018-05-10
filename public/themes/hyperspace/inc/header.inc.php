@@ -1,6 +1,6 @@
 <!-- Header -->
 <header id="header">
-    <a href="index.html" class="title">Hyperspace</a>
+    <a href="<?php get_url_or_slug("index"); ?>" class="title"><?php get_site_name(); ?></a>
     <nav>
         <ul>
             <?php get_navigation(); ?>

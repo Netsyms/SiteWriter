@@ -16,3 +16,4 @@
 <script src="<?php get_theme_url(); ?>/assets/js/util.js"></script>
 <!--[if lte IE 8]><script src="<?php get_theme_url(); ?>/assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="<?php get_theme_url(); ?>/assets/js/main.js"></script>
+<?php get_footer(); ?>
