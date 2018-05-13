@@ -9,6 +9,20 @@
 <footer class="footer jumbotron mt-5 mb-0">
     <div class="row">
         <div class="col-12 col-md-6">
+            <ul class="list-unstyled ml-4">
+                <?php
+                $links = get_footer_urls();
+                foreach ($links as $l) {
+                    ?>
+                    <li>
+                        <a href="<?php echo $l['link']; ?>">
+                            <i class="fas fa-arrow-right"></i> <?php echo $l['title']; ?>
+                        </a>
+                    </li>
+                    <?php
+                }
+                ?>
+            </ul>
         </div>
         <div class="col-12 col-md-6">
             <?php output_conditional("<h4>[[VAR]]</h4>", get_setting("businessname")); ?>

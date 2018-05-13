@@ -486,12 +486,18 @@ function get_fontawesome_css($echo = true) {
 }
 
 /**
- * Return an array [[title, url], [title, url]] of links for the page footer
+ * Return an array [[title, link], [title, link]] of links for the page footer
  */
 function get_footer_urls() {
     $links = json_decode(get_setting("footerlinks", false), true);
     if (is_array($links)) {
-        return $links;
+        $filtered = [];
+        foreach ($links as $l) {
+            if ($l['title'] != "" && $l['link'] != "") {
+                $filtered[] = $l;
+            }
+        }
+        return $filtered;
     }
     return [];
 }

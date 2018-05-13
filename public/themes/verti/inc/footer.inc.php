@@ -2,13 +2,13 @@
 <div id="footer-wrapper">
     <footer id="footer" class="container">
         <div class="row">
-            <div class="6u 6u$(medium) 12u$(small)">
+            <div class="6u 12u$(medium) 12u$(small)">
 
                 <!-- Contact -->
                 <section class="widget contact">
                     <?php output_conditional("<h3>[[VAR]]</h3>", get_setting("businessname")); ?>
                     <p>
-                        <?php output_conditional('<div style="display: flex;"><div style="margin-right: 10px;"><i class="fas fa-phone fa-fw"></i></div> <div style="font-size: 130%;"><a href="tel:[[VAR]]">' .get_setting("phone"). '</a></div></div>', preg_replace("/[^0-9+]/", "", get_setting("phone"))); ?>
+                        <?php output_conditional('<div style="display: flex;"><div style="margin-right: 10px;"><i class="fas fa-phone fa-fw"></i></div> <div style="font-size: 130%;"><a href="tel:[[VAR]]">' . get_setting("phone") . '</a></div></div>', preg_replace("/[^0-9+]/", "", get_setting("phone"))); ?>
                         <?php output_conditional('<div style="display: flex;"><div style="margin-right: 10px;"><i class="fas fa-map fa-fw"></i></div> <div>[[VAR]]</div></div>', str_replace("\n", "<br />\n", get_setting("address"))); ?>
                         <?php output_conditional('<div style="display: flex;"><div style="margin-right: 10px;"><i class="fas fa-envelope fa-fw"></i></div> <div>[[VAR]]</div></div>', get_setting("email")); ?>
                     </p>
@@ -29,34 +29,58 @@
                 </section>
 
             </div>
+            <?php
+            $links = get_footer_urls();
+            $links1 = [];
+            $links2 = [];
+            foreach ($links as $l) {
+                if (count($links1) < 5) {
+                    $links1[] = $l;
+                } else {
+                    $links2[] = $l;
+                }
+            }
+            ?>
             <div class="3u 6u(medium) 12u$(small)">
 
                 <!-- Links -->
-                <!--<section class="widget links">
-                    <h3>Random Stuff</h3>
+                <section class="widget links">
+                    <h3>Links</h3>
                     <ul class="style2">
-                        <li><a href="#">Etiam feugiat condimentum</a></li>
-                        <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-                        <li><a href="#">Sed porttitor cras in erat nec</a></li>
-                        <li><a href="#">Felis varius pellentesque potenti</a></li>
-                        <li><a href="#">Nullam scelerisque blandit leo</a></li>
+                        <?php
+                        foreach ($links1 as $l) {
+                            ?>
+                            <li>
+                                <a href="<?php echo $l['link']; ?>">
+                                    <?php echo $l['title']; ?>
+                                </a>
+                            </li>
+                            <?php
+                        }
+                        ?>
                     </ul>
-                </section>-->
+                </section>
 
             </div>
             <div class="3u 6u$(medium) 12u$(small)">
 
                 <!-- Links -->
-                <!--<section class="widget links">
-                    <h3>Random Stuff</h3>
+                <section class="widget links">
+                    <h3>&nbsp;</h3>
                     <ul class="style2">
-                        <li><a href="#">Etiam feugiat condimentum</a></li>
-                        <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-                        <li><a href="#">Sed porttitor cras in erat nec</a></li>
-                        <li><a href="#">Felis varius pellentesque potenti</a></li>
-                        <li><a href="#">Nullam scelerisque blandit leo</a></li>
+                        <?php
+                        foreach ($links2 as $l) {
+                            ?>
+                            <li>
+                                <a href="<?php echo $l['link']; ?>">
+                                    <?php echo $l['title']; ?>
+                                </a>
+                            </li>
+                            <?php
+                        }
+                        ?>
                     </ul>
-                </section>-->
+                </section>
 
             </div>
         </div>
