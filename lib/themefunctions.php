@@ -486,6 +486,17 @@ function get_fontawesome_css($echo = true) {
 }
 
 /**
+ * Return an array [[title, url], [title, url]] of links for the page footer
+ */
+function get_footer_urls() {
+    $links = json_decode(get_setting("footerlinks", false), true);
+    if (is_array($links)) {
+        return $links;
+    }
+    return [];
+}
+
+/**
  * Returns an array of social media URLs, with FontAwesome icon classes and labels.
  * @return array [["icon", "name", "url"]]
  */

@@ -126,5 +126,6 @@ define("STRINGS", [
     "in navbar" => "Add page to menu",
     "navbar title" => "Page title for menu",
     "navbar position" => "Menu position (drag to change position):",
-    "remove image" => "Remove image"
+    "remove image" => "Remove image",
+    "site footer links" => "Site Footer Links"
 ]);

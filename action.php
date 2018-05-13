@@ -168,6 +168,9 @@ switch ($VARS['action']) {
         }
 
         foreach ($VARS['settings'] as $key => $value) {
+            if (is_array($value)) {
+                $value = json_encode($value);
+            }
             if ($database->has('settings', ["AND" => ["siteid" => $siteid, "key" => $key]])) {
                 if ($value == "") {
                     //echo "deleting $key => $value\n";

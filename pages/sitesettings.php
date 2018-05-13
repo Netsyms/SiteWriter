@@ -164,6 +164,7 @@ if (!is_empty($VARS['siteid'])) {
 
             <div class="row">
                 <div class="col-12 col-md-6">
+                    <!-- Company/Org Info -->
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title"><i class="fas fa-briefcase"></i> <?php lang("company info"); ?></h5>
@@ -198,6 +199,7 @@ if (!is_empty($VARS['siteid'])) {
                         </div>
                     </div>
 
+                    <!-- Analytics -->
                     <div class="card mt-4">
                         <div class="card-body">
                             <h5 class="card-title"><i class="fas fa-chart-bar"></i> <?php lang("analytics"); ?></h5>
@@ -216,6 +218,7 @@ if (!is_empty($VARS['siteid'])) {
                         </div>
                     </div>
 
+                    <!-- Extra code header snippets -->
                     <div class="card mt-4 mb-4">
                         <div class="card-body">
                             <h5 class="card-title"><label for="extracode"><i class="fas fa-code"></i> <?php lang("extra code"); ?></label></h5>
@@ -224,6 +227,7 @@ if (!is_empty($VARS['siteid'])) {
                     </div>
                 </div>
 
+                <!-- Social Media links -->
                 <div class="col-12 col-md-6">
                     <div class="card">
                         <div class="card-body">
@@ -306,6 +310,43 @@ if (!is_empty($VARS['siteid'])) {
                                     <span class="input-group-text"><label for="mastodon"><i class="fab fa-mastodon"></i> Mastodon</label></span>
                                 </div>
                                 <input type="text" class="form-control" name="settings[mastodon]" id="mastodon" value="<?php echo htmlspecialchars($settings["mastodon"]); ?>" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h5 class="card-title"><label><i class="fas fa-list"></i> <?php lang("site footer links"); ?></label></h5>
+                            <div id="footer-link-bin">
+                                <?php
+                                $footerset = false;
+                                $footerlinks = json_decode($settings['footerlinks'], true);
+                                if (is_array($footerlinks)) {
+                                    $footerset = true;
+                                }
+                                for ($i = 1; $i <= 10; $i++) {
+                                    $url = "";
+                                    $title = "";
+                                    if ($footerset && array_key_exists("$i", $footerlinks)) {
+                                        $url = $footerlinks[$i]['link'];
+                                        $title = $footerlinks[$i]['title'];
+                                    }
+                                    ?>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><?php lang("title"); ?>:</span>
+                                        </div>
+                                        <input type="text" class="form-control" name="settings[footerlinks][<?php echo $i; ?>][title]" value="<?php echo $title; ?>" />
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><?php lang("link"); ?>:</span>
+                                        </div>
+                                        <input type="text" class="form-control" name="settings[footerlinks][<?php echo $i; ?>][link]" value="<?php echo $url; ?>" />
+                                    </div>
+                                    <?php
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
