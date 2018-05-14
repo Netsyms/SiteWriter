@@ -13,7 +13,7 @@ use GeoIp2\Database\Reader;
 
 require_once __DIR__ . "/requiredpublic.php";
 
-if (!$database->has("settings", ["AND" => ["siteid" => getsiteid(), "key" => "analytics", "value" => "off"]])) {
+if (!$database->has("settings", ["AND" => ["siteid" => getsiteid(), "key" => "analytics", "value" => "off"]]) && !isset($_GET['edit'])) {
     try {
 
         $time = date("Y-m-d H:i:s");
