@@ -38,9 +38,8 @@ if (isset($_GET['edit'])) {
         $allpages[$i]["value"] = get_page_clean_url(false, $allpages[$i]["value"]);
     }
     ?>
-    <style><?php echo str_replace("./font/summernote", "../static/fonts/summernote", file_get_contents(__DIR__ . "/../static/css/summernote-lite.css")); ?></style>
+    <style><?php echo file_get_contents(__DIR__ . "/../static/css/editor.css"); ?></style>
     <script src="<?php echo URL; ?>/static/js/jquery-3.3.1.min.js"></script>
-    <!--<script src="<?php echo URL; ?>/static/js/summernote-lite.js"></script>-->
     <script src="<?php echo URL; ?>/static/js/tinymce/tinymce.min.js"></script>
     <script>
         static_dir = "<?php echo URL; ?>/static";

@@ -16,9 +16,25 @@ input[type="text"].sw-text-input {
     border: 2px dashed red !important;
 }
 
-button.note-btn, .note-modal button {
-    box-shadow: none;
+button.note-btn, .note-modal button, .mce-widget button, .mce-menubtn button, .mce-btn button, button.mce-close {
+    box-shadow: none !important;
     color: #333 !important;
+    text-transform: none;
+    letter-spacing: normal;
+    transition: none;
+}
+
+.mce-btn.mce-primary button {
+    color: white !important;
+}
+
+.mce-btn.mce-active button, .mce-btn.mce-active:hover button, .mce-btn.mce-active i, .mce-btn.mce-active:hover {
+    color: white !important;
+}
+
+.mce-label {
+    text-transform: none;
+    letter-spacing: normal;
 }
 
 .note-modal .close {

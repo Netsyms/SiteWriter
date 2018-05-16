@@ -38,7 +38,7 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
-    $("body").append("<link href=\"" + static_dir + "/css/editor.css\" rel=\"stylesheet\" />");
+    //$("body").append("<link href=\"" + static_dir + "/css/editor.css\" rel=\"stylesheet\" />");
 
     $(".sw-editable").each(function () {
         // Remove leading whitespace added by the template
