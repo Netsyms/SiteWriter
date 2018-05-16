@@ -5,3 +5,8 @@
 $('#name').on('input propertychange paste', function () {
     $('#name_title').text($('#name').val());
 });
+
+$("input[type=radio][name=color]").change(function () {
+    var theme = $(this).data("theme");
+    $("input[type=radio][name=theme][value=" + theme + "]").prop("checked", true);
+});

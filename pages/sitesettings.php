@@ -135,7 +135,7 @@ if (!is_empty($VARS['siteid'])) {
                                                     <div class="list-group-item">
                                                         <div class="d-flex justify-content-between">
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="color" id="color_<?php echo $t; ?>_<?php echo $c; ?>" value="<?php echo $c; ?>" <?php echo $checked; ?>>
+                                                                <input class="form-check-input" type="radio" name="color" id="color_<?php echo $t; ?>_<?php echo $c; ?>" value="<?php echo $c; ?>" data-theme="<?php echo $t; ?>" <?php echo $checked; ?>>
                                                                 <label class="form-check-label" for="color_<?php echo $t; ?>_<?php echo $c; ?>">
                                                                     <b><?php echo $color["title"]; ?></b>
                                                                 </label>
