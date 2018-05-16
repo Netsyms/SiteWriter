@@ -83,80 +83,85 @@ if (!is_empty($VARS['siteid'])) {
                 <div class="card-body">
                     <div class="form-group">
                         <h5 class="card-title"><label for="theme"><i class="fas fa-paint-brush"></i> <?php lang('theme'); ?></label></h5>
-                        <div class="theme_bin">
-                            <?php
-                            $themedir = __DIR__ . "/../public/themes/";
-                            $themes = array_diff(scandir($themedir), array('..', '.'));
-                            foreach ($themes as $t) {
-                                if (!file_exists($themedir . "$t/theme.json")) {
-                                    continue;
-                                }
-                                $info = json_decode(file_get_contents($themedir . "$t/theme.json"), TRUE);
-                                $ts = $sitedata["theme"] == $t ? " checked" : "";
-                                ?>
-                                <label>
-                                    <input type="radio" name="theme" value="<?php echo $t; ?>" <?php echo $ts; ?> />
-                                    <div class="card theme">
-                                        <div class="card-body m-0 p-1">
-                                            <span class="d-flex">
-                                                <h4 class="mr-auto"><?php echo $info['name']; ?></h4>
-                                                <a href="public/index.php?page=index&siteid=<?php echo $siteid; ?>&theme=<?php echo $t; ?>" target="_BLANK">
-                                                    <i class="fas fa-eye"></i> <?php lang("preview"); ?>
-                                                </a>
-                                            </span>
-                                            <b><?php lang("theme type"); ?></b>:
+                        <div class="theme_bin_overflow">
+                            <div class="theme_bin card-columns">
+                                <?php
+                                $themedir = __DIR__ . "/../public/themes/";
+                                $themes = array_diff(scandir($themedir), array('..', '.'));
+                                foreach ($themes as $t) {
+                                    if (!file_exists($themedir . "$t/theme.json")) {
+                                        continue;
+                                    }
+                                    $info = json_decode(file_get_contents($themedir . "$t/theme.json"), TRUE);
+                                    $ts = $sitedata["theme"] == $t ? " checked" : "";
+                                    $preview = (file_exists($themedir . "$t/preview.png") === true);
+                                    ?>
+                                    <label>
+                                        <input type="radio" name="theme" value="<?php echo $t; ?>" <?php echo $ts; ?> />
+                                        <div class="card theme">
                                             <?php
-                                            if ($info['singlepage'] == true) {
-                                                lang("single page");
-                                            } else {
-                                                lang("multiple page");
-                                            }
-                                            ?><br />
-                                            <b><?php lang("templates"); ?></b>:
-                                            <?php
-                                            $temtitles = [];
-                                            foreach ($info['templates'] as $tem) {
-                                                $temtitles[] = $tem['title'];
-                                            }
-                                            echo implode(", ", $temtitles);
-                                            ?><br />
-                                            <b><?php lang("color styles"); ?></b>:
-                                            <div class="list-group colorSelector">
+                                            if ($preview) {
+                                                ?>
+                                                <img class="card-img-top" src="public/themes/<?php echo $t; ?>/preview.png" alt="" />
                                                 <?php
-                                                if (count($info['colors']) == 0) {
-                                                    $info['colors'] = ["default" => ["title" => lang("default", false), "description" => ""]];
+                                            }
+                                            ?>
+                                            <div class="card-body m-0 p-1">
+                                                <span class="d-flex">
+                                                    <h4 class="mr-auto"><?php echo $info['name']; ?></h4>
+                                                    <a href="public/index.php?page=index&siteid=<?php echo $siteid; ?>&theme=<?php echo $t; ?>" target="_BLANK">
+                                                        <i class="fas fa-eye"></i> <?php lang("preview"); ?>
+                                                    </a>
+                                                </span>
+                                                <b><?php lang("theme type"); ?></b>:
+                                                <?php
+                                                if ($info['singlepage'] == true) {
+                                                    lang("single page");
+                                                } else {
+                                                    lang("multiple page");
                                                 }
-                                                foreach ($info['colors'] as $c => $color) {
-                                                    $checked = "";
-                                                    if ($sitedata["theme"] == $t && $sitedata["color"] == $c) {
-                                                        $checked = "checked";
+                                                ?><br />
+                                                <b><?php lang("templates"); ?></b>:
+                                                <?php
+                                                $temtitles = [];
+                                                foreach ($info['templates'] as $tem) {
+                                                    $temtitles[] = $tem['title'];
+                                                }
+                                                echo implode(", ", $temtitles);
+                                                ?><br />
+                                                <b><?php lang("color styles"); ?></b>:
+                                                <div class="list-group colorSelector">
+                                                    <?php
+                                                    if (count($info['colors']) == 0) {
+                                                        $info['colors'] = ["default" => ["title" => lang("default", false), "description" => ""]];
+                                                    }
+                                                    foreach ($info['colors'] as $c => $color) {
+                                                        $checked = "";
+                                                        if ($sitedata["theme"] == $t && $sitedata["color"] == $c) {
+                                                            $checked = "checked";
+                                                        }
+                                                        ?>
+                                                        <input type="radio" name="color" id="color_<?php echo $t; ?>_<?php echo $c; ?>" value="<?php echo $c; ?>" data-theme="<?php echo $t; ?>" <?php echo $checked; ?>>
+                                                        <label class="list-group-item" for="color_<?php echo $t; ?>_<?php echo $c; ?>">
+                                                            <div class="d-flex justify-content-between">
+                                                                <b><?php echo $color["title"]; ?></b>
+                                                                <div class="text-nowrap">
+                                                                    <a href="public/index.php?page=index&siteid=<?php echo $siteid; ?>&theme=<?php echo $t; ?>&color=<?php echo $c; ?>" target="_BLANK">
+                                                                        <i class="fas fa-eye"></i> <?php lang("preview"); ?>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <?php echo $color["description"]; ?>
+                                                        </label>
+                                                        <?php
                                                     }
                                                     ?>
-                                                    <div class="list-group-item">
-                                                        <div class="d-flex justify-content-between">
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="color" id="color_<?php echo $t; ?>_<?php echo $c; ?>" value="<?php echo $c; ?>" data-theme="<?php echo $t; ?>" <?php echo $checked; ?>>
-                                                                <label class="form-check-label" for="color_<?php echo $t; ?>_<?php echo $c; ?>">
-                                                                    <b><?php echo $color["title"]; ?></b>
-                                                                </label>
-                                                            </div>
-                                                            <div>
-                                                                <a href="public/index.php?page=index&siteid=<?php echo $siteid; ?>&theme=<?php echo $t; ?>&color=<?php echo $c; ?>" target="_BLANK">
-                                                                    <i class="fas fa-eye"></i>
-                                                                    <?php lang("preview"); ?>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <?php echo $color["description"]; ?>
-                                                    </div>
-                                                    <?php
-                                                }
-                                                ?>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </label>
-                            <?php } ?>
+                                    </label>
+                                <?php } ?>
+                            </div>
                         </div>
                     </div>
                 </div>

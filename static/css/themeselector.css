@@ -3,7 +3,7 @@ This Source Code Form is subject to the terms of the Mozilla Public
 License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at http://mozilla.org/MPL/2.0/.
 */
-.theme_bin {
+.theme_bin_overflow {
     max-height: 75vh;
     overflow-y: scroll;
     padding: 5px;
@@ -12,11 +12,6 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 .theme_bin label input[type=radio] {
     visibility: hidden;
     position: absolute;
-}
-
-.theme_bin label input[type=radio].form-check-input {
-    visibility: visible;
-    position: inherit;
 }
 
 .theme_bin label input[type=radio] + .theme {
@@ -29,11 +24,21 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
     border: 3px solid rgba(0,0,0,.8);
 }
 
+.theme_bin label input[type=radio][name="color"]:checked + .list-group-item {
+    border: 2px solid rgba(0,0,0,.8);
+}
+
 .theme_bin label {
-    max-width: 250px;
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+}
+
+.theme_bin label.list-group-item {
+    margin-bottom: 0px;
 }
 
 .colorSelector {
     max-height: 50vh;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
