@@ -188,6 +188,8 @@ function get_component($name, $context = null, $echo = true, $default = "") {
 function is_component_empty($name, $context = null) {
     $comp = get_component($name, $context, false);
     $comp = strip_tags($comp, "<img><object><video><a>");
+    $comp = trim($comp);
+    $comp = str_replace("&nbsp;", "", $comp);
     if ($comp == "" && !isset($_GET['edit'])) {
         return true;
     }
@@ -219,11 +221,20 @@ function get_complex_component($name, $context = null, $include = []) {
     $filtered = [];
     foreach ($include as $i) {
         if (array_key_exists($i, $content)) {
-            $filtered[$i] = $content[$i];
+            if (!isset($_GET['edit']) && $i == "image" && $content[$i] == URL . "/static/img/no-image.svg") {
+                $filtered[$i] = "";
+            } else {
+                $filtered[$i] = $content[$i];
+            }
         } else {
-            $filtered[$i] = "";
+            if (isset($_GET['edit']) && $i == "image") {
+                $filtered[$i] = URL . "/static/img/no-image.svg";
+            } else {
+                $filtered[$i] = "";
+            }
         }
     }
+
     return $filtered;
 }
 
@@ -239,6 +250,9 @@ function is_complex_empty($name, $context = null) {
     }
     $comp = get_complex_component($name, $context);
     foreach ($comp as $c => $v) {
+        if ($c == "image" && $v == URL . "/static/img/no-image.svg") {
+            continue;
+        }
         if (isset($v) && !empty($v)) {
             return false;
         }

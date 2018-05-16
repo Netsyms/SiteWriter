@@ -12,6 +12,13 @@ $base = FILE_UPLOAD_PATH;
 
 $filepath = "";
 
+if ($_GET['file'] === URL . "/static/img/no-image.svg") {
+    header("Content-Type: image/svg+xml");
+    ob_end_flush();
+
+    exit(file_get_contents(__DIR__ . "/../static/img/blankpixel.svg"));
+}
+
 if (isset($_GET['file'])) {
     $file = $_GET['file'];
     $filepath = $base . $file;
