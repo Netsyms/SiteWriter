@@ -322,6 +322,16 @@ switch ($VARS['action']) {
         }
         returnToSender("file_deleted");
         break;
+    case "unsplash_download":
+        Crew\Unsplash\HttpClient::init([
+            'applicationId' => UNSPLASH_ACCESSKEY,
+            'secret' => UNSPLASH_SECRETKEY,
+            'utmSource' => UNSPLASH_UTMSOURCE
+        ]);
+        Crew\Unsplash\Photo::find($VARS['imageid'])->download();
+        header('Content-Type: application/json');
+        exit(json_encode(["status" => "OK"]));
+        break;
     case "signout":
         session_destroy();
         header('Location: index.php');

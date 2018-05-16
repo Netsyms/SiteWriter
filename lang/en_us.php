@@ -127,5 +127,10 @@ define("STRINGS", [
     "navbar title" => "Page title for menu",
     "navbar position" => "Menu position (drag to change position):",
     "remove image" => "Remove image",
-    "site footer links" => "Site Footer Links"
+    "site footer links" => "Site Footer Links",
+    "uploaded files" => "Uploaded Files",
+    "stock photos" => "Free Stock Photos",
+    "load more" => "Load more",
+    "search images" => "Search images",
+    "x results" => "{results} results",
 ]);

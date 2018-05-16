@@ -46,6 +46,8 @@ define("PAGES", [
         "scripts" => [
             "static/js/html5sortable.min.js",
             "static/js/iconselector.js",
+            "static/js/filepicker_local.js",
+            "static/js/filepicker_unsplash.js",
             "static/js/editorparent.js",
         ]
     ],

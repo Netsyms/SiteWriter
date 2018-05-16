@@ -4,6 +4,10 @@ License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at http://mozilla.org/MPL/2.0/.
 */
 
+/*
+ Uploaded file picker
+*/
+
 .filepicker-item {
     cursor: pointer;
     color: #2196F3;
@@ -12,4 +16,34 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #selectedimage {
     max-height: 200px;
     max-width: 200px;
+}
+
+/*
+ Unsplash image picker
+*/
+
+.unsplash-attribution {
+    display: none;
+    background-color: rgba(0,0,0,.5);
+    color: white;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    max-height: 30%;
+    height: 2rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.filepicker-unsplashimg .card-img-top {
+    cursor: pointer;
+}
+
+.filepicker-unsplashimg .card-img-top:hover + .unsplash-attribution {
+    display: block;
+}
+
+.unsplash-attribution p a {
+    color: white;
+    text-decoration: underline;
 }

@@ -5,7 +5,8 @@
     "require": {
         "catfan/medoo": "^1.5",
         "guzzlehttp/guzzle": "^6.2",
-        "geoip2/geoip2": "~2.0"
+        "geoip2/geoip2": "~2.0",
+        "unsplash/unsplash": "^2.4"
     },
     "license": "MPL-2.0",
     "authors": [

@@ -68,7 +68,12 @@ function editComplex(json) {
     } else {
         $("#imageEdit").data("image", content.image);
         if (content.image != "") {
-            $("#imageEdit #selectedimage").attr("src", "public/file.php?file=" + content.image);
+            if (content.image.startsWith("http://") || content.image.startsWith("https://")) {
+                var imgsrc = content.image;
+            } else {
+                var imgsrc = "public/file.php?file=" + content.image;
+            }
+            $("#imageEdit #selectedimage").attr("src", imgsrc);
         }
         function loadComplexImageBrowser(path) {
             $.get("lib/filepicker.php", {
@@ -76,15 +81,8 @@ function editComplex(json) {
                 type: "image"
             }, function (data) {
                 $("#imagepicker").html(data);
-                $("#imagepicker .filepicker-item").click(function () {
-                    if ($(this).data("type") == "dir") {
-                        loadComplexImageBrowser($(this).data("path"));
-                    } else {
-                        var path = $(this).data("path");
-                        $("#imageEdit").data("image", path);
-                        $("#imageEdit #selectedimage").attr("src", "public/file.php?file=" + path);
-                    }
-                })
+                loadFilePickerFolder("/", "image", "complex");
+                setupUnsplash("complex");
             });
         }
         loadComplexImageBrowser();
@@ -112,40 +110,12 @@ function editComplex(json) {
     $("#editModal").modal();
 }
 
-function loadFilePickerFolder(path, type) {
-    var ty = "";
-    switch (type) {
-        case "image":
-            ty = "image";
-            break;
-        case "media":
-            ty = "audio|video";
-            break;
-    }
-    $.get("lib/filepicker.php", {
-        path: path,
-        type: ty
-    }, function (data) {
-        $("#fileBrowseModalBody").html(data);
-        $("#fileBrowseModalBody .filepicker-item").click(function () {
-            if ($(this).data("type") == "dir") {
-                loadFilePickerFolder($(this).data("path"), type);
-            } else {
-                var path = "file.php?file=" + $(this).data("path");
-                var data = {
-                    path: path,
-                    meta: {}
-                };
-                json = JSON.stringify(data);
-                document.getElementById("editorframe").contentWindow.postMessage("picked " + json, "*");
-                $("#fileBrowseModal").modal('hide');
-            }
-        })
-    });
-}
-
 function openFilePicker(type) {
-    loadFilePickerFolder("/", type);
+    $.get("lib/filepicker.php", {}, function (data) {
+        $("#fileBrowseModalBody").html(data);
+        loadFilePickerFolder("/", type);
+        setupUnsplash();
+    });
     $("#fileBrowseModal").modal();
 }
 

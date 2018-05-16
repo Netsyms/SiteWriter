@@ -23,110 +23,60 @@ if (isset($VARS['type']) && $VARS['type'] != "") {
     $type = explode("|", $VARS['type']);
 }
 
-if ($folder == "/") {
-    $folder = "";
+$enableunsplash = ENABLE_UNSPLASH;
+if (count($type) > 0 && !in_array("image", $type)) {
+    $enableunsplash = false;
 }
-
-$fullpath = $base . $folder;
 ?>
 
-<div class="mb-2">
-    <nav aria-label="breadcrumb" class="my-auto">
-        <ol class="breadcrumb m-0">
-            <?php
-            $pathparts = explode("/", "$folder");
-            $pstr = "";
-            for ($i = 0; $i < count($pathparts); $i++) {
-                $p = $pathparts[$i];
-                $pstr .= "/$p";
-                $pstr = "/" . ltrim($pstr, "/");
-                if ($i == 0) {
-                    $p = "<span class=\"fas fa-home\"></span>";
-                }
-                if ($i == count($pathparts) - 1) {
-                    echo "\t<li aria-current=\"page\" class=\"breadcrumb-item active\">$p</li>";
-                } else {
-                    echo "\t<li class=\"breadcrumb-item\"><span class=\"filepicker-item\" data-type=\"dir\" data-path=\"$pstr\">$p</a></li>";
-                }
-                echo "\n";
-            }
-            ?>
-        </ol>
-    </nav>
-</div>
-<div class="list-group">
+<?php
+if ($enableunsplash) {
+    ?>
+    <ul class="nav nav-tabs" id="fileBrowserTabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="uploadedFilesTabBtn" data-toggle="tab" href="#uploadedFilesTab">
+                <i class="fas fa-folder-open"></i> <?php lang('uploaded files'); ?>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="unsplashTabBtn" data-toggle="tab" href="#unsplashTab">
+                <i class="fas fa-image"></i> <?php lang('stock photos'); ?>
+            </a>
+        </li>
+    </ul>
     <?php
-    $files = scandir($fullpath);
-    $count = 0;
-    foreach ($files as $f) {
-        if (strpos($f, '.') !== 0) {
-            $count++;
-            $link = "$folder/$f";
-            $target = "_BLANK";
-            $isdir = false;
-            $icon = "fas fa-file";
-            if (is_dir($fullpath . "/" . $f)) {
-                $isdir = true;
-                $link = "app.php?page=files&path=$folder/$f";
-                $icon = "fas fa-folder";
-                $target = "";
-            } else {
-                $link = "public/file.php?file=$folder/$f";
-                $extension = pathinfo($fullpath . "/" . $f)['extension'];
-                // If we don't have an extension, try using the whole filename
-                if ($extension == "") {
-                    $extension = $f;
-                }
-                $mimetype = "application/octet-stream";
-                // Lookup mimetype from extension
-                if (array_key_exists($extension, $EXT2MIME)) {
-                    $mimetype = $EXT2MIME[$extension];
-                }
+}
+?>
+<div class="tab-content" id="fileBrowserTabContent">
+    <div class="tab-pane fade show active" id="uploadedFilesTab" role="tabpanel" aria-labelledby="uploadedFilesTabBtn">
+        <div class="card" id="uploadedFilesBin">
+        </div>
+    </div>
 
-                $found = true;
-                if (count($type) > 0) {
-                    $found = false;
-                    foreach ($type as $t) {
-                        if (strpos($mimetype, $t) === 0) {
-                            $found = true;
-                            break;
-                        }
-                    }
-                }
-                if (!$found) {
-                    continue;
-                }
-
-                // Lookup icon from mimetype
-                if (array_key_exists($mimetype, $MIMEICONS)) {
-                    $icon = $MIMEICONS[$mimetype];
-                } else { // Allow broad generic <format>/other icons
-                    $mimefirst = explode("/", $mimetype, 2)[0];
-                    if (array_key_exists($mimefirst . "/other", $MIMEICONS)) {
-                        $icon = $MIMEICONS[$mimetype];
-                    }
-                }
-            }
-            ?>
-            <div
-                class="list-group-item filepicker-item"
-                data-type="<?php echo $isdir ? "dir" : "file" ?>"
-                data-path="<?php echo "$folder/$f"; ?>"
-                data-file="<?php echo $f; ?>">
-                <span class="<?php echo $icon; ?> fa-fw"></span> <?php echo $f; ?>
-            </div>
-            <?php
-        }
-    }
-    if ($count == 0) {
+    <?php
+    if ($enableunsplash) {
         ?>
-        <div class="list-group-item text-center">
-            <p class="text-muted">
-                <i class="far fa-folder-open fa-5x fa-fw"></i>
-            </p>
-            <p class="h5 text-muted">
-    <?php lang("nothing here"); ?>
-            </p>
+        <div class="tab-pane fade" id="unsplashTab" role="tabpanel" aria-labelledby="unsplashTabBtn">
+            <div class="card">
+                <div class="card-body">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="unsplashSearch" placeholder="<?php lang("search images"); ?>" />
+                        <div class="input-group-append">
+                            <div class="btn btn-primary" id="unsplashSearchBtn">
+                                <i class="fas fa-search"></i> <?php lang("search"); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <span id="unsplashResults"></span> <span>via <a href="https://unsplash.com/?utm_source=<?php echo urlencode(UNSPLASH_UTMSOURCE); ?>&utm_medium=referral">Unsplash</a></span>
+                </div>
+                <div id="unsplashPhotoBin" class="px-2 pr-3">
+                </div>
+                <div class="card-body">
+                    <button type="button" class="btn btn-primary btn-block" id="unsplashLoadMoreBtn">
+                        <?php lang("load more"); ?>
+                    </button>
+                </div>
+            </div>
         </div>
         <?php
     }

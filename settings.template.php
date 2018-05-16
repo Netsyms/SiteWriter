@@ -48,6 +48,13 @@ define('PRETTY_URLS', false);
 // http://www.maxmind.com
 define('GEOIP_DB', __DIR__ . "/GeoLite2-City.mmdb");
 
+// Unsplash photo integration
+define('ENABLE_UNSPLASH', false);
+define('UNSPLASH_APPID', '');
+define('UNSPLASH_ACCESSKEY', '');
+define('UNSPLASH_SECRETKEY', '');
+define('UNSPLASH_UTMSOURCE', 'SiteWriter');
+
 // Use Captcheck on login screen
 // https://captcheck.netsyms.com
 define("CAPTCHA_ENABLED", FALSE);
