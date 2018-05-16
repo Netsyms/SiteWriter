@@ -101,8 +101,9 @@ function getsiteid() {
         return $sites[0]["siteid"];
     }
     if (count($sites) > 1) {
-        var_dump($sites);
-        die();
+        //var_dump($sites);
+        //die();
+        return $sites[0]['siteid'];
     }
     return $database->get("sites", "siteid");
 }
