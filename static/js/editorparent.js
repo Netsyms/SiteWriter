@@ -71,7 +71,7 @@ function editComplex(json) {
             if (content.image.startsWith("http://") || content.image.startsWith("https://")) {
                 var imgsrc = content.image;
             } else {
-                var imgsrc = "public/file.php?file=" + content.image;
+                var imgsrc = "public/file.php?file=" + content.image.replace("file.php?file=", "");
             }
             $("#imageEdit #selectedimage").attr("src", imgsrc);
         }

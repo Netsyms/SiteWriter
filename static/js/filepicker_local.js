@@ -26,11 +26,11 @@ function loadFilePickerFolder(path, type, pickertype) {
             } else {
                 var path = $(this).data("path");
                 if (typeof pickertype != 'undefined' && pickertype == 'complex') {
-                    $("#imageEdit").data("image", path);
+                    $("#imageEdit").data("image", "file.php?file=" + path);
                     $("#imageEdit #selectedimage").attr("src", "public/file.php?file=" + path);
                 } else {
                     var data = {
-                        path: path,
+                        path: "file.php?file=" + path,
                         meta: {}
                     };
                     json = JSON.stringify(data);
