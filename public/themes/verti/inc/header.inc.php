@@ -14,4 +14,5 @@ header("Link: <https://static.netsyms.net/fonts/open-sans/Open_Sans.css>; rel=pr
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="<?php get_fontawesome_css(); ?>" />
 <link rel="stylesheet" href="<?php get_theme_color_url(); ?>/main.css" />
+<link rel="stylesheet" href="<?php get_theme_url(); ?>/assets/css/sitewriter.css" />
 <?php get_header(); ?>

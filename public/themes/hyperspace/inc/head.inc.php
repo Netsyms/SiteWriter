@@ -12,4 +12,5 @@
 <link rel="stylesheet" href="<?php get_fontawesome_css(); ?>" />
 <!--[if lte IE 9]><link rel="stylesheet" href="<?php get_theme_url(); ?>/assets/css/ie9.css" /><![endif]-->
 <!--[if lte IE 8]><link rel="stylesheet" href="<?php get_theme_url(); ?>/assets/css/ie8.css" /><![endif]-->
+<link rel="stylesheet" href="<?php get_theme_url(); ?>/assets/css/sitewriter.css" />
 <?php get_header(); ?>
