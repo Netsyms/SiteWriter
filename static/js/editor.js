@@ -64,6 +64,10 @@ $(document).ready(function () {
             filePickerCallback = callback;
             parent.postMessage('browse ' + meta.filetype, "*");
         },
+        image_dimensions: false,
+        image_class_list: [
+            {title: 'Autosizing', value: 'img-responsive img-fluid'}
+        ],
         mobile: {
             theme: 'mobile'
         }
