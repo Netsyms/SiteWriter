@@ -30,7 +30,8 @@ define("PAGES", [
     "sitesettings" => [
         "title" => "settings",
         "styles" => [
-            "static/css/themeselector.css"
+            "static/css/sane_columns.css",
+            "static/css/themeselector.css",
         ],
         "scripts" => [
             "static/js/sitesettings.js"
