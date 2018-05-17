@@ -403,17 +403,21 @@ function get_theme_color_url($echo = true) {
  *
  * Format:
  *   Current page:
+ * ```
  *     <li class="$classPrefix$slug $liclass $currentclass">
  *       <a class="$linkclass $currentlinkclass" href="url">
  *         Link Text
  *       </a>
  *     </li>
+ * ```
  *   Other pages:
+ * ```
  *     <li class="$classPrefix$slug $liclass">
  *       <a class="$linkclass" href="url">
  *         Link Text
  *       </a>
  *     </li>
+ * ```
  * @param string $currentpage The page slug to use for context, or null for current.
  * @param string $classPrefix
  * @param string $liclass
