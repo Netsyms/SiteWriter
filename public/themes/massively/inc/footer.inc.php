@@ -21,9 +21,9 @@
     </section>
     <section class="split contact">
         <?php
-        output_conditional('<section class="alt"><h3>Address</h3> <p>[[VAR]]</p></section>', str_replace("\n", "<br />\n", get_setting("address")));
-        output_conditional('<section><h3>Email</h3> <p><a href="mailto:[[VAR]]">[[VAR]]</a></p></section>', get_setting("email"));
-        output_conditional('<section><h3>Phone</h3> <p><a href="tel:[[VAR]]">' . get_setting("phone") . '</a></p></section>', preg_replace("/[^0-9+]/", "", get_setting("phone")));
+        format_special(get_setting("address"), SPECIAL_TYPE_ADDRESS, '<section class="alt"><h3>Address</h3> <p><a href="[[CONTENT]]">[[TITLE]]</a></p></section>');
+        format_special(get_setting("email"), SPECIAL_TYPE_EMAIL, '<section><h3>Email</h3> <p><a href="[[CONTENT]]">[[TITLE]]</a></p></section>');
+        format_special(get_setting("phone"), SPECIAL_TYPE_PHONE, '<section><h3>Phone</h3> <p><a href="[[CONTENT]]">[[TITLE]]</a></p></section>');
         ?>
 
         <section>

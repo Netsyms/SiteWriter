@@ -18,9 +18,8 @@ function get_site_name($echo = true) {
     $title = $db->get('sites', "sitename", ["siteid" => getsiteid()]);
     if ($echo) {
         echo $title;
-    } else {
-        return $title;
     }
+    return $title;
 }
 
 /**
@@ -33,9 +32,8 @@ function get_site_url($echo = true) {
     $url = formatsiteurl($db->get('sites', "url", ["siteid" => getsiteid()]));
     if ($echo) {
         echo $url;
-    } else {
-        return $url;
     }
+    return $url;
 }
 
 /**
@@ -48,9 +46,8 @@ function get_page_title($echo = true) {
     $title = $db->get("pages", "title", ["AND" => ["slug" => getpageslug(), "siteid" => getsiteid()]]);
     if ($echo) {
         echo $title;
-    } else {
-        return $title;
     }
+    return $title;
 }
 
 /**
@@ -62,9 +59,8 @@ function get_page_clean_title($echo = true) {
     $title = strip_tags(get_page_title(false));
     if ($echo) {
         echo $title;
-    } else {
-        return $title;
     }
+    return $title;
 }
 
 /**
@@ -75,9 +71,8 @@ function get_page_clean_title($echo = true) {
 function get_page_slug($echo = true) {
     if ($echo) {
         echo getpageslug();
-    } else {
-        return getpageslug();
     }
+    return getpageslug();
 }
 
 /**
@@ -97,9 +92,8 @@ function get_page_clean_url($echo = true, $slug = null) {
     }
     if ($echo) {
         echo $url;
-    } else {
-        return $url;
     }
+    return $url;
 }
 
 /**
@@ -143,9 +137,8 @@ function get_page_url($echo = true, $slug = null) {
     }
     if ($echo) {
         echo $url;
-    } else {
-        return $url;
     }
+    return $url;
 }
 
 /**
@@ -174,9 +167,8 @@ function get_component($name, $context = null, $echo = true, $default = "") {
     }
     if ($echo) {
         echo $content;
-    } else {
-        return $content;
     }
+    return $content;
 }
 
 /**
@@ -270,9 +262,8 @@ function get_escaped_json($json, $echo = true) {
     $text = htmlspecialchars(json_encode($json), ENT_QUOTES, 'UTF-8');
     if ($echo) {
         echo $text;
-    } else {
-        return $text;
     }
+    return $text;
 }
 
 /**
@@ -290,9 +281,8 @@ function get_url_or_slug($str, $echo = true) {
     }
     if ($echo) {
         echo $url;
-    } else {
-        return $url;
     }
+    return $url;
 }
 
 /**
@@ -316,9 +306,8 @@ function get_file_url($file, $echo = true) {
 
     if ($echo) {
         echo $url;
-    } else {
-        return $url;
     }
+    return $url;
 }
 
 /**
@@ -362,9 +351,8 @@ function get_setting($key, $echo = false) {
     }
     if ($echo) {
         echo $value;
-    } else {
-        return $value;
     }
+    return $value;
 }
 
 /**
@@ -382,9 +370,8 @@ function get_theme_url($echo = true) {
     }
     if ($echo) {
         echo $url;
-    } else {
-        return $url;
     }
+    return $url;
 }
 
 /**
@@ -407,9 +394,8 @@ function get_theme_color_url($echo = true) {
     $url = get_theme_url(false) . "/colors/" . $site["color"];
     if ($echo) {
         echo $url;
-    } else {
-        return $url;
     }
+    return $url;
 }
 
 /**
@@ -480,9 +466,8 @@ function get_fontawesome_js($echo = true) {
     $url = "assets/fontawesome-all.min.js";
     if ($echo) {
         echo $url;
-    } else {
-        return $url;
     }
+    return $url;
 }
 
 /**
@@ -494,9 +479,8 @@ function get_fontawesome_css($echo = true) {
     $url = "assets/css/fontawesome-all.min.css";
     if ($echo) {
         echo $url;
-    } else {
-        return $url;
     }
+    return $url;
 }
 
 /**
@@ -600,4 +584,65 @@ function get_socialmedia_urls() {
         }
     }
     return $urls;
+}
+
+define("SPECIAL_TYPE_NONE", 0);
+define("SPECIAL_TYPE_PHONE", 1);
+define("SPECIAL_TYPE_EMAIL", 2);
+define("SPECIAL_TYPE_LINEBREAKS", 3);
+define("SPECIAL_TYPE_ADDRESS", 4);
+/**
+ * Take $text, format it according to $type,
+ * replace [[CONTENT]] in $template with it,
+ * and replace [[TITLE]] with $title (or the unchanged $text if $title is null)
+ *
+ * $type may be one of the following:
+ * <ul>
+ * <li>`SPECIAL_TYPE_PHONE`: `tel:1234567890`</li>
+ * <li>`SPECIAL_TYPE_EMAIL`: `mailto:address@example.com`</li>
+ * <li>`SPECIAL_TYPE_LINEBREAKS`: Replaces `\n` with `<br />\n`</li>
+ * <li>`SPECIAL_TYPE_ADDRESS`: Creates a link to open Google Maps, and runs LINEBREAKS on $title</li>
+ * <li>`SPECIAL_TYPE_NONE`: Does no text manipulation.</li>
+ * </ul>
+ *
+ * @param string $text
+ * @param int $type
+ * @param string $template
+ * @param string $title
+ * @param boolean $echo default true
+ * @param boolean $conditional Act as output_conditional() and not return anything if $text is empty
+ * @return string
+ */
+function format_special($text, $type = SPECIAL_TYPE_NONE, $template = "", $title = null, $echo = true, $conditional = true) {
+    if ($text == "") {
+        return "";
+    }
+    if (is_null($title)) {
+        $title = $text;
+    }
+    $val = "";
+    switch ($type) {
+        case SPECIAL_TYPE_PHONE:
+            $val = "tel:" . preg_replace("/[^0-9+]/", "", $text);
+            break;
+        case SPECIAL_TYPE_EMAIL:
+            $val = "mailto:" . $text;
+            break;
+        case SPECIAL_TYPE_LINEBREAKS:
+            $val = str_replace("\n", "<br />\n", $text);
+            break;
+        case SPECIAL_TYPE_ADDRESS:
+            $val = "https://www.google.com/maps/dir/?api=1&destination=" . urlencode(str_replace("\n", " ", $text));
+            $title = str_replace("\n", "<br />\n", $title);
+            break;
+        default:
+            $val = $text;
+            break;
+    }
+    $out = str_replace("[[CONTENT]]", $val, $template);
+    $out = str_replace("[[TITLE]]", $title, $out);
+    if ($echo) {
+        echo $out;
+    }
+    return $out;
 }

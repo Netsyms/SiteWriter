@@ -27,9 +27,9 @@
         <div class="col-12 col-md-6">
             <?php output_conditional("<h4>[[VAR]]</h4>", get_setting("businessname")); ?>
             <?php
-            output_conditional('<div class="d-flex"><div class="mr-2"><i class="fas fa-phone fa-fw"></i></div> <div><a style="font-size: 130%; color: inherit;" href="tel:[[VAR]]">' . get_setting("phone") . '</a></div></div>', preg_replace("/[^0-9+]/", "", get_setting("phone")));
-            output_conditional('<div class="d-flex"><div class="mr-2"><i class="fas fa-map fa-fw"></i></div> <div>[[VAR]]</div></div>', str_replace("\n", "<br />\n", get_setting("address")));
-            output_conditional('<div class="d-flex"><div class="mr-2"><i class="fas fa-envelope fa-fw"></i></div> <div>[[VAR]]</div></div>', get_setting("email"));
+            format_special(get_setting("phone"), SPECIAL_TYPE_PHONE, '<div class="d-flex"><div class="mr-2"><i class="fas fa-phone fa-fw"></i></div> <div><a style="font-size: 130%; color: inherit;" href="[[CONTENT]]">[[TITLE]]</a></div></div>');
+            format_special(get_setting("address"), SPECIAL_TYPE_ADDRESS, '<div class="d-flex"><div class="mr-2"><i class="fas fa-map fa-fw"></i></div> <div><a href="[[CONTENT]]">[[TITLE]]</a></div></div>');
+            format_special(get_setting("email"), SPECIAL_TYPE_EMAIL, '<div class="d-flex"><div class="mr-2"><i class="fas fa-envelope fa-fw"></i></div> <div><a href="[[CONTENT]]">[[TITLE]]</a></div></div>');
             ?>
         </div>
     </div>

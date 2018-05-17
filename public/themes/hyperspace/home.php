@@ -183,9 +183,9 @@ include __DIR__ . "/inc/head.inc.php";
                 <section>
                     <ul class="contact">
                         <?php
-                        output_conditional('<li><h3>Address</h3> <span>[[VAR]]</span></li>', str_replace("\n", "<br />\n", get_setting("address")));
-                        output_conditional('<li><h3>Email</h3> <a href="mailto:[[VAR]]">[[VAR]]</a></li>', get_setting("email"));
-                        output_conditional('<li><h3>Phone</h3> <a href="tel:[[VAR]]">' . get_setting("phone") . '</a></li>', preg_replace("/[^0-9+]/", "", get_setting("phone")));
+                        format_special(get_setting("address"), SPECIAL_TYPE_ADDRESS, '<li><h3>Address</h3> <a href="[[CONTENT]]">[[TITLE]]</a></li>');
+                        format_special(get_setting("email"), SPECIAL_TYPE_EMAIL, '<li><h3>Email</h3> <a href="[[CONTENT]]">[[TITLE]]</a></li>');
+                        format_special(get_setting("phone"), SPECIAL_TYPE_PHONE, '<li><h3>Phone</h3> <a href="[[CONTENT]]">[[TITLE]]</a></li>');
                         ?>
                         <?php
                         $social = get_socialmedia_urls();

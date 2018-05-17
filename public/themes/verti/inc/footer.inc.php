@@ -8,9 +8,11 @@
                 <section class="widget contact">
                     <?php output_conditional("<h3>[[VAR]]</h3>", get_setting("businessname")); ?>
                     <p>
-                        <?php output_conditional('<div style="display: flex;"><div style="margin-right: 10px;"><i class="fas fa-phone fa-fw"></i></div> <div style="font-size: 130%;"><a href="tel:[[VAR]]">' . get_setting("phone") . '</a></div></div>', preg_replace("/[^0-9+]/", "", get_setting("phone"))); ?>
-                        <?php output_conditional('<div style="display: flex;"><div style="margin-right: 10px;"><i class="fas fa-map fa-fw"></i></div> <div>[[VAR]]</div></div>', str_replace("\n", "<br />\n", get_setting("address"))); ?>
-                        <?php output_conditional('<div style="display: flex;"><div style="margin-right: 10px;"><i class="fas fa-envelope fa-fw"></i></div> <div>[[VAR]]</div></div>', get_setting("email")); ?>
+                        <?php
+                        format_special(get_setting("phone"), SPECIAL_TYPE_PHONE, '<div style="display: flex;"><div style="margin-right: 10px;"><i class="fas fa-phone fa-fw"></i></div> <div style="font-size: 130%;"><a href="[[CONTENT]]">[[TITLE]]</a></div></div>');
+                        format_special(get_setting("address"), SPECIAL_TYPE_ADDRESS, '<div style="display: flex;"><div style="margin-right: 10px;"><i class="fas fa-map fa-fw"></i></div> <div><a href="[[CONTENT]]">[[TITLE]]</a></div></div>');
+                        format_special(get_setting("email"), SPECIAL_TYPE_EMAIL, '<div style="display: flex;"><div style="margin-right: 10px;"><i class="fas fa-envelope fa-fw"></i></div> <div><a href="[[CONTENT]]">[[TITLE]]</a></div></div>');
+                        ?>
                     </p>
                     <ul>
                         <?php
