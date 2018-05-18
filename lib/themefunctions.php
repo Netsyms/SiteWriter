@@ -43,7 +43,12 @@ function get_site_url($echo = true) {
  */
 function get_page_title($echo = true) {
     $db = getdatabase();
-    $title = $db->get("pages", "title", ["AND" => ["slug" => getpageslug(), "siteid" => getsiteid()]]);
+    $slug = getpageslug();
+    if (is_null($slug)) {
+        $title = "404 Page Not Found";
+    } else {
+        $title = $db->get("pages", "title", ["AND" => ["slug" => $slug, "siteid" => getsiteid()]]);
+    }
     if ($echo) {
         echo $title;
     }
@@ -152,7 +157,20 @@ function get_page_url($echo = true, $slug = null) {
 function get_component($name, $context = null, $echo = true, $default = "") {
     $db = getdatabase();
     if ($context == null) {
-        $context = get_page_slug(false);
+        $context = getpageslug();
+        if ($context == null) {
+            $context = "404";
+        }
+    }
+    if ($context == "404") {
+        if ($name == "content") {
+            if ($echo) {
+                echo "The requested page could not be found.";
+            }
+            return "The requested page could not be found.";
+        } else {
+            return "";
+        }
     }
     $pageid = $db->get("pages", "pageid", ["AND" => ["slug" => $context, "siteid" => getsiteid()]]);
     $content = "";
@@ -198,7 +216,10 @@ function is_component_empty($name, $context = null) {
 function get_complex_component($name, $context = null, $include = []) {
     $db = getdatabase();
     if ($context == null) {
-        $context = get_page_slug(false);
+        $context = getpageslug();
+        if ($context == "404") {
+            return [];
+        }
     }
     $pageid = $db->get("pages", "pageid", ["AND" => ["slug" => $context, "siteid" => getsiteid()]]);
     $content = ["icon" => "", "link" => "", "text" => ""];
@@ -595,6 +616,7 @@ define("SPECIAL_TYPE_PHONE", 1);
 define("SPECIAL_TYPE_EMAIL", 2);
 define("SPECIAL_TYPE_LINEBREAKS", 3);
 define("SPECIAL_TYPE_ADDRESS", 4);
+
 /**
  * Take $text, format it according to $type,
  * replace [[CONTENT]] in $template with it,
