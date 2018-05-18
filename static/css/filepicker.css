@@ -39,7 +39,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
     cursor: pointer;
 }
 
-.filepicker-unsplashimg .card-img-top:hover + .unsplash-attribution {
+.filepicker-unsplashimg .card-img-top:hover + .unsplash-attribution, .unsplash-attribution:hover {
     display: block;
 }
 
