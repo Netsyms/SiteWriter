@@ -51,6 +51,11 @@ if (array_key_exists($extension, $EXT2MIME)) {
 header("Content-Type: $mimetype");
 header('Content-Length: ' . filesize($filepath));
 header("X-Content-Type-Options: nosniff");
+$seconds_to_cache = 3600;
+$ts = gmdate("D, d M Y H:i:s", time() + $seconds_to_cache) . " GMT";
+header("Expires: $ts");
+header("Pragma: cache");
+header("Cache-Control: max-age=$seconds_to_cache");
 
 ob_end_flush();
 
