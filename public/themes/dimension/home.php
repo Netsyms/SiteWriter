@@ -27,12 +27,12 @@
     <!-- Main -->
     <div id="main">
     </div>
-    
+
     <?php include __DIR__ . "/inc/bg-edit.inc.php"; ?>
 
     <!-- Footer -->
     <footer id="footer">
-        <p class="copyright"><?php output_conditional("&copy; " . date('Y') . " [[VAR]].", get_setting("businessname")); ?> Design: <a href="https://html5up.net">HTML5 UP</a> and <a href="https://netsyms.com">Netsyms</a>.</p>
+        <p class="copyright"><?php output_conditional("&copy; " . date('Y') . " [[VAR]] |", get_setting("businessname")); ?> Design: <a href="https://html5up.net">HTML5 UP</a> and <a href="https://netsyms.com">Netsyms</a>.</p>
     </footer>
 
 </div>
