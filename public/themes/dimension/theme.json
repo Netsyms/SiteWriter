@@ -1,0 +1,24 @@
+{
+    "name": "Dimension",
+    "singlepage": false,
+    "templates": {
+        "default": {
+            "title": "Default",
+            "description": "A regular page."
+        },
+        "home": {
+            "title": "Home",
+            "description": "A basic home page with menu links."
+        },
+        "contact": {
+            "title": "Contact",
+            "description": "A page with a contact form."
+        }
+    },
+    "colors": {
+        "default": {
+            "title": "Default",
+            "description": ""
+        }
+    }
+}
