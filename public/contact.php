@@ -7,15 +7,30 @@
 
 require __DIR__ . "/../lib/requiredpublic.php";
 
-if (empty($_POST['name']) || empty($_POST['message']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+function output_card($content) {
     ?>
     <!DOCTYPE html>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Contact Form</title>
-    <p>Whoops!  You didn't fill out the contact form properly.  <a href="javascript:history.back()">Go back</a> and try again.</p>
+    <style><?php echo file_get_contents(__DIR__ . "/../static/css/bootstrap.min.css"); ?></style>
+    <div class="container d-flex justify-content-center pt-4">
+        <div class="card mt-4">
+            <div class="card-body text-center">
+                <?php echo $content; ?>
+            </div>
+        </div>
+    </div>
     <?php
-    die("");
+}
+
+if (empty($_POST['name']) || empty($_POST['message']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    $content = <<<END
+<p>Whoops!  You didn't fill out the contact form properly.</p>
+<p><a href="javascript:history.back()" class="btn btn-primary btn-sm">Go back</a> and try again.</p>
+END;
+    output_card($content);
+    die();
 }
 
 $database->insert("messages", [
@@ -26,4 +41,10 @@ $database->insert("messages", [
     "date" => date("Y-m-d H:i:s")
 ]);
 
-header('Location: ./');
+$content = <<<END
+<h2 class="card-title">Thanks!</h2>
+<p>Your message has been sent!</p>
+<a href="./" class="btn btn-success">Continue</a>
+END;
+
+output_card($content);
