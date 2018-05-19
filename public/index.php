@@ -11,7 +11,25 @@ require_once __DIR__ . "/../lib/themefunctions.php";
 include __DIR__ . "/../lib/gatheranalytics.php";
 
 if (!getsiteid()) {
-    sendError("No website has been created yet.  Please open " . SITE_TITLE . " and make one.");
+    ?>
+    <!DOCTYPE html>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Welcome!</title>
+    <style><?php echo file_get_contents(__DIR__ . "/../static/css/bootstrap.min.css"); ?></style>
+    <div class="container d-flex justify-content-center pt-4">
+        <div class="card mt-4">
+            <div class="card-body text-center">
+                <h2 class="card-title">Welcome!</h2>
+                <p>You're seeing this message because no website has been created yet.
+                    <br />
+                    Open <?php echo SITE_TITLE; ?> to make one.</p>
+                <p><a href="<?php echo PORTAL_URL; ?>" class="btn btn-primary">Log In</a></p>
+            </div>
+        </div>
+    </div>
+    <?php
+    die();
 }
 
 if (isset($_GET['theme']) && file_exists(__DIR__ . "/themes/" . preg_replace("/[^A-Za-z0-9]/", '', $_GET['theme']) . "/theme.json")) {
