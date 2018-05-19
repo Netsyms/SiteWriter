@@ -14,7 +14,12 @@ use GeoIp2\Database\Reader;
 require_once __DIR__ . "/requiredpublic.php";
 
 if (!$database->has("settings", ["AND" => ["siteid" => getsiteid(), "key" => "analytics", "value" => "off"]]) && !isset($_GET['edit'])) {
+
     try {
+
+        if (isset($_SERVER['HTTP_DNT']) && $_SERVER['HTTP_DNT'] === "1") {
+            throw new Exception("Do-Not-Track header detected, skipping analytics");
+        }
 
         $time = date("Y-m-d H:i:s");
 
@@ -101,5 +106,8 @@ if (!$database->has("settings", ["AND" => ["siteid" => getsiteid(), "key" => "an
         }
     } catch (Exception $e) {
         // Silently fail so the rest of the site still works
+        if (DEBUG) {
+            echo "<!-- Analytics error: " . $e->getMessage() . " -->";
+        }
     }
 }
