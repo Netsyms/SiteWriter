@@ -18,10 +18,16 @@ if (!account_has_permission($_SESSION['username'], "SITEWRITER")) {
 $editing = true;
 
 $siteid = "";
-$sitedata = [];
+$sitedata = [
+    "siteid" => "",
+    "sitename" => "",
+    "url" => "",
+    "theme" => "",
+    "color" => ""
+];
 $settings = [];
 
-if (!is_empty($VARS['siteid'])) {
+if (isset($VARS['siteid']) && !is_empty($VARS['siteid'])) {
     if ($database->has('sites', ['siteid' => $VARS['siteid']])) {
         $siteid = $VARS['siteid'];
         $sitedata = $database->select(
@@ -51,6 +57,14 @@ if (!is_empty($VARS['siteid'])) {
     }
 } else {
     $editing = false;
+}
+
+function getsetting($name) {
+    global $settings;
+    if (isset($settings[$name])) {
+        return htmlspecialchars($settings[$name]);
+    }
+    return "";
 }
 ?>
 
@@ -186,28 +200,28 @@ if (!is_empty($VARS['siteid'])) {
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="businessname"><i class="fas fa-font"></i> <?php lang("name"); ?></label></span>
                                 </div>
-                                <input type="text" class="form-control" name="settings[businessname]" id="businessname" value="<?php echo htmlspecialchars($settings["businessname"]); ?>" />
+                                <input type="text" class="form-control" name="settings[businessname]" id="businessname" value="<?php echo getsetting("businessname"); ?>" />
                             </div>
 
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="phone"><i class="fas fa-phone"></i> <?php lang("phone"); ?></label></span>
                                 </div>
-                                <input type="text" class="form-control" name="settings[phone]" id="phone" value="<?php echo htmlspecialchars($settings["phone"]); ?>" />
+                                <input type="text" class="form-control" name="settings[phone]" id="phone" value="<?php echo getsetting("phone"); ?>" />
                             </div>
 
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="address"><i class="fas fa-map-marker"></i> <?php lang("address"); ?></label></span>
                                 </div>
-                                <textarea class="form-control" name="settings[address]" id="address" rows="2"><?php echo htmlspecialchars($settings["address"]); ?></textarea>
+                                <textarea class="form-control" name="settings[address]" id="address" rows="2"><?php echo getsetting("address"); ?></textarea>
                             </div>
 
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="email"><i class="fas fa-envelope"></i> <?php lang("email"); ?></label></span>
                                 </div>
-                                <input type="email" class="form-control" name="settings[email]" id="email" value="<?php echo htmlspecialchars($settings["email"]); ?>" />
+                                <input type="email" class="form-control" name="settings[email]" id="email" value="<?php echo getsetting("email"); ?>" />
                             </div>
                         </div>
                     </div>
@@ -217,13 +231,13 @@ if (!is_empty($VARS['siteid'])) {
                         <div class="card-body">
                             <h5 class="card-title"><i class="fas fa-chart-bar"></i> <?php lang("analytics"); ?></h5>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="settings[analytics]" value="" id="analytics_on" <?php echo ($settings["analytics"] === "off" ? "" : "checked") ?>>
+                                <input class="form-check-input" type="radio" name="settings[analytics]" value="" id="analytics_on" <?php echo ((isset($settings["analytics"]) && $settings["analytics"] === "off") ? "" : "checked") ?>>
                                 <label class="form-check-label" for="analytics_on">
                                     <?php lang("enable built-in analytics"); ?>
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="settings[analytics]" value="off" id="analytics_off" <?php echo ($settings["analytics"] === "off" ? "checked" : "") ?>>
+                                <input class="form-check-input" type="radio" name="settings[analytics]" value="off" id="analytics_off" <?php echo ((isset($settings["analytics"]) && $settings["analytics"] === "off") ? "checked" : "") ?>>
                                 <label class="form-check-label" for="analytics_off">
                                     <?php lang("disable built-in analytics"); ?>
                                 </label>
@@ -235,7 +249,7 @@ if (!is_empty($VARS['siteid'])) {
                     <div class="card mt-4 mb-4">
                         <div class="card-body">
                             <h5 class="card-title"><label for="extracode"><i class="fas fa-code"></i> <?php lang("extra code"); ?></label></h5>
-                            <textarea class="form-control" name="settings[extracode]" id="extracode" placeholder="<script></script>" rows="5"><?php echo $settings["extracode"]; ?></textarea>
+                            <textarea class="form-control" name="settings[extracode]" id="extracode" placeholder="<script></script>" rows="5"><?php echo (isset($settings["extracode"]) ? $settings["extracode"] : ""); ?></textarea>
                         </div>
                     </div>
                 </div>
@@ -250,79 +264,79 @@ if (!is_empty($VARS['siteid'])) {
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="facebook"><i class="fab fa-facebook"></i> Facebook</label></span>
                                 </div>
-                                <input type="text" class="form-control" name="settings[facebook]" id="facebook" value="<?php echo htmlspecialchars($settings["facebook"]); ?>" />
+                                <input type="text" class="form-control" name="settings[facebook]" id="facebook" value="<?php echo getsetting("facebook"); ?>" />
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="twitter"><i class="fab fa-twitter"></i> Twitter</label></span>
                                 </div>
-                                <input type="text" class="form-control" name="settings[twitter]" id="twitter" value="<?php echo htmlspecialchars($settings["twitter"]); ?>" />
+                                <input type="text" class="form-control" name="settings[twitter]" id="twitter" value="<?php echo getsetting("twitter"); ?>" />
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="youtube"><i class="fab fa-youtube"></i> Youtube</label></span>
                                 </div>
-                                <input type="text" class="form-control" name="settings[youtube]" id="youtube" value="<?php echo htmlspecialchars($settings["youtube"]); ?>" />
+                                <input type="text" class="form-control" name="settings[youtube]" id="youtube" value="<?php echo getsetting("youtube"); ?>" />
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="instagram"><i class="fab fa-instagram"></i> Instagram</label></span>
                                 </div>
-                                <input type="text" class="form-control" name="settings[instagram]" id="instagram" value="<?php echo htmlspecialchars($settings["instagram"]); ?>" />
+                                <input type="text" class="form-control" name="settings[instagram]" id="instagram" value="<?php echo getsetting("instagram"); ?>" />
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="snapchat"><i class="fab fa-snapchat"></i> Snapchat</label></span>
                                 </div>
-                                <input type="text" class="form-control" name="settings[snapchat]" id="snapchat" value="<?php echo htmlspecialchars($settings["snapchat"]); ?>" />
+                                <input type="text" class="form-control" name="settings[snapchat]" id="snapchat" value="<?php echo getsetting("snapchat"); ?>" />
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="google-plus"><i class="fab fa-google-plus"></i> Google+</label></span>
                                 </div>
-                                <input type="text" class="form-control" name="settings[google-plus]" id="google-plus" value="<?php echo htmlspecialchars($settings["google-plus"]); ?>" />
+                                <input type="text" class="form-control" name="settings[google-plus]" id="google-plus" value="<?php echo getsetting("google-plus"); ?>" />
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="skype"><i class="fab fa-skype"></i> Skype</label></span>
                                 </div>
-                                <input type="text" class="form-control" name="settings[skype]" id="skype" value="<?php echo htmlspecialchars($settings["skype"]); ?>" />
+                                <input type="text" class="form-control" name="settings[skype]" id="skype" value="<?php echo getsetting("skype"); ?>" />
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="telegram"><i class="fab fa-telegram"></i> Telegram</label></span>
                                 </div>
-                                <input type="text" class="form-control" name="settings[telegram]" id="telegram" value="<?php echo htmlspecialchars($settings["telegram"]); ?>" />
+                                <input type="text" class="form-control" name="settings[telegram]" id="telegram" value="<?php echo getsetting("telegram"); ?>" />
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="vimeo"><i class="fab fa-vimeo"></i> Vimeo</label></span>
                                 </div>
-                                <input type="text" class="form-control" name="settings[vimeo]" id="vimeo" value="<?php echo htmlspecialchars($settings["vimeo"]); ?>" />
+                                <input type="text" class="form-control" name="settings[vimeo]" id="vimeo" value="<?php echo getsetting("vimeo"); ?>" />
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp</label></span>
                                 </div>
-                                <input type="text" class="form-control" name="settings[whatsapp]" id="whatsapp" value="<?php echo htmlspecialchars($settings["whatsapp"]); ?>" />
+                                <input type="text" class="form-control" name="settings[whatsapp]" id="whatsapp" value="<?php echo getsetting("whatsapp"); ?>" />
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="linkedin"><i class="fab fa-linkedin"></i> LinkedIn</label></span>
                                 </div>
-                                <input type="text" class="form-control" name="settings[linkedin]" id="linkedin" value="<?php echo htmlspecialchars($settings["linkedin"]); ?>" />
+                                <input type="text" class="form-control" name="settings[linkedin]" id="linkedin" value="<?php echo getsetting("linkedin"); ?>" />
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="diaspora"><i class="fas fa-asterisk"></i> diaspora*</label></span>
                                 </div>
-                                <input type="text" class="form-control" name="settings[diaspora]" id="diaspora" value="<?php echo htmlspecialchars($settings["diaspora"]); ?>" />
+                                <input type="text" class="form-control" name="settings[diaspora]" id="diaspora" value="<?php echo getsetting("diaspora"); ?>" />
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="mastodon"><i class="fab fa-mastodon"></i> Mastodon</label></span>
                                 </div>
-                                <input type="text" class="form-control" name="settings[mastodon]" id="mastodon" value="<?php echo htmlspecialchars($settings["mastodon"]); ?>" />
+                                <input type="text" class="form-control" name="settings[mastodon]" id="mastodon" value="<?php echo getsetting("mastodon"); ?>" />
                             </div>
                         </div>
                     </div>
@@ -335,7 +349,11 @@ if (!is_empty($VARS['siteid'])) {
                             <div id="footer-link-bin">
                                 <?php
                                 $footerset = false;
-                                $footerlinks = json_decode($settings['footerlinks'], true);
+                                if (isset($settings['footerlinks'])) {
+                                    $footerlinks = json_decode($settings['footerlinks'], true);
+                                } else {
+                                    $footerlinks = null;
+                                }
                                 if (is_array($footerlinks)) {
                                     $footerset = true;
                                 }
