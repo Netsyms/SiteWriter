@@ -274,6 +274,12 @@ function getsetting($name) {
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="reddit"><i class="fab fa-reddit"></i> Reddit</label></span>
+                                </div>
+                                <input type="text" class="form-control" name="settings[reddit]" id="reddit" value="<?php echo getsetting("reddit"); ?>" />
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="youtube"><i class="fab fa-youtube"></i> Youtube</label></span>
                                 </div>
                                 <input type="text" class="form-control" name="settings[youtube]" id="youtube" value="<?php echo getsetting("youtube"); ?>" />

@@ -542,6 +542,11 @@ function get_socialmedia_urls() {
             "setting" => "twitter"
         ],
         [
+            "icon" => "fab fa-reddit",
+            "name" => "Reddit",
+            "setting" => "reddit"
+        ],
+        [
             "icon" => "fab fa-youtube",
             "name" => "YouTube",
             "setting" => "youtube"
