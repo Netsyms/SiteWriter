@@ -29,6 +29,7 @@ define("STRINGS", [
     "login server user data error" => "The login server refused to provide account information.  Try again or contact technical support.",
     "captcha error" => "There was a problem with the CAPTCHA (robot test).  Try again.",
     "actions" => "Actions",
+    "no permission" => "You don't have permission to do that.",
     "home" => "Home",
     "editor" => "Editor",
     "sites" => "Sites",
@@ -133,4 +134,8 @@ define("STRINGS", [
     "load more" => "Load more",
     "search images" => "Search images",
     "x results" => "{results} results",
+    "reply" => "Reply",
+    "delete" => "Delete",
+    "new folder" => "New Folder",
+    "new" => "New",
 ]);

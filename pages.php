@@ -8,7 +8,7 @@
 define("PAGES", [
     "home" => [
         "title" => "home",
-        "navbar" => true,
+        "navbar" => false,
         "icon" => "fas fa-home"
     ],
     "sites" => [

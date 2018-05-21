@@ -7,7 +7,15 @@ require_once __DIR__ . '/../required.php';
 
 redirectifnotloggedin();
 
-if (!is_empty($VARS['arg'])) {
+require_once __DIR__ . "/../lib/login.php";
+if (!account_has_permission($_SESSION['username'], "SITEWRITER") && !account_has_permission($_SESSION['username'], "SITEWRITER_EDIT")) {
+    if ($_GET['msg'] != "no_permission") {
+        header("Location: app.php?page=editor&msg=no_permission");
+    }
+    die();
+}
+
+if (isset($VARS['arg']) && !is_empty($VARS['arg'])) {
     // Allow action.php to do a better redirect
     $VARS['siteid'] = $VARS['arg'];
     if (strpos($VARS['arg'], "|") !== FALSE) {

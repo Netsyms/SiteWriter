@@ -89,4 +89,8 @@ define("MESSAGES", [
         "string" => "folder not created",
         "type" => "danger"
     ],
+    "no_permission" => [
+        "string" => "no permission",
+        "type" => "danger"
+    ]
 ]);

@@ -6,6 +6,9 @@
 require_once __DIR__ . '/../required.php';
 
 redirectifnotloggedin();
+
+header("Location: app.php?page=sites");
+die();
 ?>
 <div class="card-deck">
     <?php
@@ -49,7 +52,7 @@ redirectifnotloggedin();
     $visits_week = count($uuids);
     $views_week = count($visitors);
     ?>
-    <div class="card bg-<?php echo ($lowcnt > 0 ? "deep-orange" : "green"); ?> text-light">
+    <div class="card bg-green text-light">
         <div class="card-body">
             <h4 class="card-title"><?php lang("this week") ?></h4>
             <h1><i class="fas fa-fw fa-users"></i> <?php echo $visits_week; ?> <?php

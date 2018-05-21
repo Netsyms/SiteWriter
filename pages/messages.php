@@ -6,6 +6,14 @@
 require_once __DIR__ . '/../required.php';
 
 redirectifnotloggedin();
+
+require_once __DIR__ . "/../lib/login.php";
+if (!account_has_permission($_SESSION['username'], "SITEWRITER") && !account_has_permission($_SESSION['username'], "SITEWRITER_CONTACT")) {
+    if ($_GET['msg'] != "no_permission") {
+        header("Location: app.php?page=messages&msg=no_permission");
+    }
+    die();
+}
 ?>
 <table id="msgtable" class="table table-bordered table-hover table-sm">
     <thead>

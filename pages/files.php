@@ -7,6 +7,15 @@ require_once __DIR__ . '/../required.php';
 
 redirectifnotloggedin();
 
+require_once __DIR__ . "/../lib/login.php";
+if (!account_has_permission($_SESSION['username'], "SITEWRITER") && !account_has_permission($_SESSION['username'], "SITEWRITER_FILES") && !account_has_permission($_SESSION['username'], "SITEWRITER_EDIT")) {
+    // Note: the EDIT permission is valid here because content editors can browse files anyways
+    if ($_GET['msg'] != "no_permission") {
+        header("Location: app.php?page=files&msg=no_permission");
+    }
+    die();
+}
+
 include_once __DIR__ . "/../lib/mimetypes.php";
 
 $base = FILE_UPLOAD_PATH;
@@ -111,7 +120,7 @@ $fullpath = $base . $folder;
                         } else { // Allow broad generic <format>/other icons
                             $mimefirst = explode("/", $mimetype, 2)[0];
                             if (array_key_exists($mimefirst . "/other", $MIMEICONS)) {
-                                $icon = $MIMEICONS[$mimetype];
+                                $icon = $MIMEICONS[$mimefirst . "/other"];
                             }
                         }
                     }

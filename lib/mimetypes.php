@@ -69,6 +69,7 @@ $MIMEICONS = [
     "audio/x-wav" => "fas fa-file-audio",
     "audio/webm" => "fas fa-file-audio",
     "audio/midi" => "fas fa-music",
+    "audio/mpeg" => "fas fa-music",
     "audio/3gpp" => "fas fa-file-audio",
     "audio/3gpp2" => "fas fa-file-audio",
     "audio/other" => "fas fa-file-audio",

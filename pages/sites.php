@@ -7,6 +7,12 @@ require_once __DIR__ . '/../required.php';
 require_once __DIR__ . '/../lib/util.php';
 
 redirectifnotloggedin();
+
+require_once __DIR__ . "/../lib/login.php";
+$showbuttons = true;
+if (!account_has_permission($_SESSION['username'], "SITEWRITER") && !account_has_permission($_SESSION['username'], "SITEWRITER_EDIT")) {
+    $showbuttons = false;
+}
 ?>
 <div class="btn-group mb-2">
     <a href="app.php?page=sitesettings" class="btn btn-success"><i class="fas fa-plus"></i> <?php lang("new site"); ?></a>
@@ -37,8 +43,14 @@ redirectifnotloggedin();
             <tr>
                 <td></td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="app.php?page=editor&siteid=<?php echo $site['siteid']; ?>"><i class="fas fa-edit"></i> <?php lang("editor"); ?></a>
-                    <a class="btn btn-secondary btn-sm" href="app.php?page=sitesettings&siteid=<?php echo $site['siteid']; ?>"><i class="fas fa-cog"></i> <?php lang("settings"); ?></a>
+                    <?php
+                    if ($showbuttons) {
+                        ?>
+                        <a class="btn btn-primary btn-sm" href="app.php?page=editor&siteid=<?php echo $site['siteid']; ?>"><i class="fas fa-edit"></i> <?php lang("editor"); ?></a>
+                        <a class="btn btn-secondary btn-sm" href="app.php?page=sitesettings&siteid=<?php echo $site['siteid']; ?>"><i class="fas fa-cog"></i> <?php lang("settings"); ?></a>
+                        <?php
+                    }
+                    ?>
                     <a class="btn btn-info btn-sm" href="<?php echo formatsiteurl($site['url']); ?>" target="_BLANK"><i class="fas fa-eye"></i> <?php lang("view"); ?></a>
                 </td>
                 <td><?php echo $site['sitename']; ?></td>

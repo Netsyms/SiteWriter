@@ -7,6 +7,14 @@ require_once __DIR__ . '/../required.php';
 
 redirectifnotloggedin();
 
+require_once __DIR__ . "/../lib/login.php";
+if (!account_has_permission($_SESSION['username'], "SITEWRITER")) {
+    if ($_GET['msg'] != "no_permission") {
+        header("Location: app.php?page=sitesettings&msg=no_permission");
+    }
+    die();
+}
+
 $editing = true;
 
 $siteid = "";

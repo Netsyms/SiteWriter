@@ -7,20 +7,28 @@ require_once __DIR__ . '/../required.php';
 
 redirectifnotloggedin();
 
+require_once __DIR__ . "/../lib/login.php";
+if (!account_has_permission($_SESSION['username'], "SITEWRITER") && !account_has_permission($_SESSION['username'], "SITEWRITER_ANALYTICS")) {
+    if ($_GET['msg'] != "no_permission") {
+        header("Location: app.php?page=analytics&msg=no_permission");
+    }
+    die();
+}
+
 $select_filter = [];
 
-if (!is_empty($VARS['siteid'])) {
+if (isset($VARS['siteid']) && !is_empty($VARS['siteid'])) {
     if ($database->has('sites', ['siteid' => $VARS['siteid']])) {
         $select_filter["analytics.siteid"] = $VARS['siteid'];
     }
 }
 
-if (!is_empty($VARS['after'])) {
+if (isset($VARS['after']) && !is_empty($VARS['after'])) {
     if (strtotime($VARS['after']) !== FALSE) {
         $select_filter["time[>]"] = date("Y-m-d H:i:s", strtotime($VARS['after']));
     }
 }
-if (!is_empty($VARS['before'])) {
+if (isset($VARS['before']) && !is_empty($VARS['before'])) {
     if (strtotime($VARS['before']) !== FALSE) {
         $select_filter["time[<]"] = date("Y-m-d H:i:s", strtotime($VARS['before']));
     }
@@ -47,9 +55,13 @@ $records = $database->select("analytics", [
         ], $where);
 
 $format = "Y-m-00 00:00:00";
-$max = $records[0];
-$min = $records[count($records) - 1];
-$diff = strtotime($max['time']) - strtotime($min['time']);
+if (count($records) > 1) {
+    $max = $records[0];
+    $min = $records[count($records) - 1];
+    $diff = strtotime($max['time']) - strtotime($min['time']);
+} else {
+    $diff = 0;
+}
 if ($diff < 60 * 60) { // 1 hour
     $format = "Y-m-d H:i:00";
 } else if ($diff < 60 * 60 * 24 * 3) { // 3 days
