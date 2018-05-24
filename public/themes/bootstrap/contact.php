@@ -37,7 +37,7 @@ include __DIR__ . "/inc/header.inc.php";
             $icon = $btn['icon'];
             $text = $btn['text'];
             ?>
-            <button type="submit" class="btn btn-primary sw-complex" data-json="<?php echo get_escaped_json($btn); ?>" data-component="submit-btn">
+            <button type="submit" class="btn btn-primary sw-complex" data-json="<?php get_escaped_json($btn); ?>" data-component="submit-btn">
                 <i class="<?php echo $icon; ?>"></i> <?php echo $text; ?>
             </button>
         </form>

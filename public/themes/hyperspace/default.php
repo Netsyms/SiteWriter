@@ -12,7 +12,7 @@ include __DIR__ . "/inc/header.inc.php";
             <?php
             $image = get_complex_component("page-image", null, ['image']);
             ?>
-            <span class="image fit sw-complex" data-json="<?php echo get_escaped_json($image); ?>" data-component="page-image">
+            <span class="image fit sw-complex" data-json="<?php get_escaped_json($image); ?>" data-component="page-image">
                 <img src="<?php get_file_url($image['image']); ?>" alt="" />
             </span>
             <div class="sw-editable" data-component="content">

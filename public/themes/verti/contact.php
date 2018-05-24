@@ -39,7 +39,7 @@
                             $icon = $btn['icon'];
                             $text = $btn['text'];
                             ?>
-                            <button type="submit" class="button icon <?php echo $icon; ?> sw-complex" data-json="<?php echo get_escaped_json($btn); ?>" data-component="submit-btn">
+                            <button type="submit" class="button icon <?php echo $icon; ?> sw-complex" data-json="<?php get_escaped_json($btn); ?>" data-component="submit-btn">
                                 <?php echo $text; ?>
                             </button>
                         </form>

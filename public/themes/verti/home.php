@@ -21,7 +21,7 @@
                                     $link = $btn['link'];
                                     $text = $btn['text'];
                                     ?>
-                                    <a href="<?php get_url_or_slug($link); ?>" class="button big icon <?php echo $icon; ?> sw-complex" data-json="<?php echo get_escaped_json($btn); ?>" data-component="banner-btn-1">
+                                    <a href="<?php get_url_or_slug($link); ?>" class="button big icon <?php echo $icon; ?> sw-complex" data-json="<?php get_escaped_json($btn); ?>" data-component="banner-btn-1">
                                         <?php echo $text; ?>
                                     </a>
                                 <?php } ?>
@@ -34,7 +34,7 @@
                                     $link = $btn['link'];
                                     $text = $btn['text'];
                                     ?>
-                                    <a href="<?php get_url_or_slug($link); ?>" class="button alt big icon <?php echo $icon; ?> sw-complex" data-json="<?php echo get_escaped_json($btn); ?>" data-component="banner-btn-2">
+                                    <a href="<?php get_url_or_slug($link); ?>" class="button alt big icon <?php echo $icon; ?> sw-complex" data-json="<?php get_escaped_json($btn); ?>" data-component="banner-btn-2">
                                         <?php echo $text; ?>
                                     </a>
                                 <?php } ?>
@@ -108,7 +108,7 @@ END;
                                     $link = $btn['link'];
                                     $text = $btn['text'];
                                     ?>
-                                    <a href="<?php get_url_or_slug($link); ?>" class="button icon <?php echo $icon; ?> sw-complex" data-json="<?php echo get_escaped_json($btn); ?>" data-component="sidebar-btn">
+                                    <a href="<?php get_url_or_slug($link); ?>" class="button icon <?php echo $icon; ?> sw-complex" data-json="<?php get_escaped_json($btn); ?>" data-component="sidebar-btn">
                                         <?php echo $text; ?>
                                     </a>
                                 <?php } ?>
@@ -132,7 +132,7 @@ END;
                                     $link = $btn['link'];
                                     $text = $btn['text'];
                                     ?>
-                                    <a href="<?php get_url_or_slug($link); ?>" class="button icon <?php echo $icon; ?> sw-complex" data-json="<?php echo get_escaped_json($btn); ?>" data-component="two-btn">
+                                    <a href="<?php get_url_or_slug($link); ?>" class="button icon <?php echo $icon; ?> sw-complex" data-json="<?php get_escaped_json($btn); ?>" data-component="two-btn">
                                         <?php echo $text; ?>
                                     </a>
                                 <?php } ?>
