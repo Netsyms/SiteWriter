@@ -39,7 +39,7 @@ $images->
 $htmlout = "";
 
 if (count($images) == 0) {
-    $htmlout = "<span>" . lang("no results", false) . "</span>";
+    $htmlout = "<div class=\"card text-center\"><div class=\"card-body\"><i class=\"fas fa-search-minus\"></i> " . lang("no results", false) . "</div></div>";
 }
 
 $htmlout .= '<div class="card-columns">';

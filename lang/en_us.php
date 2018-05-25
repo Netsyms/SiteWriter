@@ -138,4 +138,6 @@ define("STRINGS", [
     "delete" => "Delete",
     "new folder" => "New Folder",
     "new" => "New",
+    "search" => "Search",
+    "no results" => "No results.",
 ]);
