@@ -74,7 +74,7 @@
                         <a href="<?php get_url_or_slug($article['link']); ?>" class="image fit"><img src="<?php get_file_url($article['image']); ?>" alt="" /></a>
                         <span class="sw-complex" data-json="<?php get_escaped_json($article); ?>" data-component="<?php echo "article-$i"; ?>"></span>
                         <div class="sw-editable" data-component="article-text-<?php echo $i; ?>">
-                        <p><?php get_component("article-text-$i"); ?></p>
+                        <?php get_component("article-text-$i"); ?>
                         </div>
                         <?php
                         if (!empty($article['text'])) {
