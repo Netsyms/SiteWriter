@@ -141,4 +141,6 @@ define("STRINGS", [
     "new" => "New",
     "search" => "Search",
     "no results" => "No results.",
+    "contact form" => "Contact Form",
+    "contact form messages will be forwarded to this email address" => "Contact form messages will be forwarded to this email address, if it is set.",
 ]);

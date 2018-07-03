@@ -4,8 +4,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
+ignore_user_abort(true);
 
 require __DIR__ . "/../lib/requiredpublic.php";
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 function output_card($content) {
     ?>
@@ -33,8 +37,10 @@ END;
     die();
 }
 
+$siteid = getsiteid();
+
 $database->insert("messages", [
-    "siteid" => getsiteid(),
+    "siteid" => $siteid,
     "name" => htmlspecialchars($_POST['name']),
     "email" => htmlspecialchars($_POST['email']),
     "message" => htmlspecialchars($_POST['message']),
@@ -48,3 +54,35 @@ $content = <<<END
 END;
 
 output_card($content);
+ob_flush();
+flush();
+
+
+if ($database->has('settings', ["AND" => ['siteid' => $siteid, 'key' => 'contactemail']])) {
+    $emailto = $database->get('settings', "value", ["AND" => ['siteid' => $siteid, 'key' => 'contactemail']]);
+    // Setup mailer
+    $mail = new PHPMailer(true);
+    $mail->isSMTP();
+    $mail->Host = SMTP_HOST;
+    $mail->SMTPAuth = SMTP_AUTH;
+    if (SMTP_AUTH) {
+        $mail->Username = SMTP_USERNAME;
+        $mail->Password = SMTP_PASSWORD;
+    }
+    if (SMTP_SECURITY != "none") {
+        $mail->SMTPSecure = SMTP_SECURITY;
+    }
+    $mail->Port = SMTP_PORT;
+    $mail->isHTML(true);
+    $mail->setFrom(SMTP_FROMADDRESS, SMTP_FROMNAME);
+
+    $mail->addAddress($emailto);
+    $mail->addReplyTo($_POST['email'], $_POST['name']);
+
+    $mail->Subject = 'Website Contact Form Message';
+    $mail->Body = '<p><b>From:</b> ' . htmlspecialchars($_POST['name']) . ' &lt;<a href="mailto:' . htmlspecialchars($_POST['email']) . '">' . $_POST['email'] . '</a>&gt;</p>'
+            . '<p><b>Message:</b> <br>' . htmlspecialchars($_POST['message']) . '</p>';
+    $mail->AltBody = "From: $_POST[name] <$_POST[email]>\r\n\r\nMessage: \r\n$_POST[message]";
+
+    $mail->send();
+}

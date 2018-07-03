@@ -245,6 +245,20 @@ function getsetting($name) {
                         </div>
                     </div>
 
+                    <!-- Contact Form -->
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-comments"></i> <?php lang("contact form"); ?></h5>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><label for="contactemail"><i class="fas fa-envelope"></i> Forward to:</label></span>
+                                </div>
+                                <input type="email" class="form-control" name="settings[contactemail]" id="contactemail" value="<?php echo getsetting("contactemail"); ?>" />
+                            </div>
+                            <small class="form-text"><?php lang("contact form messages will be forwarded to this email address"); ?></small>
+                        </div>
+                    </div>
+
                     <!-- Extra code header snippets -->
                     <div class="card mt-4 mb-4">
                         <div class="card-body">
