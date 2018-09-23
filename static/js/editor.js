@@ -74,7 +74,7 @@ $(document).ready(function () {
     });
 
     $(".sw-text").each(function () {
-        var text = $(this).text().trim();
+        var text = $(this).text().trim().replace(/"/g, "&quot;");
         var component = $(this).data("component");
         $(this).html("<input type=\"text\" data-component=\"" + component + "\" class=\"sw-text-input\" value=\"" + text + "\" placeholder=\"Click to edit\">");
         $(this).closest("a").removeAttr("href"); // Issue #33
