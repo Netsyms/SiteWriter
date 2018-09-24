@@ -7,8 +7,9 @@ require_once __DIR__ . '/../required.php';
 
 redirectifnotloggedin();
 
-require_once __DIR__ . "/../lib/login.php";
-if (!account_has_permission($_SESSION['username'], "SITEWRITER")) {
+$user = new User($_SESSION['uid']);
+
+if (!$user->hasPermission("SITEWRITER")) {
     if ($_GET['msg'] != "no_permission") {
         header("Location: app.php?page=sitesettings&msg=no_permission");
     }
@@ -74,11 +75,11 @@ function getsetting($name) {
             <?php
             if ($editing) {
                 ?>
-                <i class="fas fa-edit"></i> <?php lang2("editing site", ['site' => "<span id=\"name_title\">" . htmlspecialchars($sitedata['sitename']) . "</span>"]); ?>
+                <i class="fas fa-edit"></i> <?php $Strings->build("editing site", ['site' => "<span id=\"name_title\">" . htmlspecialchars($sitedata['sitename']) . "</span>"]); ?>
                 <?php
             } else {
                 ?>
-                <i class="fas fa-plus"></i> <?php lang2("adding site", ['site' => "<span id=\"name_title\">" . htmlspecialchars($sitedata['sitename']) . "</span>"]); ?>
+                <i class="fas fa-plus"></i> <?php $Strings->build("adding site", ['site' => "<span id=\"name_title\">" . htmlspecialchars($sitedata['sitename']) . "</span>"]); ?>
                 <?php
             }
             ?>
@@ -86,16 +87,16 @@ function getsetting($name) {
         <div class="card-body">
             <div class="card mb-4">
                 <div class="card-body">
-                    <h5 class="card-title"><i class="fas fa-info-circle"></i> <?php lang("site info"); ?></h5>
+                    <h5 class="card-title"><i class="fas fa-info-circle"></i> <?php $Strings->get("site info"); ?></h5>
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><label for="name"><i class="fas fa-font"></i> <?php lang("title"); ?></label></span>
+                            <span class="input-group-text"><label for="name"><i class="fas fa-font"></i> <?php $Strings->get("title"); ?></label></span>
                         </div>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Foo Bar" required="required" value="<?php echo htmlspecialchars($sitedata['sitename']); ?>" />
                     </div>
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><label for="url"><i class="fas fa-globe"></i> <?php lang("url"); ?></label></span>
+                            <span class="input-group-text"><label for="url"><i class="fas fa-globe"></i> <?php $Strings->get("url"); ?></label></span>
                         </div>
                         <input type="text" class="form-control" id="url" name="url" placeholder="https://example.com" required="required" value="<?php echo htmlspecialchars($sitedata['url']); ?>" />
                     </div>
@@ -104,7 +105,7 @@ function getsetting($name) {
             <div class="card mb-4">
                 <div class="card-body">
                     <div class="form-group">
-                        <h5 class="card-title"><label for="theme"><i class="fas fa-paint-brush"></i> <?php lang('theme'); ?></label></h5>
+                        <h5 class="card-title"><label for="theme"><i class="fas fa-paint-brush"></i> <?php $Strings->get('theme'); ?></label></h5>
                         <div class="theme_bin_overflow">
                             <div class="theme_bin card-columns">
                                 <?php
@@ -132,18 +133,18 @@ function getsetting($name) {
                                                 <span class="d-flex">
                                                     <h4 class="mr-auto"><?php echo $info['name']; ?></h4>
                                                     <a href="public/index.php?page=index&siteid=<?php echo $siteid; ?>&theme=<?php echo $t; ?>" target="_BLANK">
-                                                        <i class="fas fa-eye"></i> <?php lang("preview"); ?>
+                                                        <i class="fas fa-eye"></i> <?php $Strings->get("preview"); ?>
                                                     </a>
                                                 </span>
-                                                <b><?php lang("theme type"); ?></b>:
+                                                <b><?php $Strings->get("theme type"); ?></b>:
                                                 <?php
                                                 if ($info['singlepage'] == true) {
-                                                    lang("single page");
+                                                    $Strings->get("single page");
                                                 } else {
-                                                    lang("multiple page");
+                                                    $Strings->get("multiple page");
                                                 }
                                                 ?><br />
-                                                <b><?php lang("templates"); ?></b>:
+                                                <b><?php $Strings->get("templates"); ?></b>:
                                                 <?php
                                                 $temtitles = [];
                                                 foreach ($info['templates'] as $tem) {
@@ -151,11 +152,11 @@ function getsetting($name) {
                                                 }
                                                 echo implode(", ", $temtitles);
                                                 ?><br />
-                                                <b><?php lang("color styles"); ?></b>:
+                                                <b><?php $Strings->get("color styles"); ?></b>:
                                                 <div class="list-group colorSelector">
                                                     <?php
                                                     if (count($info['colors']) == 0) {
-                                                        $info['colors'] = ["default" => ["title" => lang("default", false), "description" => ""]];
+                                                        $info['colors'] = ["default" => ["title" => $Strings->get("default", false), "description" => ""]];
                                                     }
                                                     foreach ($info['colors'] as $c => $color) {
                                                         $checked = "";
@@ -169,7 +170,7 @@ function getsetting($name) {
                                                                 <b><?php echo $color["title"]; ?></b>
                                                                 <div class="text-nowrap">
                                                                     <a href="public/index.php?page=index&siteid=<?php echo $siteid; ?>&theme=<?php echo $t; ?>&color=<?php echo $c; ?>" target="_BLANK">
-                                                                        <i class="fas fa-eye"></i> <?php lang("preview"); ?>
+                                                                        <i class="fas fa-eye"></i> <?php $Strings->get("preview"); ?>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -194,32 +195,32 @@ function getsetting($name) {
                     <!-- Company/Org Info -->
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title"><i class="fas fa-briefcase"></i> <?php lang("company info"); ?></h5>
+                            <h5 class="card-title"><i class="fas fa-briefcase"></i> <?php $Strings->get("company info"); ?></h5>
 
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><label for="businessname"><i class="fas fa-font"></i> <?php lang("name"); ?></label></span>
+                                    <span class="input-group-text"><label for="businessname"><i class="fas fa-font"></i> <?php $Strings->get("name"); ?></label></span>
                                 </div>
                                 <input type="text" class="form-control" name="settings[businessname]" id="businessname" value="<?php echo getsetting("businessname"); ?>" />
                             </div>
 
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><label for="phone"><i class="fas fa-phone"></i> <?php lang("phone"); ?></label></span>
+                                    <span class="input-group-text"><label for="phone"><i class="fas fa-phone"></i> <?php $Strings->get("phone"); ?></label></span>
                                 </div>
                                 <input type="text" class="form-control" name="settings[phone]" id="phone" value="<?php echo getsetting("phone"); ?>" />
                             </div>
 
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><label for="address"><i class="fas fa-map-marker"></i> <?php lang("address"); ?></label></span>
+                                    <span class="input-group-text"><label for="address"><i class="fas fa-map-marker"></i> <?php $Strings->get("address"); ?></label></span>
                                 </div>
                                 <textarea class="form-control" name="settings[address]" id="address" rows="2"><?php echo getsetting("address"); ?></textarea>
                             </div>
 
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><label for="email"><i class="fas fa-envelope"></i> <?php lang("email"); ?></label></span>
+                                    <span class="input-group-text"><label for="email"><i class="fas fa-envelope"></i> <?php $Strings->get("email"); ?></label></span>
                                 </div>
                                 <input type="email" class="form-control" name="settings[email]" id="email" value="<?php echo getsetting("email"); ?>" />
                             </div>
@@ -229,17 +230,17 @@ function getsetting($name) {
                     <!-- Analytics -->
                     <div class="card mt-4">
                         <div class="card-body">
-                            <h5 class="card-title"><i class="fas fa-chart-bar"></i> <?php lang("analytics"); ?></h5>
+                            <h5 class="card-title"><i class="fas fa-chart-bar"></i> <?php $Strings->get("analytics"); ?></h5>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="settings[analytics]" value="" id="analytics_on" <?php echo ((isset($settings["analytics"]) && $settings["analytics"] === "off") ? "" : "checked") ?>>
                                 <label class="form-check-label" for="analytics_on">
-                                    <?php lang("enable built-in analytics"); ?>
+                                    <?php $Strings->get("enable built-in analytics"); ?>
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="settings[analytics]" value="off" id="analytics_off" <?php echo ((isset($settings["analytics"]) && $settings["analytics"] === "off") ? "checked" : "") ?>>
                                 <label class="form-check-label" for="analytics_off">
-                                    <?php lang("disable built-in analytics"); ?>
+                                    <?php $Strings->get("disable built-in analytics"); ?>
                                 </label>
                             </div>
                         </div>
@@ -248,21 +249,21 @@ function getsetting($name) {
                     <!-- Contact Form -->
                     <div class="card mt-4">
                         <div class="card-body">
-                            <h5 class="card-title"><i class="fas fa-comments"></i> <?php lang("contact form"); ?></h5>
+                            <h5 class="card-title"><i class="fas fa-comments"></i> <?php $Strings->get("contact form"); ?></h5>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><label for="contactemail"><i class="fas fa-envelope"></i> Forward to:</label></span>
                                 </div>
                                 <input type="email" class="form-control" name="settings[contactemail]" id="contactemail" value="<?php echo getsetting("contactemail"); ?>" />
                             </div>
-                            <small class="form-text"><?php lang("contact form messages will be forwarded to this email address"); ?></small>
+                            <small class="form-text"><?php $Strings->get("contact form messages will be forwarded to this email address"); ?></small>
                         </div>
                     </div>
 
                     <!-- Extra code header snippets -->
                     <div class="card mt-4 mb-4">
                         <div class="card-body">
-                            <h5 class="card-title"><label for="extracode"><i class="fas fa-code"></i> <?php lang("extra code"); ?></label></h5>
+                            <h5 class="card-title"><label for="extracode"><i class="fas fa-code"></i> <?php $Strings->get("extra code"); ?></label></h5>
                             <textarea class="form-control" name="settings[extracode]" id="extracode" placeholder="<script></script>" rows="5"><?php echo (isset($settings["extracode"]) ? $settings["extracode"] : ""); ?></textarea>
                         </div>
                     </div>
@@ -272,7 +273,7 @@ function getsetting($name) {
                 <div class="col-12 col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title"><i class="fas fa-share-square"></i> <?php lang("social links"); ?></h5>
+                            <h5 class="card-title"><i class="fas fa-share-square"></i> <?php $Strings->get("social links"); ?></h5>
 
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -365,7 +366,7 @@ function getsetting($name) {
                 <div class="col-12">
                     <div class="card mt-4">
                         <div class="card-body">
-                            <h5 class="card-title"><label><i class="fas fa-list"></i> <?php lang("site footer links"); ?></label></h5>
+                            <h5 class="card-title"><label><i class="fas fa-list"></i> <?php $Strings->get("site footer links"); ?></label></h5>
                             <div id="footer-link-bin">
                                 <?php
                                 $footerset = false;
@@ -387,11 +388,11 @@ function getsetting($name) {
                                     ?>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text"><?php lang("title"); ?>:</span>
+                                            <span class="input-group-text"><?php $Strings->get("title"); ?>:</span>
                                         </div>
                                         <input type="text" class="form-control" name="settings[footerlinks][<?php echo $i; ?>][title]" value="<?php echo $title; ?>" />
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text"><?php lang("link"); ?>:</span>
+                                            <span class="input-group-text"><?php $Strings->get("link"); ?>:</span>
                                         </div>
                                         <input type="text" class="form-control" name="settings[footerlinks][<?php echo $i; ?>][link]" value="<?php echo $url; ?>" />
                                     </div>
@@ -410,7 +411,7 @@ function getsetting($name) {
         <input type="hidden" name="source" value="sites" />
 
         <div class="card-footer d-flex">
-            <button type="submit" class="btn btn-success mr-auto"><i class="fas fa-save"></i> <?php lang("save"); ?></button>
+            <button type="submit" class="btn btn-success mr-auto"><i class="fas fa-save"></i> <?php $Strings->get("save"); ?></button>
         </div>
     </div>
 </form>

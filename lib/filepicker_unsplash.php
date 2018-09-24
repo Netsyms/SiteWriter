@@ -39,7 +39,7 @@ $images->
 $htmlout = "";
 
 if (count($images) == 0) {
-    $htmlout = "<div class=\"card text-center\"><div class=\"card-body\"><i class=\"fas fa-search-minus\"></i> " . lang("no results", false) . "</div></div>";
+    $htmlout = "<div class=\"card text-center\"><div class=\"card-body\"><i class=\"fas fa-search-minus\"></i> " . $Strings->get("no results", false) . "</div></div>";
 }
 
 $htmlout .= '<div class="card-columns">';
@@ -70,7 +70,7 @@ $jsonout = [
 ];
 
 if (!is_null($results)) {
-    $jsonout['total'] = lang2("x results", ["results" => $results->getTotal()], false);
+    $jsonout['total'] = $Strings->build("x results", ["results" => $results->getTotal()], false);
     $jsonout['pages'] = $results->getTotalPages();
 }
 

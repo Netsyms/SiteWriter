@@ -7,8 +7,9 @@ require_once __DIR__ . '/../required.php';
 
 redirectifnotloggedin();
 
-require_once __DIR__ . "/../lib/login.php";
-if (!account_has_permission($_SESSION['username'], "SITEWRITER") && !account_has_permission($_SESSION['username'], "SITEWRITER_FILES") && !account_has_permission($_SESSION['username'], "SITEWRITER_EDIT")) {
+$user = new User($_SESSION['uid']);
+
+if (!$user->hasPermission("SITEWRITER") && !$user->hasPermission("SITEWRITER_FILES") && !$user->hasPermission("SITEWRITER_EDIT")) {
     // Note: the EDIT permission is valid here because content editors can browse files anyways
     if ($_GET['msg'] != "no_permission") {
         header("Location: app.php?page=files&msg=no_permission");
@@ -63,9 +64,9 @@ $fullpath = $base . $folder;
                     <input type="text" id="uploadstatus" class="form-control" readonly />
                     <div class="input-group-append">
                         <span class="btn btn-primary btn-file">
-                            <i class="fas fa-folder-open"></i> <?php lang("browse"); ?> <input id="fileupload" type="file" name="files[]" multiple required />
+                            <i class="fas fa-folder-open"></i> <?php $Strings->get("browse"); ?> <input id="fileupload" type="file" name="files[]" multiple required />
                         </span>
-                        <button class="btn btn-success" type="submit"><i class="fas fa-cloud-upload-alt"></i> <?php lang("upload"); ?></button>
+                        <button class="btn btn-success" type="submit"><i class="fas fa-cloud-upload-alt"></i> <?php $Strings->get("upload"); ?></button>
                     </div>
                 </div>
                 <input type="hidden" name="action" value="fileupload" />
@@ -76,7 +77,7 @@ $fullpath = $base . $folder;
                 <div class="input-group input-group-sm">
                     <input type="text" class="form-control" name="folder" required />
                     <div class="input-group-append">
-                        <button class="btn btn-success" type="submit"><i class="fas fa-folder"></i> <?php lang("new folder"); ?></button>
+                        <button class="btn btn-success" type="submit"><i class="fas fa-folder"></i> <?php $Strings->get("new folder"); ?></button>
                     </div>
                 </div>
                 <input type="hidden" name="action" value="newfolder" />
@@ -133,7 +134,7 @@ $fullpath = $base . $folder;
                             <input type="hidden" name="action" value="filedelete" />
                             <input type="hidden" name="source" value="files" />
                             <input type="hidden" name="file" value="<?php echo "$folder/$f"; ?>" />
-                            <button type="submit" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i> <?php lang("delete"); ?></button>
+                            <button type="submit" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i> <?php $Strings->get("delete"); ?></button>
                         </form>
                     </div>
                     <?php
@@ -146,7 +147,7 @@ $fullpath = $base . $folder;
                         <i class="far fa-folder-open fa-10x fa-fw"></i>
                     </p>
                     <p class="h4 text-muted">
-                        <?php lang("nothing here"); ?>
+                        <?php $Strings->get("nothing here"); ?>
                     </p>
                 </div>
                 <?php

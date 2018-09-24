@@ -7,8 +7,9 @@ require_once __DIR__ . '/../required.php';
 
 redirectifnotloggedin();
 
-require_once __DIR__ . "/../lib/login.php";
-if (!account_has_permission($_SESSION['username'], "SITEWRITER") && !account_has_permission($_SESSION['username'], "SITEWRITER_ANALYTICS")) {
+$user = new User($_SESSION['uid']);
+
+if (!$user->hasPermission("SITEWRITER") && !$user->hasPermission("SITEWRITER_ANALYTICS")) {
     if ($_GET['msg'] != "no_permission") {
         header("Location: app.php?page=analytics&msg=no_permission");
     }
@@ -140,13 +141,13 @@ foreach ($states as $id => $count) {
 <div class="card p-2">
     <form class="form-inline" action="app.php" method="GET">
         <button type="submit" class="btn btn-primary"><i class="fas fa-sync"></i></button>
-        <label for="siteid_select" class="sr-only"><?php lang("filter by site") ?></label>
+        <label for="siteid_select" class="sr-only"><?php $Strings->get("filter by site") ?></label>
         <div class="input-group mx-2">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-sitemap"></i></span>
             </div>
             <select name="siteid" class="form-control pr-4" id="siteid_select">
-                <option value=""><?php lang("all sites"); ?></option>
+                <option value=""><?php $Strings->get("all sites"); ?></option>
                 <?php
                 $sites = $database->select("sites", ["siteid", "sitename"]);
                 foreach ($sites as $s) {
@@ -164,22 +165,22 @@ foreach ($states as $id => $count) {
 
         <span class="vertline d-none d-lg-inline"></span>
 
-        <label for="date_after" class="sr-only"><?php lang("filter after date") ?></label>
-        <label for="date_before" class="sr-only"><?php lang("filter before date") ?></label>
+        <label for="date_after" class="sr-only"><?php $Strings->get("filter after date") ?></label>
+        <label for="date_before" class="sr-only"><?php $Strings->get("filter before date") ?></label>
         <div class="input-group mx-2">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-calendar"></i></span>
             </div>
-            <input type="text" id="date_after" name="after" value="<?php echo htmlspecialchars($VARS['after']); ?>" class="form-control" placeholder="<?php lang("start date"); ?>" data-toggle="datetimepicker" data-target="#date_after" />
+            <input type="text" id="date_after" name="after" value="<?php echo htmlspecialchars($VARS['after']); ?>" class="form-control" placeholder="<?php $Strings->get("start date"); ?>" data-toggle="datetimepicker" data-target="#date_after" />
             <div class="input-group-prepend input-group-append">
                 <span class="input-group-text"><i class="fas fa-caret-right"></i></span>
             </div>
-            <input type="text" id="date_before" name="before" value="<?php echo htmlspecialchars($VARS['before']); ?>" class="form-control" placeholder="<?php lang("end date"); ?>" data-toggle="datetimepicker" data-target="#date_before" />
+            <input type="text" id="date_before" name="before" value="<?php echo htmlspecialchars($VARS['before']); ?>" class="form-control" placeholder="<?php $Strings->get("end date"); ?>" data-toggle="datetimepicker" data-target="#date_before" />
         </div>
 
 
         <input type="hidden" name="page" value="analytics" />
-        <button type="submit" class="btn btn-secondary"><i class="fas fa-filter"></i> <?php lang("filter"); ?></button>
+        <button type="submit" class="btn btn-secondary"><i class="fas fa-filter"></i> <?php $Strings->get("filter"); ?></button>
     </form>
 </div>
 
@@ -191,14 +192,14 @@ if (count($records) > 0) {
         <!-- Overview -->
         <div class="card mb-4">
             <div class="card-body">
-                <h4 class="card-title"><?php lang("overview"); ?></h4>
+                <h4 class="card-title"><?php $Strings->get("overview"); ?></h4>
                 <?php
                 $ratio = round($pageviews / $visits, 1);
                 ?>
                 <h5>
-                    <i class="fas fa-users fa-fw"></i> <?php echo $visits; ?> <?php lang("visits") ?> <br />
-                    <i class="fas fa-eye fa-fw"></i> <?php echo $pageviews; ?> <?php lang("page views") ?> <br />
-                    <i class="fas fa-percent fa-fw"></i> <?php echo $ratio; ?> <?php lang("views per visit") ?>
+                    <i class="fas fa-users fa-fw"></i> <?php echo $visits; ?> <?php $Strings->get("visits") ?> <br />
+                    <i class="fas fa-eye fa-fw"></i> <?php echo $pageviews; ?> <?php $Strings->get("page views") ?> <br />
+                    <i class="fas fa-percent fa-fw"></i> <?php echo $ratio; ?> <?php $Strings->get("views per visit") ?>
                 </h5>
             </div>
         </div>
@@ -206,7 +207,7 @@ if (count($records) > 0) {
         <!-- Visits Over Time -->
         <div class="card mb-4">
             <div class="card-body">
-                <h4 class="card-title"><?php lang("visits over time"); ?></h4>
+                <h4 class="card-title"><?php $Strings->get("visits over time"); ?></h4>
                 <script nonce="<?php echo $SECURE_NONCE; ?>">
                     var visitsOverTimeData = [
     <?php foreach ($visitsovertime as $d => $c) { ?>
@@ -226,7 +227,7 @@ if (count($records) > 0) {
         <!-- Views Over Time -->
         <div class="card mb-4">
             <div class="card-body">
-                <h4 class="card-title"><?php lang("page views over time"); ?></h4>
+                <h4 class="card-title"><?php $Strings->get("page views over time"); ?></h4>
                 <script nonce="<?php echo $SECURE_NONCE; ?>">
                     var viewsOverTimeData = [
     <?php foreach ($viewsovertime as $d => $c) { ?>
@@ -246,7 +247,7 @@ if (count($records) > 0) {
         <!-- Visitor Map -->
         <div class="card mb-4">
             <div class="card-body">
-                <h4 class="card-title"><?php lang("visitor map"); ?></h4>
+                <h4 class="card-title"><?php $Strings->get("visitor map"); ?></h4>
                 <script nonce="<?php echo $SECURE_NONCE; ?>">
                     visitorMap_Countries = <?php echo json_encode($countrymapdata); ?>;
                     visitorMap_States = <?php echo json_encode($statemapdata); ?>;
@@ -259,7 +260,7 @@ if (count($records) > 0) {
         <!-- Page Ranking -->
         <div class="card mb-4">
             <div class="card-body">
-                <h4 class="card-title"><?php lang("page ranking"); ?></h4>
+                <h4 class="card-title"><?php $Strings->get("page ranking"); ?></h4>
             </div>
             <div class="list-group">
                 <?php
@@ -272,7 +273,7 @@ if (count($records) > 0) {
                                 <span><i class="fas fa-sitemap fa-fw"></i> <?php echo $p["sitename"]; ?></span>
                             </div>
                             <div class="col-6">
-                                <span><i class="fas fa-eye fa-fw"></i> <?php lang2("x views", ["views" => $p['views']]); ?></span>
+                                <span><i class="fas fa-eye fa-fw"></i> <?php $Strings->build("x views", ["views" => $p['views']]); ?></span>
                             </div>
                         </div>
                     </div>
@@ -285,7 +286,7 @@ if (count($records) > 0) {
         <!-- Recent Actions -->
         <div class="card mb-4">
             <div class="card-body">
-                <h4 class="card-title"><?php lang("recent actions"); ?></h4>
+                <h4 class="card-title"><?php $Strings->get("recent actions"); ?></h4>
             </div>
             <div class="list-group list-group-scrolly">
                 <?php
@@ -329,7 +330,7 @@ if (count($records) > 0) {
         <div class="col-12 col-sm-10 col-md-8 col-lg-6">
             <div class="card">
                 <div class="card-body text-center">
-                    <i class="fas fa-info-circle"></i> <?php lang("no data"); ?>
+                    <i class="fas fa-info-circle"></i> <?php $Strings->get("no data"); ?>
                 </div>
             </div>
         </div>

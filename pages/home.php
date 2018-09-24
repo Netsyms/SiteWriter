@@ -24,19 +24,19 @@ die();
     ?>
     <div class="card bg-blue text-light">
         <div class="card-body">
-            <h4 class="card-title"><?php lang("today") ?></h4>
+            <h4 class="card-title"><?php $Strings->get("today") ?></h4>
             <h1><i class="fas fa-fw fa-users"></i> <?php echo $visits_today; ?> <?php
                 if ($visits_today == 1) {
-                    lang("visit");
+                    $Strings->get("visit");
                 } else {
-                    lang("visits");
+                    $Strings->get("visits");
                 }
                 ?></h1>
             <h1><i class="fas fa-fw fa-eye"></i> <?php echo $views_today; ?> <?php
                 if ($views_today == 1) {
-                    lang("page view");
+                    $Strings->get("page view");
                 } else {
-                    lang("page views");
+                    $Strings->get("page views");
                 }
                 ?></h1>
         </div>
@@ -54,19 +54,19 @@ die();
     ?>
     <div class="card bg-green text-light">
         <div class="card-body">
-            <h4 class="card-title"><?php lang("this week") ?></h4>
+            <h4 class="card-title"><?php $Strings->get("this week") ?></h4>
             <h1><i class="fas fa-fw fa-users"></i> <?php echo $visits_week; ?> <?php
                 if ($visits_week == 1) {
-                    lang("visit");
+                    $Strings->get("visit");
                 } else {
-                    lang("visits");
+                    $Strings->get("visits");
                 }
                 ?></h1>
             <h1><i class="fas fa-fw fa-eye"></i> <?php echo $views_week; ?> <?php
                 if ($views_week == 1) {
-                    lang("page view");
+                    $Strings->get("page view");
                 } else {
-                    lang("page views");
+                    $Strings->get("page views");
                 }
                 ?></h1>
         </div>

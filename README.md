@@ -39,3 +39,4 @@ Installing
 8. Set the URL of this app ("URL")
 9. Copy webroot.htaccess to your webroot and adjust paths if needed
 10. Run `composer install` (or `composer.phar install`) to install dependency libraries
+11. Run `git submodule init` and `git submodule update` to install other dependencies via git.

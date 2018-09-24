@@ -129,7 +129,7 @@ $fullpath = $base . $folder;
                 <i class="far fa-folder-open fa-5x fa-fw"></i>
             </p>
             <p class="h5 text-muted">
-                <?php lang("nothing here"); ?>
+                <?php $Strings->get("nothing here"); ?>
             </p>
         </div>
         <?php

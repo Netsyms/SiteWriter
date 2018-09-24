@@ -9,7 +9,6 @@
  */
 require_once __DIR__ . "/required.php";
 require_once __DIR__ . "/lib/util.php";
-require_once __DIR__ . "/lib/login.php";
 
 if ($VARS['action'] !== "signout") {
     dieifnotloggedin();
@@ -37,9 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST) &&
     returnToSender("upload_too_big");
 }
 
+$user = new User($_SESSION['uid']);
+
 switch ($VARS['action']) {
     case "newpage":
-        if (!account_has_permission($_SESSION['username'], "SITEWRITER") && !account_has_permission($_SESSION['username'], "SITEWRITER_EDIT")) {
+        if (!$user->hasPermission("SITEWRITER") && !$user->hasPermission("SITEWRITER_EDIT")) {
             returnToSender("no_permission");
         }
         if (is_empty($VARS['siteid']) || !$database->has("sites", ["siteid" => $VARS['siteid']])) {
@@ -80,7 +81,7 @@ switch ($VARS['action']) {
         returnToSender("page_added", $VARS['siteid'] . "|" . $database->id());
         break;
     case "pagesettings":
-        if (!account_has_permission($_SESSION['username'], "SITEWRITER")) {
+        if (!$user->hasPermission("SITEWRITER")) {
             returnToSender("no_permission");
         }
         if (is_empty($VARS['siteid']) || !$database->has("sites", ["siteid" => $VARS['siteid']])) {
@@ -138,7 +139,7 @@ switch ($VARS['action']) {
         returnToSender("settings_saved", $VARS['siteid'] . "|" . $VARS['pageid']);
         break;
     case "sitesettings":
-        if (!account_has_permission($_SESSION['username'], "SITEWRITER")) {
+        if (!$user->hasPermission("SITEWRITER")) {
             returnToSender("no_permission");
         }
         if (!is_empty($VARS['siteid'])) {
@@ -198,8 +199,8 @@ switch ($VARS['action']) {
         break;
     case "saveedits":
         header("Content-Type: application/json");
-        if (!account_has_permission($_SESSION['username'], "SITEWRITER") && !account_has_permission($_SESSION['username'], "SITEWRITER_EDIT")) {
-            exit(json_encode(['status' => "ERROR", 'message' => lang("no permission", false)]));
+        if (!$user->hasPermission("SITEWRITER") && !$user->hasPermission("SITEWRITER_EDIT")) {
+            exit(json_encode(['status' => "ERROR", 'message' => $Strings->get("no permission", false)]));
         }
         $slug = $VARS['slug'];
         $site = $VARS['site'];
@@ -228,7 +229,7 @@ switch ($VARS['action']) {
         exit(json_encode(["status" => "OK"]));
         break;
     case "deletemessage":
-        if (!account_has_permission($_SESSION['username'], "SITEWRITER") && !account_has_permission($_SESSION['username'], "SITEWRITER_CONTACT")) {
+        if (!$user->hasPermission("SITEWRITER") && !$user->hasPermission("SITEWRITER_CONTACT")) {
             returnToSender("no_permission");
         }
         if ($database->count('messages', ["mid" => $VARS['id']]) !== 1) {
@@ -238,7 +239,7 @@ switch ($VARS['action']) {
         returnToSender("message_deleted");
         break;
     case "fileupload":
-        if (!account_has_permission($_SESSION['username'], "SITEWRITER") && !account_has_permission($_SESSION['username'], "SITEWRITER_FILES")) {
+        if (!$user->hasPermission("SITEWRITER") && !$user->hasPermission("SITEWRITER_FILES")) {
             returnToSender("no_permission");
         }
         $destpath = FILE_UPLOAD_PATH . $VARS['path'];
@@ -310,7 +311,7 @@ switch ($VARS['action']) {
         returnToSender("upload_success", "&path=" . $VARS['path']);
         break;
     case "newfolder":
-        if (!account_has_permission($_SESSION['username'], "SITEWRITER") && !account_has_permission($_SESSION['username'], "SITEWRITER_FILES")) {
+        if (!$user->hasPermission("SITEWRITER") && !$user->hasPermission("SITEWRITER_FILES")) {
             returnToSender("no_permission");
         }
         $foldername = preg_replace("/[^a-z0-9_\-]/", "_", strtolower($VARS['folder']));
@@ -322,7 +323,7 @@ switch ($VARS['action']) {
         returnToSender("folder_not_created", "&path=" . $VARS['path']);
         break;
     case "filedelete":
-        if (!account_has_permission($_SESSION['username'], "SITEWRITER") && !account_has_permission($_SESSION['username'], "SITEWRITER_FILES")) {
+        if (!$user->hasPermission("SITEWRITER") && !$user->hasPermission("SITEWRITER_FILES")) {
             returnToSender("no_permission");
         }
         $file = FILE_UPLOAD_PATH . $VARS['file'];

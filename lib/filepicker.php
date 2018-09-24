@@ -35,12 +35,12 @@ if ($enableunsplash) {
     <ul class="nav nav-tabs" id="fileBrowserTabs" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="uploadedFilesTabBtn" data-toggle="tab" href="#uploadedFilesTab">
-                <i class="fas fa-folder-open"></i> <?php lang('uploaded files'); ?>
+                <i class="fas fa-folder-open"></i> <?php $Strings->get('uploaded files'); ?>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="unsplashTabBtn" data-toggle="tab" href="#unsplashTab">
-                <i class="fas fa-image"></i> <?php lang('stock photos'); ?>
+                <i class="fas fa-image"></i> <?php $Strings->get('stock photos'); ?>
             </a>
         </li>
     </ul>
@@ -60,10 +60,10 @@ if ($enableunsplash) {
             <div class="card">
                 <div class="card-body">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="unsplashSearch" placeholder="<?php lang("search images"); ?>" />
+                        <input type="text" class="form-control" id="unsplashSearch" placeholder="<?php $Strings->get("search images"); ?>" />
                         <div class="input-group-append">
                             <div class="btn btn-primary" id="unsplashSearchBtn">
-                                <i class="fas fa-search"></i> <?php lang("search"); ?>
+                                <i class="fas fa-search"></i> <?php $Strings->get("search"); ?>
                             </div>
                         </div>
                     </div>
@@ -73,7 +73,7 @@ if ($enableunsplash) {
                 </div>
                 <div class="card-body">
                     <button type="button" class="btn btn-primary btn-block" id="unsplashLoadMoreBtn">
-                        <?php lang("load more"); ?>
+                        <?php $Strings->get("load more"); ?>
                     </button>
                 </div>
             </div>
