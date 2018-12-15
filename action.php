@@ -43,13 +43,13 @@ switch ($VARS['action']) {
         if (!$user->hasPermission("SITEWRITER") && !$user->hasPermission("SITEWRITER_EDIT")) {
             returnToSender("no_permission");
         }
-        if (is_empty($VARS['siteid']) || !$database->has("sites", ["siteid" => $VARS['siteid']])) {
+        if (empty($VARS['siteid']) || !$database->has("sites", ["siteid" => $VARS['siteid']])) {
             returnToSender("invalid_parameters");
         }
-        if (is_empty($VARS['title'])) {
+        if (empty($VARS['title'])) {
             returnToSender("invalid_parameters", $VARS['siteid']);
         }
-        if (!is_empty($VARS['slug'])) {
+        if (!empty($VARS['slug'])) {
             $slug = strtolower($VARS['slug']);
             $slug = preg_replace("/[^[:alnum:][:space:]]/u", '', $slug);
             $slug = preg_replace("/[[:space:]]/u", '-', $slug);
@@ -70,7 +70,7 @@ switch ($VARS['action']) {
             }
         }
         $template = "default";
-        if (!is_empty($VARS['template'])) {
+        if (!empty($VARS['template'])) {
             $template = preg_replace("/[^A-Za-z0-9]/", '', $VARS['template']);
         }
         $theme = $database->get("sites", "theme", ["siteid" => $VARS['siteid']]);
@@ -84,21 +84,21 @@ switch ($VARS['action']) {
         if (!$user->hasPermission("SITEWRITER")) {
             returnToSender("no_permission");
         }
-        if (is_empty($VARS['siteid']) || !$database->has("sites", ["siteid" => $VARS['siteid']])) {
+        if (empty($VARS['siteid']) || !$database->has("sites", ["siteid" => $VARS['siteid']])) {
             returnToSender("invalid_parameters");
         }
-        if (is_empty($VARS['pageid']) || !$database->has("pages", ["AND" => ["pageid" => $VARS['pageid'], "siteid" => $VARS['siteid']]])) {
+        if (empty($VARS['pageid']) || !$database->has("pages", ["AND" => ["pageid" => $VARS['pageid'], "siteid" => $VARS['siteid']]])) {
             returnToSender("invalid_parameters");
         }
-        if (is_empty($VARS['title'])) {
+        if (empty($VARS['title'])) {
             returnToSender("invalid_parameters", $VARS['siteid']);
         }
-        if (is_empty($VARS['template'])) {
+        if (empty($VARS['template'])) {
             returnToSender("invalid_parameters", $VARS['siteid']);
         }
         $nav = null;
         if ($VARS['innavbar'] == 1) {
-            if (is_empty($VARS['navbartitle'])) {
+            if (empty($VARS['navbartitle'])) {
                 returnToSender("invalid_parameters", $VARS['siteid']);
             }
             $nav = $VARS['navbartitle'];
@@ -123,7 +123,7 @@ switch ($VARS['action']) {
                 "pageid" => $VARS['pageid']
             ]
         ]);
-        if (!is_empty($VARS['navorder']) && preg_match("/^[0-9]+([0-9|]*([0-9])|[0-9])$/", $VARS['navorder'])) {
+        if (!empty($VARS['navorder']) && preg_match("/^[0-9]+([0-9|]*([0-9])|[0-9])$/", $VARS['navorder'])) {
             $pages = explode("|", preg_replace("/[|]{2,}/", "", $VARS['navorder']));
             for ($i = 0; $i < count($pages); $i++) {
                 $database->update("pages", [
@@ -142,21 +142,21 @@ switch ($VARS['action']) {
         if (!$user->hasPermission("SITEWRITER")) {
             returnToSender("no_permission");
         }
-        if (!is_empty($VARS['siteid'])) {
+        if (!empty($VARS['siteid'])) {
             if (!$database->has("sites", ["siteid" => $VARS['siteid']])) {
                 returnToSender("invalid_parameters");
             }
         }
-        if (is_empty($VARS['name'])) {
+        if (empty($VARS['name'])) {
             returnToSender("invalid_parameters");
         }
-        if (is_empty($VARS['url'])) {
+        if (empty($VARS['url'])) {
             returnToSender("invalid_parameters");
         }
-        if (is_empty($VARS['theme'])) {
+        if (empty($VARS['theme'])) {
             returnToSender("invalid_parameters");
         }
-        if (is_empty($VARS['color'])) {
+        if (empty($VARS['color'])) {
             returnToSender("invalid_parameters");
         }
         $url = formatsiteurl($VARS['url']);
@@ -168,7 +168,7 @@ switch ($VARS['action']) {
         if ($color != "default" && !file_exists(__DIR__ . "/public/themes/$theme/colors/$color")) {
             returnToSender("invalid_parameters");
         }
-        if (is_empty($VARS['siteid'])) {
+        if (empty($VARS['siteid'])) {
             $database->insert('sites', ["sitename" => $VARS['name'], "url" => $url, "theme" => $theme, "color" => $color]);
             $siteid = $database->id();
             $template = (file_exists(__DIR__ . "/public/themes/$theme/home.php") ? "home" : "default");

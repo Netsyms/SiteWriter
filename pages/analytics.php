@@ -18,18 +18,18 @@ if (!$user->hasPermission("SITEWRITER") && !$user->hasPermission("SITEWRITER_ANA
 
 $select_filter = [];
 
-if (isset($VARS['siteid']) && !is_empty($VARS['siteid'])) {
+if (!empty($VARS['siteid'])) {
     if ($database->has('sites', ['siteid' => $VARS['siteid']])) {
         $select_filter["analytics.siteid"] = $VARS['siteid'];
     }
 }
 
-if (isset($VARS['after']) && !is_empty($VARS['after'])) {
+if (!empty($VARS['after'])) {
     if (strtotime($VARS['after']) !== FALSE) {
         $select_filter["time[>]"] = date("Y-m-d H:i:s", strtotime($VARS['after']));
     }
 }
-if (isset($VARS['before']) && !is_empty($VARS['before'])) {
+if (!empty($VARS['before'])) {
     if (strtotime($VARS['before']) !== FALSE) {
         $select_filter["time[<]"] = date("Y-m-d H:i:s", strtotime($VARS['before']));
     }

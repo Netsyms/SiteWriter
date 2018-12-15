@@ -16,7 +16,7 @@ if (!$user->hasPermission("SITEWRITER") && !$user->hasPermission("SITEWRITER_EDI
     die();
 }
 
-if (isset($VARS['arg']) && !is_empty($VARS['arg'])) {
+if (!empty($VARS['arg'])) {
     // Allow action.php to do a better redirect
     $VARS['siteid'] = $VARS['arg'];
     if (strpos($VARS['arg'], "|") !== FALSE) {
@@ -28,7 +28,7 @@ if (isset($VARS['arg']) && !is_empty($VARS['arg'])) {
     }
 }
 
-if (!is_empty($VARS['siteid'])) {
+if (!empty($VARS['siteid'])) {
     if ($database->has('sites', ['siteid' => $VARS['siteid']])) {
         $sitedata = $database->get(
                 'sites', [
@@ -138,7 +138,7 @@ if (!is_empty($VARS['siteid'])) {
                     <div class="form-group">
                         <label><i class="fas fa-bars"></i> <?php $Strings->get("navbar options"); ?></label>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="innavbar" id="innavbarCheckbox" value="1" <?php echo (is_empty($thispage['nav']) ? "" : "checked") ?> />
+                            <input class="form-check-input" type="checkbox" name="innavbar" id="innavbarCheckbox" value="1" <?php echo (empty($thispage['nav']) ? "" : "checked") ?> />
                             <label class="form-check-label" for="innavbarCheckbox">
                                 <?php $Strings->get("in navbar"); ?>
                             </label>
@@ -152,14 +152,14 @@ if (!is_empty($VARS['siteid'])) {
                                 <div class="input-group-prepend">
                                     <label class="input-group-text" for="navbarTitle"><?php $Strings->get("navbar title"); ?></label>
                                 </div>
-                                <input type="text" id="navbarTitle" name="navbartitle" class="form-control" required="required" minlength="1" maxlength="200" value="<?php echo (is_empty($thispage['nav']) ? $thispage['title'] : $thispage['nav']); ?>" />
+                                <input type="text" id="navbarTitle" name="navbartitle" class="form-control" required="required" minlength="1" maxlength="200" value="<?php echo (empty($thispage['nav']) ? $thispage['title'] : $thispage['nav']); ?>" />
                             </div>
 
                             <label class="mb-0 pb-0"><?php $Strings->get("navbar position"); ?></label>
                             <div class="list-group py-3" id="navbar-order-list">
                                 <?php
                                 foreach ($pagedata as $page) {
-                                    if (is_empty($page['nav'])) {
+                                    if (empty($page['nav'])) {
                                         continue;
                                     }
                                     ?>

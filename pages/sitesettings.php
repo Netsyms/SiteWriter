@@ -28,7 +28,7 @@ $sitedata = [
 ];
 $settings = [];
 
-if (isset($VARS['siteid']) && !is_empty($VARS['siteid'])) {
+if (!empty($VARS['siteid'])) {
     if ($database->has('sites', ['siteid' => $VARS['siteid']])) {
         $siteid = $VARS['siteid'];
         $sitedata = $database->select(
