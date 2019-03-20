@@ -22,11 +22,11 @@ if ($VARS['action'] !== "signout") {
  */
 function returnToSender($msg, $arg = "") {
     global $VARS;
-    if ($arg == "") {
-        header("Location: app.php?page=" . urlencode($VARS['source']) . "&msg=" . $msg);
-    } else {
-        header("Location: app.php?page=" . urlencode($VARS['source']) . "&msg=$msg&arg=$arg");
+    $header = "Location: app.php?page=" . urlencode($VARS['source']) . "&msg=$msg";
+    if ($arg != "") {
+        $header .= "&arg=$arg";
     }
+    header($header);
     die();
 }
 
@@ -242,8 +242,8 @@ switch ($VARS['action']) {
         if (!$user->hasPermission("SITEWRITER") && !$user->hasPermission("SITEWRITER_FILES")) {
             returnToSender("no_permission");
         }
-        $destpath = FILE_UPLOAD_PATH . $VARS['path'];
-        if (strpos(realpath($destpath), FILE_UPLOAD_PATH) !== 0) {
+        $destpath = $SETTINGS["file_upload_path"] . $VARS['path'];
+        if (strpos(realpath($destpath), $SETTINGS["file_upload_path"]) !== 0) {
             returnToSender("file_security_error");
         }
         if (!file_exists($destpath) || !is_dir($destpath)) {
@@ -315,7 +315,7 @@ switch ($VARS['action']) {
             returnToSender("no_permission");
         }
         $foldername = preg_replace("/[^a-z0-9_\-]/", "_", strtolower($VARS['folder']));
-        $newfolder = FILE_UPLOAD_PATH . $VARS['path'] . '/' . $foldername;
+        $newfolder = $SETTINGS["file_upload_path"] . $VARS['path'] . '/' . $foldername;
 
         if (mkdir($newfolder, 0755)) {
             returnToSender("folder_created", "&path=" . $VARS['path']);
@@ -326,15 +326,15 @@ switch ($VARS['action']) {
         if (!$user->hasPermission("SITEWRITER") && !$user->hasPermission("SITEWRITER_FILES")) {
             returnToSender("no_permission");
         }
-        $file = FILE_UPLOAD_PATH . $VARS['file'];
-        if (strpos(realpath($file), FILE_UPLOAD_PATH) !== 0) {
+        $file = $SETTINGS["file_upload_path"] . $VARS['file'];
+        if (strpos(realpath($file), $SETTINGS["file_upload_path"]) !== 0) {
             returnToSender("file_security_error");
         }
         if (!file_exists($file)) {
             // Either way the file is gone
             returnToSender("file_deleted");
         }
-        if (!is_writable($file) || realpath($file) == realpath(FILE_UPLOAD_PATH)) {
+        if (!is_writable($file) || realpath($file) == realpath($SETTINGS["file_upload_path"])) {
             returnToSender("undeletable_file");
         }
         if (is_dir($file)) {
@@ -350,9 +350,9 @@ switch ($VARS['action']) {
         break;
     case "unsplash_download":
         Crew\Unsplash\HttpClient::init([
-            'applicationId' => UNSPLASH_ACCESSKEY,
-            'secret' => UNSPLASH_SECRETKEY,
-            'utmSource' => UNSPLASH_UTMSOURCE
+            'applicationId' => $SETTINGS["unsplash"]["accesskey"],
+            'secret' => $SETTINGS["unsplash"]["secretkey"],
+            'utmSource' => $SETTINGS["unsplash"]["utmsource"]
         ]);
         Crew\Unsplash\Photo::find($VARS['imageid'])->download();
         header('Content-Type: application/json');
@@ -360,6 +360,6 @@ switch ($VARS['action']) {
         break;
     case "signout":
         session_destroy();
-        header('Location: index.php');
+        header('Location: index.php?logout=1');
         die("Logged out.");
 }

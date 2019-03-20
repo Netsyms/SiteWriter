@@ -32,7 +32,6 @@ session_start(); // stick some cookies in it
 // renew session cookie
 setcookie(session_name(), session_id(), time() + $session_length, "/", false, false);
 
-$captcha_server = (CAPTCHA_ENABLED === true ? preg_replace("/http(s)?:\/\//", "", CAPTCHA_SERVER) : "");
 if ($_SESSION['mobile'] === TRUE) {
     header("Content-Security-Policy: "
             . "default-src 'self';"
@@ -42,8 +41,8 @@ if ($_SESSION['mobile'] === TRUE) {
             . "frame-src 'self'; "
             . "font-src 'self'; "
             . "connect-src *; "
-            . "style-src 'self' 'unsafe-inline' $captcha_server; "
-            . "script-src 'self' 'unsafe-inline' $captcha_server");
+            . "style-src 'self' 'unsafe-inline'; "
+            . "script-src 'self' 'unsafe-inline'");
 } else {
     header("Content-Security-Policy: "
             . "default-src 'self';"
@@ -53,8 +52,8 @@ if ($_SESSION['mobile'] === TRUE) {
             . "frame-src 'self'; "
             . "font-src 'self'; "
             . "connect-src *; "
-            . "style-src 'self' 'unsafe-inline' $captcha_server; "
-            . "script-src 'self' 'nonce-$SECURE_NONCE' $captcha_server");
+            . "style-src 'self' 'nonce-$SECURE_NONCE'; "
+            . "script-src 'self' 'nonce-$SECURE_NONCE'");
 }
 
 //
@@ -69,7 +68,7 @@ foreach ($libs as $lib) {
     require_once $lib;
 }
 
-$Strings = new Strings(LANGUAGE);
+$Strings = new Strings($SETTINGS['language']);
 
 /**
  * Kill off the running process and spit out an error message
@@ -93,7 +92,7 @@ function sendError($error) {
             . "<p>" . htmlspecialchars($error) . "</p>");
 }
 
-date_default_timezone_set(TIMEZONE);
+date_default_timezone_set($SETTINGS['timezone']);
 
 // Database settings
 // Also inits database and stuff
@@ -102,12 +101,12 @@ use Medoo\Medoo;
 $database;
 try {
     $database = new Medoo([
-        'database_type' => DB_TYPE,
-        'database_name' => DB_NAME,
-        'server' => DB_SERVER,
-        'username' => DB_USER,
-        'password' => DB_PASS,
-        'charset' => DB_CHARSET
+        'database_type' => $SETTINGS['database']['type'],
+        'database_name' => $SETTINGS['database']['name'],
+        'server' => $SETTINGS['database']['server'],
+        'username' => $SETTINGS['database']['user'],
+        'password' => $SETTINGS['database']['password'],
+        'charset' => $SETTINGS['database']['charset']
     ]);
 } catch (Exception $ex) {
     //header('HTTP/1.1 500 Internal Server Error');
@@ -115,7 +114,7 @@ try {
 }
 
 
-if (!DEBUG) {
+if (!$SETTINGS['debug']) {
     error_reporting(0);
 } else {
     error_reporting(E_ALL);
@@ -132,10 +131,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     define("GET", true);
 }
 
-
 function dieifnotloggedin() {
+    global $SETTINGS;
     if ($_SESSION['loggedin'] != true) {
         sendError("Session expired.  Please log out and log in again.");
+    }
+    $user = new User($_SESSION['uid']);
+    foreach ($SETTINGS['permissions'] as $perm) {
+        if (!$user->hasPermission($perm)) {
+            session_destroy();
+            die("You don't have permission to be here.");
+        }
     }
 }
 
@@ -157,8 +163,17 @@ function checkDBError($specials = []) {
 }
 
 function redirectIfNotLoggedIn() {
+    global $SETTINGS;
     if ($_SESSION['loggedin'] !== TRUE) {
-        header('Location: ' . URL . '/index.php');
+        header('Location: ' . $SETTINGS['url'] . '/index.php');
         die();
+    }
+    $user = new User($_SESSION['uid']);
+    foreach ($SETTINGS['permissions'] as $perm) {
+        if (!$user->hasPermission($perm)) {
+            session_destroy();
+            header('Location: ./index.php');
+            die("You don't have permission to be here.");
+        }
     }
 }

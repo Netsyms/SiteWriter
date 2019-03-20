@@ -11,7 +11,7 @@ ob_start(); // allow sending headers after content
 // Settings file
 require __DIR__ . '/../settings.php';
 
-if (!DEBUG) {
+if (!$SETTINGS["debug"]) {
     error_reporting(0);
 } else {
     error_reporting(E_ALL);
@@ -57,7 +57,7 @@ function sendError($error) {
             . "<p>" . htmlspecialchars($error) . "</p>");
 }
 
-date_default_timezone_set(TIMEZONE);
+date_default_timezone_set($SETTINGS['timezone']);
 
 // Database settings
 // Also inits database and stuff
@@ -66,12 +66,12 @@ use Medoo\Medoo;
 $database;
 try {
     $database = new Medoo([
-        'database_type' => DB_TYPE,
-        'database_name' => DB_NAME,
-        'server' => DB_SERVER,
-        'username' => DB_USER,
-        'password' => DB_PASS,
-        'charset' => DB_CHARSET
+        'database_type' => $SETTINGS['database']['type'],
+        'database_name' => $SETTINGS['database']['name'],
+        'server' => $SETTINGS['database']['server'],
+        'username' => $SETTINGS['database']['user'],
+        'password' => $SETTINGS['database']['password'],
+        'charset' => $SETTINGS['database']['charset']
     ]);
 } catch (Exception $ex) {
     //header('HTTP/1.1 500 Internal Server Error');

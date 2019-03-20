@@ -19,10 +19,10 @@ if (!$user->hasPermission("SITEWRITER") && !$user->hasPermission("SITEWRITER_FIL
 
 include_once __DIR__ . "/../lib/mimetypes.php";
 
-$base = FILE_UPLOAD_PATH;
+$base = $SETTINGS["file_upload_path"];
 
 $folder = "";
-if (isset($VARS['path']) && file_exists($base . $VARS['path']) && strpos(realpath($base . $VARS['path']), FILE_UPLOAD_PATH) === 0) {
+if (isset($VARS['path']) && file_exists($base . $VARS['path']) && strpos(realpath($base . $VARS['path']), $SETTINGS["file_upload_path"]) === 0) {
     $folder = $VARS['path'];
 }
 

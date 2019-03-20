@@ -1,76 +1,85 @@
 <?php
 
-/* This Source Code Form is subject to the terms of the Mozilla Public
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
 
-// Whether to show debugging data in output.
-// DO NOT SET TO TRUE IN PRODUCTION!!!
-define("DEBUG", false);
+// Settings for the app.
+// Copy to settings.php and customize.
 
-// Database connection settings
-// See http://medoo.in/api/new for info
-define("DB_TYPE", "mysql");
-define("DB_NAME", "sitewriter");
-define("DB_SERVER", "localhost");
-define("DB_USER", "sitewriter");
-define("DB_PASS", "");
-define("DB_CHARSET", "utf8");
-
-// Name of the app.
-define("SITE_TITLE", "SiteWriter");
-
-define("SMTP_HOST", "");
-define("SMTP_AUTH", true);
-define("SMTP_SECURITY", "tls"); // tls, ssl, or none
-define("SMTP_PORT", 25);
-define("SMTP_USERNAME", "");
-define("SMTP_PASSWORD", "");
-define("SMTP_FROMADDRESS", "sitewriter@example.com");
-define("SMTP_FROMNAME", "SiteWriter");
-
-// URL of the AccountHub API endpoint
-define("PORTAL_API", "http://localhost/accounthub/api.php");
-// URL of the AccountHub home page
-define("PORTAL_URL", "http://localhost/accounthub/home.php");
-// AccountHub API Key
-define("PORTAL_KEY", "123");
-
-// For supported values, see http://php.net/manual/en/timezones.php
-define("TIMEZONE", "America/Denver");
-
-// Base URL for site links.
-define('URL', '/sitewriter');
-
-// Folder for public files
-// This should not be inside the web root for security reasons.
-define('FILE_UPLOAD_PATH', __DIR__ . '/public/files');
-
-// Use pretty URLs (requires correct web server configuration)
-define('PRETTY_URLS', false);
-
-// Location of MaxMind GeoIP database
-//
-// I'll just leave this here:
-// This product includes GeoLite2 data created by MaxMind, available from
-// http://www.maxmind.com
-define('GEOIP_DB', __DIR__ . "/GeoLite2-City.mmdb");
-
-// Unsplash photo integration
-define('ENABLE_UNSPLASH', false);
-define('UNSPLASH_APPID', '');
-define('UNSPLASH_ACCESSKEY', '');
-define('UNSPLASH_SECRETKEY', '');
-define('UNSPLASH_UTMSOURCE', 'SiteWriter');
-
-// Use Captcheck on login screen
-// https://captcheck.netsyms.com
-define("CAPTCHA_ENABLED", FALSE);
-define('CAPTCHA_SERVER', 'https://captcheck.netsyms.com');
-
-// See lang folder for language options
-define('LANGUAGE', "en_us");
-
-
-define("FOOTER_TEXT", "");
-define("COPYRIGHT_NAME", "Netsyms Technologies");
+$SETTINGS = [
+    // Whether to output debugging info like PHP notices, warnings,
+    // and stacktraces.
+    // Turning this on in production is a security risk and can sometimes break
+    // things, such as JSON output where extra content is not expected.
+    "debug" => false,
+    // Database connection settings
+    // See http://medoo.in/api/new for info
+    "database" => [
+        "type" => "mysql",
+        "name" => "sitewriter",
+        "server" => "localhost",
+        "user" => "",
+        "password" => "",
+        "charset" => "utf8"
+    ],
+    // Name of the app.
+    "site_title" => "SiteWriter",
+    // Settings for connecting to the AccountHub server.
+    "accounthub" => [
+        // URL for the API endpoint
+        "api" => "http://localhost/accounthub/api/",
+        // URL of the home page
+        "home" => "http://localhost/accounthub/home.php",
+        // API key
+        "key" => "123"
+    ],
+    // Folder for public files
+    "file_upload_path" => __DIR__ . "/public/files",
+    // Use pretty URLs (requires correct web server configuration)
+    "pretty_urls" => false,
+    // Location of MaxMind GeoIP database
+    //
+    // I'll just leave this here:
+    // This product includes GeoLite2 data created by MaxMind, available from
+    // http://www.maxmind.com
+    "geoip_db" => __DIR__ . "/GeoLite2-City.mmdb",
+    "unsplash" => [
+        "enable" => false,
+        "appid" => "",
+        "accesskey" => "",
+        "secretkey" => "",
+        "utmsource" => "SiteWriter"
+    ],
+    "email" => [
+        "host" => "",
+        "auth" => true,
+        "secure" => "tls",
+        "port" => 587,
+        "user" => "",
+        "password" => "",
+        "fromaddress" => "",
+        "fromname" => "SiteWriter"
+    ],
+    // List of required user permissions to access this app.
+    "permissions" => [
+    ],
+    // List of permissions required for API access. Remove to use the value of
+    // "permissions" instead.
+    "api_permissions" => [
+    ],
+    // For supported values, see http://php.net/manual/en/timezones.php
+    "timezone" => "America/Denver",
+    // Language to use for localization. See langs folder to add a language.
+    "language" => "en",
+    // Shown in the footer of all the pages.
+    "footer_text" => "",
+    // Also shown in the footer, but with "Copyright <current_year>" in front.
+    "copyright" => "Netsyms Technologies",
+    // Base URL for building links relative to the location of the app.
+    // Only used when there's no good context for the path.
+    // The default is almost definitely fine.
+    "url" => "."
+];

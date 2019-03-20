@@ -63,18 +63,18 @@ if ($database->has('settings', ["AND" => ['siteid' => $siteid, 'key' => 'contact
     // Setup mailer
     $mail = new PHPMailer(true);
     $mail->isSMTP();
-    $mail->Host = SMTP_HOST;
-    $mail->SMTPAuth = SMTP_AUTH;
-    if (SMTP_AUTH) {
-        $mail->Username = SMTP_USERNAME;
-        $mail->Password = SMTP_PASSWORD;
+    $mail->Host = $SETTINGS["email"]["host"];
+    $mail->SMTPAuth = $SETTINGS["email"]["auth"];
+    if ($SETTINGS["email"]["auth"]) {
+        $mail->Username = $SETTINGS["email"]["user"];
+        $mail->Password = $SETTINGS["email"]["password"];
     }
-    if (SMTP_SECURITY != "none") {
-        $mail->SMTPSecure = SMTP_SECURITY;
+    if ($SETTINGS["email"]["secure"] != "none") {
+        $mail->SMTPSecure = $SETTINGS["email"]["secure"];
     }
-    $mail->Port = SMTP_PORT;
+    $mail->Port = $SETTINGS["email"]["port"];
     $mail->isHTML(true);
-    $mail->setFrom(SMTP_FROMADDRESS, SMTP_FROMNAME);
+    $mail->setFrom($SETTINGS["email"]["fromaddress"], $SETTINGS["email"]["fromname"]);
 
     $mail->addAddress($emailto);
     $mail->addReplyTo($_POST['email'], $_POST['name']);

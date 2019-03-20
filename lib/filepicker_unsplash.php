@@ -13,9 +13,9 @@ dieifnotloggedin();
 header('Content-Type: application/json');
 
 Crew\Unsplash\HttpClient::init([
-    'applicationId' => UNSPLASH_ACCESSKEY,
-    'secret' => UNSPLASH_SECRETKEY,
-    'utmSource' => UNSPLASH_UTMSOURCE
+    'applicationId' => $SETTINGS["unsplash"]["appid"],
+    'secret' => $SETTINGS["unsplash"]["secretkey"],
+    'utmSource' => $SETTINGS["unsplash"]["utmsource"]
 ]);
 
 $page = 1;

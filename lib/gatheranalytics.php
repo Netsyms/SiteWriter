@@ -78,7 +78,7 @@ if (!$database->has("settings", ["AND" => ["siteid" => getsiteid(), "key" => "an
 // Lookup IP address
 //
 
-        $reader = new Reader(GEOIP_DB);
+        $reader = new Reader($SETTINGS["geoip_db"]);
 
         $record = $reader->city($clientip);
 
@@ -108,12 +108,12 @@ if (!$database->has("settings", ["AND" => ["siteid" => getsiteid(), "key" => "an
             "time" => $time
         ]);
     } catch (GeoIp2\Exception\AddressNotFoundException $e) {
-        if (DEBUG) {
+        if ($SETTINGS["debug"]) {
             echo "<!-- The client IP was not found in the GeoIP database. -->";
         }
     } catch (Exception $e) {
         // Silently fail so the rest of the site still works
-        if (DEBUG) {
+        if ($SETTINGS["debug"]) {
             echo "<!-- Analytics error: " . $e->getMessage() . " -->";
         }
     }

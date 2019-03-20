@@ -87,10 +87,11 @@ function get_page_slug($echo = true) {
  * @return string
  */
 function get_page_clean_url($echo = true, $slug = null) {
+    global $SETTINGS;
     if ($slug == null) {
         $slug = get_page_slug(false);
     }
-    if (PRETTY_URLS) {
+    if ($SETTINGS["pretty_urls"]) {
         $url = formatsiteurl(get_site_url(false)) . "$slug";
     } else {
         $url = formatsiteurl(get_site_url(false)) . "index.php?id=$slug";
@@ -108,6 +109,7 @@ function get_page_clean_url($echo = true, $slug = null) {
  * @return string
  */
 function get_page_url($echo = true, $slug = null) {
+    global $SETTINGS;
     if ($slug == null) {
         $slug = get_page_slug(false);
     }
@@ -132,7 +134,7 @@ function get_page_url($echo = true, $slug = null) {
         $siteid = "&siteid=" . preg_replace("/[^0-9]/", '', $_GET['siteid']);
     }
     $args = "$edit$theme$template$color$siteid";
-    if (PRETTY_URLS) {
+    if ($SETTINGS["pretty_urls"]) {
         if ($args != "") {
             $args = "?$args";
         }
@@ -214,6 +216,7 @@ function is_component_empty($name, $context = null) {
  * @return array
  */
 function get_complex_component($name, $context = null, $include = []) {
+    global $SETTINGS;
     $db = getdatabase();
     if ($context == null) {
         $context = getpageslug();
@@ -234,14 +237,14 @@ function get_complex_component($name, $context = null, $include = []) {
     $filtered = [];
     foreach ($include as $i) {
         if (array_key_exists($i, $content)) {
-            if (!isset($_GET['edit']) && $i == "image" && $content[$i] == URL . "/static/img/no-image.svg") {
+            if (!isset($_GET['edit']) && $i == "image" && $content[$i] == $SETTINGS["url"] . "/static/img/no-image.svg") {
                 $filtered[$i] = "";
             } else {
                 $filtered[$i] = $content[$i];
             }
         } else {
             if (isset($_GET['edit']) && $i == "image") {
-                $filtered[$i] = URL . "/static/img/no-image.svg";
+                $filtered[$i] = $SETTINGS["url"] . "/static/img/no-image.svg";
             } else {
                 $filtered[$i] = "";
             }
@@ -258,12 +261,13 @@ function get_complex_component($name, $context = null, $include = []) {
  * @return boolean
  */
 function is_complex_empty($name, $context = null) {
+    global $SETTINGS;
     if (isset($_GET['edit'])) {
         return false;
     }
     $comp = get_complex_component($name, $context);
     foreach ($comp as $c => $v) {
-        if ($c == "image" && $v == URL . "/static/img/no-image.svg") {
+        if ($c == "image" && $v == $SETTINGS["url"] . "/static/img/no-image.svg") {
             continue;
         }
         if (isset($v) && !empty($v)) {
@@ -314,13 +318,14 @@ function get_url_or_slug($str, $echo = true) {
  * @return string
  */
 function get_file_url($file, $echo = true) {
+    global $SETTINGS;
     $url = "file.php?file=$file";
-    $base = FILE_UPLOAD_PATH;
+    $base = $SETTINGS["file_upload_path"];
     $filepath = $base . $file;
     if (!file_exists($filepath) || is_dir($filepath)) {
         $url = $file;
     } else {
-        if (strpos(realpath($filepath), FILE_UPLOAD_PATH) !== 0) {
+        if (strpos(realpath($filepath), $SETTINGS["file_upload_path"]) !== 0) {
             $url = $file;
         }
     }
@@ -382,10 +387,11 @@ function get_setting($key, $echo = false) {
  * @return string
  */
 function get_theme_url($echo = true) {
+    global $SETTINGS;
     $db = getdatabase();
     $site = $db->get('sites', ["sitename", "url", "theme"], ["siteid" => getsiteid()]);
     if (isset($_GET['edit']) || isset($_GET['in_sw'])) {
-        $url = URL . "/public/themes/" . SITE_THEME;
+        $url = $SETTINGS["url"] . "/public/themes/" . SITE_THEME;
     } else {
         $url = formatsiteurl($site["url"]) . "themes/" . SITE_THEME;
     }

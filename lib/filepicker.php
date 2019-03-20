@@ -9,10 +9,10 @@ dieifnotloggedin();
 
 include_once __DIR__ . "/../lib/mimetypes.php";
 
-$base = FILE_UPLOAD_PATH;
+$base = $SETTINGS["file_upload_path"];
 
 $folder = "";
-if (isset($VARS['path']) && file_exists($base . $VARS['path']) && strpos(realpath($base . $VARS['path']), FILE_UPLOAD_PATH) === 0) {
+if (isset($VARS['path']) && file_exists($base . $VARS['path']) && strpos(realpath($base . $VARS['path']), $SETTINGS["file_upload_path"]) === 0) {
     $folder = $VARS['path'];
 }
 
@@ -23,7 +23,7 @@ if (isset($VARS['type']) && $VARS['type'] != "") {
     $type = explode("|", $VARS['type']);
 }
 
-$enableunsplash = ENABLE_UNSPLASH;
+$enableunsplash = $SETTINGS["unsplash"]["enable"];
 if (count($type) > 0 && !in_array("image", $type)) {
     $enableunsplash = false;
 }
@@ -67,7 +67,7 @@ if ($enableunsplash) {
                             </div>
                         </div>
                     </div>
-                    <span id="unsplashResults"></span> <span>via <a href="https://unsplash.com/?utm_source=<?php echo urlencode(UNSPLASH_UTMSOURCE); ?>&utm_medium=referral">Unsplash</a></span>
+                    <span id="unsplashResults"></span> <span>via <a href="https://unsplash.com/?utm_source=<?php echo urlencode($SETTINGS["unsplash"]["utmsource"]); ?>&utm_medium=referral">Unsplash</a></span>
                 </div>
                 <div id="unsplashPhotoBin" class="px-2 pr-3">
                 </div>

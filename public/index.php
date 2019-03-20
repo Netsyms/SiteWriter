@@ -23,8 +23,8 @@ if (!getsiteid()) {
                 <h2 class="card-title">Welcome!</h2>
                 <p>You're seeing this message because no website has been created yet.
                     <br />
-                    Open <?php echo SITE_TITLE; ?> to make one.</p>
-                <p><a href="<?php echo PORTAL_URL; ?>" class="btn btn-primary">Log In</a></p>
+                    Open <?php echo $SETTINGS["site_title"]; ?> to make one.</p>
+                <p><a href="<?php echo $SETTINGS["accounthub"]["home"]; ?>" class="btn btn-primary">Log In</a></p>
             </div>
         </div>
     </div>
@@ -57,15 +57,15 @@ if (isset($_GET['edit'])) {
     }
     ?>
     <style><?php echo file_get_contents(__DIR__ . "/../static/css/editor.css"); ?></style>
-    <script src="<?php echo URL; ?>/static/js/jquery-3.3.1.min.js"></script>
-    <script src="<?php echo URL; ?>/static/js/tinymce/tinymce.min.js"></script>
+    <script src="<?php echo $SETTINGS["url"]; ?>/static/js/jquery-3.3.1.min.js"></script>
+    <script src="<?php echo $SETTINGS["url"]; ?>/static/js/tinymce/tinymce.min.js"></script>
     <script>
-        static_dir = "<?php echo URL; ?>/static";
+        static_dir = "<?php echo $SETTINGS["url"]; ?>/static";
         page_slug = "<?php echo getpageslug(); ?>";
         site_id = "<?php echo getsiteid(); ?>";
         pages_list = <?php echo json_encode($allpages); ?>;
     </script>
-    <script src="<?php echo URL; ?>/static/js/editor.js"></script>
+    <script src="<?php echo $SETTINGS["url"]; ?>/static/js/editor.js"></script>
     <?php
 }
 ?>
