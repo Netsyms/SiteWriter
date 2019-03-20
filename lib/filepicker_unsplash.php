@@ -13,7 +13,7 @@ dieifnotloggedin();
 header('Content-Type: application/json');
 
 Crew\Unsplash\HttpClient::init([
-    'applicationId' => $SETTINGS["unsplash"]["appid"],
+    'applicationId' => $SETTINGS["unsplash"]["accesskey"],
     'secret' => $SETTINGS["unsplash"]["secretkey"],
     'utmSource' => $SETTINGS["unsplash"]["utmsource"]
 ]);
