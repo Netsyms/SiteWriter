@@ -7,7 +7,7 @@
  */
 
 /**
- * Array of FontAwesome 5.3.1 icons.
+ * Array of FontAwesome 5.7.2 icons.
  */
 $FONTAWESOME = array(
     'fab fa-500px' =>
@@ -34,6 +34,20 @@ $FONTAWESOME = array(
         'label' => 'Accusoft',
         'search' =>
         array(
+        ),
+    ),
+    'fab fa-acquisitions-incorporated' =>
+    array(
+        'label' => 'Acquisitions Incorporated',
+        'search' =>
+        array(
+            0 => 'Dungeons & Dragons',
+            1 => 'd&d',
+            2 => 'dnd',
+            3 => 'fantasy',
+            4 => 'game',
+            5 => 'gaming',
+            6 => 'tabletop',
         ),
     ),
     'fas fa-ad' =>
@@ -84,6 +98,19 @@ $FONTAWESOME = array(
         'label' => 'App.net',
         'search' =>
         array(
+        ),
+    ),
+    'fab fa-adobe' =>
+    array(
+        'label' => 'Adobe',
+        'search' =>
+        array(
+            0 => 'acrobat',
+            1 => 'app',
+            2 => 'design',
+            3 => 'illustrator',
+            4 => 'indesign',
+            5 => 'photoshop',
         ),
     ),
     'fab fa-adversal' =>
@@ -382,9 +409,12 @@ $FONTAWESOME = array(
         'label' => 'Apple',
         'search' =>
         array(
-            0 => 'food',
-            1 => 'fruit',
-            2 => 'osx',
+            0 => 'fruit',
+            1 => 'ios',
+            2 => 'mac',
+            3 => 'operating system',
+            4 => 'os',
+            5 => 'osx',
         ),
     ),
     'fas fa-apple-alt' =>
@@ -392,6 +422,11 @@ $FONTAWESOME = array(
         'label' => 'Fruit Apple',
         'search' =>
         array(
+            0 => 'fall',
+            1 => 'fruit',
+            2 => 'fuji',
+            3 => 'macintosh',
+            4 => 'seasonal',
         ),
     ),
     'fab fa-apple-pay' =>
@@ -597,6 +632,13 @@ $FONTAWESOME = array(
             1 => 'resize',
         ),
     ),
+    'fab fa-artstation' =>
+    array(
+        'label' => 'Artstation',
+        'search' =>
+        array(
+        ),
+    ),
     'fas fa-assistive-listening-systems' =>
     array(
         'label' => 'Assistive Listening Systems',
@@ -638,6 +680,13 @@ $FONTAWESOME = array(
             2 => 'geography',
             3 => 'map',
             4 => 'wayfinding',
+        ),
+    ),
+    'fab fa-atlassian' =>
+    array(
+        'label' => 'Atlassian',
+        'search' =>
+        array(
         ),
     ),
     'fas fa-atom' =>
@@ -704,6 +753,35 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fas fa-baby' =>
+    array(
+        'label' => 'Baby',
+        'search' =>
+        array(
+            0 => 'diaper',
+            1 => 'human',
+            2 => 'infant',
+            3 => 'kid',
+            4 => 'offspring',
+            5 => 'person',
+            6 => 'sprout',
+        ),
+    ),
+    'fas fa-baby-carriage' =>
+    array(
+        'label' => 'Baby Carriage',
+        'search' =>
+        array(
+            0 => 'buggy',
+            1 => 'carrier',
+            2 => 'infant',
+            3 => 'push',
+            4 => 'stroller',
+            5 => 'transportation',
+            6 => 'walk',
+            7 => 'wheels',
+        ),
+    ),
     'fas fa-backspace' =>
     array(
         'label' => 'Backspace',
@@ -722,6 +800,19 @@ $FONTAWESOME = array(
         array(
             0 => 'previous',
             1 => 'rewind',
+        ),
+    ),
+    'fas fa-bacon' =>
+    array(
+        'label' => 'Bacon',
+        'search' =>
+        array(
+            0 => 'breakfast',
+            1 => 'ham',
+            2 => 'meat',
+            3 => 'pancetta',
+            4 => 'pork',
+            5 => 'vegan',
         ),
     ),
     'fas fa-balance-scale' =>
@@ -880,10 +971,11 @@ $FONTAWESOME = array(
         array(
             0 => 'alcohol',
             1 => 'bar',
-            2 => 'drink',
-            3 => 'liquor',
-            4 => 'mug',
-            5 => 'stein',
+            2 => 'beverage',
+            3 => 'drink',
+            4 => 'liquor',
+            5 => 'mug',
+            6 => 'stein',
         ),
     ),
     'fab fa-behance' =>
@@ -925,6 +1017,12 @@ $FONTAWESOME = array(
         'label' => 'Bell Slash',
         'search' =>
         array(
+            0 => 'alert',
+            1 => 'cancel',
+            2 => 'disabled',
+            3 => 'notification',
+            4 => 'off',
+            5 => 'reminder',
         ),
     ),
     'far fa-bell-slash' =>
@@ -932,6 +1030,12 @@ $FONTAWESOME = array(
         'label' => 'Bell Slash',
         'search' =>
         array(
+            0 => 'alert',
+            1 => 'cancel',
+            2 => 'disabled',
+            3 => 'notification',
+            4 => 'off',
+            5 => 'reminder',
         ),
     ),
     'fas fa-bezier-curve' =>
@@ -981,6 +1085,17 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fas fa-biohazard' =>
+    array(
+        'label' => 'Biohazard',
+        'search' =>
+        array(
+            0 => 'danger',
+            1 => 'dangerous',
+            2 => 'medical',
+            3 => 'waste',
+        ),
+    ),
     'fas fa-birthday-cake' =>
     array(
         'label' => 'Birthday Cake',
@@ -993,8 +1108,9 @@ $FONTAWESOME = array(
         'label' => 'Bitbucket',
         'search' =>
         array(
-            0 => 'bitbucket-square',
-            1 => 'git',
+            0 => 'atlassian',
+            1 => 'bitbucket-square',
+            2 => 'git',
         ),
     ),
     'fab fa-bitcoin' =>
@@ -1032,11 +1148,40 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fas fa-blender-phone' =>
+    array(
+        'label' => 'Blender Phone',
+        'search' =>
+        array(
+            0 => 'appliance',
+            1 => 'fantasy',
+            2 => 'silly',
+        ),
+    ),
     'fas fa-blind' =>
     array(
         'label' => 'Blind',
         'search' =>
         array(
+            0 => 'cane',
+            1 => 'disability',
+            2 => 'person',
+            3 => 'sight',
+        ),
+    ),
+    'fas fa-blog' =>
+    array(
+        'label' => 'Blog',
+        'search' =>
+        array(
+            0 => 'journal',
+            1 => 'log',
+            2 => 'online',
+            3 => 'personal',
+            4 => 'post',
+            5 => 'web 2.0',
+            6 => 'wordpress',
+            7 => 'writing',
         ),
     ),
     'fab fa-blogger' =>
@@ -1119,6 +1264,34 @@ $FONTAWESOME = array(
         array(
             0 => 'documentation',
             1 => 'read',
+        ),
+    ),
+    'fas fa-book-dead' =>
+    array(
+        'label' => 'Book of the Dead',
+        'search' =>
+        array(
+            0 => 'Dungeons & Dragons',
+            1 => 'crossbones',
+            2 => 'd&d',
+            3 => 'dark arts',
+            4 => 'death',
+            5 => 'dnd',
+            6 => 'documentation',
+            7 => 'evil',
+            8 => 'fantasy',
+            9 => 'halloween',
+            10 => 'holiday',
+            11 => 'read',
+            12 => 'skull',
+            13 => 'spell',
+        ),
+    ),
+    'fas fa-book-medical' =>
+    array(
+        'label' => 'Medical Book',
+        'search' =>
+        array(
         ),
     ),
     'fas fa-book-open' =>
@@ -1207,6 +1380,25 @@ $FONTAWESOME = array(
             6 => 'wit',
         ),
     ),
+    'fas fa-bread-slice' =>
+    array(
+        'label' => 'Bread Slice',
+        'search' =>
+        array(
+            0 => 'bake',
+            1 => 'bakery',
+            2 => 'baking',
+            3 => 'dough',
+            4 => 'flour',
+            5 => 'gluten',
+            6 => 'grain',
+            7 => 'sandwich',
+            8 => 'sourdough',
+            9 => 'toast',
+            10 => 'wheat',
+            11 => 'yeast',
+        ),
+    ),
     'fas fa-briefcase' =>
     array(
         'label' => 'Briefcase',
@@ -1242,6 +1434,15 @@ $FONTAWESOME = array(
         'label' => 'Broom',
         'search' =>
         array(
+            0 => 'clean',
+            1 => 'firebolt',
+            2 => 'fly',
+            3 => 'halloween',
+            4 => 'holiday',
+            5 => 'nimbus 2000',
+            6 => 'quidditch',
+            7 => 'sweep',
+            8 => 'witch',
         ),
     ),
     'fas fa-brush' =>
@@ -1320,7 +1521,13 @@ $FONTAWESOME = array(
         'label' => 'Burn',
         'search' =>
         array(
-            0 => 'energy',
+            0 => 'caliente',
+            1 => 'energy',
+            2 => 'fire',
+            3 => 'flame',
+            4 => 'gas',
+            5 => 'heat',
+            6 => 'hot',
         ),
     ),
     'fab fa-buromobelexperte' =>
@@ -1440,11 +1647,17 @@ $FONTAWESOME = array(
             2 => 'appointment',
             3 => 'confirm',
             4 => 'correct',
-            5 => 'done',
-            6 => 'ok',
-            7 => 'select',
-            8 => 'success',
-            9 => 'todo',
+            5 => 'date',
+            6 => 'done',
+            7 => 'event',
+            8 => 'ok',
+            9 => 'schedule',
+            10 => 'select',
+            11 => 'success',
+            12 => 'tick',
+            13 => 'time',
+            14 => 'todo',
+            15 => 'when',
         ),
     ),
     'far fa-calendar-check' =>
@@ -1457,11 +1670,33 @@ $FONTAWESOME = array(
             2 => 'appointment',
             3 => 'confirm',
             4 => 'correct',
-            5 => 'done',
-            6 => 'ok',
-            7 => 'select',
-            8 => 'success',
-            9 => 'todo',
+            5 => 'date',
+            6 => 'done',
+            7 => 'event',
+            8 => 'ok',
+            9 => 'schedule',
+            10 => 'select',
+            11 => 'success',
+            12 => 'tick',
+            13 => 'time',
+            14 => 'todo',
+            15 => 'when',
+        ),
+    ),
+    'fas fa-calendar-day' =>
+    array(
+        'label' => 'Calendar with Day Focus',
+        'search' =>
+        array(
+            0 => 'date',
+            1 => 'detail',
+            2 => 'event',
+            3 => 'focus',
+            4 => 'schedule',
+            5 => 'single day',
+            6 => 'time',
+            7 => 'today',
+            8 => 'when',
         ),
     ),
     'fas fa-calendar-minus' =>
@@ -1470,7 +1705,8 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'delete',
-            1 => 'remove',
+            1 => 'negative',
+            2 => 'remove',
         ),
     ),
     'far fa-calendar-minus' =>
@@ -1479,7 +1715,8 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'delete',
-            1 => 'remove',
+            1 => 'negative',
+            2 => 'remove',
         ),
     ),
     'fas fa-calendar-plus' =>
@@ -1490,6 +1727,7 @@ $FONTAWESOME = array(
             0 => 'add',
             1 => 'create',
             2 => 'new',
+            3 => 'positive',
         ),
     ),
     'far fa-calendar-plus' =>
@@ -1500,6 +1738,7 @@ $FONTAWESOME = array(
             0 => 'add',
             1 => 'create',
             2 => 'new',
+            3 => 'positive',
         ),
     ),
     'fas fa-calendar-times' =>
@@ -1524,6 +1763,22 @@ $FONTAWESOME = array(
             3 => 'x',
         ),
     ),
+    'fas fa-calendar-week' =>
+    array(
+        'label' => 'Calendar with Week Focus',
+        'search' =>
+        array(
+            0 => 'date',
+            1 => 'detail',
+            2 => 'event',
+            3 => 'focus',
+            4 => 'schedule',
+            5 => 'single week',
+            6 => 'time',
+            7 => 'today',
+            8 => 'when',
+        ),
+    ),
     'fas fa-camera' =>
     array(
         'label' => 'camera',
@@ -1542,6 +1797,44 @@ $FONTAWESOME = array(
             0 => 'photo',
             1 => 'picture',
             2 => 'record',
+        ),
+    ),
+    'fas fa-campground' =>
+    array(
+        'label' => 'Campground',
+        'search' =>
+        array(
+            0 => 'camping',
+            1 => 'fall',
+            2 => 'outdoors',
+            3 => 'seasonal',
+            4 => 'tent',
+        ),
+    ),
+    'fab fa-canadian-maple-leaf' =>
+    array(
+        'label' => 'Canadian Maple Leaf',
+        'search' =>
+        array(
+            0 => 'canada',
+            1 => 'flag',
+            2 => 'flora',
+            3 => 'nature',
+            4 => 'plant',
+        ),
+    ),
+    'fas fa-candy-cane' =>
+    array(
+        'label' => 'Candy Cane',
+        'search' =>
+        array(
+            0 => 'candy',
+            1 => 'christmas',
+            2 => 'holiday',
+            3 => 'mint',
+            4 => 'peppermint',
+            5 => 'striped',
+            6 => 'xmas',
         ),
     ),
     'fas fa-cannabis' =>
@@ -1586,7 +1879,7 @@ $FONTAWESOME = array(
     ),
     'fas fa-car-alt' =>
     array(
-        'label' => 'Car Alt',
+        'label' => 'Alternate Car',
         'search' =>
         array(
         ),
@@ -1733,6 +2026,17 @@ $FONTAWESOME = array(
             1 => 'triangle up',
         ),
     ),
+    'fas fa-carrot' =>
+    array(
+        'label' => 'Carrot',
+        'search' =>
+        array(
+            0 => 'bugs bunny',
+            1 => 'holiday',
+            2 => 'orange',
+            3 => 'vegetable',
+        ),
+    ),
     'fas fa-cart-arrow-down' =>
     array(
         'label' => 'Shopping Cart Arrow Down',
@@ -1749,7 +2053,40 @@ $FONTAWESOME = array(
             0 => 'add',
             1 => 'create',
             2 => 'new',
-            3 => 'shopping',
+            3 => 'positive',
+            4 => 'shopping',
+        ),
+    ),
+    'fas fa-cash-register' =>
+    array(
+        'label' => 'Cash Register',
+        'search' =>
+        array(
+            0 => 'buy',
+            1 => 'cha-ching',
+            2 => 'change',
+            3 => 'checkout',
+            4 => 'commerce',
+            5 => 'leaerboard',
+            6 => 'machine',
+            7 => 'pay',
+            8 => 'payment',
+            9 => 'purchase',
+            10 => 'store',
+        ),
+    ),
+    'fas fa-cat' =>
+    array(
+        'label' => 'Cat',
+        'search' =>
+        array(
+            0 => 'feline',
+            1 => 'halloween',
+            2 => 'holiday',
+            3 => 'kitten',
+            4 => 'kitty',
+            5 => 'meow',
+            6 => 'pet',
         ),
     ),
     'fab fa-cc-amazon-pay' =>
@@ -1830,6 +2167,16 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fab fa-centos' =>
+    array(
+        'label' => 'Centos',
+        'search' =>
+        array(
+            0 => 'linux',
+            1 => 'operating system',
+            2 => 'os',
+        ),
+    ),
     'fas fa-certificate' =>
     array(
         'label' => 'certificate',
@@ -1837,6 +2184,15 @@ $FONTAWESOME = array(
         array(
             0 => 'badge',
             1 => 'star',
+        ),
+    ),
+    'fas fa-chair' =>
+    array(
+        'label' => 'Chair',
+        'search' =>
+        array(
+            0 => 'furniture',
+            1 => 'seat',
         ),
     ),
     'fas fa-chalkboard' =>
@@ -1911,8 +2267,10 @@ $FONTAWESOME = array(
             0 => 'activity',
             1 => 'analytics',
             2 => 'dashboard',
-            3 => 'graph',
-            4 => 'line-chart',
+            3 => 'gain',
+            4 => 'graph',
+            5 => 'increase',
+            6 => 'line-chart',
         ),
     ),
     'fas fa-chart-pie' =>
@@ -1960,8 +2318,9 @@ $FONTAWESOME = array(
             5 => 'ok',
             6 => 'select',
             7 => 'success',
-            8 => 'todo',
-            9 => 'yes',
+            8 => 'tick',
+            9 => 'todo',
+            10 => 'yes',
         ),
     ),
     'far fa-check-circle' =>
@@ -1977,8 +2336,9 @@ $FONTAWESOME = array(
             5 => 'ok',
             6 => 'select',
             7 => 'success',
-            8 => 'todo',
-            9 => 'yes',
+            8 => 'tick',
+            9 => 'todo',
+            10 => 'yes',
         ),
     ),
     'fas fa-check-double' =>
@@ -2016,8 +2376,9 @@ $FONTAWESOME = array(
             6 => 'ok',
             7 => 'select',
             8 => 'success',
-            9 => 'todo',
-            10 => 'yes',
+            9 => 'tick',
+            10 => 'todo',
+            11 => 'yes',
         ),
     ),
     'far fa-check-square' =>
@@ -2034,8 +2395,24 @@ $FONTAWESOME = array(
             6 => 'ok',
             7 => 'select',
             8 => 'success',
-            9 => 'todo',
-            10 => 'yes',
+            9 => 'tick',
+            10 => 'todo',
+            11 => 'yes',
+        ),
+    ),
+    'fas fa-cheese' =>
+    array(
+        'label' => 'Cheese',
+        'search' =>
+        array(
+            0 => 'cheddar',
+            1 => 'curd',
+            2 => 'gouda',
+            3 => 'melt',
+            4 => 'parmesan',
+            5 => 'sandwich',
+            6 => 'swiss',
+            7 => 'wedge',
         ),
     ),
     'fas fa-chess' =>
@@ -2232,6 +2609,20 @@ $FONTAWESOME = array(
             4 => 'windows',
         ),
     ),
+    'fas fa-clinic-medical' =>
+    array(
+        'label' => 'Medical Clinic',
+        'search' =>
+        array(
+            0 => 'doctor',
+            1 => 'general practitioner',
+            2 => 'hospital',
+            3 => 'infirmary',
+            4 => 'medicine',
+            5 => 'office',
+            6 => 'outpatient',
+        ),
+    ),
     'fas fa-clipboard' =>
     array(
         'label' => 'Clipboard',
@@ -2250,7 +2641,7 @@ $FONTAWESOME = array(
     ),
     'fas fa-clipboard-check' =>
     array(
-        'label' => 'Clipboard Check',
+        'label' => 'Clipboard with Check',
         'search' =>
         array(
             0 => 'accept',
@@ -2260,8 +2651,9 @@ $FONTAWESOME = array(
             4 => 'ok',
             5 => 'select',
             6 => 'success',
-            7 => 'todo',
-            8 => 'yes',
+            7 => 'tick',
+            8 => 'todo',
+            9 => 'yes',
         ),
     ),
     'fas fa-clipboard-list' =>
@@ -2276,8 +2668,9 @@ $FONTAWESOME = array(
             4 => 'intinerary',
             5 => 'ol',
             6 => 'schedule',
-            7 => 'todo',
-            8 => 'ul',
+            7 => 'tick',
+            8 => 'todo',
+            9 => 'ul',
         ),
     ),
     'fas fa-clock' =>
@@ -2353,7 +2746,72 @@ $FONTAWESOME = array(
         'label' => 'Alternate Cloud Download',
         'search' =>
         array(
-            0 => 'cloud-download',
+            0 => 'export',
+        ),
+    ),
+    'fas fa-cloud-meatball' =>
+    array(
+        'label' => 'Cloud with (a chance of) Meatball',
+        'search' =>
+        array(
+        ),
+    ),
+    'fas fa-cloud-moon' =>
+    array(
+        'label' => 'Cloud with Moon',
+        'search' =>
+        array(
+            0 => 'crescent',
+            1 => 'evening',
+            2 => 'halloween',
+            3 => 'holiday',
+            4 => 'lunar',
+            5 => 'night',
+            6 => 'sky',
+        ),
+    ),
+    'fas fa-cloud-moon-rain' =>
+    array(
+        'label' => 'Cloud with Moon and Rain',
+        'search' =>
+        array(
+        ),
+    ),
+    'fas fa-cloud-rain' =>
+    array(
+        'label' => 'Cloud with Rain',
+        'search' =>
+        array(
+            0 => 'precipitation',
+        ),
+    ),
+    'fas fa-cloud-showers-heavy' =>
+    array(
+        'label' => 'Cloud with Heavy Showers',
+        'search' =>
+        array(
+            0 => 'precipitation',
+            1 => 'rain',
+            2 => 'storm',
+        ),
+    ),
+    'fas fa-cloud-sun' =>
+    array(
+        'label' => 'Cloud with Sun',
+        'search' =>
+        array(
+            0 => 'day',
+            1 => 'daytime',
+            2 => 'fall',
+            3 => 'outdoors',
+            4 => 'seasonal',
+        ),
+    ),
+    'fas fa-cloud-sun-rain' =>
+    array(
+        'label' => 'Cloud with Sun and Rain',
+        'search' =>
+        array(
         ),
     ),
     'fas fa-cloud-upload-alt' =>
@@ -2391,7 +2849,8 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'alcohol',
-            1 => 'drink',
+            1 => 'beverage',
+            2 => 'drink',
         ),
     ),
     'fas fa-code' =>
@@ -2438,12 +2897,15 @@ $FONTAWESOME = array(
         'label' => 'Coffee',
         'search' =>
         array(
-            0 => 'breakfast',
-            1 => 'cafe',
-            2 => 'drink',
-            3 => 'morning',
-            4 => 'mug',
-            5 => 'tea',
+            0 => 'beverage',
+            1 => 'breakfast',
+            2 => 'cafe',
+            3 => 'drink',
+            4 => 'fall',
+            5 => 'morning',
+            6 => 'mug',
+            7 => 'seasonal',
+            8 => 'tea',
         ),
     ),
     'fas fa-cog' =>
@@ -2522,15 +2984,14 @@ $FONTAWESOME = array(
             0 => 'bubble',
             1 => 'chat',
             2 => 'commenting',
-            3 => 'commenting',
-            4 => 'conversation',
-            5 => 'feedback',
-            6 => 'message',
-            7 => 'note',
-            8 => 'notification',
-            9 => 'sms',
-            10 => 'speech',
-            11 => 'texting',
+            3 => 'conversation',
+            4 => 'feedback',
+            5 => 'message',
+            6 => 'note',
+            7 => 'notification',
+            8 => 'sms',
+            9 => 'speech',
+            10 => 'texting',
         ),
     ),
     'far fa-comment-alt' =>
@@ -2541,15 +3002,14 @@ $FONTAWESOME = array(
             0 => 'bubble',
             1 => 'chat',
             2 => 'commenting',
-            3 => 'commenting',
-            4 => 'conversation',
-            5 => 'feedback',
-            6 => 'message',
-            7 => 'note',
-            8 => 'notification',
-            9 => 'sms',
-            10 => 'speech',
-            11 => 'texting',
+            3 => 'conversation',
+            4 => 'feedback',
+            5 => 'message',
+            6 => 'note',
+            7 => 'notification',
+            8 => 'sms',
+            9 => 'speech',
+            10 => 'texting',
         ),
     ),
     'fas fa-comment-dollar' =>
@@ -2571,6 +3031,16 @@ $FONTAWESOME = array(
         'label' => 'Comment Dots',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-comment-medical' =>
+    array(
+        'label' => 'Alternate Medical Chat',
+        'search' =>
+        array(
+            0 => 'advice',
+            1 => 'diagnose',
+            2 => 'prescription',
         ),
     ),
     'fas fa-comment-slash' =>
@@ -2666,6 +3136,20 @@ $FONTAWESOME = array(
             4 => 'smaller',
         ),
     ),
+    'fas fa-compress-arrows-alt' =>
+    array(
+        'label' => 'Alternate Compress Arrows',
+        'search' =>
+        array(
+            0 => 'collapse',
+            1 => 'fullscreen',
+            2 => 'minimize',
+            3 => 'move',
+            4 => 'resize',
+            5 => 'shrink',
+            6 => 'smaller',
+        ),
+    ),
     'fas fa-concierge-bell' =>
     array(
         'label' => 'Concierge Bell',
@@ -2675,6 +3159,14 @@ $FONTAWESOME = array(
             1 => 'hotel',
             2 => 'service',
             3 => 'support',
+        ),
+    ),
+    'fab fa-confluence' =>
+    array(
+        'label' => 'Confluence',
+        'search' =>
+        array(
+            0 => 'atlassian',
         ),
     ),
     'fab fa-connectdevelop' =>
@@ -2698,10 +3190,9 @@ $FONTAWESOME = array(
         array(
             0 => 'baked good',
             1 => 'chips',
-            2 => 'food',
-            3 => 'snack',
-            4 => 'sweet',
-            5 => 'treat',
+            2 => 'snack',
+            3 => 'sweet',
+            4 => 'treat',
         ),
     ),
     'fas fa-cookie-bite' =>
@@ -2713,10 +3204,9 @@ $FONTAWESOME = array(
             1 => 'bitten',
             2 => 'chips',
             3 => 'eating',
-            4 => 'food',
-            5 => 'snack',
-            6 => 'sweet',
-            7 => 'treat',
+            4 => 'snack',
+            5 => 'sweet',
+            6 => 'treat',
         ),
     ),
     'fas fa-copy' =>
@@ -2760,6 +3250,8 @@ $FONTAWESOME = array(
         'label' => 'Couch',
         'search' =>
         array(
+            0 => 'furniture',
+            1 => 'sofa',
         ),
     ),
     'fab fa-cpanel' =>
@@ -2820,7 +3312,7 @@ $FONTAWESOME = array(
     ),
     'fab fa-creative-commons-pd-alt' =>
     array(
-        'label' => 'Creative Commons Public Domain Alternate',
+        'label' => 'Alternate Creative Commons Public Domain',
         'search' =>
         array(
         ),
@@ -2860,6 +3352,13 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fab fa-creative-commons-zero' =>
+    array(
+        'label' => 'Creative Commons CC0',
+        'search' =>
+        array(
+        ),
+    ),
     'fas fa-credit-card' =>
     array(
         'label' => 'Credit Card',
@@ -2886,6 +3385,20 @@ $FONTAWESOME = array(
             4 => 'money',
             5 => 'payment',
             6 => 'purchase',
+        ),
+    ),
+    'fab fa-critical-role' =>
+    array(
+        'label' => 'Critical Role',
+        'search' =>
+        array(
+            0 => 'Dungeons & Dragons',
+            1 => 'd&d',
+            2 => 'dnd',
+            3 => 'fantasy',
+            4 => 'game',
+            5 => 'gaming',
+            6 => 'tabletop',
         ),
     ),
     'fas fa-crop' =>
@@ -2929,7 +3442,10 @@ $FONTAWESOME = array(
         array(
             0 => 'bird',
             1 => 'bullfrog',
-            2 => 'toad',
+            2 => 'fauna',
+            3 => 'halloween',
+            4 => 'holiday',
+            5 => 'toad',
         ),
     ),
     'fas fa-crown' =>
@@ -2937,6 +3453,16 @@ $FONTAWESOME = array(
         'label' => 'Crown',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-crutch' =>
+    array(
+        'label' => 'Crutch',
+        'search' =>
+        array(
+            0 => 'cane',
+            1 => 'injury',
+            2 => 'wheelchair',
         ),
     ),
     'fab fa-css3' =>
@@ -2976,7 +3502,6 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'scissors',
-            1 => 'scissors',
         ),
     ),
     'fab fa-cuttlefish' =>
@@ -2991,6 +3516,19 @@ $FONTAWESOME = array(
         'label' => 'Dungeons & Dragons',
         'search' =>
         array(
+        ),
+    ),
+    'fab fa-d-and-d-beyond' =>
+    array(
+        'label' => 'D&D Beyond',
+        'search' =>
+        array(
+            0 => 'Dungeons & Dragons',
+            1 => 'd&d',
+            2 => 'dnd',
+            3 => 'fantasy',
+            4 => 'gaming',
+            5 => 'tabletop',
         ),
     ),
     'fab fa-dashcube' =>
@@ -3016,9 +3554,25 @@ $FONTAWESOME = array(
     ),
     'fab fa-delicious' =>
     array(
-        'label' => 'Delicious Logo',
+        'label' => 'Delicious',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-democrat' =>
+    array(
+        'label' => 'Democrat',
+        'search' =>
+        array(
+            0 => 'american',
+            1 => 'democratic party',
+            2 => 'donkey',
+            3 => 'election',
+            4 => 'left',
+            5 => 'left-wing',
+            6 => 'liberal',
+            7 => 'politics',
+            8 => 'usa',
         ),
     ),
     'fab fa-deploydog' =>
@@ -3051,6 +3605,13 @@ $FONTAWESOME = array(
             8 => 'screen',
         ),
     ),
+    'fab fa-dev' =>
+    array(
+        'label' => 'DEV',
+        'search' =>
+        array(
+        ),
+    ),
     'fab fa-deviantart' =>
     array(
         'label' => 'deviantART',
@@ -3068,9 +3629,32 @@ $FONTAWESOME = array(
             2 => 'wheel of dharma',
         ),
     ),
+    'fab fa-dhl' =>
+    array(
+        'label' => 'DHL',
+        'search' =>
+        array(
+            0 => 'Dalsey, Hillblom and Lynn',
+            1 => 'german',
+            2 => 'package',
+            3 => 'shipping',
+        ),
+    ),
     'fas fa-diagnoses' =>
     array(
         'label' => 'Diagnoses',
+        'search' =>
+        array(
+            0 => 'analyze',
+            1 => 'detect',
+            2 => 'diagnosis',
+            3 => 'examine',
+            4 => 'medicine',
+        ),
+    ),
+    'fab fa-diaspora' =>
+    array(
+        'label' => 'Diaspora',
         'search' =>
         array(
         ),
@@ -3084,6 +3668,36 @@ $FONTAWESOME = array(
             1 => 'gambling',
             2 => 'game',
             3 => 'roll',
+        ),
+    ),
+    'fas fa-dice-d20' =>
+    array(
+        'label' => 'Dice D20',
+        'search' =>
+        array(
+            0 => 'Dungeons & Dragons',
+            1 => 'chance',
+            2 => 'd&d',
+            3 => 'dnd',
+            4 => 'fantasy',
+            5 => 'gambling',
+            6 => 'game',
+            7 => 'roll',
+        ),
+    ),
+    'fas fa-dice-d6' =>
+    array(
+        'label' => 'Dice D6',
+        'search' =>
+        array(
+            0 => 'Dungeons & Dragons',
+            1 => 'chance',
+            2 => 'd&d',
+            3 => 'dnd',
+            4 => 'fantasy',
+            5 => 'gambling',
+            6 => 'game',
+            7 => 'roll',
         ),
     ),
     'fas fa-dice-five' =>
@@ -3246,6 +3860,20 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fas fa-dog' =>
+    array(
+        'label' => 'Dog',
+        'search' =>
+        array(
+            0 => 'canine',
+            1 => 'fauna',
+            2 => 'mammmal',
+            3 => 'pet',
+            4 => 'pooch',
+            5 => 'puppy',
+            6 => 'woof',
+        ),
+    ),
     'fas fa-dollar-sign' =>
     array(
         'label' => 'Dollar Sign',
@@ -3320,8 +3948,8 @@ $FONTAWESOME = array(
         'label' => 'Dove',
         'search' =>
         array(
-            0 => 'animal',
-            1 => 'bird',
+            0 => 'bird',
+            1 => 'fauna',
             2 => 'flying',
             3 => 'peace',
         ),
@@ -3331,7 +3959,7 @@ $FONTAWESOME = array(
         'label' => 'Download',
         'search' =>
         array(
-            0 => 'import',
+            0 => 'export',
         ),
     ),
     'fab fa-draft2digital' =>
@@ -3349,6 +3977,17 @@ $FONTAWESOME = array(
             0 => 'mechanical drawing',
             1 => 'plot',
             2 => 'plotting',
+        ),
+    ),
+    'fas fa-dragon' =>
+    array(
+        'label' => 'Dragon',
+        'search' =>
+        array(
+            0 => 'Dungeons & Dragons',
+            1 => 'd&d',
+            2 => 'dnd',
+            3 => 'fantasy',
         ),
     ),
     'fas fa-draw-polygon' =>
@@ -3407,6 +4046,20 @@ $FONTAWESOME = array(
             8 => 'tropical',
         ),
     ),
+    'fas fa-drumstick-bite' =>
+    array(
+        'label' => 'Drumstick with Bite Taken Out',
+        'search' =>
+        array(
+            0 => 'bone',
+            1 => 'chicken',
+            2 => 'leg',
+            3 => 'meat',
+            4 => 'poultry',
+            5 => 'seasonal',
+            6 => 'turkey',
+        ),
+    ),
     'fab fa-drupal' =>
     array(
         'label' => 'Drupal Logo',
@@ -3424,6 +4077,51 @@ $FONTAWESOME = array(
             2 => 'strength',
             3 => 'weight',
             4 => 'weight-lifting',
+        ),
+    ),
+    'fas fa-dumpster' =>
+    array(
+        'label' => 'Dumpster',
+        'search' =>
+        array(
+            0 => 'alley',
+            1 => 'bin',
+            2 => 'commercial',
+            3 => 'trash',
+            4 => 'waste',
+        ),
+    ),
+    'fas fa-dumpster-fire' =>
+    array(
+        'label' => 'Dumpster Fire',
+        'search' =>
+        array(
+            0 => 'alley',
+            1 => 'bin',
+            2 => 'commercial',
+            3 => 'danger',
+            4 => 'dangerous',
+            5 => 'euphemism',
+            6 => 'flame',
+            7 => 'heat',
+            8 => 'hot',
+            9 => 'trash',
+            10 => 'waste',
+        ),
+    ),
+    'fas fa-dungeon' =>
+    array(
+        'label' => 'Dungeon',
+        'search' =>
+        array(
+            0 => 'Dungeons & Dragons',
+            1 => 'building',
+            2 => 'd&d',
+            3 => 'dnd',
+            4 => 'door',
+            5 => 'entrance',
+            6 => 'fantasy',
+            7 => 'gate',
         ),
     ),
     'fab fa-dyalog' =>
@@ -3478,6 +4176,17 @@ $FONTAWESOME = array(
             2 => 'pencil',
             3 => 'update',
             4 => 'write',
+        ),
+    ),
+    'fas fa-egg' =>
+    array(
+        'label' => 'Egg',
+        'search' =>
+        array(
+            0 => 'breakfast',
+            1 => 'chicken',
+            2 => 'easter',
+            3 => 'yolk',
         ),
     ),
     'fas fa-eject' =>
@@ -3666,6 +4375,21 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fas fa-ethernet' =>
+    array(
+        'label' => 'Ethernet',
+        'search' =>
+        array(
+            0 => 'cable',
+            1 => 'cat 5',
+            2 => 'cat 6',
+            3 => 'connection',
+            4 => 'hardware',
+            5 => 'internet',
+            6 => 'network',
+            7 => 'wired',
+        ),
+    ),
     'fab fa-etsy' =>
     array(
         'label' => 'Etsy',
@@ -3679,7 +4403,6 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'eur',
-            1 => 'eur',
         ),
     ),
     'fas fa-exchange-alt' =>
@@ -3891,6 +4614,20 @@ $FONTAWESOME = array(
             0 => 'social network',
         ),
     ),
+    'fab fa-fantasy-flight-games' =>
+    array(
+        'label' => 'Fantasy Flight-games',
+        'search' =>
+        array(
+            0 => 'Dungeons & Dragons',
+            1 => 'd&d',
+            2 => 'dnd',
+            3 => 'fantasy',
+            4 => 'game',
+            5 => 'gaming',
+            6 => 'tabletop',
+        ),
+    ),
     'fas fa-fast-backward' =>
     array(
         'label' => 'fast-backward',
@@ -3933,13 +4670,33 @@ $FONTAWESOME = array(
     ),
     'fas fa-feather-alt' =>
     array(
-        'label' => 'Feather Alt',
+        'label' => 'Alternate Feather',
         'search' =>
         array(
             0 => 'bird',
             1 => 'light',
             2 => 'plucked',
             3 => 'quill',
+        ),
+    ),
+    'fab fa-fedex' =>
+    array(
+        'label' => 'FedEx',
+        'search' =>
+        array(
+            0 => 'Federal Express',
+            1 => 'package',
+            2 => 'shipping',
+        ),
+    ),
+    'fab fa-fedora' =>
+    array(
+        'label' => 'Fedora',
+        'search' =>
+        array(
+            0 => 'linux',
+            1 => 'operating system',
+            2 => 'os',
         ),
     ),
     'fas fa-female' =>
@@ -3969,6 +4726,16 @@ $FONTAWESOME = array(
             7 => 'top gun',
             8 => 'transportation',
             9 => 'travel',
+        ),
+    ),
+    'fab fa-figma' =>
+    array(
+        'label' => 'Figma',
+        'search' =>
+        array(
+            0 => 'app',
+            1 => 'design',
+            2 => 'interface',
         ),
     ),
     'fas fa-file' =>
@@ -4087,11 +4854,20 @@ $FONTAWESOME = array(
             4 => 'signature',
         ),
     ),
+    'fas fa-file-csv' =>
+    array(
+        'label' => 'File CSV',
+        'search' =>
+        array(
+            0 => 'spreadsheets',
+        ),
+    ),
     'fas fa-file-download' =>
     array(
         'label' => 'File Download',
         'search' =>
         array(
+            0 => 'export',
         ),
     ),
     'fas fa-file-excel' =>
@@ -4113,6 +4889,7 @@ $FONTAWESOME = array(
         'label' => 'File Export',
         'search' =>
         array(
+            0 => 'download',
         ),
     ),
     'fas fa-file-image' =>
@@ -4134,6 +4911,7 @@ $FONTAWESOME = array(
         'label' => 'File Import',
         'search' =>
         array(
+            0 => 'upload',
         ),
     ),
     'fas fa-file-invoice' =>
@@ -4229,6 +5007,7 @@ $FONTAWESOME = array(
         'label' => 'File Upload',
         'search' =>
         array(
+            0 => 'import',
         ),
     ),
     'fas fa-file-video' =>
@@ -4320,9 +5099,23 @@ $FONTAWESOME = array(
         'label' => 'fire',
         'search' =>
         array(
-            0 => 'flame',
-            1 => 'hot',
-            2 => 'popular',
+            0 => 'caliente',
+            1 => 'flame',
+            2 => 'heat',
+            3 => 'hot',
+            4 => 'popular',
+        ),
+    ),
+    'fas fa-fire-alt' =>
+    array(
+        'label' => 'Alternate Fire',
+        'search' =>
+        array(
+            0 => 'caliente',
+            1 => 'flame',
+            2 => 'heat',
+            3 => 'hot',
+            4 => 'popular',
         ),
     ),
     'fas fa-fire-extinguisher' =>
@@ -4373,6 +5166,27 @@ $FONTAWESOME = array(
         'label' => 'Fish',
         'search' =>
         array(
+            0 => 'fauna',
+            1 => 'gold',
+            2 => 'seafood',
+            3 => 'swimming',
+        ),
+    ),
+    'fas fa-fist-raised' =>
+    array(
+        'label' => 'Raised Fist',
+        'search' =>
+        array(
+            0 => 'Dungeons & Dragons',
+            1 => 'd&d',
+            2 => 'dnd',
+            3 => 'fantasy',
+            4 => 'hand',
+            5 => 'ki',
+            6 => 'monk',
+            7 => 'resist',
+            8 => 'strength',
+            9 => 'unarmed combat',
         ),
     ),
     'fas fa-flag' =>
@@ -4380,10 +5194,13 @@ $FONTAWESOME = array(
         'label' => 'flag',
         'search' =>
         array(
-            0 => 'notice',
-            1 => 'notification',
-            2 => 'notify',
-            3 => 'report',
+            0 => 'country',
+            1 => 'notice',
+            2 => 'notification',
+            3 => 'notify',
+            4 => 'pole',
+            5 => 'report',
+            6 => 'symbol',
         ),
     ),
     'far fa-flag' =>
@@ -4391,10 +5208,13 @@ $FONTAWESOME = array(
         'label' => 'flag',
         'search' =>
         array(
-            0 => 'notice',
-            1 => 'notification',
-            2 => 'notify',
-            3 => 'report',
+            0 => 'country',
+            1 => 'notice',
+            2 => 'notification',
+            3 => 'notify',
+            4 => 'pole',
+            5 => 'report',
+            6 => 'symbol',
         ),
     ),
     'fas fa-flag-checkered' =>
@@ -4405,7 +5225,23 @@ $FONTAWESOME = array(
             0 => 'notice',
             1 => 'notification',
             2 => 'notify',
-            3 => 'report',
+            3 => 'pole',
+            4 => 'racing',
+            5 => 'report',
+            6 => 'symbol',
+        ),
+    ),
+    'fas fa-flag-usa' =>
+    array(
+        'label' => 'United States of America Flag',
+        'search' =>
+        array(
+            0 => 'betsy ross',
+            1 => 'country',
+            2 => 'old glory',
+            3 => 'stars',
+            4 => 'stripes',
+            5 => 'symbol',
         ),
     ),
     'fas fa-flask' =>
@@ -4463,12 +5299,16 @@ $FONTAWESOME = array(
     'fas fa-folder' =>
     array(
         'label' => 'Folder',
-        'search' => NULL,
+        'search' =>
+        array(
+        ),
     ),
     'far fa-folder' =>
     array(
         'label' => 'Folder',
-        'search' => NULL,
+        'search' =>
+        array(
+        ),
     ),
     'fas fa-folder-minus' =>
     array(
@@ -4477,7 +5317,8 @@ $FONTAWESOME = array(
         array(
             0 => 'archive',
             1 => 'delete',
-            2 => 'remove',
+            2 => 'negative',
+            3 => 'remove',
         ),
     ),
     'fas fa-folder-open' =>
@@ -4502,6 +5343,7 @@ $FONTAWESOME = array(
             0 => 'add',
             1 => 'create',
             2 => 'new',
+            3 => 'positive',
         ),
     ),
     'fas fa-font' =>
@@ -4574,6 +5416,9 @@ $FONTAWESOME = array(
         'label' => 'Football Ball',
         'search' =>
         array(
+            0 => 'fall',
+            1 => 'pigskin',
+            2 => 'seasonal',
         ),
     ),
     'fab fa-fort-awesome' =>
@@ -4634,12 +5479,16 @@ $FONTAWESOME = array(
         'label' => 'Frog',
         'search' =>
         array(
-            0 => 'bullfrog',
-            1 => 'kermit',
-            2 => 'kiss',
-            3 => 'prince',
-            4 => 'toad',
-            5 => 'wart',
+            0 => 'amphibian',
+            1 => 'bullfrog',
+            2 => 'fauna',
+            3 => 'hop',
+            4 => 'kermit',
+            5 => 'kiss',
+            6 => 'prince',
+            7 => 'ribbit',
+            8 => 'toad',
+            9 => 'wart',
         ),
     ),
     'fas fa-frown' =>
@@ -4729,6 +5578,8 @@ $FONTAWESOME = array(
         'label' => 'Galactic Republic',
         'search' =>
         array(
+            0 => 'politics',
+            1 => 'star wars',
         ),
     ),
     'fab fa-galactic-senate' =>
@@ -4736,6 +5587,7 @@ $FONTAWESOME = array(
         'label' => 'Galactic Senate',
         'search' =>
         array(
+            0 => 'star wars',
         ),
     ),
     'fas fa-gamepad' =>
@@ -4808,16 +5660,50 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fas fa-ghost' =>
+    array(
+        'label' => 'Ghost',
+        'search' =>
+        array(
+            0 => 'apparition',
+            1 => 'blinky',
+            2 => 'clyde',
+            3 => 'floating',
+            4 => 'halloween',
+            5 => 'holiday',
+            6 => 'inky',
+            7 => 'pinky',
+            8 => 'spirit',
+        ),
+    ),
     'fas fa-gift' =>
     array(
         'label' => 'gift',
         'search' =>
         array(
-            0 => 'generosity',
-            1 => 'giving',
-            2 => 'party',
-            3 => 'present',
-            4 => 'wrapped',
+            0 => 'christmas',
+            1 => 'generosity',
+            2 => 'giving',
+            3 => 'holiday',
+            4 => 'party',
+            5 => 'present',
+            6 => 'wrapped',
+            7 => 'xmas',
+        ),
+    ),
+    'fas fa-gifts' =>
+    array(
+        'label' => 'Gifts',
+        'search' =>
+        array(
+            0 => 'christmas',
+            1 => 'generosity',
+            2 => 'giving',
+            3 => 'holiday',
+            4 => 'party',
+            5 => 'present',
+            6 => 'wrapped',
+            7 => 'xmas',
         ),
     ),
     'fab fa-git' =>
@@ -4880,6 +5766,24 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fas fa-glass-cheers' =>
+    array(
+        'label' => 'Glass Cheers',
+        'search' =>
+        array(
+            0 => 'alcohol',
+            1 => 'bar',
+            2 => 'beverage',
+            3 => 'celebration',
+            4 => 'champagne',
+            5 => 'clink',
+            6 => 'drink',
+            7 => 'holiday',
+            8 => 'new year\'s eve',
+            9 => 'party',
+            10 => 'toast',
+        ),
+    ),
     'fas fa-glass-martini' =>
     array(
         'label' => 'Martini Glass',
@@ -4887,17 +5791,30 @@ $FONTAWESOME = array(
         array(
             0 => 'alcohol',
             1 => 'bar',
-            2 => 'drink',
-            3 => 'glass',
+            2 => 'beverage',
+            3 => 'drink',
             4 => 'liquor',
-            5 => 'martini',
         ),
     ),
     'fas fa-glass-martini-alt' =>
     array(
-        'label' => 'Glass Martini-alt',
+        'label' => 'Alternate Glass Martini',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-glass-whiskey' =>
+    array(
+        'label' => 'Glass Whiskey',
+        'search' =>
+        array(
+            0 => 'alcohol',
+            1 => 'bar',
+            2 => 'beverage',
+            3 => 'drink',
+            4 => 'liquor',
+            5 => 'neat',
+            6 => 'seasonal',
         ),
     ),
     'fas fa-glasses' =>
@@ -4997,6 +5914,28 @@ $FONTAWESOME = array(
     'fas fa-globe-asia' =>
     array(
         'label' => 'Globe with Asia shown',
+        'search' =>
+        array(
+            0 => 'all',
+            1 => 'country',
+            2 => 'earth',
+            3 => 'global',
+            4 => 'gps',
+            5 => 'language',
+            6 => 'localize',
+            7 => 'location',
+            8 => 'map',
+            9 => 'online',
+            10 => 'place',
+            11 => 'planet',
+            12 => 'translate',
+            13 => 'travel',
+            14 => 'world',
+        ),
+    ),
+    'fas fa-globe-europe' =>
+    array(
+        'label' => 'Globe with Europe shown',
         'search' =>
         array(
             0 => 'all',
@@ -5460,6 +6399,30 @@ $FONTAWESOME = array(
             4 => 'handle',
         ),
     ),
+    'fas fa-grip-lines' =>
+    array(
+        'label' => 'Grip Lines',
+        'search' =>
+        array(
+            0 => 'affordance',
+            1 => 'drag',
+            2 => 'drop',
+            3 => 'grab',
+            4 => 'handle',
+        ),
+    ),
+    'fas fa-grip-lines-vertical' =>
+    array(
+        'label' => 'Grip Lines Vertical',
+        'search' =>
+        array(
+            0 => 'affordance',
+            1 => 'drag',
+            2 => 'drop',
+            3 => 'grab',
+            4 => 'handle',
+        ),
+    ),
     'fas fa-grip-vertical' =>
     array(
         'label' => 'Grip Vertical',
@@ -5484,6 +6447,20 @@ $FONTAWESOME = array(
         'label' => 'Grunt',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-guitar' =>
+    array(
+        'label' => 'Guitar',
+        'search' =>
+        array(
+            0 => 'acoustic',
+            1 => 'instrument',
+            2 => 'music',
+            3 => 'rock',
+            4 => 'rock and roll',
+            5 => 'song',
+            6 => 'strings',
         ),
     ),
     'fab fa-gulp' =>
@@ -5521,6 +6498,35 @@ $FONTAWESOME = array(
         'label' => 'Hackerrank',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-hamburger' =>
+    array(
+        'label' => 'Hamburger',
+        'search' =>
+        array(
+            0 => 'bacon',
+            1 => 'beef',
+            2 => 'burger',
+            3 => 'burger king',
+            4 => 'cheeseburger',
+            5 => 'fast food',
+            6 => 'grill',
+            7 => 'ground beef',
+            8 => 'mcdonalds',
+            9 => 'sandwich',
+        ),
+    ),
+    'fas fa-hammer' =>
+    array(
+        'label' => 'Hammer',
+        'search' =>
+        array(
+            0 => 'admin',
+            1 => 'fix',
+            2 => 'repair',
+            3 => 'settings',
+            4 => 'tool',
         ),
     ),
     'fas fa-hamsa' =>
@@ -5576,6 +6582,17 @@ $FONTAWESOME = array(
         'label' => 'Lizard (Hand)',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-hand-middle-finger' =>
+    array(
+        'label' => 'Hand with Middle Finger Raised',
+        'search' =>
+        array(
+            0 => 'flip the bird',
+            1 => 'gesture',
+            2 => 'hate',
+            3 => 'rude',
         ),
     ),
     'fas fa-hand-paper' =>
@@ -5794,11 +6811,55 @@ $FONTAWESOME = array(
             1 => 'partnership',
         ),
     ),
+    'fas fa-hanukiah' =>
+    array(
+        'label' => 'Hanukiah',
+        'search' =>
+        array(
+            0 => 'candle',
+            1 => 'hanukkah',
+            2 => 'jewish',
+            3 => 'judaism',
+            4 => 'light',
+        ),
+    ),
+    'fas fa-hard-hat' =>
+    array(
+        'label' => 'Hard Hat',
+        'search' =>
+        array(
+            0 => 'construction',
+            1 => 'hardhat',
+            2 => 'helmet',
+            3 => 'safety',
+        ),
+    ),
     'fas fa-hashtag' =>
     array(
         'label' => 'Hashtag',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-hat-wizard' =>
+    array(
+        'label' => 'Wizard\'s Hat',
+        'search' =>
+        array(
+            0 => 'Dungeons & Dragons',
+            1 => 'accessory',
+            2 => 'buckle',
+            3 => 'clothing',
+            4 => 'd&d',
+            5 => 'dnd',
+            6 => 'fantasy',
+            7 => 'halloween',
+            8 => 'head',
+            9 => 'holiday',
+            10 => 'mage',
+            11 => 'magic',
+            12 => 'pointy',
+            13 => 'witch',
         ),
     ),
     'fas fa-haykal' =>
@@ -5843,7 +6904,6 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'header',
-            1 => 'header',
         ),
     ),
     'fas fa-headphones' =>
@@ -5860,7 +6920,7 @@ $FONTAWESOME = array(
     ),
     'fas fa-headphones-alt' =>
     array(
-        'label' => 'Headphones Alt',
+        'label' => 'Alternate Headphones',
         'search' =>
         array(
             0 => 'audio',
@@ -5895,6 +6955,7 @@ $FONTAWESOME = array(
             0 => 'favorite',
             1 => 'like',
             2 => 'love',
+            3 => 'relationship',
         ),
     ),
     'far fa-heart' =>
@@ -5905,6 +6966,23 @@ $FONTAWESOME = array(
             0 => 'favorite',
             1 => 'like',
             2 => 'love',
+            3 => 'relationship',
+        ),
+    ),
+    'fas fa-heart-broken' =>
+    array(
+        'label' => 'Heart Broken',
+        'search' =>
+        array(
+            0 => 'breakup',
+            1 => 'crushed',
+            2 => 'dislike',
+            3 => 'dumped',
+            4 => 'grief',
+            5 => 'love',
+            6 => 'lovesick',
+            7 => 'relationship',
+            8 => 'sad',
         ),
     ),
     'fas fa-heartbeat' =>
@@ -5941,6 +7019,31 @@ $FONTAWESOME = array(
             4 => 'write',
         ),
     ),
+    'fas fa-hiking' =>
+    array(
+        'label' => 'Hiking',
+        'search' =>
+        array(
+            0 => 'activity',
+            1 => 'backpack',
+            2 => 'fall',
+            3 => 'fitness',
+            4 => 'outdoors',
+            5 => 'person',
+            6 => 'seasonal',
+            7 => 'walking',
+        ),
+    ),
+    'fas fa-hippo' =>
+    array(
+        'label' => 'Hippo',
+        'search' =>
+        array(
+            0 => 'fauna',
+            1 => 'hungry',
+            2 => 'mammmal',
+        ),
+    ),
     'fab fa-hips' =>
     array(
         'label' => 'Hips',
@@ -5969,13 +7072,31 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fas fa-holly-berry' =>
+    array(
+        'label' => 'Holly Berry',
+        'search' =>
+        array(
+            0 => 'catwoman',
+            1 => 'christmas',
+            2 => 'decoration',
+            3 => 'flora',
+            4 => 'halle',
+            5 => 'holiday',
+            6 => 'ororo munroe',
+            7 => 'plant',
+            8 => 'storm',
+            9 => 'xmas',
+        ),
+    ),
     'fas fa-home' =>
     array(
         'label' => 'home',
         'search' =>
         array(
-            0 => 'house',
-            1 => 'main',
+            0 => 'building',
+            1 => 'house',
+            2 => 'main',
         ),
     ),
     'fab fa-hooli' =>
@@ -5990,6 +7111,28 @@ $FONTAWESOME = array(
         'label' => 'Hornbill',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-horse' =>
+    array(
+        'label' => 'Horse',
+        'search' =>
+        array(
+            0 => 'equus',
+            1 => 'fauna',
+            2 => 'mammmal',
+            3 => 'neigh',
+        ),
+    ),
+    'fas fa-horse-head' =>
+    array(
+        'label' => 'Horse Head',
+        'search' =>
+        array(
+            0 => 'equus',
+            1 => 'fauna',
+            2 => 'mammmal',
+            3 => 'neigh',
         ),
     ),
     'fas fa-hospital' =>
@@ -6034,6 +7177,23 @@ $FONTAWESOME = array(
         'label' => 'Hot Tub',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-hotdog' =>
+    array(
+        'label' => 'Hot Dog',
+        'search' =>
+        array(
+            0 => 'bun',
+            1 => 'chili',
+            2 => 'frankfurt',
+            3 => 'frankfurter',
+            4 => 'kosher',
+            5 => 'polish',
+            6 => 'sandwich',
+            7 => 'sausage',
+            8 => 'vienna',
+            9 => 'weiner',
         ),
     ),
     'fas fa-hotel' =>
@@ -6087,11 +7247,29 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fas fa-house-damage' =>
+    array(
+        'label' => 'Damaged House',
+        'search' =>
+        array(
+            0 => 'building',
+            1 => 'devastation',
+            2 => 'home',
+        ),
+    ),
     'fab fa-houzz' =>
     array(
         'label' => 'Houzz',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-hryvnia' =>
+    array(
+        'label' => 'Hryvnia',
+        'search' =>
+        array(
+            0 => 'money',
         ),
     ),
     'fab fa-html5' =>
@@ -6113,6 +7291,34 @@ $FONTAWESOME = array(
         'label' => 'I Beam Cursor',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-ice-cream' =>
+    array(
+        'label' => 'Ice Cream',
+        'search' =>
+        array(
+            0 => 'chocolate',
+            1 => 'cone',
+            2 => 'dessert',
+            3 => 'frozen',
+            4 => 'scoop',
+            5 => 'sorbet',
+            6 => 'vanilla',
+            7 => 'yogurt',
+        ),
+    ),
+    'fas fa-icicles' =>
+    array(
+        'label' => 'Icicles',
+        'search' =>
+        array(
+            0 => 'cold',
+            1 => 'frozen',
+            2 => 'hanging',
+            3 => 'ice',
+            4 => 'seasonal',
+            5 => 'sharp',
         ),
     ),
     'fas fa-id-badge' =>
@@ -6157,6 +7363,20 @@ $FONTAWESOME = array(
             0 => 'demographics',
         ),
     ),
+    'fas fa-igloo' =>
+    array(
+        'label' => 'Igloo',
+        'search' =>
+        array(
+            0 => 'dome',
+            1 => 'dwelling',
+            2 => 'eskimo',
+            3 => 'home',
+            4 => 'house',
+            5 => 'ice',
+            6 => 'seasonal',
+        ),
+    ),
     'fas fa-image' =>
     array(
         'label' => 'Image',
@@ -6165,7 +7385,6 @@ $FONTAWESOME = array(
             0 => 'album',
             1 => 'photo',
             2 => 'picture',
-            3 => 'picture',
         ),
     ),
     'far fa-image' =>
@@ -6176,7 +7395,6 @@ $FONTAWESOME = array(
             0 => 'album',
             1 => 'photo',
             2 => 'picture',
-            3 => 'picture',
         ),
     ),
     'fas fa-images' =>
@@ -6225,8 +7443,9 @@ $FONTAWESOME = array(
         'label' => 'Industry',
         'search' =>
         array(
-            0 => 'factory',
-            1 => 'manufacturing',
+            0 => 'building',
+            1 => 'factory',
+            2 => 'manufacturing',
         ),
     ),
     'fas fa-infinity' =>
@@ -6265,6 +7484,16 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fab fa-intercom' =>
+    array(
+        'label' => 'Intercom',
+        'search' =>
+        array(
+            0 => 'app',
+            1 => 'customer',
+            2 => 'messenger',
+        ),
+    ),
     'fab fa-internet-explorer' =>
     array(
         'label' => 'Internet-explorer',
@@ -6272,6 +7501,16 @@ $FONTAWESOME = array(
         array(
             0 => 'browser',
             1 => 'ie',
+        ),
+    ),
+    'fab fa-invision' =>
+    array(
+        'label' => 'InVision',
+        'search' =>
+        array(
+            0 => 'app',
+            1 => 'design',
+            2 => 'interface',
         ),
     ),
     'fab fa-ioxhost' =>
@@ -6331,6 +7570,14 @@ $FONTAWESOME = array(
         'label' => 'Jenkis',
         'search' =>
         array(
+        ),
+    ),
+    'fab fa-jira' =>
+    array(
+        'label' => 'Jira',
+        'search' =>
+        array(
+            0 => 'atlassian',
         ),
     ),
     'fab fa-joget' =>
@@ -6556,6 +7803,8 @@ $FONTAWESOME = array(
         'label' => 'Kiwi Bird',
         'search' =>
         array(
+            0 => 'bird',
+            1 => 'fauna',
         ),
     ),
     'fab fa-korvue' =>
@@ -6573,6 +7822,7 @@ $FONTAWESOME = array(
             0 => 'building',
             1 => 'historic',
             2 => 'memoroable',
+            3 => 'politics',
         ),
     ),
     'fas fa-language' =>
@@ -6603,7 +7853,6 @@ $FONTAWESOME = array(
             7 => 'macbook',
             8 => 'machine',
             9 => 'pc',
-            10 => 'pc',
         ),
     ),
     'fas fa-laptop-code' =>
@@ -6611,6 +7860,16 @@ $FONTAWESOME = array(
         'label' => 'Laptop Code',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-laptop-medical' =>
+    array(
+        'label' => 'Laptop Medical',
+        'search' =>
+        array(
+            0 => 'ehr',
+            1 => 'electronic health records',
+            2 => 'history',
         ),
     ),
     'fab fa-laravel' =>
@@ -6730,8 +7989,9 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'eco',
-            1 => 'nature',
-            2 => 'plant',
+            1 => 'flora',
+            2 => 'nature',
+            3 => 'plant',
         ),
     ),
     'fab fa-leanpub' =>
@@ -6746,7 +8006,10 @@ $FONTAWESOME = array(
         'label' => 'Lemon',
         'search' =>
         array(
-            0 => 'food',
+            0 => 'citrus',
+            1 => 'lemonade',
+            2 => 'lime',
+            3 => 'tart',
         ),
     ),
     'far fa-lemon' =>
@@ -6754,7 +8017,10 @@ $FONTAWESOME = array(
         'label' => 'Lemon',
         'search' =>
         array(
-            0 => 'food',
+            0 => 'citrus',
+            1 => 'lemonade',
+            2 => 'lime',
+            3 => 'tart',
         ),
     ),
     'fab fa-less' =>
@@ -6880,8 +8146,7 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'try',
-            1 => 'try',
-            2 => 'turkish',
+            1 => 'turkish',
         ),
     ),
     'fas fa-list' =>
@@ -6933,11 +8198,10 @@ $FONTAWESOME = array(
         array(
             0 => 'checklist',
             1 => 'list',
-            2 => 'list',
-            3 => 'numbers',
-            4 => 'ol',
-            5 => 'todo',
-            6 => 'ul',
+            2 => 'numbers',
+            3 => 'ol',
+            4 => 'todo',
+            5 => 'ul',
         ),
     ),
     'fas fa-list-ul' =>
@@ -7057,7 +8321,11 @@ $FONTAWESOME = array(
         array(
             0 => 'autocomplete',
             1 => 'automatic',
-            2 => 'wizard',
+            2 => 'mage',
+            3 => 'magic',
+            4 => 'spell',
+            5 => 'witch',
+            6 => 'wizard',
         ),
     ),
     'fas fa-magnet' =>
@@ -7148,7 +8416,7 @@ $FONTAWESOME = array(
     ),
     'fas fa-map-marked-alt' =>
     array(
-        'label' => 'Map Marked-alt',
+        'label' => 'Alternate Map Marked',
         'search' =>
         array(
             0 => 'address',
@@ -7281,6 +8549,19 @@ $FONTAWESOME = array(
         'label' => 'Mars Stroke Vertical',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-mask' =>
+    array(
+        'label' => 'Mask',
+        'search' =>
+        array(
+            0 => 'costume',
+            1 => 'disguise',
+            2 => 'halloween',
+            3 => 'holiday',
+            4 => 'secret',
+            5 => 'super hero',
         ),
     ),
     'fab fa-mastodon' =>
@@ -7431,6 +8712,15 @@ $FONTAWESOME = array(
         array(
             0 => 'DIMM',
             1 => 'RAM',
+            2 => 'hardware',
+            3 => 'technology',
+        ),
+    ),
+    'fab fa-mendeley' =>
+    array(
+        'label' => 'Mendeley',
+        'search' =>
+        array(
         ),
     ),
     'fas fa-menorah' =>
@@ -7439,9 +8729,10 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'candle',
-            1 => 'jewish',
-            2 => 'judaism',
-            3 => 'light',
+            1 => 'hanukkah',
+            2 => 'jewish',
+            3 => 'judaism',
+            4 => 'light',
         ),
     ),
     'fas fa-mercury' =>
@@ -7450,6 +8741,13 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'transgender',
+        ),
+    ),
+    'fas fa-meteor' =>
+    array(
+        'label' => 'Meteor',
+        'search' =>
+        array(
         ),
     ),
     'fas fa-microchip' =>
@@ -7527,8 +8825,8 @@ $FONTAWESOME = array(
             0 => 'collapse',
             1 => 'delete',
             2 => 'hide',
-            3 => 'hide',
-            4 => 'minify',
+            3 => 'minify',
+            4 => 'negative',
             5 => 'remove',
             6 => 'trash',
         ),
@@ -7540,8 +8838,9 @@ $FONTAWESOME = array(
         array(
             0 => 'delete',
             1 => 'hide',
-            2 => 'remove',
-            3 => 'trash',
+            2 => 'negative',
+            3 => 'remove',
+            4 => 'trash',
         ),
     ),
     'fas fa-minus-square' =>
@@ -7552,8 +8851,8 @@ $FONTAWESOME = array(
             0 => 'collapse',
             1 => 'delete',
             2 => 'hide',
-            3 => 'hide',
-            4 => 'minify',
+            3 => 'minify',
+            4 => 'negative',
             5 => 'remove',
             6 => 'trash',
         ),
@@ -7566,10 +8865,23 @@ $FONTAWESOME = array(
             0 => 'collapse',
             1 => 'delete',
             2 => 'hide',
-            3 => 'hide',
-            4 => 'minify',
+            3 => 'minify',
+            4 => 'negative',
             5 => 'remove',
             6 => 'trash',
+        ),
+    ),
+    'fas fa-mitten' =>
+    array(
+        'label' => 'Mitten',
+        'search' =>
+        array(
+            0 => 'clothing',
+            1 => 'cold',
+            2 => 'hands',
+            3 => 'knitted',
+            4 => 'seasonal',
+            5 => 'warmth',
         ),
     ),
     'fab fa-mix' =>
@@ -7731,8 +9043,10 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'contrast',
-            1 => 'darker',
-            2 => 'night',
+            1 => 'crescent',
+            2 => 'darker',
+            3 => 'lunar',
+            4 => 'night',
         ),
     ),
     'far fa-moon' =>
@@ -7741,8 +9055,10 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'contrast',
-            1 => 'darker',
-            2 => 'night',
+            1 => 'crescent',
+            2 => 'darker',
+            3 => 'lunar',
+            4 => 'night',
         ),
     ),
     'fas fa-mortar-pestle' =>
@@ -7779,12 +9095,35 @@ $FONTAWESOME = array(
             3 => 'vehicle',
         ),
     ),
+    'fas fa-mountain' =>
+    array(
+        'label' => 'Mountain',
+        'search' =>
+        array(
+        ),
+    ),
     'fas fa-mouse-pointer' =>
     array(
         'label' => 'Mouse Pointer',
         'search' =>
         array(
             0 => 'select',
+        ),
+    ),
+    'fas fa-mug-hot' =>
+    array(
+        'label' => 'Mug Hot',
+        'search' =>
+        array(
+            0 => 'caliente',
+            1 => 'cocoa',
+            2 => 'coffee',
+            3 => 'cup',
+            4 => 'drink',
+            5 => 'holiday',
+            6 => 'steam',
+            7 => 'tea',
+            8 => 'warmth',
         ),
     ),
     'fas fa-music' =>
@@ -7806,6 +9145,13 @@ $FONTAWESOME = array(
     'fab fa-neos' =>
     array(
         'label' => 'Neos',
+        'search' =>
+        array(
+        ),
+    ),
+    'fas fa-network-wired' =>
+    array(
+        'label' => 'Wired Network',
         'search' =>
         array(
         ),
@@ -7956,6 +9302,8 @@ $FONTAWESOME = array(
         'label' => 'Old Republic',
         'search' =>
         array(
+            0 => 'politics',
+            1 => 'star wars',
         ),
     ),
     'fas fa-om' =>
@@ -8004,6 +9352,15 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fas fa-otter' =>
+    array(
+        'label' => 'Otter',
+        'search' =>
+        array(
+            0 => 'fauna',
+            1 => 'mammmal',
+        ),
+    ),
     'fas fa-outdent' =>
     array(
         'label' => 'Outdent',
@@ -8024,11 +9381,22 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'eco',
-            1 => 'leaf',
-            2 => 'leaves',
-            3 => 'nature',
-            4 => 'plant',
-            5 => 'tree',
+            1 => 'flora',
+            2 => 'leaf',
+            3 => 'leaves',
+            4 => 'nature',
+            5 => 'plant',
+            6 => 'tree',
+        ),
+    ),
+    'fas fa-pager' =>
+    array(
+        'label' => 'Pager',
+        'search' =>
+        array(
+            0 => 'beeper',
+            1 => 'cellphone',
+            2 => 'communication',
         ),
     ),
     'fas fa-paint-brush' =>
@@ -8182,7 +9550,8 @@ $FONTAWESOME = array(
         'label' => 'Paw',
         'search' =>
         array(
-            0 => 'pet',
+            0 => 'animal',
+            1 => 'pet',
         ),
     ),
     'fab fa-paypal' =>
@@ -8275,12 +9644,43 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fab fa-penny-arcade' =>
+    array(
+        'label' => 'Penny Arcade',
+        'search' =>
+        array(
+            0 => 'Dungeons & Dragons',
+            1 => 'd&d',
+            2 => 'dnd',
+            3 => 'fantasy',
+            4 => 'game',
+            5 => 'gaming',
+            6 => 'pax',
+            7 => 'tabletop',
+        ),
+    ),
     'fas fa-people-carry' =>
     array(
         'label' => 'People Carry',
         'search' =>
         array(
             0 => 'movers',
+        ),
+    ),
+    'fas fa-pepper-hot' =>
+    array(
+        'label' => 'Hot Pepper',
+        'search' =>
+        array(
+            0 => 'buffalo wings',
+            1 => 'capsicum',
+            2 => 'chili',
+            3 => 'chilli',
+            4 => 'habanero',
+            5 => 'jalapeno',
+            6 => 'mexican',
+            7 => 'spicy',
+            8 => 'tabasco',
         ),
     ),
     'fas fa-percent' =>
@@ -8302,6 +9702,20 @@ $FONTAWESOME = array(
         'label' => 'Periscope',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-person-booth' =>
+    array(
+        'label' => 'Person Entering Booth',
+        'search' =>
+        array(
+            0 => 'changing',
+            1 => 'changing room',
+            2 => 'election',
+            3 => 'human',
+            4 => 'person',
+            5 => 'vote',
+            6 => 'voting',
         ),
     ),
     'fab fa-phabricator' =>
@@ -8441,11 +9855,33 @@ $FONTAWESOME = array(
         array(
         ),
     ),
-    'fas fa-place-of-worship' =>
+    'fas fa-pizza-slice' =>
     array(
-        'label' => 'Place Of Worship',
+        'label' => 'Pizza Slice',
         'search' =>
         array(
+            0 => 'cheese',
+            1 => 'chicago',
+            2 => 'italian',
+            3 => 'mozzarella',
+            4 => 'new york',
+            5 => 'pepperoni',
+            6 => 'pie',
+            7 => 'slice',
+            8 => 'teenage mutant ninja turtles',
+            9 => 'tomato',
+        ),
+    ),
+    'fas fa-place-of-worship' =>
+    array(
+        'label' => 'Place of Worship',
+        'search' =>
+        array(
+            0 => 'building',
+            1 => 'church',
+            2 => 'holy',
+            3 => 'mosque',
+            4 => 'synagogue',
         ),
     ),
     'fas fa-plane' =>
@@ -8551,6 +9987,7 @@ $FONTAWESOME = array(
             1 => 'create',
             2 => 'expand',
             3 => 'new',
+            4 => 'positive',
         ),
     ),
     'fas fa-plus-circle' =>
@@ -8562,6 +9999,7 @@ $FONTAWESOME = array(
             1 => 'create',
             2 => 'expand',
             3 => 'new',
+            4 => 'positive',
         ),
     ),
     'fas fa-plus-square' =>
@@ -8573,6 +10011,7 @@ $FONTAWESOME = array(
             1 => 'create',
             2 => 'expand',
             3 => 'new',
+            4 => 'positive',
         ),
     ),
     'far fa-plus-square' =>
@@ -8584,6 +10023,7 @@ $FONTAWESOME = array(
             1 => 'create',
             2 => 'expand',
             3 => 'new',
+            4 => 'positive',
         ),
     ),
     'fas fa-podcast' =>
@@ -8598,6 +10038,10 @@ $FONTAWESOME = array(
         'label' => 'Poll',
         'search' =>
         array(
+            0 => 'results',
+            1 => 'survey',
+            2 => 'vote',
+            3 => 'voting',
         ),
     ),
     'fas fa-poll-h' =>
@@ -8605,6 +10049,10 @@ $FONTAWESOME = array(
         'label' => 'Poll H',
         'search' =>
         array(
+            0 => 'results',
+            1 => 'survey',
+            2 => 'vote',
+            3 => 'voting',
         ),
     ),
     'fas fa-poo' =>
@@ -8612,6 +10060,20 @@ $FONTAWESOME = array(
         'label' => 'Poo',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-poo-storm' =>
+    array(
+        'label' => 'Poo Storm',
+        'search' =>
+        array(
+            0 => 'bolt',
+            1 => 'cloud',
+            2 => 'euphemism',
+            3 => 'lightning',
+            4 => 'mess',
+            5 => 'poop',
+            6 => 'shit',
         ),
     ),
     'fas fa-poop' =>
@@ -8634,7 +10096,6 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'gbp',
-            1 => 'gbp',
         ),
     ),
     'fas fa-power-off' =>
@@ -8846,6 +10307,41 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fas fa-radiation' =>
+    array(
+        'label' => 'Radiation',
+        'search' =>
+        array(
+            0 => 'danger',
+            1 => 'dangerous',
+            2 => 'deadly',
+            3 => 'hazard',
+            4 => 'nuclear',
+            5 => 'radioactive',
+            6 => 'warning',
+        ),
+    ),
+    'fas fa-radiation-alt' =>
+    array(
+        'label' => 'Alternate Radiation',
+        'search' =>
+        array(
+            0 => 'danger',
+            1 => 'dangerous',
+            2 => 'deadly',
+            3 => 'hazard',
+            4 => 'nuclear',
+            5 => 'radioactive',
+            6 => 'warning',
+        ),
+    ),
+    'fas fa-rainbow' =>
+    array(
+        'label' => 'Rainbow',
+        'search' =>
+        array(
+        ),
+    ),
     'fas fa-random' =>
     array(
         'label' => 'random',
@@ -8853,6 +10349,13 @@ $FONTAWESOME = array(
         array(
             0 => 'shuffle',
             1 => 'sort',
+        ),
+    ),
+    'fab fa-raspberry-pi' =>
+    array(
+        'label' => 'Raspberry Pi',
+        'search' =>
+        array(
         ),
     ),
     'fab fa-ravelry' =>
@@ -8865,6 +10368,13 @@ $FONTAWESOME = array(
     'fab fa-react' =>
     array(
         'label' => 'React',
+        'search' =>
+        array(
+        ),
+    ),
+    'fab fa-reacteurope' =>
+    array(
+        'label' => 'ReactEurope',
         'search' =>
         array(
         ),
@@ -8928,6 +10438,16 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fab fa-redhat' =>
+    array(
+        'label' => 'Redhat',
+        'search' =>
+        array(
+            0 => 'linux',
+            1 => 'operating system',
+            2 => 'os',
+        ),
+    ),
     'fas fa-redo' =>
     array(
         'label' => 'Redo',
@@ -8964,13 +10484,6 @@ $FONTAWESOME = array(
         array(
         ),
     ),
-    'fab fa-rendact' =>
-    array(
-        'label' => 'Rendact',
-        'search' =>
-        array(
-        ),
-    ),
     'fab fa-renren' =>
     array(
         'label' => 'Renren',
@@ -8999,6 +10512,22 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fas fa-republican' =>
+    array(
+        'label' => 'Republican',
+        'search' =>
+        array(
+            0 => 'american',
+            1 => 'conservative',
+            2 => 'election',
+            3 => 'elephant',
+            4 => 'politics',
+            5 => 'republican party',
+            6 => 'right',
+            7 => 'right-wing',
+            8 => 'usa',
+        ),
+    ),
     'fab fa-researchgate' =>
     array(
         'label' => 'Researchgate',
@@ -9011,6 +10540,20 @@ $FONTAWESOME = array(
         'label' => 'Resolving',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-restroom' =>
+    array(
+        'label' => 'Restroom',
+        'search' =>
+        array(
+            0 => 'bathroom',
+            1 => 'john',
+            2 => 'loo',
+            3 => 'potty',
+            4 => 'washroom',
+            5 => 'waste',
+            6 => 'wc',
         ),
     ),
     'fas fa-retweet' =>
@@ -9040,6 +10583,22 @@ $FONTAWESOME = array(
             1 => 'cause',
             2 => 'lapel',
             3 => 'pin',
+        ),
+    ),
+    'fas fa-ring' =>
+    array(
+        'label' => 'Ring',
+        'search' =>
+        array(
+            0 => 'Dungeons & Dragons',
+            1 => 'Gollum',
+            2 => 'band',
+            3 => 'binding',
+            4 => 'd&d',
+            5 => 'dnd',
+            6 => 'fantasy',
+            7 => 'jewelry',
+            8 => 'precious',
         ),
     ),
     'fas fa-road' =>
@@ -9109,7 +10668,6 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'rub',
-            1 => 'rub',
         ),
     ),
     'fas fa-ruler' =>
@@ -9138,6 +10696,16 @@ $FONTAWESOME = array(
         'label' => 'Ruler Vertical',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-running' =>
+    array(
+        'label' => 'Running',
+        'search' =>
+        array(
+            0 => 'jog',
+            1 => 'person',
+            2 => 'sprint',
         ),
     ),
     'fas fa-rupee-sign' =>
@@ -9208,6 +10776,30 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fas fa-satellite' =>
+    array(
+        'label' => 'Satellite',
+        'search' =>
+        array(
+            0 => 'communications',
+            1 => 'hardware',
+            2 => 'orbit',
+            3 => 'space',
+        ),
+    ),
+    'fas fa-satellite-dish' =>
+    array(
+        'label' => 'Satellite Dish',
+        'search' =>
+        array(
+            0 => 'SETI',
+            1 => 'communications',
+            2 => 'hardware',
+            3 => 'receiver',
+            4 => 'saucer',
+            5 => 'signal',
+        ),
+    ),
     'fas fa-save' =>
     array(
         'label' => 'Save',
@@ -9238,6 +10830,7 @@ $FONTAWESOME = array(
         'label' => 'School',
         'search' =>
         array(
+            0 => 'building',
         ),
     ),
     'fas fa-screwdriver' =>
@@ -9246,16 +10839,35 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'admin',
-            1 => 'container',
-            2 => 'fix',
-            3 => 'repair',
-            4 => 'settings',
-            5 => 'tool',
+            1 => 'fix',
+            2 => 'repair',
+            3 => 'settings',
+            4 => 'tool',
         ),
     ),
     'fab fa-scribd' =>
     array(
         'label' => 'Scribd',
+        'search' =>
+        array(
+        ),
+    ),
+    'fas fa-scroll' =>
+    array(
+        'label' => 'Scroll',
+        'search' =>
+        array(
+            0 => 'Dungeons & Dragons',
+            1 => 'announcement',
+            2 => 'd&d',
+            3 => 'dnd',
+            4 => 'fantasy',
+            5 => 'paper',
+        ),
+    ),
+    'fas fa-sd-card' =>
+    array(
+        'label' => 'Sd Card',
         'search' =>
         array(
         ),
@@ -9292,9 +10904,10 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'minify',
-            1 => 'smaller',
-            2 => 'zoom',
-            3 => 'zoom out',
+            1 => 'negative',
+            2 => 'smaller',
+            3 => 'zoom',
+            4 => 'zoom out',
         ),
     ),
     'fas fa-search-plus' =>
@@ -9305,8 +10918,9 @@ $FONTAWESOME = array(
             0 => 'bigger',
             1 => 'enlarge',
             2 => 'magnify',
-            3 => 'zoom',
-            4 => 'zoom in',
+            3 => 'positive',
+            4 => 'zoom',
+            5 => 'zoom in',
         ),
     ),
     'fab fa-searchengin' =>
@@ -9408,7 +11022,6 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'ils',
-            1 => 'ils',
         ),
     ),
     'fas fa-shield-alt' =>
@@ -9416,7 +11029,12 @@ $FONTAWESOME = array(
         'label' => 'Alternate Shield',
         'search' =>
         array(
-            0 => 'shield',
+            0 => 'achievement',
+            1 => 'award',
+            2 => 'block',
+            3 => 'defend',
+            4 => 'security',
+            5 => 'winner',
         ),
     ),
     'fas fa-ship' =>
@@ -9568,6 +11186,19 @@ $FONTAWESOME = array(
             3 => 'writing',
         ),
     ),
+    'fas fa-sim-card' =>
+    array(
+        'label' => 'SIM Card',
+        'search' =>
+        array(
+            0 => 'hard drive',
+            1 => 'hardware',
+            2 => 'portable',
+            3 => 'storage',
+            4 => 'technology',
+            5 => 'tiny',
+        ),
+    ),
     'fab fa-simplybuilt' =>
     array(
         'label' => 'SimplyBuilt',
@@ -9601,6 +11232,57 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fas fa-skating' =>
+    array(
+        'label' => 'Skating',
+        'search' =>
+        array(
+            0 => 'activity',
+            1 => 'figure skating',
+            2 => 'fitness',
+            3 => 'ice',
+            4 => 'person',
+            5 => 'seasonal',
+        ),
+    ),
+    'fab fa-sketch' =>
+    array(
+        'label' => 'Sketch',
+        'search' =>
+        array(
+            0 => 'app',
+            1 => 'design',
+            2 => 'interface',
+        ),
+    ),
+    'fas fa-skiing' =>
+    array(
+        'label' => 'Skiing',
+        'search' =>
+        array(
+            0 => 'activity',
+            1 => 'downhill',
+            2 => 'fast',
+            3 => 'fitness',
+            4 => 'outdoors',
+            5 => 'person',
+            6 => 'seasonal',
+            7 => 'slalom',
+        ),
+    ),
+    'fas fa-skiing-nordic' =>
+    array(
+        'label' => 'Skiing Nordic',
+        'search' =>
+        array(
+            0 => 'activity',
+            1 => 'cross country',
+            2 => 'fitness',
+            3 => 'outdoors',
+            4 => 'person',
+            5 => 'seasonal',
+        ),
+    ),
     'fas fa-skull' =>
     array(
         'label' => 'Skull',
@@ -9609,6 +11291,30 @@ $FONTAWESOME = array(
             0 => 'bones',
             1 => 'skeleton',
             2 => 'yorick',
+        ),
+    ),
+    'fas fa-skull-crossbones' =>
+    array(
+        'label' => 'Skull & Crossbones',
+        'search' =>
+        array(
+            0 => 'Dungeons & Dragons',
+            1 => 'alert',
+            2 => 'bones',
+            3 => 'd&d',
+            4 => 'danger',
+            5 => 'dead',
+            6 => 'deadly',
+            7 => 'death',
+            8 => 'dnd',
+            9 => 'fantasy',
+            10 => 'halloween',
+            11 => 'holiday',
+            12 => 'jolly-roger',
+            13 => 'pirate',
+            14 => 'poison',
+            15 => 'skeleton',
+            16 => 'warning',
         ),
     ),
     'fab fa-skyatlas' =>
@@ -9643,6 +11349,27 @@ $FONTAWESOME = array(
             0 => 'anchor',
             1 => 'hash',
             2 => 'hashtag',
+        ),
+    ),
+    'fas fa-slash' =>
+    array(
+        'label' => 'Slash',
+        'search' =>
+        array(
+        ),
+    ),
+    'fas fa-sleigh' =>
+    array(
+        'label' => 'Sleigh',
+        'search' =>
+        array(
+            0 => 'christmas',
+            1 => 'claus',
+            2 => 'fly',
+            3 => 'holiday',
+            4 => 'santa',
+            5 => 'sled',
+            6 => 'xmas',
         ),
     ),
     'fas fa-sliders-h' =>
@@ -9695,6 +11422,7 @@ $FONTAWESOME = array(
             0 => 'emoticon',
             1 => 'face',
             2 => 'happy',
+            3 => 'positive',
         ),
     ),
     'far fa-smile-beam' =>
@@ -9705,6 +11433,7 @@ $FONTAWESOME = array(
             0 => 'emoticon',
             1 => 'face',
             2 => 'happy',
+            3 => 'positive',
         ),
     ),
     'fas fa-smile-wink' =>
@@ -9727,6 +11456,14 @@ $FONTAWESOME = array(
             2 => 'happy',
         ),
     ),
+    'fas fa-smog' =>
+    array(
+        'label' => 'Smog',
+        'search' =>
+        array(
+            0 => 'dragon',
+        ),
+    ),
     'fas fa-smoking' =>
     array(
         'label' => 'Smoking',
@@ -9744,6 +11481,21 @@ $FONTAWESOME = array(
         array(
             0 => 'no smoking',
             1 => 'non-smoking',
+        ),
+    ),
+    'fas fa-sms' =>
+    array(
+        'label' => 'SMS',
+        'search' =>
+        array(
+            0 => 'chat',
+            1 => 'conversation',
+            2 => 'message',
+            3 => 'mobile',
+            4 => 'notification',
+            5 => 'phone',
+            6 => 'sms',
+            7 => 'texting',
         ),
     ),
     'fab fa-snapchat' =>
@@ -9767,11 +11519,26 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fas fa-snowboarding' =>
+    array(
+        'label' => 'Snowboarding',
+        'search' =>
+        array(
+            0 => 'activity',
+            1 => 'fitness',
+            2 => 'outdoors',
+            3 => 'person',
+            4 => 'seasonal',
+        ),
+    ),
     'fas fa-snowflake' =>
     array(
         'label' => 'Snowflake',
         'search' =>
         array(
+            0 => 'precipitation',
+            1 => 'seasonal',
+            2 => 'winter',
         ),
     ),
     'far fa-snowflake' =>
@@ -9779,6 +11546,29 @@ $FONTAWESOME = array(
         'label' => 'Snowflake',
         'search' =>
         array(
+            0 => 'precipitation',
+            1 => 'seasonal',
+            2 => 'winter',
+        ),
+    ),
+    'fas fa-snowman' =>
+    array(
+        'label' => 'Snowman',
+        'search' =>
+        array(
+            0 => 'decoration',
+            1 => 'frost',
+            2 => 'holiday',
+        ),
+    ),
+    'fas fa-snowplow' =>
+    array(
+        'label' => 'Snowplow',
+        'search' =>
+        array(
+            0 => 'clean up',
+            1 => 'cold',
+            2 => 'seasonal',
         ),
     ),
     'fas fa-socks' =>
@@ -9788,8 +11578,9 @@ $FONTAWESOME = array(
         array(
             0 => 'business socks',
             1 => 'business time',
-            2 => 'flight of the conchords',
-            3 => 'wednesday',
+            2 => 'clothing',
+            3 => 'flight of the conchords',
+            4 => 'wednesday',
         ),
     ),
     'fas fa-solar-panel' =>
@@ -9889,14 +11680,22 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fab fa-sourcetree' =>
+    array(
+        'label' => 'Sourcetree',
+        'search' =>
+        array(
+        ),
+    ),
     'fas fa-spa' =>
     array(
         'label' => 'Spa',
         'search' =>
         array(
-            0 => 'mindfullness',
-            1 => 'plant',
-            2 => 'wellness',
+            0 => 'flora',
+            1 => 'mindfullness',
+            2 => 'plant',
+            3 => 'wellness',
         ),
     ),
     'fas fa-space-shuttle' =>
@@ -9916,6 +11715,20 @@ $FONTAWESOME = array(
         'label' => 'Speakap',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-spider' =>
+    array(
+        'label' => 'Spider',
+        'search' =>
+        array(
+            0 => 'arachnid',
+            1 => 'bug',
+            2 => 'charlotte',
+            3 => 'crawl',
+            4 => 'eight',
+            5 => 'halloween',
+            6 => 'holiday',
         ),
     ),
     'fas fa-spinner' =>
@@ -9975,7 +11788,7 @@ $FONTAWESOME = array(
     ),
     'fas fa-square-root-alt' =>
     array(
-        'label' => 'Square Root Alternate',
+        'label' => 'Alternate Square Root',
         'search' =>
         array(
         ),
@@ -10273,9 +12086,8 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'dessert',
-            1 => 'food',
-            2 => 'sweets',
-            3 => 'waffle',
+            1 => 'sweets',
+            2 => 'waffle',
         ),
     ),
     'fab fa-studiovinari' =>
@@ -10347,7 +12159,10 @@ $FONTAWESOME = array(
             1 => 'contrast',
             2 => 'day',
             3 => 'lighter',
-            4 => 'weather',
+            4 => 'sol',
+            5 => 'solar',
+            6 => 'star',
+            7 => 'weather',
         ),
     ),
     'far fa-sun' =>
@@ -10359,7 +12174,10 @@ $FONTAWESOME = array(
             1 => 'contrast',
             2 => 'day',
             3 => 'lighter',
-            4 => 'weather',
+            4 => 'sol',
+            5 => 'solar',
+            6 => 'star',
+            7 => 'weather',
         ),
     ),
     'fab fa-superpowers' =>
@@ -10402,6 +12220,16 @@ $FONTAWESOME = array(
             0 => 'emoticon',
             1 => 'face',
             2 => 'shocked',
+        ),
+    ),
+    'fab fa-suse' =>
+    array(
+        'label' => 'Suse',
+        'search' =>
+        array(
+            0 => 'linux',
+            1 => 'operating system',
+            2 => 'os',
         ),
     ),
     'fas fa-swatchbook' =>
@@ -10563,11 +12391,14 @@ $FONTAWESOME = array(
         'label' => 'Tasks',
         'search' =>
         array(
-            0 => 'downloading',
-            1 => 'downloads',
-            2 => 'loading',
-            3 => 'progress',
-            4 => 'settings',
+            0 => 'checklist',
+            1 => 'downloading',
+            2 => 'downloads',
+            3 => 'loading',
+            4 => 'progress',
+            5 => 'project management',
+            6 => 'settings',
+            7 => 'to do',
         ),
     ),
     'fas fa-taxi' =>
@@ -10621,11 +12452,42 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fas fa-temperature-high' =>
+    array(
+        'label' => 'High Temperature',
+        'search' =>
+        array(
+            0 => 'mercury',
+            1 => 'thermometer',
+            2 => 'warm',
+        ),
+    ),
+    'fas fa-temperature-low' =>
+    array(
+        'label' => 'Low Temperature',
+        'search' =>
+        array(
+            0 => 'cool',
+            1 => 'mercury',
+            2 => 'thermometer',
+        ),
+    ),
     'fab fa-tencent-weibo' =>
     array(
         'label' => 'Tencent Weibo',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-tenge' =>
+    array(
+        'label' => 'Tenge',
+        'search' =>
+        array(
+            0 => 'currency',
+            1 => 'kazakhstan',
+            2 => 'money',
+            3 => 'price',
         ),
     ),
     'fas fa-terminal' =>
@@ -10722,8 +12584,9 @@ $FONTAWESOME = array(
         'label' => 'Thermometer',
         'search' =>
         array(
-            0 => 'fever',
-            1 => 'temperature',
+            0 => 'mercury',
+            1 => 'status',
+            2 => 'temperature',
         ),
     ),
     'fas fa-thermometer-empty' =>
@@ -10731,7 +12594,9 @@ $FONTAWESOME = array(
         'label' => 'Thermometer Empty',
         'search' =>
         array(
-            0 => 'status',
+            0 => 'mercury',
+            1 => 'status',
+            2 => 'temperature',
         ),
     ),
     'fas fa-thermometer-full' =>
@@ -10739,7 +12604,10 @@ $FONTAWESOME = array(
         'label' => 'Thermometer Full',
         'search' =>
         array(
-            0 => 'status',
+            0 => 'fever',
+            1 => 'mercury',
+            2 => 'status',
+            3 => 'temperature',
         ),
     ),
     'fas fa-thermometer-half' =>
@@ -10747,7 +12615,9 @@ $FONTAWESOME = array(
         'label' => 'Thermometer 1/2 Full',
         'search' =>
         array(
-            0 => 'status',
+            0 => 'mercury',
+            1 => 'status',
+            2 => 'temperature',
         ),
     ),
     'fas fa-thermometer-quarter' =>
@@ -10755,7 +12625,9 @@ $FONTAWESOME = array(
         'label' => 'Thermometer 1/4 Full',
         'search' =>
         array(
-            0 => 'status',
+            0 => 'mercury',
+            1 => 'status',
+            2 => 'temperature',
         ),
     ),
     'fas fa-thermometer-three-quarters' =>
@@ -10763,7 +12635,16 @@ $FONTAWESOME = array(
         'label' => 'Thermometer 3/4 Full',
         'search' =>
         array(
-            0 => 'status',
+            0 => 'mercury',
+            1 => 'status',
+            2 => 'temperature',
+        ),
+    ),
+    'fab fa-think-peaks' =>
+    array(
+        'label' => 'Think Peaks',
+        'search' =>
+        array(
         ),
     ),
     'fas fa-thumbs-down' =>
@@ -10952,6 +12833,41 @@ $FONTAWESOME = array(
             0 => 'switch',
         ),
     ),
+    'fas fa-toilet' =>
+    array(
+        'label' => 'Toilet',
+        'search' =>
+        array(
+            0 => 'bathroom',
+            1 => 'flush',
+            2 => 'john',
+            3 => 'loo',
+            4 => 'pee',
+            5 => 'plumbing',
+            6 => 'poop',
+            7 => 'porcelain',
+            8 => 'potty',
+            9 => 'restroom',
+            10 => 'throne',
+            11 => 'washroom',
+            12 => 'waste',
+            13 => 'wc',
+        ),
+    ),
+    'fas fa-toilet-paper' =>
+    array(
+        'label' => 'Toilet Paper',
+        'search' =>
+        array(
+            0 => 'bathroom',
+            1 => 'halloween',
+            2 => 'holiday',
+            3 => 'lavatory',
+            4 => 'prank',
+            5 => 'restroom',
+            6 => 'roll',
+        ),
+    ),
     'fas fa-toolbox' =>
     array(
         'label' => 'Toolbox',
@@ -10963,6 +12879,20 @@ $FONTAWESOME = array(
             3 => 'repair',
             4 => 'settings',
             5 => 'tools',
+        ),
+    ),
+    'fas fa-tools' =>
+    array(
+        'label' => 'Tools',
+        'search' =>
+        array(
+            0 => 'admin',
+            1 => 'fix',
+            2 => 'repair',
+            3 => 'screwdriver',
+            4 => 'settings',
+            5 => 'tools',
+            6 => 'wrench',
         ),
     ),
     'fas fa-tooth' =>
@@ -10996,6 +12926,13 @@ $FONTAWESOME = array(
             1 => 'shintoism',
         ),
     ),
+    'fas fa-tractor' =>
+    array(
+        'label' => 'Tractor',
+        'search' =>
+        array(
+        ),
+    ),
     'fab fa-trade-federation' =>
     array(
         'label' => 'Trade Federation',
@@ -11025,6 +12962,18 @@ $FONTAWESOME = array(
             0 => 'bullet',
             1 => 'locomotive',
             2 => 'railway',
+        ),
+    ),
+    'fas fa-tram' =>
+    array(
+        'label' => 'Tram',
+        'search' =>
+        array(
+            0 => 'crossing',
+            1 => 'machine',
+            2 => 'mountains',
+            3 => 'seasonal',
+            4 => 'transportation',
         ),
     ),
     'fas fa-transgender' =>
@@ -11079,11 +13028,40 @@ $FONTAWESOME = array(
             5 => 'trash-o',
         ),
     ),
+    'fas fa-trash-restore' =>
+    array(
+        'label' => 'Trash Restore',
+        'search' =>
+        array(
+            0 => 'back',
+            1 => 'control z',
+            2 => 'oops',
+            3 => 'undo',
+        ),
+    ),
+    'fas fa-trash-restore-alt' =>
+    array(
+        'label' => 'Alternative Trash Restore',
+        'search' =>
+        array(
+            0 => 'back',
+            1 => 'control z',
+            2 => 'oops',
+            3 => 'undo',
+        ),
+    ),
     'fas fa-tree' =>
     array(
         'label' => 'Tree',
         'search' =>
         array(
+            0 => 'bark',
+            1 => 'fall',
+            2 => 'flora',
+            3 => 'forest',
+            4 => 'nature',
+            5 => 'plant',
+            6 => 'seasonal',
         ),
     ),
     'fab fa-trello' =>
@@ -11091,6 +13069,7 @@ $FONTAWESOME = array(
         'label' => 'Trello',
         'search' =>
         array(
+            0 => 'atlassian',
         ),
     ),
     'fab fa-tripadvisor' =>
@@ -11126,6 +13105,9 @@ $FONTAWESOME = array(
         'label' => 'Truck Loading',
         'search' =>
         array(
+            0 => 'inventory',
+            1 => 'moving',
+            2 => 'rental',
         ),
     ),
     'fas fa-truck-monster' =>
@@ -11140,6 +13122,8 @@ $FONTAWESOME = array(
         'label' => 'Truck Moving',
         'search' =>
         array(
+            0 => 'inventory',
+            1 => 'rental',
         ),
     ),
     'fas fa-truck-pickup' =>
@@ -11154,8 +13138,7 @@ $FONTAWESOME = array(
         'label' => 'T-Shirt',
         'search' =>
         array(
-            0 => 'cloth',
-            1 => 'clothing',
+            0 => 'clothing',
         ),
     ),
     'fas fa-tty' =>
@@ -11227,6 +13210,16 @@ $FONTAWESOME = array(
         'label' => 'Uber',
         'search' =>
         array(
+        ),
+    ),
+    'fab fa-ubuntu' =>
+    array(
+        'label' => 'Ubuntu',
+        'search' =>
+        array(
+            0 => 'linux',
+            1 => 'operating system',
+            2 => 'os',
         ),
     ),
     'fab fa-uikit' =>
@@ -11309,7 +13302,10 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'bank',
-            1 => 'institution',
+            1 => 'building',
+            2 => 'college',
+            3 => 'higher education - students',
+            4 => 'institution',
         ),
     ),
     'fas fa-unlink' =>
@@ -11356,8 +13352,18 @@ $FONTAWESOME = array(
         'label' => 'Upload',
         'search' =>
         array(
-            0 => 'export',
+            0 => 'import',
             1 => 'publish',
+        ),
+    ),
+    'fab fa-ups' =>
+    array(
+        'label' => 'UPS',
+        'search' =>
+        array(
+            0 => 'United Parcel Service',
+            1 => 'package',
+            2 => 'shipping',
         ),
     ),
     'fab fa-usb' =>
@@ -11375,9 +13381,10 @@ $FONTAWESOME = array(
             0 => 'account',
             1 => 'avatar',
             2 => 'head',
-            3 => 'man',
-            4 => 'person',
-            5 => 'profile',
+            3 => 'human',
+            4 => 'man',
+            5 => 'person',
+            6 => 'profile',
         ),
     ),
     'far fa-user' =>
@@ -11388,9 +13395,10 @@ $FONTAWESOME = array(
             0 => 'account',
             1 => 'avatar',
             2 => 'head',
-            3 => 'man',
-            4 => 'person',
-            5 => 'profile',
+            3 => 'human',
+            4 => 'man',
+            5 => 'person',
+            6 => 'profile',
         ),
     ),
     'fas fa-user-alt' =>
@@ -11401,9 +13409,10 @@ $FONTAWESOME = array(
             0 => 'account',
             1 => 'avatar',
             2 => 'head',
-            3 => 'man',
-            4 => 'person',
-            5 => 'profile',
+            3 => 'human',
+            4 => 'man',
+            5 => 'person',
+            6 => 'profile',
         ),
     ),
     'fas fa-user-alt-slash' =>
@@ -11440,9 +13449,10 @@ $FONTAWESOME = array(
             0 => 'account',
             1 => 'avatar',
             2 => 'head',
-            3 => 'man',
-            4 => 'person',
-            5 => 'profile',
+            3 => 'human',
+            4 => 'man',
+            5 => 'person',
+            6 => 'profile',
         ),
     ),
     'far fa-user-circle' =>
@@ -11453,9 +13463,10 @@ $FONTAWESOME = array(
             0 => 'account',
             1 => 'avatar',
             2 => 'head',
-            3 => 'man',
-            4 => 'person',
-            5 => 'profile',
+            3 => 'human',
+            4 => 'man',
+            5 => 'person',
+            6 => 'profile',
         ),
     ),
     'fas fa-user-clock' =>
@@ -11477,6 +13488,11 @@ $FONTAWESOME = array(
         'label' => 'User Edit',
         'search' =>
         array(
+            0 => 'edit',
+            1 => 'pen',
+            2 => 'pencil',
+            3 => 'update',
+            4 => 'write',
         ),
     ),
     'fas fa-user-friends' =>
@@ -11499,6 +13515,16 @@ $FONTAWESOME = array(
             5 => 'student',
         ),
     ),
+    'fas fa-user-injured' =>
+    array(
+        'label' => 'User Injured',
+        'search' =>
+        array(
+            0 => 'cast',
+            1 => 'ouch',
+            2 => 'sling',
+        ),
+    ),
     'fas fa-user-lock' =>
     array(
         'label' => 'User Lock',
@@ -11508,15 +13534,16 @@ $FONTAWESOME = array(
     ),
     'fas fa-user-md' =>
     array(
-        'label' => 'user-md',
+        'label' => 'Doctor',
         'search' =>
         array(
-            0 => 'doctor',
-            1 => 'job',
-            2 => 'medical',
-            3 => 'nurse',
-            4 => 'occupation',
+            0 => 'job',
+            1 => 'medical',
+            2 => 'nurse',
+            3 => 'occupation',
+            4 => 'physician',
             5 => 'profile',
+            6 => 'surgeon',
         ),
     ),
     'fas fa-user-minus' =>
@@ -11525,7 +13552,8 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'delete',
-            1 => 'remove',
+            1 => 'negative',
+            2 => 'remove',
         ),
     ),
     'fas fa-user-ninja' =>
@@ -11536,7 +13564,19 @@ $FONTAWESOME = array(
             0 => 'assassin',
             1 => 'avatar',
             2 => 'dangerous',
-            3 => 'sneaky',
+            3 => 'deadly',
+            4 => 'sneaky',
+        ),
+    ),
+    'fas fa-user-nurse' =>
+    array(
+        'label' => 'Nurse',
+        'search' =>
+        array(
+            0 => 'doctor',
+            1 => 'midwife',
+            2 => 'practitioner',
+            3 => 'surgeon',
         ),
     ),
     'fas fa-user-plus' =>
@@ -11544,8 +13584,9 @@ $FONTAWESOME = array(
         'label' => 'User Plus',
         'search' =>
         array(
-            0 => 'sign up',
-            1 => 'signup',
+            0 => 'positive',
+            1 => 'sign up',
+            2 => 'signup',
         ),
     ),
     'fas fa-user-secret' =>
@@ -11574,6 +13615,8 @@ $FONTAWESOME = array(
         'label' => 'User Slash',
         'search' =>
         array(
+            0 => 'ban',
+            1 => 'remove',
         ),
     ),
     'fas fa-user-tag' =>
@@ -11620,6 +13663,17 @@ $FONTAWESOME = array(
         'label' => 'Users Cog',
         'search' =>
         array(
+        ),
+    ),
+    'fab fa-usps' =>
+    array(
+        'label' => 'United States Postal Service',
+        'search' =>
+        array(
+            0 => 'american',
+            1 => 'package',
+            2 => 'shipping',
+            3 => 'usa',
         ),
     ),
     'fab fa-ussunnah' =>
@@ -11699,14 +13753,14 @@ $FONTAWESOME = array(
     ),
     'fab fa-viadeo' =>
     array(
-        'label' => 'Viadeo',
+        'label' => 'Video',
         'search' =>
         array(
         ),
     ),
     'fab fa-viadeo-square' =>
     array(
-        'label' => 'Viadeo Square',
+        'label' => 'Video Square',
         'search' =>
         array(
         ),
@@ -11828,6 +13882,13 @@ $FONTAWESOME = array(
             5 => 'speaker',
         ),
     ),
+    'fas fa-volume-mute' =>
+    array(
+        'label' => 'Volume Mute',
+        'search' =>
+        array(
+        ),
+    ),
     'fas fa-volume-off' =>
     array(
         'label' => 'Volume Off',
@@ -11852,6 +13913,29 @@ $FONTAWESOME = array(
             5 => 'speaker',
         ),
     ),
+    'fas fa-vote-yea' =>
+    array(
+        'label' => 'Vote Yea',
+        'search' =>
+        array(
+            0 => 'accept',
+            1 => 'cast',
+            2 => 'election',
+            3 => 'politics',
+            4 => 'positive',
+            5 => 'yes',
+        ),
+    ),
+    'fas fa-vr-cardboard' =>
+    array(
+        'label' => 'Cardboard VR',
+        'search' =>
+        array(
+            0 => 'google',
+            1 => 'reality',
+            2 => 'virtual',
+        ),
+    ),
     'fab fa-vuejs' =>
     array(
         'label' => 'Vue.js',
@@ -11864,6 +13948,7 @@ $FONTAWESOME = array(
         'label' => 'Walking',
         'search' =>
         array(
+            0 => 'person',
         ),
     ),
     'fas fa-wallet' =>
@@ -11876,6 +13961,18 @@ $FONTAWESOME = array(
     'fas fa-warehouse' =>
     array(
         'label' => 'Warehouse',
+        'search' =>
+        array(
+            0 => 'building',
+            1 => 'capacity',
+            2 => 'garage',
+            3 => 'inventory',
+            4 => 'storage',
+        ),
+    ),
+    'fas fa-water' =>
+    array(
+        'label' => 'Water',
         'search' =>
         array(
         ),
@@ -11956,6 +14053,11 @@ $FONTAWESOME = array(
         'label' => 'WiFi',
         'search' =>
         array(
+            0 => 'connection',
+            1 => 'hotspot',
+            2 => 'internet',
+            3 => 'network',
+            4 => 'wireless',
         ),
     ),
     'fab fa-wikipedia-w' =>
@@ -11963,6 +14065,18 @@ $FONTAWESOME = array(
         'label' => 'Wikipedia W',
         'search' =>
         array(
+        ),
+    ),
+    'fas fa-wind' =>
+    array(
+        'label' => 'Wind',
+        'search' =>
+        array(
+            0 => 'air',
+            1 => 'blow',
+            2 => 'breeze',
+            3 => 'fall',
+            4 => 'seasonal',
         ),
     ),
     'fas fa-window-close' =>
@@ -12027,6 +14141,20 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'microsoft',
+            1 => 'operating system',
+            2 => 'os',
+        ),
+    ),
+    'fas fa-wine-bottle' =>
+    array(
+        'label' => 'Wine Bottle',
+        'search' =>
+        array(
+            0 => 'alcohol',
+            1 => 'beverage',
+            2 => 'drink',
+            3 => 'glass',
+            4 => 'grapes',
         ),
     ),
     'fas fa-wine-glass' =>
@@ -12034,13 +14162,21 @@ $FONTAWESOME = array(
         'label' => 'Wine Glass',
         'search' =>
         array(
+            0 => 'alcohol',
+            1 => 'beverage',
+            2 => 'drink',
+            3 => 'grapes',
         ),
     ),
     'fas fa-wine-glass-alt' =>
     array(
-        'label' => 'Wine Glass-alt',
+        'label' => 'Alternate Wine Glas',
         'search' =>
         array(
+            0 => 'alcohol',
+            1 => 'beverage',
+            2 => 'drink',
+            3 => 'grapes',
         ),
     ),
     'fab fa-wix' =>
@@ -12050,9 +14186,23 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fab fa-wizards-of-the-coast' =>
+    array(
+        'label' => 'Wizards of the Coast',
+        'search' =>
+        array(
+            0 => 'Dungeons & Dragons',
+            1 => 'd&d',
+            2 => 'dnd',
+            3 => 'fantasy',
+            4 => 'game',
+            5 => 'gaming',
+            6 => 'tabletop',
+        ),
+    ),
     'fab fa-wolf-pack-battalion' =>
     array(
-        'label' => 'Wolf Pack-battalion',
+        'label' => 'Wolf Pack Battalion',
         'search' =>
         array(
         ),
@@ -12063,7 +14213,6 @@ $FONTAWESOME = array(
         'search' =>
         array(
             0 => 'krw',
-            1 => 'krw',
         ),
     ),
     'fab fa-wordpress' =>
@@ -12099,6 +14248,14 @@ $FONTAWESOME = array(
         'label' => 'WPForms',
         'search' =>
         array(
+        ),
+    ),
+    'fab fa-wpressr' =>
+    array(
+        'label' => 'wpressr',
+        'search' =>
+        array(
+            0 => 'rendact',
         ),
     ),
     'fas fa-wrench' =>
@@ -12171,6 +14328,13 @@ $FONTAWESOME = array(
         array(
         ),
     ),
+    'fab fa-yarn' =>
+    array(
+        'label' => 'Yarn',
+        'search' =>
+        array(
+        ),
+    ),
     'fab fa-yelp' =>
     array(
         'label' => 'Yelp',
@@ -12183,8 +14347,9 @@ $FONTAWESOME = array(
         'label' => 'Yen Sign',
         'search' =>
         array(
-            0 => 'jpy',
+            0 => 'currency',
             1 => 'jpy',
+            2 => 'money',
         ),
     ),
     'fas fa-yin-yang' =>

@@ -2,7 +2,7 @@
 
 // Script to convert icons.json in the FontAwesome download into a PHP array for SiteWriter
 
-$json = file_get_contents("/home/skylar/Downloads/fontawesome-free-5.3.1-web/metadata/icons.json");
+$json = file_get_contents(__DIR__ . "/icons.json");
 $icons = json_decode($json, true);
 $output = [];
 foreach ($icons as $icon => $data) {
