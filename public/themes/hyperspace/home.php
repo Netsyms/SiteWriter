@@ -163,13 +163,17 @@ include __DIR__ . "/inc/head.inc.php";
             <div class="split style1">
                 <section>
                     <form method="post" action="contact.php">
+                        <span style="display: none;">
+                            Leave this box empty
+                            <input name="email" id="email" placeholder="Email" type="email" style="display: none;" autocomplete="off" />
+                        </span>
                         <div class="field half first">
                             <label for="name">Name</label>
                             <input type="text" name="name" id="name" required />
                         </div>
                         <div class="field half">
                             <label for="email">Email</label>
-                            <input type="email" name="email" id="email" required />
+                            <input type="email" name="real_email" id="email" required />
                         </div>
                         <div class="field">
                             <label for="message">Message</label>

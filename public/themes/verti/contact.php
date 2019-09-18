@@ -19,6 +19,10 @@
                         </h3>
 
                         <form action="<?php get_site_url(); ?>contact.php" method="POST">
+                            <span style="display: none;">
+                                Leave this box empty
+                                <input name="email" id="email" placeholder="Email" type="email" style="display: none;" autocomplete="off" />
+                            </span>
                             <div class="row">
                                 <div class="6u 12u(medium)">
                                     <label for="name">Name</label>
@@ -26,7 +30,7 @@
                                 </div>
                                 <div class="6u 12u(medium)">
                                     <label for="email">Email</label>
-                                    <input type="email" name="email" id="email" placeholder="you@example.com" required />
+                                    <input type="email" name="real_email" id="email" placeholder="you@example.com" required />
                                 </div>
                                 <div class="12u">
                                     <label for="message">Message</label>

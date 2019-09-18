@@ -2,13 +2,17 @@
 <footer id="footer">
     <section>
         <form method="post" action="contact.php">
+            <span style="display: none;">
+                Leave this box empty
+                <input name="email" id="email" placeholder="Email" type="email" style="display: none;" autocomplete="off" />
+            </span>
             <div class="field">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" required />
             </div>
             <div class="field">
                 <label for="email">Email</label>
-                <input type="text" name="email" id="email" required />
+                <input type="text" name="real_email" id="email" required />
             </div>
             <div class="field">
                 <label for="message">Message</label>

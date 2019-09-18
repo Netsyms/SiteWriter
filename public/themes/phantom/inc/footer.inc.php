@@ -4,11 +4,15 @@
         <section>
             <h2>Get in touch</h2>
             <form method="post" action="contact.php">
+                <span style="display: none;">
+                    Leave this box empty
+                    <input name="email" id="email" placeholder="Email" type="email" style="display: none;" autocomplete="off" />
+                </span>
                 <div class="field half first">
                     <input type="text" name="name" id="name" placeholder="Name" required />
                 </div>
                 <div class="field half">
-                    <input type="email" name="email" id="email" placeholder="Email" required />
+                    <input type="email" name="real_email" id="email" placeholder="Email" required />
                 </div>
                 <div class="field">
                     <textarea name="message" id="message" placeholder="Message" required ></textarea>

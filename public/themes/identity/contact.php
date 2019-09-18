@@ -6,11 +6,15 @@ include __DIR__ . "/inc/header.inc.php";
         <?php get_component("contact-header"); ?>
     </div></h2>
 <form method="post" action="contact.php">
+    <span style="display: none;">
+        Leave this box empty
+        <input name="email" id="email" placeholder="Email" type="email" style="display: none;" autocomplete="off" />
+    </span>
     <div class="field">
         <input type="text" name="name" id="name" placeholder="Name" />
     </div>
     <div class="field">
-        <input type="email" name="email" id="email" placeholder="Email" />
+        <input type="email" name="real_email" id="email" placeholder="Email" />
     </div>
     <div class="field">
         <textarea name="message" id="message" placeholder="Message" rows="4"></textarea>

@@ -17,6 +17,10 @@ include __DIR__ . "/inc/header.inc.php";
     </div>
     <div class="container">
         <form action="<?php get_site_url(); ?>contact.php" method="POST">
+            <span style="display: none;">
+                Leave this box empty
+                <input name="email" id="email" placeholder="Email" type="email" style="display: none;" autocomplete="off" />
+            </span>
             <div class="row">
                 <div class="col-12 col-md-6 mb-3">
                     <label for="name">Name</label>
@@ -24,7 +28,7 @@ include __DIR__ . "/inc/header.inc.php";
                 </div>
                 <div class="col-12 col-md-6 mb-3">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com" required />
+                    <input type="email" class="form-control" name="real_email" id="email" placeholder="you@example.com" required />
                 </div>
                 <div class="col-12">
                     <label for="message">Message</label>

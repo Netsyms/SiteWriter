@@ -28,7 +28,7 @@ function output_card($content) {
     <?php
 }
 
-if (empty($_POST['name']) || empty($_POST['message']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+if (empty($_POST['name']) || empty($_POST['message']) || !filter_var($_POST['real_email'], FILTER_VALIDATE_EMAIL) || !empty($_POST['email'])) {
     $content = <<<END
 <p>Whoops!  You didn't fill out the contact form properly.</p>
 <p><a href="javascript:history.back()" class="btn btn-primary btn-sm">Go back</a> and try again.</p>
@@ -42,7 +42,7 @@ $siteid = getsiteid();
 $database->insert("messages", [
     "siteid" => $siteid,
     "name" => htmlspecialchars($_POST['name']),
-    "email" => htmlspecialchars($_POST['email']),
+    "email" => htmlspecialchars($_POST['real_email']),
     "message" => htmlspecialchars($_POST['message']),
     "date" => date("Y-m-d H:i:s")
 ]);

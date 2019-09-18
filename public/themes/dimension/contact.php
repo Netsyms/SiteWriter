@@ -10,13 +10,17 @@
             <h2 class="major"><?php get_page_clean_title(); ?></h2>
             <p class="sw-text" data-component="lead"><?php get_component("lead"); ?></p>
             <form method="post" action="contact.php">
+                <span style="display: none;">
+                    Leave this box empty
+                    <input name="email" id="email" placeholder="Email" type="email" style="display: none;" autocomplete="off" />
+                </span>
                 <div class="field half first">
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name" required />
                 </div>
                 <div class="field half">
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="email" required />
+                    <input type="text" name="real_email" id="email" required />
                 </div>
                 <div class="field">
                     <label for="message">Message</label>
@@ -46,7 +50,7 @@
     </div>
 
     <?php include __DIR__ . "/inc/bg-edit.inc.php"; ?>
-    
+
 </div>
 
 <?php include __DIR__ . "/inc/footer.inc.php"; ?>
