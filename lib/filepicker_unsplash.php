@@ -34,7 +34,6 @@ if (isset($_GET['query']) && $_GET['query'] != "") {
     $images = Crew\Unsplash\Photo::all($page, $per_page, 'popular');
 }
 
-$images->
 
 $htmlout = "";
 
