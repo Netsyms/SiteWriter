@@ -21,7 +21,7 @@ if (!$database->has("settings", ["AND" => ["siteid" => getsiteid(), "key" => "an
             throw new Exception("Do-Not-Track header detected, skipping analytics");
         }
 
-        $bots = json_decode(file_get_contents(__DIR__ . "/bots.json"), true);
+        $bots = json_decode(file_get_contents(__DIR__ . "/crawler-user-agents.json"), true);
         foreach ($bots as $bot) {
             if (preg_match('/' . $bot['pattern'] . '/', $_SERVER['HTTP_USER_AGENT'])) {
                 throw new Exception("Bot/crawler detected, skipping analytics");
