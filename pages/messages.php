@@ -72,7 +72,7 @@ if (!$user->hasPermission("SITEWRITER") && !$user->hasPermission("SITEWRITER_CON
                 <td><?php echo $m['message']; ?></td>
                 <td><?php echo $m['email']; ?></td>
                 <td><?php echo $m['sitename']; ?></td>
-                <td><?php echo date("M j Y, g:i A", strtotime($m['date'])); ?></td>
+                <td><span class="d-none"><?php echo strtotime($m['date']); ?></span><?php echo date("M j Y, g:i A", strtotime($m['date'])); ?></td>
             </tr>
             <?php
         }
